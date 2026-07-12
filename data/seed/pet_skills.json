@@ -1,0 +1,4036 @@
+{
+  "meta": {
+    "source": "BWIKI 洛克王国:手游WIKI",
+    "source_url": "https://wiki.biligame.com/rocom/wiki/Module:PetData/Core",
+    "scraped_at": "2026-07-10T16:22:31+00:00",
+    "count": 671
+  },
+  "items": [
+    {
+      "pet_slug": "pet-0001",
+      "skill_catalog_id": "skill_000003",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0002",
+      "skill_catalog_id": "skill_000032",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0003",
+      "skill_catalog_id": "skill_000070",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0004",
+      "skill_catalog_id": "skill_000114",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0005",
+      "skill_catalog_id": "skill_000032",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0006",
+      "skill_catalog_id": "skill_000070",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0007",
+      "skill_catalog_id": "skill_000003",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0008",
+      "skill_catalog_id": "skill_000131",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0009",
+      "skill_catalog_id": "skill_000078",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0010",
+      "skill_catalog_id": "skill_000063",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0011",
+      "skill_catalog_id": "skill_000064",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0012",
+      "skill_catalog_id": "skill_000014",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0013",
+      "skill_catalog_id": "skill_000062",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0014",
+      "skill_catalog_id": "skill_000025",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0015",
+      "skill_catalog_id": "skill_000025",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0016",
+      "skill_catalog_id": "skill_000025",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0017",
+      "skill_catalog_id": "skill_000005",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0018",
+      "skill_catalog_id": "skill_000005",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0019",
+      "skill_catalog_id": "skill_000005",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0020",
+      "skill_catalog_id": "skill_000018",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0021",
+      "skill_catalog_id": "skill_000018",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0022",
+      "skill_catalog_id": "skill_000018",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0023",
+      "skill_catalog_id": "skill_000078",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0024",
+      "skill_catalog_id": "skill_000078",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0025",
+      "skill_catalog_id": "skill_000003",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0026",
+      "skill_catalog_id": "skill_000008",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0027",
+      "skill_catalog_id": "skill_000004",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0028",
+      "skill_catalog_id": "skill_000049",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0029",
+      "skill_catalog_id": "skill_000006",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0030",
+      "skill_catalog_id": "skill_000006",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0031",
+      "skill_catalog_id": "skill_000006",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0032",
+      "skill_catalog_id": "skill_000070",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0033",
+      "skill_catalog_id": "skill_000032",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0034",
+      "skill_catalog_id": "skill_000004",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0035",
+      "skill_catalog_id": "skill_000008",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0036",
+      "skill_catalog_id": "skill_000014",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0037",
+      "skill_catalog_id": "skill_000049",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0038",
+      "skill_catalog_id": "skill_000062",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0039",
+      "skill_catalog_id": "skill_000063",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0040",
+      "skill_catalog_id": "skill_000007",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0041",
+      "skill_catalog_id": "skill_000007",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0042",
+      "skill_catalog_id": "skill_000007",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0043",
+      "skill_catalog_id": "skill_000009",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0044",
+      "skill_catalog_id": "skill_000009",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0045",
+      "skill_catalog_id": "skill_000015",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0046",
+      "skill_catalog_id": "skill_000015",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0047",
+      "skill_catalog_id": "skill_000015",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0048",
+      "skill_catalog_id": "skill_000114",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0049",
+      "skill_catalog_id": "skill_000100",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0050",
+      "skill_catalog_id": "skill_000024",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0051",
+      "skill_catalog_id": "skill_000114",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0052",
+      "skill_catalog_id": "skill_000026",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0053",
+      "skill_catalog_id": "skill_000026",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0054",
+      "skill_catalog_id": "skill_000026",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0055",
+      "skill_catalog_id": "skill_000033",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0056",
+      "skill_catalog_id": "skill_000033",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0057",
+      "skill_catalog_id": "skill_000033",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0058",
+      "skill_catalog_id": "skill_000057",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0059",
+      "skill_catalog_id": "skill_000057",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0060",
+      "skill_catalog_id": "skill_000081",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0061",
+      "skill_catalog_id": "skill_000081",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0062",
+      "skill_catalog_id": "skill_000002",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0063",
+      "skill_catalog_id": "skill_000002",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0064",
+      "skill_catalog_id": "skill_000079",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0065",
+      "skill_catalog_id": "skill_000080",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0066",
+      "skill_catalog_id": "skill_000080",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0067",
+      "skill_catalog_id": "skill_000131",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0068",
+      "skill_catalog_id": "skill_000054",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0069",
+      "skill_catalog_id": "skill_000073",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0070",
+      "skill_catalog_id": "skill_000073",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0071",
+      "skill_catalog_id": "skill_000013",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0072",
+      "skill_catalog_id": "skill_000013",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0073",
+      "skill_catalog_id": "skill_000013",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0074",
+      "skill_catalog_id": "skill_000074",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0075",
+      "skill_catalog_id": "skill_000074",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0076",
+      "skill_catalog_id": "skill_000074",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0077",
+      "skill_catalog_id": "skill_000075",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0078",
+      "skill_catalog_id": "skill_000075",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0079",
+      "skill_catalog_id": "skill_000075",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0080",
+      "skill_catalog_id": "skill_000076",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0081",
+      "skill_catalog_id": "skill_000076",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0082",
+      "skill_catalog_id": "skill_000071",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0083",
+      "skill_catalog_id": "skill_000071",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0084",
+      "skill_catalog_id": "skill_000071",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0085",
+      "skill_catalog_id": "skill_000072",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0086",
+      "skill_catalog_id": "skill_000072",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0087",
+      "skill_catalog_id": "skill_000136",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0088",
+      "skill_catalog_id": "skill_000072",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0089",
+      "skill_catalog_id": "skill_000077",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0090",
+      "skill_catalog_id": "skill_000077",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0091",
+      "skill_catalog_id": "skill_000077",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0092",
+      "skill_catalog_id": "skill_000010",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0093",
+      "skill_catalog_id": "skill_000010",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0094",
+      "skill_catalog_id": "skill_000010",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0095",
+      "skill_catalog_id": "skill_000017",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0096",
+      "skill_catalog_id": "skill_000017",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0097",
+      "skill_catalog_id": "skill_000017",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0098",
+      "skill_catalog_id": "skill_000100",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0099",
+      "skill_catalog_id": "skill_000100",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0100",
+      "skill_catalog_id": "skill_000027",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0101",
+      "skill_catalog_id": "skill_000027",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0102",
+      "skill_catalog_id": "skill_000027",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0103",
+      "skill_catalog_id": "skill_000028",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0104",
+      "skill_catalog_id": "skill_000028",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0105",
+      "skill_catalog_id": "skill_000028",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0106",
+      "skill_catalog_id": "skill_000031",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0107",
+      "skill_catalog_id": "skill_000031",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0108",
+      "skill_catalog_id": "skill_000031",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0109",
+      "skill_catalog_id": "skill_000034",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0110",
+      "skill_catalog_id": "skill_000034",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0111",
+      "skill_catalog_id": "skill_000034",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0112",
+      "skill_catalog_id": "skill_000035",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0113",
+      "skill_catalog_id": "skill_000035",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0114",
+      "skill_catalog_id": "skill_000035",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0115",
+      "skill_catalog_id": "skill_000122",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0116",
+      "skill_catalog_id": "skill_000040",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0117",
+      "skill_catalog_id": "skill_000040",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0118",
+      "skill_catalog_id": "skill_000041",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0119",
+      "skill_catalog_id": "skill_000041",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0120",
+      "skill_catalog_id": "skill_000041",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0121",
+      "skill_catalog_id": "skill_000047",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0122",
+      "skill_catalog_id": "skill_000047",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0123",
+      "skill_catalog_id": "skill_000047",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0124",
+      "skill_catalog_id": "skill_000053",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0125",
+      "skill_catalog_id": "skill_000053",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0126",
+      "skill_catalog_id": "skill_000053",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0127",
+      "skill_catalog_id": "skill_000056",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0128",
+      "skill_catalog_id": "skill_000056",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0129",
+      "skill_catalog_id": "skill_000056",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0130",
+      "skill_catalog_id": "skill_000059",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0131",
+      "skill_catalog_id": "skill_000059",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0132",
+      "skill_catalog_id": "skill_000059",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0133",
+      "skill_catalog_id": "skill_000117",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0134",
+      "skill_catalog_id": "skill_000117",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0135",
+      "skill_catalog_id": "skill_000117",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0136",
+      "skill_catalog_id": "skill_000060",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0137",
+      "skill_catalog_id": "skill_000060",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0138",
+      "skill_catalog_id": "skill_000060",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0139",
+      "skill_catalog_id": "skill_000067",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0140",
+      "skill_catalog_id": "skill_000067",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0141",
+      "skill_catalog_id": "skill_000067",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0142",
+      "skill_catalog_id": "skill_000082",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0143",
+      "skill_catalog_id": "skill_000082",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0144",
+      "skill_catalog_id": "skill_000082",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0145",
+      "skill_catalog_id": "skill_000084",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0146",
+      "skill_catalog_id": "skill_000084",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0147",
+      "skill_catalog_id": "skill_000084",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0148",
+      "skill_catalog_id": "skill_000108",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0149",
+      "skill_catalog_id": "skill_000108",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0150",
+      "skill_catalog_id": "skill_000108",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0151",
+      "skill_catalog_id": "skill_000110",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0152",
+      "skill_catalog_id": "skill_000110",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0153",
+      "skill_catalog_id": "skill_000110",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0154",
+      "skill_catalog_id": "skill_000057",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0155",
+      "skill_catalog_id": "skill_000003",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0156",
+      "skill_catalog_id": "skill_000011",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0157",
+      "skill_catalog_id": "skill_000011",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0158",
+      "skill_catalog_id": "skill_000016",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0159",
+      "skill_catalog_id": "skill_000016",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0160",
+      "skill_catalog_id": "skill_000016",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0161",
+      "skill_catalog_id": "skill_000132",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0162",
+      "skill_catalog_id": "skill_000132",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0163",
+      "skill_catalog_id": "skill_000029",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0164",
+      "skill_catalog_id": "skill_000029",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0165",
+      "skill_catalog_id": "skill_000043",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0166",
+      "skill_catalog_id": "skill_000043",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0167",
+      "skill_catalog_id": "skill_000043",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0168",
+      "skill_catalog_id": "skill_000050",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0169",
+      "skill_catalog_id": "skill_000050",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0170",
+      "skill_catalog_id": "skill_000050",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0171",
+      "skill_catalog_id": "skill_000058",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0172",
+      "skill_catalog_id": "skill_000058",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0173",
+      "skill_catalog_id": "skill_000065",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0174",
+      "skill_catalog_id": "skill_000065",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0175",
+      "skill_catalog_id": "skill_000065",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0176",
+      "skill_catalog_id": "skill_000066",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0177",
+      "skill_catalog_id": "skill_000066",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0178",
+      "skill_catalog_id": "skill_000066",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0179",
+      "skill_catalog_id": "skill_000191",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0180",
+      "skill_catalog_id": "skill_000083",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0181",
+      "skill_catalog_id": "skill_000086",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0182",
+      "skill_catalog_id": "skill_000086",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0183",
+      "skill_catalog_id": "skill_000087",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0184",
+      "skill_catalog_id": "skill_000087",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0185",
+      "skill_catalog_id": "skill_000087",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0186",
+      "skill_catalog_id": "skill_000088",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0187",
+      "skill_catalog_id": "skill_000088",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0188",
+      "skill_catalog_id": "skill_000089",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0189",
+      "skill_catalog_id": "skill_000089",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0190",
+      "skill_catalog_id": "skill_000089",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0191",
+      "skill_catalog_id": "skill_000090",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0192",
+      "skill_catalog_id": "skill_000090",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0193",
+      "skill_catalog_id": "skill_000094",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0194",
+      "skill_catalog_id": "skill_000094",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0195",
+      "skill_catalog_id": "skill_000094",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0196",
+      "skill_catalog_id": "skill_000095",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0197",
+      "skill_catalog_id": "skill_000095",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0198",
+      "skill_catalog_id": "skill_000095",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0199",
+      "skill_catalog_id": "skill_000096",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0200",
+      "skill_catalog_id": "skill_000096",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0201",
+      "skill_catalog_id": "skill_000096",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0202",
+      "skill_catalog_id": "skill_000097",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0203",
+      "skill_catalog_id": "skill_000097",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0204",
+      "skill_catalog_id": "skill_000098",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0205",
+      "skill_catalog_id": "skill_000099",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0206",
+      "skill_catalog_id": "skill_000099",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0207",
+      "skill_catalog_id": "skill_000101",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0208",
+      "skill_catalog_id": "skill_000101",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0209",
+      "skill_catalog_id": "skill_000102",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0210",
+      "skill_catalog_id": "skill_000102",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0211",
+      "skill_catalog_id": "skill_000102",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0212",
+      "skill_catalog_id": "skill_000104",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0213",
+      "skill_catalog_id": "skill_000104",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0214",
+      "skill_catalog_id": "skill_000105",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0215",
+      "skill_catalog_id": "skill_000107",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0216",
+      "skill_catalog_id": "skill_000107",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0217",
+      "skill_catalog_id": "skill_000111",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0218",
+      "skill_catalog_id": "skill_000111",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0219",
+      "skill_catalog_id": "skill_000113",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0220",
+      "skill_catalog_id": "skill_000103",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0221",
+      "skill_catalog_id": "skill_000103",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0222",
+      "skill_catalog_id": "skill_000112",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0223",
+      "skill_catalog_id": "skill_000112",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0224",
+      "skill_catalog_id": "skill_000112",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0225",
+      "skill_catalog_id": "skill_000115",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0226",
+      "skill_catalog_id": "skill_000115",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0227",
+      "skill_catalog_id": "skill_000115",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0228",
+      "skill_catalog_id": "skill_000012",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0229",
+      "skill_catalog_id": "skill_000012",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0230",
+      "skill_catalog_id": "skill_000019",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0231",
+      "skill_catalog_id": "skill_000019",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0232",
+      "skill_catalog_id": "skill_000019",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0233",
+      "skill_catalog_id": "skill_000030",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0234",
+      "skill_catalog_id": "skill_000030",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0235",
+      "skill_catalog_id": "skill_000042",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0236",
+      "skill_catalog_id": "skill_000042",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0237",
+      "skill_catalog_id": "skill_000042",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0238",
+      "skill_catalog_id": "skill_000044",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0239",
+      "skill_catalog_id": "skill_000044",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0240",
+      "skill_catalog_id": "skill_000045",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0241",
+      "skill_catalog_id": "skill_000045",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0242",
+      "skill_catalog_id": "skill_000069",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0243",
+      "skill_catalog_id": "skill_000069",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0244",
+      "skill_catalog_id": "skill_000091",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0245",
+      "skill_catalog_id": "skill_000091",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0246",
+      "skill_catalog_id": "skill_000148",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0247",
+      "skill_catalog_id": "skill_000148",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0248",
+      "skill_catalog_id": "skill_000106",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0249",
+      "skill_catalog_id": "skill_000106",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0250",
+      "skill_catalog_id": "skill_000106",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0251",
+      "skill_catalog_id": "skill_000049",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0252",
+      "skill_catalog_id": "skill_000049",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0253",
+      "skill_catalog_id": "skill_000049",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0254",
+      "skill_catalog_id": "skill_000049",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0255",
+      "skill_catalog_id": "skill_000049",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0256",
+      "skill_catalog_id": "skill_000049",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0257",
+      "skill_catalog_id": "skill_000049",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0258",
+      "skill_catalog_id": "skill_000049",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0259",
+      "skill_catalog_id": "skill_000049",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0260",
+      "skill_catalog_id": "skill_000007",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0261",
+      "skill_catalog_id": "skill_000007",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0262",
+      "skill_catalog_id": "skill_000007",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0263",
+      "skill_catalog_id": "skill_000007",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0264",
+      "skill_catalog_id": "skill_000007",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0265",
+      "skill_catalog_id": "skill_000007",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0266",
+      "skill_catalog_id": "skill_000007",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0267",
+      "skill_catalog_id": "skill_000007",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0268",
+      "skill_catalog_id": "skill_000007",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0269",
+      "skill_catalog_id": "skill_000005",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0270",
+      "skill_catalog_id": "skill_000005",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0271",
+      "skill_catalog_id": "skill_000005",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0272",
+      "skill_catalog_id": "skill_000005",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0273",
+      "skill_catalog_id": "skill_000005",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0274",
+      "skill_catalog_id": "skill_000005",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0275",
+      "skill_catalog_id": "skill_000005",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0276",
+      "skill_catalog_id": "skill_000005",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0277",
+      "skill_catalog_id": "skill_000005",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0278",
+      "skill_catalog_id": "skill_000001",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0279",
+      "skill_catalog_id": "skill_000001",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0280",
+      "skill_catalog_id": "skill_000116",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0281",
+      "skill_catalog_id": "skill_000116",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0282",
+      "skill_catalog_id": "skill_000116",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0283",
+      "skill_catalog_id": "skill_000020",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0284",
+      "skill_catalog_id": "skill_000020",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0285",
+      "skill_catalog_id": "skill_000020",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0286",
+      "skill_catalog_id": "skill_000021",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0287",
+      "skill_catalog_id": "skill_000021",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0288",
+      "skill_catalog_id": "skill_000055",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0289",
+      "skill_catalog_id": "skill_000055",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0290",
+      "skill_catalog_id": "skill_000055",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0291",
+      "skill_catalog_id": "skill_000036",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0292",
+      "skill_catalog_id": "skill_000036",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0293",
+      "skill_catalog_id": "skill_000036",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0294",
+      "skill_catalog_id": "skill_000048",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0295",
+      "skill_catalog_id": "skill_000048",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0296",
+      "skill_catalog_id": "skill_000048",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0297",
+      "skill_catalog_id": "skill_000176",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0298",
+      "skill_catalog_id": "skill_000176",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0299",
+      "skill_catalog_id": "skill_000176",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0300",
+      "skill_catalog_id": "skill_000051",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0301",
+      "skill_catalog_id": "skill_000051",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0302",
+      "skill_catalog_id": "skill_000051",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0303",
+      "skill_catalog_id": "skill_000068",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0304",
+      "skill_catalog_id": "skill_000068",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0305",
+      "skill_catalog_id": "skill_000068",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0306",
+      "skill_catalog_id": "skill_000076",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0307",
+      "skill_catalog_id": "skill_000092",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0308",
+      "skill_catalog_id": "skill_000092",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0309",
+      "skill_catalog_id": "skill_000092",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0310",
+      "skill_catalog_id": "skill_000093",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0311",
+      "skill_catalog_id": "skill_000093",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0312",
+      "skill_catalog_id": "skill_000093",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0313",
+      "skill_catalog_id": "skill_000109",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0314",
+      "skill_catalog_id": "skill_000109",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0315",
+      "skill_catalog_id": "skill_000128",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0316",
+      "skill_catalog_id": "skill_000128",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0317",
+      "skill_catalog_id": "skill_000128",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0318",
+      "skill_catalog_id": "skill_000011",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0319",
+      "skill_catalog_id": "skill_000022",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0320",
+      "skill_catalog_id": "skill_000022",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0321",
+      "skill_catalog_id": "skill_000022",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0322",
+      "skill_catalog_id": "skill_000023",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0323",
+      "skill_catalog_id": "skill_000023",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0324",
+      "skill_catalog_id": "skill_000133",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0325",
+      "skill_catalog_id": "skill_000133",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0326",
+      "skill_catalog_id": "skill_000133",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0327",
+      "skill_catalog_id": "skill_000037",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0328",
+      "skill_catalog_id": "skill_000038",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0329",
+      "skill_catalog_id": "skill_000038",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0330",
+      "skill_catalog_id": "skill_000039",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0331",
+      "skill_catalog_id": "skill_000039",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0332",
+      "skill_catalog_id": "skill_000039",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0333",
+      "skill_catalog_id": "skill_000052",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0334",
+      "skill_catalog_id": "skill_000052",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0335",
+      "skill_catalog_id": "skill_000052",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0336",
+      "skill_catalog_id": "skill_000129",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0337",
+      "skill_catalog_id": "skill_000129",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0338",
+      "skill_catalog_id": "skill_000129",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0339",
+      "skill_catalog_id": "skill_000061",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0340",
+      "skill_catalog_id": "skill_000061",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0341",
+      "skill_catalog_id": "skill_000061",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0342",
+      "skill_catalog_id": "skill_000081",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0343",
+      "skill_catalog_id": "skill_000146",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0344",
+      "skill_catalog_id": "skill_000146",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0345",
+      "skill_catalog_id": "skill_000147",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0346",
+      "skill_catalog_id": "skill_000147",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0347",
+      "skill_catalog_id": "skill_000118",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0348",
+      "skill_catalog_id": "skill_000118",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0349",
+      "skill_catalog_id": "skill_000098",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0350",
+      "skill_catalog_id": "skill_000121",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0351",
+      "skill_catalog_id": "skill_000120",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0352",
+      "skill_catalog_id": "skill_000189",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0353",
+      "skill_catalog_id": "skill_000124",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0354",
+      "skill_catalog_id": "skill_000124",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0355",
+      "skill_catalog_id": "skill_000186",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0356",
+      "skill_catalog_id": "skill_000186",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0357",
+      "skill_catalog_id": "skill_000181",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0358",
+      "skill_catalog_id": "skill_000134",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0359",
+      "skill_catalog_id": "skill_000134",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0360",
+      "skill_catalog_id": "skill_000134",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0361",
+      "skill_catalog_id": "skill_000134",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0362",
+      "skill_catalog_id": "skill_000192",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0363",
+      "skill_catalog_id": "skill_000192",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0364",
+      "skill_catalog_id": "skill_000123",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0365",
+      "skill_catalog_id": "skill_000123",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0366",
+      "skill_catalog_id": "skill_000085",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0367",
+      "skill_catalog_id": "skill_000085",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0368",
+      "skill_catalog_id": "skill_000085",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0369",
+      "skill_catalog_id": "skill_000085",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0370",
+      "skill_catalog_id": "skill_000088",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0371",
+      "skill_catalog_id": "skill_000088",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0372",
+      "skill_catalog_id": "skill_000137",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0373",
+      "skill_catalog_id": "skill_000046",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0374",
+      "skill_catalog_id": "skill_000046",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0375",
+      "skill_catalog_id": "skill_000046",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0376",
+      "skill_catalog_id": "skill_000001",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0377",
+      "skill_catalog_id": "skill_000001",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0378",
+      "skill_catalog_id": "skill_000001",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0379",
+      "skill_catalog_id": "skill_000001",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0380",
+      "skill_catalog_id": "skill_000014",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0381",
+      "skill_catalog_id": "skill_000014",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0382",
+      "skill_catalog_id": "skill_000018",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0383",
+      "skill_catalog_id": "skill_000018",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0384",
+      "skill_catalog_id": "skill_000018",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0385",
+      "skill_catalog_id": "skill_000125",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0386",
+      "skill_catalog_id": "skill_000047",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0387",
+      "skill_catalog_id": "skill_000047",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0388",
+      "skill_catalog_id": "skill_000047",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0389",
+      "skill_catalog_id": "skill_000047",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0390",
+      "skill_catalog_id": "skill_000047",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0391",
+      "skill_catalog_id": "skill_000047",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0392",
+      "skill_catalog_id": "skill_000047",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0393",
+      "skill_catalog_id": "skill_000047",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0394",
+      "skill_catalog_id": "skill_000135",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0395",
+      "skill_catalog_id": "skill_000053",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0396",
+      "skill_catalog_id": "skill_000053",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0397",
+      "skill_catalog_id": "skill_000053",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0398",
+      "skill_catalog_id": "skill_000117",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0399",
+      "skill_catalog_id": "skill_000117",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0400",
+      "skill_catalog_id": "skill_000117",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0401",
+      "skill_catalog_id": "skill_000184",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0402",
+      "skill_catalog_id": "skill_000184",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0403",
+      "skill_catalog_id": "skill_000036",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0404",
+      "skill_catalog_id": "skill_000036",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0405",
+      "skill_catalog_id": "skill_000036",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0406",
+      "skill_catalog_id": "skill_000047",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0407",
+      "skill_catalog_id": "skill_000047",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0408",
+      "skill_catalog_id": "skill_000129",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0409",
+      "skill_catalog_id": "skill_000081",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0410",
+      "skill_catalog_id": "skill_000081",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0411",
+      "skill_catalog_id": "skill_000023",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0412",
+      "skill_catalog_id": "skill_000152",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0413",
+      "skill_catalog_id": "skill_000159",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0414",
+      "skill_catalog_id": "skill_000001",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0415",
+      "skill_catalog_id": "skill_000203",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0416",
+      "skill_catalog_id": "skill_000203",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0417",
+      "skill_catalog_id": "skill_000203",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0418",
+      "skill_catalog_id": "skill_000127",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0419",
+      "skill_catalog_id": "skill_000127",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0420",
+      "skill_catalog_id": "skill_000138",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0421",
+      "skill_catalog_id": "skill_000014",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0422",
+      "skill_catalog_id": "skill_000023",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0423",
+      "skill_catalog_id": "skill_000023",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0424",
+      "skill_catalog_id": "skill_000023",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0425",
+      "skill_catalog_id": "skill_000139",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0426",
+      "skill_catalog_id": "skill_000028",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0427",
+      "skill_catalog_id": "skill_000028",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0428",
+      "skill_catalog_id": "skill_000028",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0429",
+      "skill_catalog_id": "skill_000178",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0430",
+      "skill_catalog_id": "skill_000178",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0431",
+      "skill_catalog_id": "skill_000175",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0432",
+      "skill_catalog_id": "skill_000141",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0433",
+      "skill_catalog_id": "skill_000141",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0434",
+      "skill_catalog_id": "skill_000142",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0435",
+      "skill_catalog_id": "skill_000142",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0436",
+      "skill_catalog_id": "skill_000142",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0437",
+      "skill_catalog_id": "skill_000142",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0438",
+      "skill_catalog_id": "skill_000142",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0439",
+      "skill_catalog_id": "skill_000142",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0440",
+      "skill_catalog_id": "skill_000114",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0441",
+      "skill_catalog_id": "skill_000114",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0442",
+      "skill_catalog_id": "skill_000033",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0443",
+      "skill_catalog_id": "skill_000033",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0444",
+      "skill_catalog_id": "skill_000033",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0445",
+      "skill_catalog_id": "skill_000143",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0446",
+      "skill_catalog_id": "skill_000144",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0447",
+      "skill_catalog_id": "skill_000144",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0448",
+      "skill_catalog_id": "skill_000122",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0449",
+      "skill_catalog_id": "skill_000170",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0450",
+      "skill_catalog_id": "skill_000171",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0451",
+      "skill_catalog_id": "skill_000145",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0452",
+      "skill_catalog_id": "skill_000145",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0453",
+      "skill_catalog_id": "skill_000205",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0454",
+      "skill_catalog_id": "skill_000205",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0455",
+      "skill_catalog_id": "skill_000049",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0456",
+      "skill_catalog_id": "skill_000150",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0457",
+      "skill_catalog_id": "skill_000150",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0458",
+      "skill_catalog_id": "skill_000174",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0459",
+      "skill_catalog_id": "skill_000174",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0460",
+      "skill_catalog_id": "skill_000174",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0461",
+      "skill_catalog_id": "skill_000174",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0462",
+      "skill_catalog_id": "skill_000174",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0463",
+      "skill_catalog_id": "skill_000174",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0464",
+      "skill_catalog_id": "skill_000151",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0465",
+      "skill_catalog_id": "skill_000151",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0466",
+      "skill_catalog_id": "skill_000126",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0467",
+      "skill_catalog_id": "skill_000126",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0468",
+      "skill_catalog_id": "skill_000152",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0469",
+      "skill_catalog_id": "skill_000023",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0470",
+      "skill_catalog_id": "skill_000023",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0471",
+      "skill_catalog_id": "skill_000195",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0472",
+      "skill_catalog_id": "skill_000195",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0473",
+      "skill_catalog_id": "skill_000130",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0474",
+      "skill_catalog_id": "skill_000196",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0475",
+      "skill_catalog_id": "skill_000197",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0476",
+      "skill_catalog_id": "skill_000154",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0477",
+      "skill_catalog_id": "skill_000154",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0478",
+      "skill_catalog_id": "skill_000130",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0479",
+      "skill_catalog_id": "skill_000155",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0480",
+      "skill_catalog_id": "skill_000156",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0481",
+      "skill_catalog_id": "skill_000023",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0482",
+      "skill_catalog_id": "skill_000023",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0483",
+      "skill_catalog_id": "skill_000023",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0484",
+      "skill_catalog_id": "skill_000023",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0485",
+      "skill_catalog_id": "skill_000023",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0486",
+      "skill_catalog_id": "skill_000157",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0487",
+      "skill_catalog_id": "skill_000157",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0488",
+      "skill_catalog_id": "skill_000023",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0489",
+      "skill_catalog_id": "skill_000140",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0490",
+      "skill_catalog_id": "skill_000140",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0491",
+      "skill_catalog_id": "skill_000023",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0492",
+      "skill_catalog_id": "skill_000149",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0493",
+      "skill_catalog_id": "skill_000206",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0494",
+      "skill_catalog_id": "skill_000206",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0495",
+      "skill_catalog_id": "skill_000023",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0496",
+      "skill_catalog_id": "skill_000023",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0497",
+      "skill_catalog_id": "skill_000023",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0498",
+      "skill_catalog_id": "skill_000182",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0499",
+      "skill_catalog_id": "skill_000182",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0500",
+      "skill_catalog_id": "skill_000183",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0501",
+      "skill_catalog_id": "skill_000023",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0502",
+      "skill_catalog_id": "skill_000023",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0503",
+      "skill_catalog_id": "skill_000158",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0504",
+      "skill_catalog_id": "skill_000158",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0505",
+      "skill_catalog_id": "skill_000158",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0506",
+      "skill_catalog_id": "skill_000158",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0507",
+      "skill_catalog_id": "skill_000198",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0508",
+      "skill_catalog_id": "skill_000198",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0509",
+      "skill_catalog_id": "skill_000167",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0510",
+      "skill_catalog_id": "skill_000167",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0511",
+      "skill_catalog_id": "skill_000167",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0512",
+      "skill_catalog_id": "skill_000166",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0513",
+      "skill_catalog_id": "skill_000166",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0514",
+      "skill_catalog_id": "skill_000166",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0515",
+      "skill_catalog_id": "skill_000165",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0516",
+      "skill_catalog_id": "skill_000165",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0517",
+      "skill_catalog_id": "skill_000165",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0518",
+      "skill_catalog_id": "skill_000172",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0519",
+      "skill_catalog_id": "skill_000172",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0520",
+      "skill_catalog_id": "skill_000173",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0521",
+      "skill_catalog_id": "skill_000160",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0522",
+      "skill_catalog_id": "skill_000160",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0523",
+      "skill_catalog_id": "skill_000160",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0524",
+      "skill_catalog_id": "skill_000161",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0525",
+      "skill_catalog_id": "skill_000162",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0526",
+      "skill_catalog_id": "skill_000162",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0527",
+      "skill_catalog_id": "skill_000162",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0528",
+      "skill_catalog_id": "skill_000163",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0529",
+      "skill_catalog_id": "skill_000168",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0530",
+      "skill_catalog_id": "skill_000168",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0531",
+      "skill_catalog_id": "skill_000164",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0532",
+      "skill_catalog_id": "skill_000164",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0533",
+      "skill_catalog_id": "skill_000153",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0534",
+      "skill_catalog_id": "skill_000153",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0535",
+      "skill_catalog_id": "skill_000169",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0536",
+      "skill_catalog_id": "skill_000104",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0537",
+      "skill_catalog_id": "skill_000104",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0538",
+      "skill_catalog_id": "skill_000193",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0539",
+      "skill_catalog_id": "skill_000194",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0540",
+      "skill_catalog_id": "skill_000194",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0541",
+      "skill_catalog_id": "skill_000194",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0542",
+      "skill_catalog_id": "skill_000202",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0543",
+      "skill_catalog_id": "skill_000202",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0544",
+      "skill_catalog_id": "skill_000188",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0545",
+      "skill_catalog_id": "skill_000188",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0546",
+      "skill_catalog_id": "skill_000187",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0547",
+      "skill_catalog_id": "skill_000187",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0548",
+      "skill_catalog_id": "skill_000177",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0549",
+      "skill_catalog_id": "skill_000177",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0550",
+      "skill_catalog_id": "skill_000179",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0551",
+      "skill_catalog_id": "skill_000179",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0552",
+      "skill_catalog_id": "skill_000190",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0553",
+      "skill_catalog_id": "skill_000190",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0554",
+      "skill_catalog_id": "skill_000180",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0555",
+      "skill_catalog_id": "skill_000180",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0556",
+      "skill_catalog_id": "skill_000180",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0557",
+      "skill_catalog_id": "skill_000119",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0558",
+      "skill_catalog_id": "skill_000185",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0559",
+      "skill_catalog_id": "skill_000185",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0560",
+      "skill_catalog_id": "skill_000167",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0561",
+      "skill_catalog_id": "skill_000167",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0562",
+      "skill_catalog_id": "skill_000167",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0563",
+      "skill_catalog_id": "skill_000166",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0564",
+      "skill_catalog_id": "skill_000166",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0565",
+      "skill_catalog_id": "skill_000166",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0566",
+      "skill_catalog_id": "skill_000165",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0567",
+      "skill_catalog_id": "skill_000165",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0568",
+      "skill_catalog_id": "skill_000165",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0569",
+      "skill_catalog_id": "skill_000201",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0570",
+      "skill_catalog_id": "skill_000201",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0571",
+      "skill_catalog_id": "skill_000165",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0572",
+      "skill_catalog_id": "skill_000165",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0573",
+      "skill_catalog_id": "skill_000200",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0574",
+      "skill_catalog_id": "skill_000200",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0575",
+      "skill_catalog_id": "skill_000200",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0576",
+      "skill_catalog_id": "skill_000204",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0577",
+      "skill_catalog_id": "skill_000204",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0578",
+      "skill_catalog_id": "skill_000165",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0579",
+      "skill_catalog_id": "skill_000165",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0580",
+      "skill_catalog_id": "skill_000207",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0581",
+      "skill_catalog_id": "skill_000207",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0582",
+      "skill_catalog_id": "skill_000014",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0583",
+      "skill_catalog_id": "skill_000202",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0584",
+      "skill_catalog_id": "skill_000199",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0585",
+      "skill_catalog_id": "skill_000199",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0586",
+      "skill_catalog_id": "skill_000041",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0587",
+      "skill_catalog_id": "skill_000199",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0588",
+      "skill_catalog_id": "skill_000199",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0589",
+      "skill_catalog_id": "skill_000199",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0590",
+      "skill_catalog_id": "skill_000199",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0591",
+      "skill_catalog_id": "skill_000199",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0592",
+      "skill_catalog_id": "skill_000199",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0593",
+      "skill_catalog_id": "skill_000199",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0594",
+      "skill_catalog_id": "skill_000199",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0595",
+      "skill_catalog_id": "skill_000199",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0596",
+      "skill_catalog_id": "skill_000199",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0597",
+      "skill_catalog_id": "skill_000199",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0598",
+      "skill_catalog_id": "skill_000199",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0599",
+      "skill_catalog_id": "skill_000199",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0600",
+      "skill_catalog_id": "skill_000199",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0601",
+      "skill_catalog_id": "skill_000199",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0602",
+      "skill_catalog_id": "skill_000199",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0603",
+      "skill_catalog_id": "skill_000199",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0604",
+      "skill_catalog_id": "skill_000199",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0605",
+      "skill_catalog_id": "skill_000199",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0606",
+      "skill_catalog_id": "skill_000199",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0607",
+      "skill_catalog_id": "skill_000199",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0608",
+      "skill_catalog_id": "skill_000199",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0609",
+      "skill_catalog_id": "skill_000199",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0610",
+      "skill_catalog_id": "skill_000199",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0611",
+      "skill_catalog_id": "skill_000199",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0612",
+      "skill_catalog_id": "skill_000199",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0613",
+      "skill_catalog_id": "skill_000199",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0614",
+      "skill_catalog_id": "skill_000199",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0615",
+      "skill_catalog_id": "skill_000199",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0616",
+      "skill_catalog_id": "skill_000199",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0617",
+      "skill_catalog_id": "skill_000079",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0618",
+      "skill_catalog_id": "skill_000014",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0619",
+      "skill_catalog_id": "skill_000035",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0620",
+      "skill_catalog_id": "skill_000216",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0621",
+      "skill_catalog_id": "skill_000217",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0622",
+      "skill_catalog_id": "skill_000216",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0623",
+      "skill_catalog_id": "skill_000209",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0624",
+      "skill_catalog_id": "skill_000215",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0625",
+      "skill_catalog_id": "skill_000220",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0626",
+      "skill_catalog_id": "skill_000211",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0627",
+      "skill_catalog_id": "skill_000228",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0628",
+      "skill_catalog_id": "skill_000214",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0629",
+      "skill_catalog_id": "skill_000218",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0630",
+      "skill_catalog_id": "skill_000208",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0631",
+      "skill_catalog_id": "skill_000212",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0632",
+      "skill_catalog_id": "skill_000229",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0633",
+      "skill_catalog_id": "skill_000219",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0634",
+      "skill_catalog_id": "skill_000230",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0635",
+      "skill_catalog_id": "skill_000213",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0636",
+      "skill_catalog_id": "skill_000231",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0637",
+      "skill_catalog_id": "skill_000210",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0638",
+      "skill_catalog_id": "skill_000221",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0639",
+      "skill_catalog_id": "skill_000222",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0640",
+      "skill_catalog_id": "skill_000223",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0641",
+      "skill_catalog_id": "skill_000224",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0642",
+      "skill_catalog_id": "skill_000225",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0643",
+      "skill_catalog_id": "skill_000226",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0644",
+      "skill_catalog_id": "skill_000227",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0645",
+      "skill_catalog_id": "skill_000232",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0646",
+      "skill_catalog_id": "skill_000233",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0647",
+      "skill_catalog_id": "skill_000234",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0648",
+      "skill_catalog_id": "skill_000235",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0649",
+      "skill_catalog_id": "skill_000229",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0650",
+      "skill_catalog_id": "skill_000230",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0651",
+      "skill_catalog_id": "skill_000230",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0652",
+      "skill_catalog_id": "skill_000230",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0653",
+      "skill_catalog_id": "skill_000215",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0654",
+      "skill_catalog_id": "skill_000215",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0655",
+      "skill_catalog_id": "skill_000215",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0656",
+      "skill_catalog_id": "skill_000211",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0657",
+      "skill_catalog_id": "skill_000211",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0658",
+      "skill_catalog_id": "skill_000211",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0659",
+      "skill_catalog_id": "skill_000211",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0660",
+      "skill_catalog_id": "skill_000226",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0661",
+      "skill_catalog_id": "skill_000226",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0662",
+      "skill_catalog_id": "skill_000226",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0663",
+      "skill_catalog_id": "skill_000226",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0664",
+      "skill_catalog_id": "skill_000217",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0665",
+      "skill_catalog_id": "skill_000217",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0666",
+      "skill_catalog_id": "skill_000217",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0667",
+      "skill_catalog_id": "skill_000217",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0668",
+      "skill_catalog_id": "skill_000217",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0669",
+      "skill_catalog_id": "skill_000211",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0670",
+      "skill_catalog_id": "skill_000237",
+      "learn_method": "feature",
+      "unlock_level": null
+    },
+    {
+      "pet_slug": "pet-0671",
+      "skill_catalog_id": "skill_000236",
+      "learn_method": "feature",
+      "unlock_level": null
+    }
+  ]
+}

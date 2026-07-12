@@ -1,0 +1,136 @@
+{
+  "meta": {
+    "source": "BWIKI 洛克王国:手游WIKI",
+    "source_url": "https://wiki.biligame.com/rocom/wiki/Module:PetData/Core",
+    "scraped_at": "2026-07-10T16:22:31+00:00",
+    "count": 18
+  },
+  "items": [
+    {
+      "slug": "normal",
+      "name": "普通",
+      "name_en": "normal",
+      "sort_order": 0,
+      "source": "BWIKI Module:DexIndex TYPE_ORDER"
+    },
+    {
+      "slug": "grass",
+      "name": "草",
+      "name_en": "grass",
+      "sort_order": 1,
+      "source": "BWIKI Module:DexIndex TYPE_ORDER"
+    },
+    {
+      "slug": "fire",
+      "name": "火",
+      "name_en": "fire",
+      "sort_order": 2,
+      "source": "BWIKI Module:DexIndex TYPE_ORDER"
+    },
+    {
+      "slug": "water",
+      "name": "水",
+      "name_en": "water",
+      "sort_order": 3,
+      "source": "BWIKI Module:DexIndex TYPE_ORDER"
+    },
+    {
+      "slug": "light",
+      "name": "光",
+      "name_en": "light",
+      "sort_order": 4,
+      "source": "BWIKI Module:DexIndex TYPE_ORDER"
+    },
+    {
+      "slug": "ground",
+      "name": "地",
+      "name_en": "ground",
+      "sort_order": 5,
+      "source": "BWIKI Module:DexIndex TYPE_ORDER"
+    },
+    {
+      "slug": "ice",
+      "name": "冰",
+      "name_en": "ice",
+      "sort_order": 6,
+      "source": "BWIKI Module:DexIndex TYPE_ORDER"
+    },
+    {
+      "slug": "dragon",
+      "name": "龙",
+      "name_en": "dragon",
+      "sort_order": 7,
+      "source": "BWIKI Module:DexIndex TYPE_ORDER"
+    },
+    {
+      "slug": "electric",
+      "name": "电",
+      "name_en": "electric",
+      "sort_order": 8,
+      "source": "BWIKI Module:DexIndex TYPE_ORDER"
+    },
+    {
+      "slug": "poison",
+      "name": "毒",
+      "name_en": "poison",
+      "sort_order": 9,
+      "source": "BWIKI Module:DexIndex TYPE_ORDER"
+    },
+    {
+      "slug": "bug",
+      "name": "虫",
+      "name_en": "bug",
+      "sort_order": 10,
+      "source": "BWIKI Module:DexIndex TYPE_ORDER"
+    },
+    {
+      "slug": "fighting",
+      "name": "武",
+      "name_en": "fighting",
+      "sort_order": 11,
+      "source": "BWIKI Module:DexIndex TYPE_ORDER"
+    },
+    {
+      "slug": "flying",
+      "name": "翼",
+      "name_en": "flying",
+      "sort_order": 12,
+      "source": "BWIKI Module:DexIndex TYPE_ORDER"
+    },
+    {
+      "slug": "cute",
+      "name": "萌",
+      "name_en": "cute",
+      "sort_order": 13,
+      "source": "BWIKI Module:DexIndex TYPE_ORDER"
+    },
+    {
+      "slug": "ghost",
+      "name": "幽",
+      "name_en": "ghost",
+      "sort_order": 14,
+      "source": "BWIKI Module:DexIndex TYPE_ORDER"
+    },
+    {
+      "slug": "dark",
+      "name": "恶",
+      "name_en": "dark",
+      "sort_order": 15,
+      "source": "BWIKI Module:DexIndex TYPE_ORDER"
+    },
+    {
+      "slug": "machine",
+      "name": "机械",
+      "name_en": "machine",
+      "sort_order": 16,
+      "source": "BWIKI Module:DexIndex TYPE_ORDER"
+    },
+    {
+      "slug": "illusion",
+      "name": "幻",
+      "name_en": "illusion",
+      "sort_order": 17,
+      "source": "BWIKI Module:DexIndex TYPE_ORDER"
+    }
+  ]
+}

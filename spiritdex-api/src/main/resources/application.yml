@@ -1,0 +1,71 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /
+
+spring:
+  application:
+    name: spiritdex-api
+  # Spring AI：经 OpenAI 兼容配置接智谱 GLM（chat + embedding）
+  # api-key 由环境变量注入；无 key 时用 dummy 占位避免启动崩溃。
+  # GLM 用 v4 版本路径，故覆盖默认的 /v1/* 为 /chat/completions、/embeddings
+  # （base-url 已含 /v4，最终拼成 /api/paas/v4/embeddings）。
+  ai:
+    openai:
+      base-url: https://open.bigmodel.cn/api/paas/v4
+      api-key: ${GLM_API_KEY:dummy}
+      chat:
+        completions-path: /chat/completions
+        options:
+          # glm-4-flash 免费档（问答/推荐）；如账户有 air/plus 资源包可升级
+          model: glm-4-flash
+      embedding:
+        embeddings-path: /embeddings
+        options:
+          model: embedding-3
+  datasource:
+    # stringtype=unspecified：让 PG 驱动把字符串交给服务器按列类型解析，
+    # 解决 MyBatis-Plus JacksonTypeHandler 写 JSONB 列时报
+    # "column ... is of type jsonb but expression is of type character varying"
+    # 部署时用环境变量覆盖：SPRING_DATASOURCE_URL / USERNAME / PASSWORD
+    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5432/spiritdex?stringtype=unspecified}
+    username: ${SPRING_DATASOURCE_USERNAME:spiritdex}
+    password: ${SPRING_DATASOURCE_PASSWORD:spiritdex}
+    driver-class-name: org.postgresql.Driver
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
+    baseline-on-migrate: true
+
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  global-config:
+    db-config:
+      logic-delete-field: deleted
+      logic-delete-value: 1
+      logic-not-delete-value: 0
+      id-type: auto
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+  api-docs:
+    path: /v3/api-docs
+
+logging:
+  level:
+    com.spiritdex: DEBUG
+    org.springframework.web: INFO
+
+# Phase 1：SeedRunner 读取 data/seed/*.json 的目录
+# （SeedRunner 仅在 --spring.profiles.active=seed 时激活）
+spiritdex:
+  seed:
+    dir: ${user.dir}/../data/seed   # 相对 spiritdex-api 工作目录
+  # Phase 5：AI 配置。enabled 由 GLM_API_KEY 是否有效自动推导（见 AiProperties）。
+  ai:
+    embedding-dim: 1024
+    top-k: 5
+    rate-limit-per-hour: 30

@@ -1,0 +1,165 @@
+@import "tailwindcss";
+
+/* ============================================================
+   灵宠档案 设计系统（游戏化鲜明风格 + 深色模式）
+   Tailwind v4：用 CSS 变量驱动浅/深两套主题，body 用 bg-background 等。
+   ============================================================ */
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  /* 表面/文字/边框（浅色） */
+  --background: #f7f8fa;
+  --surface: #ffffff;
+  --surface-2: #f1f3f6;
+  --foreground: #1a1d23;
+  --muted: #6b7280;
+  --muted-foreground: #9ca3af;
+  --border: #e5e7eb;
+  --input: #e5e7eb;
+  --ring: #e84545;
+
+  /* 主色：精灵球红（游戏化主调） */
+  --primary: #e84545;
+  --primary-foreground: #ffffff;
+  /* 辅色：能量蓝（链接/数据） */
+  --secondary: #3b82f6;
+  --secondary-foreground: #ffffff;
+  /* 强调：金色（稀有度/亮点） */
+  --accent: #f59e0b;
+
+  /* 属性色（与 lib/type-colors.ts 一致） */
+  --type-normal: #9099a0;
+  --type-grass: #5dbe62;
+  --type-fire: #f0832e;
+  --type-water: #3b95f2;
+  --type-light: #f2c94c;
+  --type-ground: #b5793c;
+  --type-ice: #7fd4e8;
+  --type-dragon: #8a6fe8;
+  --type-electric: #f2c94c;
+  --type-poison: #9b59b6;
+  --type-bug: #a8b820;
+  --type-fighting: #c0392b;
+  --type-flying: #8aa9d6;
+  --type-cute: #ec6fa8;
+  --type-ghost: #6c5b7b;
+  --type-dark: #4a4a4a;
+  --type-machine: #95a5a6;
+  --type-illusion: #b370e8;
+
+  /* 功能色 */
+  --success: #22c55e;
+  --warning: #f59e0b;
+  --danger: #ef4444;
+
+  /* 卡片阴影/圆角 */
+  --card-radius: 1rem;
+  --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.04);
+  --shadow-hover: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+.dark {
+  --background: #0f1115;
+  --surface: #181b22;
+  --surface-2: #21252e;
+  --foreground: #e8eaed;
+  --muted: #9ca3af;
+  --muted-foreground: #6b7280;
+  --border: #2a2f3a;
+  --input: #2a2f3a;
+  --ring: #e84545;
+
+  --primary: #ff5a5a;
+  --primary-foreground: #ffffff;
+  --secondary: #60a5fa;
+  --secondary-foreground: #ffffff;
+  --accent: #fbbf24;
+
+  --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.3);
+  --shadow-hover: 0 8px 24px rgba(0, 0, 0, 0.4);
+}
+
+/* Tailwind v4：把 CSS 变量映射为 Tailwind 工具类 */
+@theme inline {
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-accent: var(--accent);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-danger: var(--danger);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), system-ui, sans-serif;
+}
+
+/* ============================================================
+   Markdown 排版（文章 + AI 聊天气泡）
+   ============================================================ */
+
+.prose-spiritdex {
+  font-size: 0.95rem;
+  line-height: 1.8;
+  color: var(--foreground);
+}
+.prose-spiritdex h1 { font-size: 1.75rem; font-weight: 700; margin: 1.5em 0 0.6em; padding-bottom: 0.3em; border-bottom: 1px solid var(--border); }
+.prose-spiritdex h2 { font-size: 1.35rem; font-weight: 700; margin: 1.4em 0 0.5em; }
+.prose-spiritdex h3 { font-size: 1.1rem; font-weight: 600; margin: 1.2em 0 0.4em; }
+.prose-spiritdex p { margin: 0.8em 0; }
+.prose-spiritdex ul, .prose-spiritdex ol { margin: 0.8em 0; padding-left: 1.6em; }
+.prose-spiritdex ul { list-style: disc; }
+.prose-spiritdex ol { list-style: decimal; }
+.prose-spiritdex li { margin: 0.3em 0; }
+.prose-spiritdex strong { font-weight: 600; }
+.prose-spiritdex blockquote { margin: 1em 0; padding: 0.5em 1em; border-left: 3px solid var(--secondary); background: var(--surface-2); border-radius: 0 0.5rem 0.5rem 0; }
+.prose-spiritdex hr { margin: 1.8em 0; border: none; border-top: 1px solid var(--border); }
+.prose-spiritdex table { width: 100%; margin: 1em 0; border-collapse: collapse; font-size: 0.875rem; }
+.prose-spiritdex th, .prose-spiritdex td { border: 1px solid var(--border); padding: 0.5em 0.75em; text-align: left; }
+.prose-spiritdex th { background: var(--surface-2); font-weight: 600; }
+.prose-spiritdex a { color: var(--secondary); text-decoration: underline; }
+.prose-spiritdex code { padding: 0.15em 0.4em; border-radius: 0.25rem; background: var(--surface-2); font-size: 0.875em; font-family: var(--font-geist-mono), monospace; }
+
+.prose-chat { font-size: 0.875rem; line-height: 1.6; }
+.prose-chat p { margin: 0.3em 0; }
+.prose-chat p:first-child { margin-top: 0; }
+.prose-chat p:last-child { margin-bottom: 0; }
+.prose-chat strong { font-weight: 600; }
+.prose-chat em { font-style: italic; }
+.prose-chat ul, .prose-chat ol { margin: 0.3em 0; padding-left: 1.3em; }
+.prose-chat ul { list-style: disc; }
+.prose-chat ol { list-style: decimal; }
+.prose-chat li { margin: 0.15em 0; }
+.prose-chat h1, .prose-chat h2, .prose-chat h3 { font-weight: 600; margin: 0.5em 0 0.25em; line-height: 1.3; }
+.prose-chat h1 { font-size: 1.05rem; }
+.prose-chat h2 { font-size: 1rem; }
+.prose-chat h3 { font-size: 0.9rem; }
+.prose-chat code { padding: 0.1em 0.3em; border-radius: 0.25rem; background: var(--surface-2); font-size: 0.85em; font-family: var(--font-geist-mono), monospace; }
+.prose-chat pre { margin: 0.4em 0; padding: 0.5em 0.7em; border-radius: 0.4em; background: var(--surface-2); overflow-x: auto; }
+.prose-chat pre code { padding: 0; background: none; }
+.prose-chat blockquote { margin: 0.3em 0; padding-left: 0.7em; border-left: 2px solid currentColor; opacity: 0.75; }
+.prose-chat a { color: var(--secondary); text-decoration: underline; }
+.prose-chat table { margin: 0.4em 0; border-collapse: collapse; font-size: 0.8rem; }
+.prose-chat th, .prose-chat td { border: 1px solid var(--border); padding: 0.2em 0.4em; }
+.prose-chat hr { margin: 0.5em 0; border: none; border-top: 1px solid var(--border); }
+
+/* 滚动条美化 */
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: var(--muted); }

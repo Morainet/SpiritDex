@@ -1,0 +1,1594 @@
+{
+  "meta": {
+    "source": "BWIKI 洛克王国:手游WIKI",
+    "source_url": "https://wiki.biligame.com/rocom/wiki/Module:PetData/Core",
+    "scraped_at": "2026-07-10T16:22:31+00:00",
+    "count": 264
+  },
+  "items": [
+    {
+      "group_id": "evo_000001",
+      "name": "水蓝蓝进化链",
+      "stage_count": 3,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000002",
+      "name": "火花进化链",
+      "stage_count": 3,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000003",
+      "name": "迪莫进化链",
+      "stage_count": 1,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000004",
+      "name": "喵喵进化链",
+      "stage_count": 3,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000005",
+      "name": "草头鸭进化链",
+      "stage_count": 2,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000006",
+      "name": "赤毛鸡仔进化链",
+      "stage_count": 2,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000007",
+      "name": "恶魔叮进化链",
+      "stage_count": 2,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000008",
+      "name": "恶魔狼进化链",
+      "stage_count": 1,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000009",
+      "name": "鸭吉吉进化链（蓬松的样子）",
+      "stage_count": 1,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000010",
+      "name": "小甲虫进化链",
+      "stage_count": 2,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000011",
+      "name": "阿米亚特进化链",
+      "stage_count": 3,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000012",
+      "name": "蹦蹦种子进化链（海神球形态）",
+      "stage_count": 3,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000013",
+      "name": "地鼠进化链（枯水期的样子）",
+      "stage_count": 3,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000014",
+      "name": "绿草精灵进化链",
+      "stage_count": 2,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000015",
+      "name": "蒲公英进化链",
+      "stage_count": 2,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000016",
+      "name": "冬羽雀进化链（本来的样子）",
+      "stage_count": 3,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000017",
+      "name": "奇丽草进化链",
+      "stage_count": 3,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000018",
+      "name": "鸭吉吉进化链（紧实的样子）",
+      "stage_count": 1,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000019",
+      "name": "丢丢进化链（草地附近的样子）",
+      "stage_count": 3,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000020",
+      "name": "伊贝儿进化链",
+      "stage_count": 2,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000021",
+      "name": "锥尾羊进化链",
+      "stage_count": 3,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000022",
+      "name": "白发懒人进化链",
+      "stage_count": 3,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000023",
+      "name": "记忆石进化链",
+      "stage_count": 1,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000024",
+      "name": "煤球憨憨进化链",
+      "stage_count": 3,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000025",
+      "name": "板板壳进化链（本来的样子）",
+      "stage_count": 3,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000026",
+      "name": "一窝蜂进化链",
+      "stage_count": 3,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000027",
+      "name": "小灵面进化链（睁眼的样子）",
+      "stage_count": 3,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000028",
+      "name": "小独角兽进化链",
+      "stage_count": 2,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000029",
+      "name": "幽影树进化链",
+      "stage_count": 1,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000030",
+      "name": "忽幽狸进化链",
+      "stage_count": 2,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000031",
+      "name": "锤头鹳进化链",
+      "stage_count": 1,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000032",
+      "name": "护主犬进化链",
+      "stage_count": 2,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000033",
+      "name": "格兰种子进化链",
+      "stage_count": 3,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000034",
+      "name": "灵狐进化链",
+      "stage_count": 3,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000035",
+      "name": "烈钻鸟进化链",
+      "stage_count": 3,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000036",
+      "name": "治愈兔进化链",
+      "stage_count": 3,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000037",
+      "name": "可爱猿进化链",
+      "stage_count": 3,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000038",
+      "name": "可立鸡进化链（绅士鸡分支）",
+      "stage_count": 3,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000039",
+      "name": "火尾瓦特进化链",
+      "stage_count": 3,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000040",
+      "name": "呆小路进化链",
+      "stage_count": 3,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000041",
+      "name": "绿耳松鼠进化链",
+      "stage_count": 3,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000042",
+      "name": "布是石进化链",
+      "stage_count": 3,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000043",
+      "name": "石肤蜥进化链（本来的样子）",
+      "stage_count": 3,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000044",
+      "name": "仪使者进化链",
+      "stage_count": 3,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000045",
+      "name": "甜田螺进化链",
+      "stage_count": 3,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000046",
+      "name": "风铃鲨进化链",
+      "stage_count": 3,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000047",
+      "name": "果冻进化链（抹茶布丁分支）",
+      "stage_count": 2,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000048",
+      "name": "大耳帽兜进化链",
+      "stage_count": 3,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000049",
+      "name": "脆筒甜甜进化链（樱桃巧克力口味）",
+      "stage_count": 3,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000050",
+      "name": "小狮鹫进化链（崖间地的样子）",
+      "stage_count": 3,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000051",
+      "name": "圆眼蜘蛛进化链",
+      "stage_count": 3,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000052",
+      "name": "小螂进化链",
+      "stage_count": 3,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000053",
+      "name": "毛毛进化链（平常的样子）",
+      "stage_count": 3,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000054",
+      "name": "小草虫进化链",
+      "stage_count": 3,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000055",
+      "name": "小夜进化链",
+      "stage_count": 3,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000056",
+      "name": "小灵菇进化链",
+      "stage_count": 3,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000057",
+      "name": "空空颅进化链",
+      "stage_count": 3,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000058",
+      "name": "多多进化链",
+      "stage_count": 3,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000059",
+      "name": "裘洛进化链",
+      "stage_count": 3,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000060",
+      "name": "春团进化链",
+      "stage_count": 3,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000061",
+      "name": "伏地兽进化链",
+      "stage_count": 3,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000062",
+      "name": "阿布进化链",
+      "stage_count": 2,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000063",
+      "name": "石石进化链",
+      "stage_count": 2,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000064",
+      "name": "雪豆丁进化链",
+      "stage_count": 3,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000065",
+      "name": "咔咔羽毛进化链",
+      "stage_count": 3,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000066",
+      "name": "矮脚爬爬进化链",
+      "stage_count": 2,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000067",
+      "name": "小帕尔进化链",
+      "stage_count": 3,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000068",
+      "name": "瑰眼仔进化链",
+      "stage_count": 3,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000069",
+      "name": "小光进化链",
+      "stage_count": 1,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000070",
+      "name": "迷迷眼进化链",
+      "stage_count": 1,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000071",
+      "name": "拉特进化链",
+      "stage_count": 2,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000072",
+      "name": "电咩咩进化链",
+      "stage_count": 3,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000073",
+      "name": "小星光进化链（星光能量的样子）",
+      "stage_count": 2,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000074",
+      "name": "闪电环进化链",
+      "stage_count": 3,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000075",
+      "name": "粉粉星进化链",
+      "stage_count": 2,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000076",
+      "name": "机械方方进化链",
+      "stage_count": 3,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000077",
+      "name": "贝瑟进化链",
+      "stage_count": 3,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000078",
+      "name": "多西进化链",
+      "stage_count": 3,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000079",
+      "name": "小翼龙进化链",
+      "stage_count": 2,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000080",
+      "name": "伊雷龙进化链",
+      "stage_count": 2,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000081",
+      "name": "黑炎宝宝进化链",
+      "stage_count": 2,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000082",
+      "name": "海豹战士进化链",
+      "stage_count": 2,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000083",
+      "name": "呼拉猫进化链",
+      "stage_count": 3,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000084",
+      "name": "古钟蛇进化链（本来的样子）",
+      "stage_count": 2,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000085",
+      "name": "菊花梨进化链",
+      "stage_count": 1,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000086",
+      "name": "友爱天天进化链",
+      "stage_count": 2,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000087",
+      "name": "牵线木偶进化链",
+      "stage_count": 2,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000088",
+      "name": "超能球球进化链",
+      "stage_count": 1,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000089",
+      "name": "小怂猫进化链",
+      "stage_count": 2,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000090",
+      "name": "哭哭菇进化链",
+      "stage_count": 3,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000091",
+      "name": "绒绒进化链",
+      "stage_count": 3,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000092",
+      "name": "绿洲象进化链",
+      "stage_count": 2,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000093",
+      "name": "小鹬进化链",
+      "stage_count": 3,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000094",
+      "name": "奔波鼠进化链",
+      "stage_count": 2,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000095",
+      "name": "布鲁斯进化链",
+      "stage_count": 3,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000096",
+      "name": "古拉海象进化链",
+      "stage_count": 2,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000097",
+      "name": "呼呼猪进化链",
+      "stage_count": 2,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000098",
+      "name": "卡波进化链",
+      "stage_count": 2,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000099",
+      "name": "胆小鳗鱼进化链",
+      "stage_count": 2,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000100",
+      "name": "大头骨龙进化链",
+      "stage_count": 2,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000101",
+      "name": "绿翼鸟进化链",
+      "stage_count": 3,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000102",
+      "name": "冬羽雀进化链（春天的样子）",
+      "stage_count": 3,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000103",
+      "name": "冬羽雀进化链（夏天的样子）",
+      "stage_count": 3,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000104",
+      "name": "冬羽雀进化链（秋天的样子）",
+      "stage_count": 3,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000105",
+      "name": "丢丢进化链（火山附近的样子）",
+      "stage_count": 3,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000106",
+      "name": "丢丢进化链（沙地附近的样子）",
+      "stage_count": 3,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000107",
+      "name": "丢丢进化链（雪山附近的样子）",
+      "stage_count": 3,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000108",
+      "name": "蹦蹦种子进化链（彩玉球形态）",
+      "stage_count": 3,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000109",
+      "name": "蹦蹦种子进化链（短毛球形态）",
+      "stage_count": 3,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000110",
+      "name": "蹦蹦种子进化链（象牙球形态）",
+      "stage_count": 3,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000111",
+      "name": "矿晶虫进化链（西瓜碧玺的样子）",
+      "stage_count": 2,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000112",
+      "name": "犀角鸟进化链",
+      "stage_count": 3,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000113",
+      "name": "小鼠獭进化链",
+      "stage_count": 3,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000114",
+      "name": "粉星仔进化链（粉耳星兔分支）",
+      "stage_count": 2,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000115",
+      "name": "觅觅蝠进化链",
+      "stage_count": 1,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000116",
+      "name": "海盔虫进化链（本来的样子）",
+      "stage_count": 3,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000117",
+      "name": "雪娃娃进化链",
+      "stage_count": 3,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000118",
+      "name": "乖乖鹄进化链（翠顶夫人分支）",
+      "stage_count": 3,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000119",
+      "name": "芽眼魔进化链",
+      "stage_count": 1,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000120",
+      "name": "霹雳宝宝进化链",
+      "stage_count": 2,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000121",
+      "name": "电动长颈鹿进化链",
+      "stage_count": 3,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000122",
+      "name": "嘟嘟煲进化链",
+      "stage_count": 2,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000123",
+      "name": "逗逗进化链",
+      "stage_count": 3,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000124",
+      "name": "旋叶虫进化链（金黄的样子）",
+      "stage_count": 3,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000125",
+      "name": "菇菇丁进化链",
+      "stage_count": 3,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000126",
+      "name": "深蓝鲸进化链",
+      "stage_count": 1,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000127",
+      "name": "双灯鱼进化链",
+      "stage_count": 2,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000128",
+      "name": "豆丁鱼进化链",
+      "stage_count": 3,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000129",
+      "name": "凡雀进化链",
+      "stage_count": 3,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000130",
+      "name": "里奥进化链",
+      "stage_count": 3,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000131",
+      "name": "星尘虫进化链",
+      "stage_count": 3,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000132",
+      "name": "缇塔进化链",
+      "stage_count": 2,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000133",
+      "name": "齿轮小子进化链",
+      "stage_count": 2,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000134",
+      "name": "权杖-Ⅱ进化链",
+      "stage_count": 2,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000135",
+      "name": "格斗小五进化链",
+      "stage_count": 1,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000136",
+      "name": "格斗小六进化链",
+      "stage_count": 1,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000137",
+      "name": "格斗小八进化链",
+      "stage_count": 1,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000138",
+      "name": "厉毒小萝进化链",
+      "stage_count": 2,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000139",
+      "name": "空灵兽进化链",
+      "stage_count": 2,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000140",
+      "name": "麦香驼进化链",
+      "stage_count": 1,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000141",
+      "name": "海枝枝进化链（碧蓝珊瑚）",
+      "stage_count": 1,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000142",
+      "name": "海枝枝进化链（杏黄百合）",
+      "stage_count": 1,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000143",
+      "name": "海枝枝进化链（洋红沙丁）",
+      "stage_count": 1,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000144",
+      "name": "海枝枝进化链（翠绿纶布）",
+      "stage_count": 1,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000145",
+      "name": "小电企鹅进化链",
+      "stage_count": 2,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000146",
+      "name": "柴渣虫进化链",
+      "stage_count": 2,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000147",
+      "name": "梦游进化链（穿旧睡衣的样子）",
+      "stage_count": 2,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000148",
+      "name": "梦游进化链（穿星星睡衣的样子）",
+      "stage_count": 2,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000149",
+      "name": "小星光进化链（月光能量的样子）",
+      "stage_count": 2,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000150",
+      "name": "噼啪鸟进化链",
+      "stage_count": 1,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000151",
+      "name": "雪毛角羚牛进化链（本来的样子）",
+      "stage_count": 1,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000152",
+      "name": "雪毛角羚牛进化链（卷角的样子）",
+      "stage_count": 1,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000153",
+      "name": "雪毛角羚牛进化链（换角时的样子）",
+      "stage_count": 1,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000154",
+      "name": "翡翠水母进化链",
+      "stage_count": 2,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000155",
+      "name": "月牙雪熊进化链",
+      "stage_count": 1,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000156",
+      "name": "星云旅者进化链",
+      "stage_count": 1,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000157",
+      "name": "布瓜蝌进化链",
+      "stage_count": 2,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000158",
+      "name": "地鼠进化链（储水时的样子）",
+      "stage_count": 3,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000159",
+      "name": "小狮鹫进化链（高山地的样子）",
+      "stage_count": 3,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000160",
+      "name": "海盔虫进化链（磨损的样子）",
+      "stage_count": 3,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000161",
+      "name": "鸭吉吉进化链（急急急鸭）",
+      "stage_count": 1,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000162",
+      "name": "鸭吉吉进化链（等一等鸭）",
+      "stage_count": 1,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000163",
+      "name": "板板壳进化链（蜕皮时的样子）",
+      "stage_count": 3,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000164",
+      "name": "幽星光进化链",
+      "stage_count": 3,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000165",
+      "name": "螺旋帕帕进化链",
+      "stage_count": 2,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000166",
+      "name": "吸泥鸥进化链",
+      "stage_count": 2,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000167",
+      "name": "兽花蕾进化链",
+      "stage_count": 1,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000168",
+      "name": "公平鸽进化链",
+      "stage_count": 1,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000169",
+      "name": "花怨鳗进化链",
+      "stage_count": 2,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000170",
+      "name": "波波螺进化链",
+      "stage_count": 3,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000171",
+      "name": "里拉鳐进化链",
+      "stage_count": 1,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000172",
+      "name": "水星尾进化链",
+      "stage_count": 2,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000173",
+      "name": "号儿鱼进化链",
+      "stage_count": 2,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000174",
+      "name": "斑斑进化链",
+      "stage_count": 2,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000175",
+      "name": "多灵进化链",
+      "stage_count": 2,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000176",
+      "name": "圣剑侍从进化链",
+      "stage_count": 2,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000177",
+      "name": "栗鼠进化链",
+      "stage_count": 2,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000178",
+      "name": "小黑猫进化链",
+      "stage_count": 2,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000179",
+      "name": "松仔进化链",
+      "stage_count": 3,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000180",
+      "name": "水滴蛇进化链",
+      "stage_count": 3,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000181",
+      "name": "小勇狮进化链",
+      "stage_count": 3,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000182",
+      "name": "毛头小蛛进化链（捕尘长绒分支）",
+      "stage_count": 2,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000183",
+      "name": "嗜光嗡嗡进化链",
+      "stage_count": 2,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000184",
+      "name": "不咕钟进化链",
+      "stage_count": 2,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000185",
+      "name": "小箱怪进化链",
+      "stage_count": 2,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000186",
+      "name": "可立鸡进化链（武者鸡分支）",
+      "stage_count": 3,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000187",
+      "name": "矿晶虫进化链（莲花刚玉的样子）",
+      "stage_count": 2,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000188",
+      "name": "矿晶虫进化链（星彩榴石的样子）",
+      "stage_count": 2,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000189",
+      "name": "矿晶虫进化链（火山琉璃的样子）",
+      "stage_count": 2,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000190",
+      "name": "矿晶虫进化链（蓝锥矿的样子）",
+      "stage_count": 2,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000191",
+      "name": "脆筒甜甜进化链（樱桃草莓口味）",
+      "stage_count": 3,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000192",
+      "name": "脆筒甜甜进化链（樱桃抹茶口味）",
+      "stage_count": 3,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000193",
+      "name": "脆筒甜甜进化链（蓝莓巧克力口味）",
+      "stage_count": 3,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000194",
+      "name": "脆筒甜甜进化链（蓝莓草莓口味）",
+      "stage_count": 3,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000195",
+      "name": "脆筒甜甜进化链（蓝莓抹茶口味）",
+      "stage_count": 3,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000196",
+      "name": "脆筒甜甜进化链（杨桃巧克力口味）",
+      "stage_count": 3,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000197",
+      "name": "脆筒甜甜进化链（杨桃草莓口味）",
+      "stage_count": 3,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000198",
+      "name": "脆筒甜甜进化链（杨桃抹茶口味）",
+      "stage_count": 3,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000199",
+      "name": "毛毛进化链（幽冥眼的样子）",
+      "stage_count": 3,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000200",
+      "name": "毛毛进化链（喵喵的样子）",
+      "stage_count": 3,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000201",
+      "name": "毛毛进化链（奇丽花的样子）",
+      "stage_count": 3,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000202",
+      "name": "小灵面进化链（闭眼的样子）",
+      "stage_count": 3,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000203",
+      "name": "矿晶虫进化链（烧蓝黄金的样子）",
+      "stage_count": 2,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000204",
+      "name": "旋叶虫进化链（枯叶的样子）",
+      "stage_count": 3,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000205",
+      "name": "石肤蜥进化链（球球尾巴的样子）",
+      "stage_count": 3,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000206",
+      "name": "果冻进化链（椰浆布丁分支）",
+      "stage_count": 2,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000207",
+      "name": "果冻进化链（熔岩布丁分支）",
+      "stage_count": 2,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000208",
+      "name": "乌达进化链（极昼的样子）",
+      "stage_count": 3,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000209",
+      "name": "乌达进化链（极夜的样子）",
+      "stage_count": 3,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000210",
+      "name": "棋棋进化链（白棋棋骑士分支）",
+      "stage_count": 2,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000211",
+      "name": "棋棋进化链（白棋棋绮后分支）",
+      "stage_count": 2,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000212",
+      "name": "棋棋进化链（白棋棋齐垒分支）",
+      "stage_count": 2,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000213",
+      "name": "棋棋进化链（白棋棋祈督分支）",
+      "stage_count": 2,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000214",
+      "name": "棋棋进化链（黑棋棋骑士分支）",
+      "stage_count": 2,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000215",
+      "name": "棋棋进化链（黑棋棋绮后分支）",
+      "stage_count": 2,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000216",
+      "name": "棋棋进化链（黑棋棋齐垒分支）",
+      "stage_count": 2,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000217",
+      "name": "棋棋进化链（黑棋棋祈督分支）",
+      "stage_count": 2,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000218",
+      "name": "乖乖鹄进化链（黑羽夫人分支）",
+      "stage_count": 3,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000219",
+      "name": "刺轮砣进化链（上弦的样子）",
+      "stage_count": 2,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000220",
+      "name": "刺轮砣进化链（下弦的样子）",
+      "stage_count": 2,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000221",
+      "name": "画精灵进化链（画间法师手分支）",
+      "stage_count": 3,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000222",
+      "name": "画精灵进化链（画间沉铁兽分支）",
+      "stage_count": 3,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000223",
+      "name": "书魔虫进化链（古卷执政官分支）",
+      "stage_count": 3,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000224",
+      "name": "书魔虫进化链（古卷匣魔像分支）",
+      "stage_count": 3,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000225",
+      "name": "呱呱进化链（学院呱呱）",
+      "stage_count": 1,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000226",
+      "name": "古钟蛇进化链（本命年的样子）",
+      "stage_count": 2,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000227",
+      "name": "粉星仔进化链（落陨星兔分支）",
+      "stage_count": 2,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000228",
+      "name": "毛头小蛛进化链（食尘短绒分支）",
+      "stage_count": 2,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000229",
+      "name": "小冥龙进化链",
+      "stage_count": 1,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000230",
+      "name": "海豚宝进化链",
+      "stage_count": 3,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000231",
+      "name": "加油海葵进化链",
+      "stage_count": 2,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000232",
+      "name": "烟花团进化链",
+      "stage_count": 2,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000233",
+      "name": "咕咕帽进化链",
+      "stage_count": 2,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000234",
+      "name": "优优进化链",
+      "stage_count": 2,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000235",
+      "name": "蜜果骸进化链",
+      "stage_count": 2,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000236",
+      "name": "小鼓象进化链",
+      "stage_count": 2,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000237",
+      "name": "封印守卫进化链",
+      "stage_count": 3,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000238",
+      "name": "格斗小七进化链",
+      "stage_count": 1,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000239",
+      "name": "糖串串进化链",
+      "stage_count": 2,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000240",
+      "name": "猴麦仔进化链",
+      "stage_count": 2,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000241",
+      "name": "骨朵鸟进化链",
+      "stage_count": 2,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000242",
+      "name": "钨丝贝贝进化链",
+      "stage_count": 3,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000243",
+      "name": "炫光迪迪进化链",
+      "stage_count": 2,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000244",
+      "name": "小怂猫进化链（山间竹林的样子）",
+      "stage_count": 2,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000245",
+      "name": "松仔进化链（悲鸣的样子）",
+      "stage_count": 3,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000246",
+      "name": "水滴蛇进化链（悲鸣的样子）",
+      "stage_count": 3,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000247",
+      "name": "小勇狮进化链（悲鸣的样子）",
+      "stage_count": 3,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000248",
+      "name": "波波螺进化链（被污染的样子）",
+      "stage_count": 3,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000249",
+      "name": "鸭吉吉进化链（燃了鸭）",
+      "stage_count": 1,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000250",
+      "name": "小雪人进化链",
+      "stage_count": 2,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000251",
+      "name": "小丑豆豆进化链",
+      "stage_count": 3,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000252",
+      "name": "爆焰仔进化链",
+      "stage_count": 2,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000253",
+      "name": "墨鱿士进化链（混乱鱿彩分支）",
+      "stage_count": 2,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000254",
+      "name": "墨鱿士进化链（秩序鱿墨分支）",
+      "stage_count": 2,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000255",
+      "name": "鸭吉吉进化链（起来鸭）",
+      "stage_count": 1,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000256",
+      "name": "玳龟进化链",
+      "stage_count": 2,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000257",
+      "name": "火红尾进化链",
+      "stage_count": 2,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000258",
+      "name": "莫比乌乌进化链",
+      "stage_count": 2,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000259",
+      "name": "森豆丁进化链",
+      "stage_count": 3,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000260",
+      "name": "丁丁卯进化链",
+      "stage_count": 2,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000261",
+      "name": "火豆丁进化链",
+      "stage_count": 3,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000262",
+      "name": "点点进化链",
+      "stage_count": 2,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000263",
+      "name": "加油海葵进化链（单只海葵的样子）",
+      "stage_count": 2,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "group_id": "evo_000264",
+      "name": "宝藏小狐进化链",
+      "stage_count": 2,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    }
+  ]
+}

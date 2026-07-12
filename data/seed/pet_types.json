@@ -1,0 +1,4910 @@
+{
+  "meta": {
+    "source": "BWIKI 洛克王国:手游WIKI",
+    "source_url": "https://wiki.biligame.com/rocom/wiki/Module:PetData/Core",
+    "scraped_at": "2026-07-10T16:22:31+00:00",
+    "count": 980
+  },
+  "items": [
+    {
+      "pet_slug": "pet-0001",
+      "type_slug": "grass",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0002",
+      "type_slug": "water",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0003",
+      "type_slug": "fire",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0004",
+      "type_slug": "light",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0005",
+      "type_slug": "water",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0006",
+      "type_slug": "fire",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0007",
+      "type_slug": "grass",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0008",
+      "type_slug": "grass",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0009",
+      "type_slug": "fire",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0010",
+      "type_slug": "dark",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0010",
+      "type_slug": "flying",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0011",
+      "type_slug": "dark",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0012",
+      "type_slug": "normal",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0013",
+      "type_slug": "bug",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0014",
+      "type_slug": "ground",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0015",
+      "type_slug": "ground",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0016",
+      "type_slug": "ground",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0016",
+      "type_slug": "dark",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0017",
+      "type_slug": "grass",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0017",
+      "type_slug": "poison",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0018",
+      "type_slug": "grass",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0018",
+      "type_slug": "poison",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0019",
+      "type_slug": "grass",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0019",
+      "type_slug": "poison",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0020",
+      "type_slug": "ground",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0021",
+      "type_slug": "ground",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0022",
+      "type_slug": "ground",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0023",
+      "type_slug": "fire",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0024",
+      "type_slug": "fire",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0025",
+      "type_slug": "grass",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0026",
+      "type_slug": "grass",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0026",
+      "type_slug": "illusion",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0027",
+      "type_slug": "grass",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0027",
+      "type_slug": "cute",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0028",
+      "type_slug": "flying",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0029",
+      "type_slug": "grass",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0030",
+      "type_slug": "grass",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0031",
+      "type_slug": "grass",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0032",
+      "type_slug": "fire",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0033",
+      "type_slug": "water",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0034",
+      "type_slug": "grass",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0034",
+      "type_slug": "cute",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0035",
+      "type_slug": "grass",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0035",
+      "type_slug": "illusion",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0036",
+      "type_slug": "normal",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0037",
+      "type_slug": "flying",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0038",
+      "type_slug": "bug",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0039",
+      "type_slug": "dark",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0039",
+      "type_slug": "flying",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0040",
+      "type_slug": "grass",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0041",
+      "type_slug": "grass",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0042",
+      "type_slug": "grass",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0043",
+      "type_slug": "grass",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0044",
+      "type_slug": "grass",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0045",
+      "type_slug": "ghost",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0046",
+      "type_slug": "ghost",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0047",
+      "type_slug": "ghost",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0047",
+      "type_slug": "dark",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0048",
+      "type_slug": "light",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0049",
+      "type_slug": "normal",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0050",
+      "type_slug": "ground",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0051",
+      "type_slug": "light",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0051",
+      "type_slug": "grass",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0052",
+      "type_slug": "ground",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0052",
+      "type_slug": "normal",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0053",
+      "type_slug": "ground",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0053",
+      "type_slug": "normal",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0054",
+      "type_slug": "ground",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0054",
+      "type_slug": "normal",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0055",
+      "type_slug": "water",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0056",
+      "type_slug": "water",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0057",
+      "type_slug": "water",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0058",
+      "type_slug": "bug",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0058",
+      "type_slug": "flying",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0059",
+      "type_slug": "bug",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0059",
+      "type_slug": "flying",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0060",
+      "type_slug": "ghost",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0061",
+      "type_slug": "ghost",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0062",
+      "type_slug": "light",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0063",
+      "type_slug": "light",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0064",
+      "type_slug": "ghost",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0064",
+      "type_slug": "grass",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0065",
+      "type_slug": "ghost",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0065",
+      "type_slug": "poison",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0066",
+      "type_slug": "ghost",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0066",
+      "type_slug": "poison",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0067",
+      "type_slug": "grass",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0067",
+      "type_slug": "fighting",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0068",
+      "type_slug": "flying",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0068",
+      "type_slug": "water",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0069",
+      "type_slug": "fire",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0070",
+      "type_slug": "fire",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0071",
+      "type_slug": "grass",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0072",
+      "type_slug": "grass",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0073",
+      "type_slug": "grass",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0074",
+      "type_slug": "fire",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0074",
+      "type_slug": "ice",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0075",
+      "type_slug": "fire",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0075",
+      "type_slug": "ice",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0076",
+      "type_slug": "fire",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0076",
+      "type_slug": "ice",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0077",
+      "type_slug": "fire",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0077",
+      "type_slug": "flying",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0078",
+      "type_slug": "fire",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0078",
+      "type_slug": "flying",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0079",
+      "type_slug": "fire",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0079",
+      "type_slug": "flying",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0080",
+      "type_slug": "fire",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0080",
+      "type_slug": "cute",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0081",
+      "type_slug": "fire",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0081",
+      "type_slug": "cute",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0082",
+      "type_slug": "fire",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0083",
+      "type_slug": "fire",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0084",
+      "type_slug": "fire",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0085",
+      "type_slug": "fire",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0086",
+      "type_slug": "fire",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0087",
+      "type_slug": "fire",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0087",
+      "type_slug": "fighting",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0088",
+      "type_slug": "fire",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0088",
+      "type_slug": "fighting",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0089",
+      "type_slug": "fire",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0090",
+      "type_slug": "fire",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0091",
+      "type_slug": "fire",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0092",
+      "type_slug": "grass",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0092",
+      "type_slug": "cute",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0093",
+      "type_slug": "grass",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0093",
+      "type_slug": "cute",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0094",
+      "type_slug": "grass",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0094",
+      "type_slug": "cute",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0095",
+      "type_slug": "normal",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0096",
+      "type_slug": "normal",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0097",
+      "type_slug": "normal",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0098",
+      "type_slug": "normal",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0098",
+      "type_slug": "fighting",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0099",
+      "type_slug": "normal",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0099",
+      "type_slug": "fighting",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0100",
+      "type_slug": "ground",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0101",
+      "type_slug": "ground",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0102",
+      "type_slug": "ground",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0103",
+      "type_slug": "ground",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0104",
+      "type_slug": "ground",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0105",
+      "type_slug": "ground",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0106",
+      "type_slug": "ground",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0106",
+      "type_slug": "illusion",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0107",
+      "type_slug": "ground",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0107",
+      "type_slug": "illusion",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0108",
+      "type_slug": "ground",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0108",
+      "type_slug": "illusion",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0109",
+      "type_slug": "water",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0109",
+      "type_slug": "cute",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0110",
+      "type_slug": "water",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0110",
+      "type_slug": "cute",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0111",
+      "type_slug": "water",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0111",
+      "type_slug": "cute",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0112",
+      "type_slug": "water",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0112",
+      "type_slug": "flying",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0113",
+      "type_slug": "water",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0113",
+      "type_slug": "flying",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0114",
+      "type_slug": "water",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0114",
+      "type_slug": "flying",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0115",
+      "type_slug": "water",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0116",
+      "type_slug": "water",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0116",
+      "type_slug": "poison",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0117",
+      "type_slug": "water",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0117",
+      "type_slug": "poison",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0118",
+      "type_slug": "ice",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0118",
+      "type_slug": "cute",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0119",
+      "type_slug": "ice",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0119",
+      "type_slug": "cute",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0120",
+      "type_slug": "ice",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0120",
+      "type_slug": "cute",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0121",
+      "type_slug": "ice",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0122",
+      "type_slug": "ice",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0123",
+      "type_slug": "ice",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0124",
+      "type_slug": "flying",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0125",
+      "type_slug": "flying",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0126",
+      "type_slug": "flying",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0127",
+      "type_slug": "bug",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0128",
+      "type_slug": "bug",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0128",
+      "type_slug": "poison",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0129",
+      "type_slug": "bug",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0129",
+      "type_slug": "poison",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0130",
+      "type_slug": "bug",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0131",
+      "type_slug": "bug",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0131",
+      "type_slug": "fighting",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0132",
+      "type_slug": "bug",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0132",
+      "type_slug": "fighting",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0133",
+      "type_slug": "bug",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0133",
+      "type_slug": "cute",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0134",
+      "type_slug": "bug",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0134",
+      "type_slug": "cute",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0135",
+      "type_slug": "bug",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0135",
+      "type_slug": "cute",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0136",
+      "type_slug": "bug",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0136",
+      "type_slug": "grass",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0137",
+      "type_slug": "bug",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0137",
+      "type_slug": "grass",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0138",
+      "type_slug": "bug",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0138",
+      "type_slug": "grass",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0139",
+      "type_slug": "dark",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0140",
+      "type_slug": "dark",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0141",
+      "type_slug": "dark",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0142",
+      "type_slug": "ghost",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0143",
+      "type_slug": "ghost",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0143",
+      "type_slug": "grass",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0144",
+      "type_slug": "ghost",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0144",
+      "type_slug": "grass",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0145",
+      "type_slug": "ghost",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0146",
+      "type_slug": "ghost",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0147",
+      "type_slug": "ghost",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0148",
+      "type_slug": "poison",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0148",
+      "type_slug": "ground",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0149",
+      "type_slug": "poison",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0149",
+      "type_slug": "ground",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0150",
+      "type_slug": "poison",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0150",
+      "type_slug": "ground",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0151",
+      "type_slug": "poison",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0152",
+      "type_slug": "poison",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0153",
+      "type_slug": "poison",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0154",
+      "type_slug": "bug",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0154",
+      "type_slug": "flying",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0155",
+      "type_slug": "grass",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0156",
+      "type_slug": "grass",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0157",
+      "type_slug": "grass",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0158",
+      "type_slug": "normal",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0159",
+      "type_slug": "normal",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0160",
+      "type_slug": "normal",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0161",
+      "type_slug": "normal",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0162",
+      "type_slug": "dragon",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0163",
+      "type_slug": "ground",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0164",
+      "type_slug": "ground",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0164",
+      "type_slug": "ghost",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0165",
+      "type_slug": "ice",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0166",
+      "type_slug": "ice",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0167",
+      "type_slug": "ice",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0168",
+      "type_slug": "flying",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0168",
+      "type_slug": "normal",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0169",
+      "type_slug": "flying",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0169",
+      "type_slug": "normal",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0170",
+      "type_slug": "flying",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0170",
+      "type_slug": "normal",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0171",
+      "type_slug": "bug",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0172",
+      "type_slug": "bug",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0172",
+      "type_slug": "dark",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0173",
+      "type_slug": "dark",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0174",
+      "type_slug": "dark",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0175",
+      "type_slug": "dark",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0176",
+      "type_slug": "dark",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0176",
+      "type_slug": "bug",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0177",
+      "type_slug": "dark",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0177",
+      "type_slug": "bug",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0178",
+      "type_slug": "dark",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0178",
+      "type_slug": "bug",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0179",
+      "type_slug": "dark",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0180",
+      "type_slug": "ghost",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0180",
+      "type_slug": "illusion",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0181",
+      "type_slug": "electric",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0182",
+      "type_slug": "electric",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0183",
+      "type_slug": "electric",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0184",
+      "type_slug": "electric",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0185",
+      "type_slug": "electric",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0186",
+      "type_slug": "electric",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0187",
+      "type_slug": "electric",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0188",
+      "type_slug": "electric",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0189",
+      "type_slug": "electric",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0190",
+      "type_slug": "electric",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0191",
+      "type_slug": "electric",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0191",
+      "type_slug": "illusion",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0192",
+      "type_slug": "electric",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0192",
+      "type_slug": "illusion",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0193",
+      "type_slug": "machine",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0194",
+      "type_slug": "machine",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0195",
+      "type_slug": "machine",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0196",
+      "type_slug": "machine",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0196",
+      "type_slug": "fire",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0197",
+      "type_slug": "machine",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0197",
+      "type_slug": "fire",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0198",
+      "type_slug": "machine",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0198",
+      "type_slug": "fire",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0199",
+      "type_slug": "machine",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0199",
+      "type_slug": "ground",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0200",
+      "type_slug": "machine",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0200",
+      "type_slug": "ground",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0201",
+      "type_slug": "machine",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0201",
+      "type_slug": "ground",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0202",
+      "type_slug": "dragon",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0202",
+      "type_slug": "flying",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0203",
+      "type_slug": "dragon",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0203",
+      "type_slug": "flying",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0204",
+      "type_slug": "dragon",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0205",
+      "type_slug": "dragon",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0205",
+      "type_slug": "dark",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0206",
+      "type_slug": "dragon",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0206",
+      "type_slug": "dark",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0207",
+      "type_slug": "fighting",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0207",
+      "type_slug": "water",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0208",
+      "type_slug": "fighting",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0208",
+      "type_slug": "water",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0209",
+      "type_slug": "fighting",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0210",
+      "type_slug": "fighting",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0211",
+      "type_slug": "fighting",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0212",
+      "type_slug": "cute",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0212",
+      "type_slug": "poison",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0213",
+      "type_slug": "cute",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0213",
+      "type_slug": "poison",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0214",
+      "type_slug": "cute",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0215",
+      "type_slug": "cute",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0216",
+      "type_slug": "cute",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0217",
+      "type_slug": "illusion",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0218",
+      "type_slug": "illusion",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0219",
+      "type_slug": "illusion",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0219",
+      "type_slug": "cute",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0220",
+      "type_slug": "fighting",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0221",
+      "type_slug": "fighting",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0222",
+      "type_slug": "illusion",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0223",
+      "type_slug": "illusion",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0224",
+      "type_slug": "illusion",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0225",
+      "type_slug": "light",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0225",
+      "type_slug": "bug",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0226",
+      "type_slug": "light",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0226",
+      "type_slug": "bug",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0227",
+      "type_slug": "light",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0227",
+      "type_slug": "bug",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0228",
+      "type_slug": "grass",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0229",
+      "type_slug": "grass",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0230",
+      "type_slug": "flying",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0231",
+      "type_slug": "flying",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0232",
+      "type_slug": "flying",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0233",
+      "type_slug": "ground",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0234",
+      "type_slug": "ground",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0235",
+      "type_slug": "ice",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0236",
+      "type_slug": "ice",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0237",
+      "type_slug": "ice",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0238",
+      "type_slug": "ice",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0239",
+      "type_slug": "ice",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0240",
+      "type_slug": "ice",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0240",
+      "type_slug": "ground",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0241",
+      "type_slug": "ice",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0241",
+      "type_slug": "ground",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0242",
+      "type_slug": "dark",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0243",
+      "type_slug": "dark",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0244",
+      "type_slug": "electric",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0244",
+      "type_slug": "water",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0245",
+      "type_slug": "electric",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0245",
+      "type_slug": "water",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0246",
+      "type_slug": "dragon",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0246",
+      "type_slug": "ghost",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0247",
+      "type_slug": "dragon",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0247",
+      "type_slug": "ghost",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0248",
+      "type_slug": "cute",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0248",
+      "type_slug": "flying",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0249",
+      "type_slug": "cute",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0249",
+      "type_slug": "flying",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0250",
+      "type_slug": "cute",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0250",
+      "type_slug": "flying",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0251",
+      "type_slug": "flying",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0252",
+      "type_slug": "flying",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0253",
+      "type_slug": "flying",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0254",
+      "type_slug": "flying",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0255",
+      "type_slug": "flying",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0256",
+      "type_slug": "flying",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0257",
+      "type_slug": "flying",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0258",
+      "type_slug": "flying",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0259",
+      "type_slug": "flying",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0260",
+      "type_slug": "grass",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0260",
+      "type_slug": "fire",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0261",
+      "type_slug": "grass",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0261",
+      "type_slug": "ground",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0262",
+      "type_slug": "grass",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0262",
+      "type_slug": "ice",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0263",
+      "type_slug": "grass",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0263",
+      "type_slug": "fire",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0264",
+      "type_slug": "grass",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0264",
+      "type_slug": "ground",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0265",
+      "type_slug": "grass",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0265",
+      "type_slug": "ice",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0266",
+      "type_slug": "grass",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0266",
+      "type_slug": "fire",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0267",
+      "type_slug": "grass",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0267",
+      "type_slug": "ground",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0268",
+      "type_slug": "grass",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0268",
+      "type_slug": "ice",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0269",
+      "type_slug": "grass",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0269",
+      "type_slug": "poison",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0270",
+      "type_slug": "grass",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0270",
+      "type_slug": "poison",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0271",
+      "type_slug": "grass",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0271",
+      "type_slug": "poison",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0272",
+      "type_slug": "grass",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0272",
+      "type_slug": "poison",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0273",
+      "type_slug": "grass",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0273",
+      "type_slug": "poison",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0274",
+      "type_slug": "grass",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0274",
+      "type_slug": "poison",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0275",
+      "type_slug": "grass",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0275",
+      "type_slug": "poison",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0276",
+      "type_slug": "grass",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0276",
+      "type_slug": "poison",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0277",
+      "type_slug": "grass",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0277",
+      "type_slug": "poison",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0278",
+      "type_slug": "light",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0278",
+      "type_slug": "ground",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0279",
+      "type_slug": "light",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0279",
+      "type_slug": "ground",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0280",
+      "type_slug": "light",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0281",
+      "type_slug": "light",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0282",
+      "type_slug": "light",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0283",
+      "type_slug": "normal",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0283",
+      "type_slug": "water",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0284",
+      "type_slug": "normal",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0284",
+      "type_slug": "water",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0285",
+      "type_slug": "normal",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0285",
+      "type_slug": "water",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0286",
+      "type_slug": "illusion",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0287",
+      "type_slug": "illusion",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0288",
+      "type_slug": "flying",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0289",
+      "type_slug": "flying",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0290",
+      "type_slug": "flying",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0290",
+      "type_slug": "dark",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0291",
+      "type_slug": "water",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0291",
+      "type_slug": "poison",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0292",
+      "type_slug": "water",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0292",
+      "type_slug": "poison",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0293",
+      "type_slug": "water",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0293",
+      "type_slug": "poison",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0294",
+      "type_slug": "ice",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0295",
+      "type_slug": "ice",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0296",
+      "type_slug": "ice",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0297",
+      "type_slug": "ice",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0298",
+      "type_slug": "ice",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0299",
+      "type_slug": "ice",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0300",
+      "type_slug": "flying",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0300",
+      "type_slug": "water",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0301",
+      "type_slug": "flying",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0301",
+      "type_slug": "water",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0302",
+      "type_slug": "flying",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0302",
+      "type_slug": "water",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0303",
+      "type_slug": "dark",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0303",
+      "type_slug": "water",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0304",
+      "type_slug": "dark",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0304",
+      "type_slug": "water",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0305",
+      "type_slug": "dark",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0305",
+      "type_slug": "water",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0306",
+      "type_slug": "fire",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0306",
+      "type_slug": "cute",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0307",
+      "type_slug": "electric",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0308",
+      "type_slug": "electric",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0309",
+      "type_slug": "electric",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0310",
+      "type_slug": "electric",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0311",
+      "type_slug": "electric",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0312",
+      "type_slug": "electric",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0313",
+      "type_slug": "poison",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0314",
+      "type_slug": "poison",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0315",
+      "type_slug": "illusion",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0316",
+      "type_slug": "illusion",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0316",
+      "type_slug": "flying",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0317",
+      "type_slug": "illusion",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0317",
+      "type_slug": "flying",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0318",
+      "type_slug": "grass",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0319",
+      "type_slug": "cute",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0320",
+      "type_slug": "cute",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0321",
+      "type_slug": "cute",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0322",
+      "type_slug": "normal",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0322",
+      "type_slug": "bug",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0323",
+      "type_slug": "normal",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0323",
+      "type_slug": "bug",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0324",
+      "type_slug": "ground",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0324",
+      "type_slug": "grass",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0325",
+      "type_slug": "ground",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0325",
+      "type_slug": "grass",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0326",
+      "type_slug": "ground",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0326",
+      "type_slug": "grass",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0327",
+      "type_slug": "water",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0328",
+      "type_slug": "water",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0328",
+      "type_slug": "electric",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0329",
+      "type_slug": "water",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0329",
+      "type_slug": "electric",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0330",
+      "type_slug": "water",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0330",
+      "type_slug": "dragon",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0331",
+      "type_slug": "water",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0331",
+      "type_slug": "dragon",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0332",
+      "type_slug": "water",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0332",
+      "type_slug": "dragon",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0333",
+      "type_slug": "flying",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0334",
+      "type_slug": "flying",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0335",
+      "type_slug": "flying",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0336",
+      "type_slug": "flying",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0337",
+      "type_slug": "flying",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0338",
+      "type_slug": "flying",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0339",
+      "type_slug": "bug",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0340",
+      "type_slug": "bug",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0341",
+      "type_slug": "bug",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0342",
+      "type_slug": "ghost",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0343",
+      "type_slug": "machine",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0344",
+      "type_slug": "machine",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0345",
+      "type_slug": "machine",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0346",
+      "type_slug": "machine",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0347",
+      "type_slug": "machine",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0348",
+      "type_slug": "machine",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0349",
+      "type_slug": "dragon",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0350",
+      "type_slug": "fighting",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0351",
+      "type_slug": "fighting",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0352",
+      "type_slug": "fighting",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0353",
+      "type_slug": "poison",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0353",
+      "type_slug": "dark",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0354",
+      "type_slug": "poison",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0354",
+      "type_slug": "dark",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0355",
+      "type_slug": "grass",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0356",
+      "type_slug": "grass",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0357",
+      "type_slug": "normal",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0358",
+      "type_slug": "water",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0358",
+      "type_slug": "ghost",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0359",
+      "type_slug": "water",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0359",
+      "type_slug": "ghost",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0360",
+      "type_slug": "water",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0360",
+      "type_slug": "ghost",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0361",
+      "type_slug": "water",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0361",
+      "type_slug": "ghost",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0362",
+      "type_slug": "ice",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0362",
+      "type_slug": "electric",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0363",
+      "type_slug": "ice",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0363",
+      "type_slug": "electric",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0364",
+      "type_slug": "fire",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0364",
+      "type_slug": "grass",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0365",
+      "type_slug": "fire",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0365",
+      "type_slug": "grass",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0366",
+      "type_slug": "ghost",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0367",
+      "type_slug": "ghost",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0368",
+      "type_slug": "ghost",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0368",
+      "type_slug": "light",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0369",
+      "type_slug": "ghost",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0369",
+      "type_slug": "light",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0370",
+      "type_slug": "electric",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0370",
+      "type_slug": "light",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0371",
+      "type_slug": "electric",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0371",
+      "type_slug": "light",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0372",
+      "type_slug": "electric",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0372",
+      "type_slug": "flying",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0373",
+      "type_slug": "ice",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0373",
+      "type_slug": "ground",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0374",
+      "type_slug": "ice",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0374",
+      "type_slug": "ground",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0375",
+      "type_slug": "ice",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0375",
+      "type_slug": "ground",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0376",
+      "type_slug": "light",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0376",
+      "type_slug": "ground",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0377",
+      "type_slug": "light",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0377",
+      "type_slug": "ground",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0378",
+      "type_slug": "light",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0378",
+      "type_slug": "ground",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0379",
+      "type_slug": "light",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0379",
+      "type_slug": "ground",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0380",
+      "type_slug": "normal",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0381",
+      "type_slug": "normal",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0382",
+      "type_slug": "ground",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0383",
+      "type_slug": "ground",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0384",
+      "type_slug": "ground",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0385",
+      "type_slug": "ice",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0385",
+      "type_slug": "illusion",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0386",
+      "type_slug": "ice",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0387",
+      "type_slug": "ice",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0388",
+      "type_slug": "ice",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0389",
+      "type_slug": "ice",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0390",
+      "type_slug": "ice",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0391",
+      "type_slug": "ice",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0392",
+      "type_slug": "ice",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0393",
+      "type_slug": "ice",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0394",
+      "type_slug": "flying",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0394",
+      "type_slug": "illusion",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0395",
+      "type_slug": "flying",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0396",
+      "type_slug": "flying",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0397",
+      "type_slug": "flying",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0398",
+      "type_slug": "bug",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0398",
+      "type_slug": "cute",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0399",
+      "type_slug": "bug",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0399",
+      "type_slug": "cute",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0400",
+      "type_slug": "bug",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0400",
+      "type_slug": "cute",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0401",
+      "type_slug": "illusion",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0402",
+      "type_slug": "illusion",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0403",
+      "type_slug": "water",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0403",
+      "type_slug": "poison",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0404",
+      "type_slug": "water",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0404",
+      "type_slug": "poison",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0405",
+      "type_slug": "water",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0405",
+      "type_slug": "poison",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0406",
+      "type_slug": "ice",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0407",
+      "type_slug": "ice",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0408",
+      "type_slug": "flying",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0409",
+      "type_slug": "ghost",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0410",
+      "type_slug": "ghost",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0411",
+      "type_slug": "normal",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0411",
+      "type_slug": "bug",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0412",
+      "type_slug": "machine",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0412",
+      "type_slug": "flying",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0413",
+      "type_slug": "illusion",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0413",
+      "type_slug": "ghost",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0414",
+      "type_slug": "light",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0414",
+      "type_slug": "ground",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0415",
+      "type_slug": "dark",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0416",
+      "type_slug": "dark",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0417",
+      "type_slug": "dark",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0418",
+      "type_slug": "ground",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0418",
+      "type_slug": "flying",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0419",
+      "type_slug": "ground",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0419",
+      "type_slug": "flying",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0420",
+      "type_slug": "light",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0420",
+      "type_slug": "grass",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0421",
+      "type_slug": "normal",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0422",
+      "type_slug": "normal",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0422",
+      "type_slug": "bug",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0423",
+      "type_slug": "normal",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0423",
+      "type_slug": "bug",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0424",
+      "type_slug": "normal",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0424",
+      "type_slug": "bug",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0425",
+      "type_slug": "normal",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0426",
+      "type_slug": "ground",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0427",
+      "type_slug": "ground",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0428",
+      "type_slug": "ground",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0429",
+      "type_slug": "ground",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0430",
+      "type_slug": "ground",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0431",
+      "type_slug": "ground",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0432",
+      "type_slug": "ground",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0432",
+      "type_slug": "grass",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0433",
+      "type_slug": "ground",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0433",
+      "type_slug": "grass",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0434",
+      "type_slug": "ground",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0434",
+      "type_slug": "water",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0435",
+      "type_slug": "ground",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0435",
+      "type_slug": "water",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0436",
+      "type_slug": "ground",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0436",
+      "type_slug": "water",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0437",
+      "type_slug": "ground",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0437",
+      "type_slug": "water",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0438",
+      "type_slug": "ground",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0438",
+      "type_slug": "water",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0439",
+      "type_slug": "ground",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0439",
+      "type_slug": "water",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0440",
+      "type_slug": "water",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0441",
+      "type_slug": "fire",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0442",
+      "type_slug": "water",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0443",
+      "type_slug": "water",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0444",
+      "type_slug": "water",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0445",
+      "type_slug": "water",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0446",
+      "type_slug": "water",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0447",
+      "type_slug": "water",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0448",
+      "type_slug": "water",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0448",
+      "type_slug": "grass",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0449",
+      "type_slug": "water",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0449",
+      "type_slug": "ice",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0450",
+      "type_slug": "water",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0450",
+      "type_slug": "fire",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0451",
+      "type_slug": "water",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0452",
+      "type_slug": "water",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0453",
+      "type_slug": "ice",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0454",
+      "type_slug": "ice",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0455",
+      "type_slug": "flying",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0456",
+      "type_slug": "flying",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0457",
+      "type_slug": "flying",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0458",
+      "type_slug": "dark",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0458",
+      "type_slug": "fire",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0459",
+      "type_slug": "dark",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0459",
+      "type_slug": "fire",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0460",
+      "type_slug": "dark",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0460",
+      "type_slug": "fire",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0461",
+      "type_slug": "dark",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0461",
+      "type_slug": "ice",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0462",
+      "type_slug": "dark",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0462",
+      "type_slug": "ice",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0463",
+      "type_slug": "dark",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0463",
+      "type_slug": "ice",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0464",
+      "type_slug": "ghost",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0465",
+      "type_slug": "ghost",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0466",
+      "type_slug": "machine",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0467",
+      "type_slug": "machine",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0468",
+      "type_slug": "machine",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0468",
+      "type_slug": "flying",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0469",
+      "type_slug": "machine",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0470",
+      "type_slug": "machine",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0471",
+      "type_slug": "fighting",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0471",
+      "type_slug": "ground",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0472",
+      "type_slug": "fighting",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0472",
+      "type_slug": "ground",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0473",
+      "type_slug": "fighting",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0473",
+      "type_slug": "ground",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0474",
+      "type_slug": "fighting",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0474",
+      "type_slug": "ground",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0475",
+      "type_slug": "fighting",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0475",
+      "type_slug": "ground",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0476",
+      "type_slug": "fighting",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0476",
+      "type_slug": "ground",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0477",
+      "type_slug": "fighting",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0477",
+      "type_slug": "ground",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0478",
+      "type_slug": "fighting",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0478",
+      "type_slug": "ground",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0479",
+      "type_slug": "fighting",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0479",
+      "type_slug": "ground",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0480",
+      "type_slug": "fighting",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0480",
+      "type_slug": "ground",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0481",
+      "type_slug": "cute",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0482",
+      "type_slug": "cute",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0483",
+      "type_slug": "poison",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0484",
+      "type_slug": "poison",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0485",
+      "type_slug": "poison",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0486",
+      "type_slug": "poison",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0487",
+      "type_slug": "poison",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0488",
+      "type_slug": "illusion",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0489",
+      "type_slug": "normal",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0490",
+      "type_slug": "normal",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0491",
+      "type_slug": "normal",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0492",
+      "type_slug": "flying",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0492",
+      "type_slug": "dark",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0493",
+      "type_slug": "fire",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0493",
+      "type_slug": "dragon",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0494",
+      "type_slug": "fire",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0494",
+      "type_slug": "dragon",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0495",
+      "type_slug": "fire",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0496",
+      "type_slug": "fire",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0497",
+      "type_slug": "fire",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0498",
+      "type_slug": "ghost",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0499",
+      "type_slug": "ghost",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0499",
+      "type_slug": "dark",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0500",
+      "type_slug": "ghost",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0500",
+      "type_slug": "cute",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0501",
+      "type_slug": "poison",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0502",
+      "type_slug": "poison",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0503",
+      "type_slug": "poison",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0503",
+      "type_slug": "cute",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0504",
+      "type_slug": "poison",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0504",
+      "type_slug": "cute",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0505",
+      "type_slug": "poison",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0505",
+      "type_slug": "cute",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0506",
+      "type_slug": "poison",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0506",
+      "type_slug": "cute",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0507",
+      "type_slug": "illusion",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0508",
+      "type_slug": "illusion",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0509",
+      "type_slug": "grass",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0509",
+      "type_slug": "fighting",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0510",
+      "type_slug": "grass",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0510",
+      "type_slug": "fighting",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0511",
+      "type_slug": "grass",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0511",
+      "type_slug": "fighting",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0512",
+      "type_slug": "water",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0512",
+      "type_slug": "fighting",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0513",
+      "type_slug": "water",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0513",
+      "type_slug": "fighting",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0514",
+      "type_slug": "water",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0514",
+      "type_slug": "fighting",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0515",
+      "type_slug": "fire",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0515",
+      "type_slug": "fighting",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0516",
+      "type_slug": "fire",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0516",
+      "type_slug": "fighting",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0517",
+      "type_slug": "fire",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0517",
+      "type_slug": "fighting",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0518",
+      "type_slug": "bug",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0518",
+      "type_slug": "ground",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0519",
+      "type_slug": "bug",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0519",
+      "type_slug": "ground",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0520",
+      "type_slug": "bug",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0520",
+      "type_slug": "ground",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0521",
+      "type_slug": "normal",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0522",
+      "type_slug": "normal",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0523",
+      "type_slug": "normal",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0523",
+      "type_slug": "illusion",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0524",
+      "type_slug": "normal",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0524",
+      "type_slug": "fighting",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0525",
+      "type_slug": "normal",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0526",
+      "type_slug": "normal",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0527",
+      "type_slug": "normal",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0527",
+      "type_slug": "illusion",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0528",
+      "type_slug": "normal",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0528",
+      "type_slug": "fighting",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0529",
+      "type_slug": "dark",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0529",
+      "type_slug": "light",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0530",
+      "type_slug": "dark",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0530",
+      "type_slug": "light",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0531",
+      "type_slug": "machine",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0531",
+      "type_slug": "illusion",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0532",
+      "type_slug": "machine",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0532",
+      "type_slug": "illusion",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0533",
+      "type_slug": "machine",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0533",
+      "type_slug": "illusion",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0534",
+      "type_slug": "machine",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0534",
+      "type_slug": "illusion",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0535",
+      "type_slug": "fighting",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0536",
+      "type_slug": "cute",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0536",
+      "type_slug": "poison",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0537",
+      "type_slug": "cute",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0537",
+      "type_slug": "poison",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0538",
+      "type_slug": "ghost",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0538",
+      "type_slug": "dragon",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0539",
+      "type_slug": "water",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0540",
+      "type_slug": "water",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0541",
+      "type_slug": "water",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0542",
+      "type_slug": "water",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0542",
+      "type_slug": "cute",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0543",
+      "type_slug": "water",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0543",
+      "type_slug": "cute",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0544",
+      "type_slug": "fire",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0544",
+      "type_slug": "poison",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0545",
+      "type_slug": "fire",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0545",
+      "type_slug": "poison",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0546",
+      "type_slug": "ghost",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0547",
+      "type_slug": "ghost",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0548",
+      "type_slug": "ground",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0548",
+      "type_slug": "light",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0549",
+      "type_slug": "ground",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0549",
+      "type_slug": "light",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0550",
+      "type_slug": "ghost",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0550",
+      "type_slug": "grass",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0551",
+      "type_slug": "ghost",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0551",
+      "type_slug": "grass",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0552",
+      "type_slug": "machine",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0553",
+      "type_slug": "machine",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0554",
+      "type_slug": "dragon",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0555",
+      "type_slug": "dragon",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0556",
+      "type_slug": "dragon",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0557",
+      "type_slug": "fighting",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0558",
+      "type_slug": "cute",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0559",
+      "type_slug": "cute",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0560",
+      "type_slug": "grass",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0560",
+      "type_slug": "fighting",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0561",
+      "type_slug": "grass",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0561",
+      "type_slug": "fighting",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0562",
+      "type_slug": "grass",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0562",
+      "type_slug": "fighting",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0563",
+      "type_slug": "water",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0563",
+      "type_slug": "fighting",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0564",
+      "type_slug": "water",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0564",
+      "type_slug": "fighting",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0565",
+      "type_slug": "water",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0565",
+      "type_slug": "fighting",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0566",
+      "type_slug": "fire",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0566",
+      "type_slug": "fighting",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0567",
+      "type_slug": "fire",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0567",
+      "type_slug": "fighting",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0568",
+      "type_slug": "fire",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0568",
+      "type_slug": "fighting",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0569",
+      "type_slug": "normal",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0569",
+      "type_slug": "machine",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0570",
+      "type_slug": "normal",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0570",
+      "type_slug": "machine",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0571",
+      "type_slug": "flying",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0571",
+      "type_slug": "poison",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0572",
+      "type_slug": "flying",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0572",
+      "type_slug": "poison",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0573",
+      "type_slug": "machine",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0574",
+      "type_slug": "machine",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0575",
+      "type_slug": "machine",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0576",
+      "type_slug": "electric",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0576",
+      "type_slug": "light",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0577",
+      "type_slug": "electric",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0577",
+      "type_slug": "light",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0578",
+      "type_slug": "fighting",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0579",
+      "type_slug": "fighting",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0580",
+      "type_slug": "normal",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0581",
+      "type_slug": "normal",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0582",
+      "type_slug": "normal",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0583",
+      "type_slug": "water",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0583",
+      "type_slug": "cute",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0584",
+      "type_slug": "fire",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0585",
+      "type_slug": "fire",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0586",
+      "type_slug": "ice",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0586",
+      "type_slug": "grass",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0587",
+      "type_slug": "dragon",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0587",
+      "type_slug": "cute",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0588",
+      "type_slug": "dragon",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0588",
+      "type_slug": "cute",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0589",
+      "type_slug": "grass",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0590",
+      "type_slug": "grass",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0591",
+      "type_slug": "grass",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0592",
+      "type_slug": "machine",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0592",
+      "type_slug": "bug",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0593",
+      "type_slug": "machine",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0593",
+      "type_slug": "bug",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0594",
+      "type_slug": "fire",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0595",
+      "type_slug": "fire",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0596",
+      "type_slug": "fire",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0597",
+      "type_slug": "cute",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0598",
+      "type_slug": "cute",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0599",
+      "type_slug": "cute",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0600",
+      "type_slug": "cute",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0601",
+      "type_slug": "cute",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0602",
+      "type_slug": "cute",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0603",
+      "type_slug": "cute",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0604",
+      "type_slug": "cute",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0605",
+      "type_slug": "cute",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0606",
+      "type_slug": "cute",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0607",
+      "type_slug": "cute",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0608",
+      "type_slug": "cute",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0609",
+      "type_slug": "cute",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0610",
+      "type_slug": "cute",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0611",
+      "type_slug": "cute",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0612",
+      "type_slug": "cute",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0613",
+      "type_slug": "cute",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0614",
+      "type_slug": "cute",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0615",
+      "type_slug": "cute",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0616",
+      "type_slug": "cute",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0617",
+      "type_slug": "ghost",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0617",
+      "type_slug": "grass",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0618",
+      "type_slug": "normal",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0619",
+      "type_slug": "water",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0619",
+      "type_slug": "flying",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0620",
+      "type_slug": "light",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0620",
+      "type_slug": "flying",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0621",
+      "type_slug": "light",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0621",
+      "type_slug": "ground",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0622",
+      "type_slug": "light",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0623",
+      "type_slug": "grass",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0624",
+      "type_slug": "grass",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0624",
+      "type_slug": "poison",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0625",
+      "type_slug": "grass",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0626",
+      "type_slug": "normal",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0627",
+      "type_slug": "normal",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0628",
+      "type_slug": "ground",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0629",
+      "type_slug": "ground",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0629",
+      "type_slug": "illusion",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0630",
+      "type_slug": "water",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0631",
+      "type_slug": "water",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0631",
+      "type_slug": "flying",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0632",
+      "type_slug": "water",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0632",
+      "type_slug": "poison",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0633",
+      "type_slug": "ice",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0633",
+      "type_slug": "cute",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0634",
+      "type_slug": "flying",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0635",
+      "type_slug": "bug",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0635",
+      "type_slug": "flying",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0636",
+      "type_slug": "dark",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0637",
+      "type_slug": "fire",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0638",
+      "type_slug": "fire",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0639",
+      "type_slug": "ghost",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0639",
+      "type_slug": "grass",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0640",
+      "type_slug": "electric",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0641",
+      "type_slug": "machine",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0642",
+      "type_slug": "dragon",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0643",
+      "type_slug": "fighting",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0643",
+      "type_slug": "ground",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0644",
+      "type_slug": "cute",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0645",
+      "type_slug": "light",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0646",
+      "type_slug": "light",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0646",
+      "type_slug": "grass",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0647",
+      "type_slug": "fire",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0648",
+      "type_slug": "water",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0649",
+      "type_slug": "water",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0649",
+      "type_slug": "poison",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0650",
+      "type_slug": "flying",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0651",
+      "type_slug": "flying",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0652",
+      "type_slug": "flying",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0653",
+      "type_slug": "grass",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0653",
+      "type_slug": "poison",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0654",
+      "type_slug": "grass",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0654",
+      "type_slug": "poison",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0655",
+      "type_slug": "grass",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0655",
+      "type_slug": "poison",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0656",
+      "type_slug": "normal",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0657",
+      "type_slug": "normal",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0658",
+      "type_slug": "normal",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0659",
+      "type_slug": "normal",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0660",
+      "type_slug": "fighting",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0660",
+      "type_slug": "ground",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0661",
+      "type_slug": "fighting",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0661",
+      "type_slug": "ground",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0662",
+      "type_slug": "fighting",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0662",
+      "type_slug": "ground",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0663",
+      "type_slug": "fighting",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0663",
+      "type_slug": "ground",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0664",
+      "type_slug": "light",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0664",
+      "type_slug": "ground",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0665",
+      "type_slug": "light",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0665",
+      "type_slug": "ground",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0666",
+      "type_slug": "light",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0666",
+      "type_slug": "ground",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0667",
+      "type_slug": "light",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0667",
+      "type_slug": "ground",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0668",
+      "type_slug": "light",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0668",
+      "type_slug": "ground",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0669",
+      "type_slug": "normal",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0670",
+      "type_slug": "ground",
+      "slot": 1
+    },
+    {
+      "pet_slug": "pet-0670",
+      "type_slug": "dark",
+      "slot": 2
+    },
+    {
+      "pet_slug": "pet-0671",
+      "type_slug": "flying",
+      "slot": 1
+    }
+  ]
+}

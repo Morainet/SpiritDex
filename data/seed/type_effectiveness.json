@@ -1,0 +1,688 @@
+{
+  "meta": {
+    "source": "BWIKI 洛克王国:手游WIKI",
+    "source_url": "https://wiki.biligame.com/rocom/wiki/Module:PetData/Core",
+    "scraped_at": "2026-07-10T16:22:31+00:00",
+    "count": 113
+  },
+  "items": [
+    {
+      "attacking_type": "normal",
+      "defending_type": "ground",
+      "multiplier": 0.5,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "attacking_type": "normal",
+      "defending_type": "ghost",
+      "multiplier": 0.5,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "attacking_type": "normal",
+      "defending_type": "machine",
+      "multiplier": 0.5,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "attacking_type": "grass",
+      "defending_type": "water",
+      "multiplier": 2.0,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "attacking_type": "grass",
+      "defending_type": "light",
+      "multiplier": 2.0,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "attacking_type": "grass",
+      "defending_type": "ground",
+      "multiplier": 2.0,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "attacking_type": "grass",
+      "defending_type": "fire",
+      "multiplier": 0.5,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "attacking_type": "grass",
+      "defending_type": "dragon",
+      "multiplier": 0.5,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "attacking_type": "grass",
+      "defending_type": "poison",
+      "multiplier": 0.5,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "attacking_type": "grass",
+      "defending_type": "bug",
+      "multiplier": 0.5,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "attacking_type": "grass",
+      "defending_type": "flying",
+      "multiplier": 0.5,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "attacking_type": "grass",
+      "defending_type": "machine",
+      "multiplier": 0.5,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "attacking_type": "fire",
+      "defending_type": "grass",
+      "multiplier": 2.0,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "attacking_type": "fire",
+      "defending_type": "ice",
+      "multiplier": 2.0,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "attacking_type": "fire",
+      "defending_type": "bug",
+      "multiplier": 2.0,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "attacking_type": "fire",
+      "defending_type": "machine",
+      "multiplier": 2.0,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "attacking_type": "fire",
+      "defending_type": "water",
+      "multiplier": 0.5,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "attacking_type": "fire",
+      "defending_type": "ground",
+      "multiplier": 0.5,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "attacking_type": "fire",
+      "defending_type": "dragon",
+      "multiplier": 0.5,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "attacking_type": "water",
+      "defending_type": "fire",
+      "multiplier": 2.0,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "attacking_type": "water",
+      "defending_type": "ground",
+      "multiplier": 2.0,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "attacking_type": "water",
+      "defending_type": "machine",
+      "multiplier": 2.0,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "attacking_type": "water",
+      "defending_type": "grass",
+      "multiplier": 0.5,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "attacking_type": "water",
+      "defending_type": "ice",
+      "multiplier": 0.5,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "attacking_type": "water",
+      "defending_type": "dragon",
+      "multiplier": 0.5,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "attacking_type": "light",
+      "defending_type": "ghost",
+      "multiplier": 2.0,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "attacking_type": "light",
+      "defending_type": "dark",
+      "multiplier": 2.0,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "attacking_type": "light",
+      "defending_type": "grass",
+      "multiplier": 0.5,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "attacking_type": "light",
+      "defending_type": "ice",
+      "multiplier": 0.5,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "attacking_type": "ground",
+      "defending_type": "fire",
+      "multiplier": 2.0,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "attacking_type": "ground",
+      "defending_type": "ice",
+      "multiplier": 2.0,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "attacking_type": "ground",
+      "defending_type": "electric",
+      "multiplier": 2.0,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "attacking_type": "ground",
+      "defending_type": "poison",
+      "multiplier": 2.0,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "attacking_type": "ground",
+      "defending_type": "grass",
+      "multiplier": 0.5,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "attacking_type": "ground",
+      "defending_type": "fighting",
+      "multiplier": 0.5,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "attacking_type": "ice",
+      "defending_type": "grass",
+      "multiplier": 2.0,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "attacking_type": "ice",
+      "defending_type": "ground",
+      "multiplier": 2.0,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "attacking_type": "ice",
+      "defending_type": "dragon",
+      "multiplier": 2.0,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "attacking_type": "ice",
+      "defending_type": "flying",
+      "multiplier": 2.0,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "attacking_type": "ice",
+      "defending_type": "fire",
+      "multiplier": 0.5,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "attacking_type": "ice",
+      "defending_type": "ice",
+      "multiplier": 0.5,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "attacking_type": "ice",
+      "defending_type": "machine",
+      "multiplier": 0.5,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "attacking_type": "dragon",
+      "defending_type": "dragon",
+      "multiplier": 2.0,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "attacking_type": "dragon",
+      "defending_type": "machine",
+      "multiplier": 0.5,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "attacking_type": "electric",
+      "defending_type": "water",
+      "multiplier": 2.0,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "attacking_type": "electric",
+      "defending_type": "flying",
+      "multiplier": 2.0,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "attacking_type": "electric",
+      "defending_type": "grass",
+      "multiplier": 0.5,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "attacking_type": "electric",
+      "defending_type": "ground",
+      "multiplier": 0.5,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "attacking_type": "electric",
+      "defending_type": "dragon",
+      "multiplier": 0.5,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "attacking_type": "electric",
+      "defending_type": "electric",
+      "multiplier": 0.5,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "attacking_type": "poison",
+      "defending_type": "grass",
+      "multiplier": 2.0,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "attacking_type": "poison",
+      "defending_type": "cute",
+      "multiplier": 2.0,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "attacking_type": "poison",
+      "defending_type": "ground",
+      "multiplier": 0.5,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "attacking_type": "poison",
+      "defending_type": "poison",
+      "multiplier": 0.5,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "attacking_type": "poison",
+      "defending_type": "ghost",
+      "multiplier": 0.5,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "attacking_type": "poison",
+      "defending_type": "machine",
+      "multiplier": 0.5,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "attacking_type": "bug",
+      "defending_type": "grass",
+      "multiplier": 2.0,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "attacking_type": "bug",
+      "defending_type": "dark",
+      "multiplier": 2.0,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "attacking_type": "bug",
+      "defending_type": "illusion",
+      "multiplier": 2.0,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "attacking_type": "bug",
+      "defending_type": "fire",
+      "multiplier": 0.5,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "attacking_type": "bug",
+      "defending_type": "poison",
+      "multiplier": 0.5,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "attacking_type": "bug",
+      "defending_type": "fighting",
+      "multiplier": 0.5,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "attacking_type": "bug",
+      "defending_type": "flying",
+      "multiplier": 0.5,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "attacking_type": "bug",
+      "defending_type": "cute",
+      "multiplier": 0.5,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "attacking_type": "bug",
+      "defending_type": "ghost",
+      "multiplier": 0.5,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "attacking_type": "bug",
+      "defending_type": "machine",
+      "multiplier": 0.5,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "attacking_type": "fighting",
+      "defending_type": "normal",
+      "multiplier": 2.0,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "attacking_type": "fighting",
+      "defending_type": "ground",
+      "multiplier": 2.0,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "attacking_type": "fighting",
+      "defending_type": "ice",
+      "multiplier": 2.0,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "attacking_type": "fighting",
+      "defending_type": "dark",
+      "multiplier": 2.0,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "attacking_type": "fighting",
+      "defending_type": "machine",
+      "multiplier": 2.0,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "attacking_type": "fighting",
+      "defending_type": "poison",
+      "multiplier": 0.5,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "attacking_type": "fighting",
+      "defending_type": "bug",
+      "multiplier": 0.5,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "attacking_type": "fighting",
+      "defending_type": "flying",
+      "multiplier": 0.5,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "attacking_type": "fighting",
+      "defending_type": "cute",
+      "multiplier": 0.5,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "attacking_type": "fighting",
+      "defending_type": "ghost",
+      "multiplier": 0.5,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "attacking_type": "fighting",
+      "defending_type": "illusion",
+      "multiplier": 0.5,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "attacking_type": "flying",
+      "defending_type": "grass",
+      "multiplier": 2.0,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "attacking_type": "flying",
+      "defending_type": "bug",
+      "multiplier": 2.0,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "attacking_type": "flying",
+      "defending_type": "fighting",
+      "multiplier": 2.0,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "attacking_type": "flying",
+      "defending_type": "ground",
+      "multiplier": 0.5,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "attacking_type": "flying",
+      "defending_type": "dragon",
+      "multiplier": 0.5,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "attacking_type": "flying",
+      "defending_type": "electric",
+      "multiplier": 0.5,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "attacking_type": "flying",
+      "defending_type": "machine",
+      "multiplier": 0.5,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "attacking_type": "cute",
+      "defending_type": "dragon",
+      "multiplier": 2.0,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "attacking_type": "cute",
+      "defending_type": "fighting",
+      "multiplier": 2.0,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "attacking_type": "cute",
+      "defending_type": "dark",
+      "multiplier": 2.0,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "attacking_type": "cute",
+      "defending_type": "fire",
+      "multiplier": 0.5,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "attacking_type": "cute",
+      "defending_type": "poison",
+      "multiplier": 0.5,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "attacking_type": "cute",
+      "defending_type": "machine",
+      "multiplier": 0.5,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "attacking_type": "ghost",
+      "defending_type": "light",
+      "multiplier": 2.0,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "attacking_type": "ghost",
+      "defending_type": "ghost",
+      "multiplier": 2.0,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "attacking_type": "ghost",
+      "defending_type": "illusion",
+      "multiplier": 2.0,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "attacking_type": "ghost",
+      "defending_type": "normal",
+      "multiplier": 0.5,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "attacking_type": "ghost",
+      "defending_type": "dark",
+      "multiplier": 0.5,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "attacking_type": "dark",
+      "defending_type": "poison",
+      "multiplier": 2.0,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "attacking_type": "dark",
+      "defending_type": "cute",
+      "multiplier": 2.0,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "attacking_type": "dark",
+      "defending_type": "ghost",
+      "multiplier": 2.0,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "attacking_type": "dark",
+      "defending_type": "light",
+      "multiplier": 0.5,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "attacking_type": "dark",
+      "defending_type": "fighting",
+      "multiplier": 0.5,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "attacking_type": "dark",
+      "defending_type": "dark",
+      "multiplier": 0.5,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "attacking_type": "machine",
+      "defending_type": "ground",
+      "multiplier": 2.0,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "attacking_type": "machine",
+      "defending_type": "ice",
+      "multiplier": 2.0,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "attacking_type": "machine",
+      "defending_type": "cute",
+      "multiplier": 2.0,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "attacking_type": "machine",
+      "defending_type": "fire",
+      "multiplier": 0.5,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "attacking_type": "machine",
+      "defending_type": "water",
+      "multiplier": 0.5,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "attacking_type": "machine",
+      "defending_type": "electric",
+      "multiplier": 0.5,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "attacking_type": "machine",
+      "defending_type": "machine",
+      "multiplier": 0.5,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "attacking_type": "illusion",
+      "defending_type": "poison",
+      "multiplier": 2.0,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "attacking_type": "illusion",
+      "defending_type": "fighting",
+      "multiplier": 2.0,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "attacking_type": "illusion",
+      "defending_type": "light",
+      "multiplier": 0.5,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "attacking_type": "illusion",
+      "defending_type": "machine",
+      "multiplier": 0.5,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    },
+    {
+      "attacking_type": "illusion",
+      "defending_type": "illusion",
+      "multiplier": 0.5,
+      "source_url": "https://wiki.biligame.com/rocom/wiki/Module%3APetData%2FCore"
+    }
+  ]
+}
