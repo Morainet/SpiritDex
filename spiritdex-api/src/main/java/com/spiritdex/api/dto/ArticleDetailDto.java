@@ -22,4 +22,8 @@ public class ArticleDetailDto {
     private Integer viewCount;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
+    /** 是否 AI 生成。 */
+    private Boolean aiGenerated;
+    /** 活动来源 URL。 */
+    private String sourceUrl;
 }

@@ -57,6 +57,9 @@ export default async function ArticlesPage({
             <Link key={a.slug} href={`/articles/${a.slug}`} className="flex flex-col rounded-2xl border border-border bg-surface p-4 shadow-[var(--shadow-card)] transition-all hover:shadow-[var(--shadow-hover)] hover:-translate-y-0.5">
               <div className="flex items-center gap-2">
                 {a.category && <span className={`rounded-md px-1.5 py-0.5 text-[11px] font-medium text-white ${CATEGORY_BADGE[a.category] ?? "bg-surface-2 text-muted"}`}>{a.category}</span>}
+                {a.aiGenerated && (
+                  <span className="rounded-md bg-[var(--type-dragon)] px-1.5 py-0.5 text-[11px] font-medium text-white" title="本文由 AI 生成，数据请以游戏内为准">AI</span>
+                )}
                 {a.createdAt && <span className="text-xs text-muted-foreground">{fmtDate(a.createdAt)}</span>}
               </div>
               <h2 className="mt-2 text-lg font-semibold leading-snug">{a.title}</h2>

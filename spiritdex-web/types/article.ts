@@ -7,6 +7,8 @@ export interface ArticleListItem {
   tags?: string[];
   authorName?: string;
   createdAt?: string;
+  /** 是否 AI 生成（用于显示「AI」徽章）。 */
+  aiGenerated?: boolean;
 }
 
 export interface ArticleDetail {
@@ -22,4 +24,8 @@ export interface ArticleDetail {
   viewCount?: number;
   createdAt?: string;
   updatedAt?: string;
+  /** 是否 AI 生成。 */
+  aiGenerated?: boolean;
+  /** 活动信息来源 URL。 */
+  sourceUrl?: string;
 }

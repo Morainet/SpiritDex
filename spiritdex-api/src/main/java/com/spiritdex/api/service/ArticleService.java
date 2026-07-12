@@ -49,6 +49,8 @@ public class ArticleService extends ServiceImpl<ArticleMapper, Article> {
         d.setViewCount(a.getViewCount());
         d.setCreatedAt(a.getCreatedAt());
         d.setUpdatedAt(a.getUpdatedAt());
+        d.setAiGenerated(a.getAiGenerated());
+        d.setSourceUrl(a.getSourceUrl());
         return d;
     }
 
@@ -62,6 +64,7 @@ public class ArticleService extends ServiceImpl<ArticleMapper, Article> {
         d.setTags(a.getTags());
         d.setAuthorName(a.getAuthorName());
         d.setCreatedAt(a.getCreatedAt());
+        d.setAiGenerated(a.getAiGenerated());
         return d;
     }
 }

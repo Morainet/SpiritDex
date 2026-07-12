@@ -6,7 +6,10 @@ import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { fetchArticleDetail, fetchArticles } from "@/lib/api";
 
-export const dynamicParams = false;
+// 允许按需生成未预渲染的 slug（AI 定时发布的新文章即时可访问），
+// 配合 revalidate 每小时 ISR，新发布文章 1 小时内自动可见。
+export const dynamicParams = true;
+export const revalidate = 3600;
 
 export async function generateStaticParams() {
   const result = await fetchArticles(undefined, 1, 1000);
@@ -47,11 +50,32 @@ export default async function ArticleDetailPage({ params }: { params: Promise<{ 
             <span key={t} className="rounded-md bg-surface-2 px-1.5 py-0.5 text-muted">{t}</span>
           ))}
         </div>
+        {article.aiGenerated && (
+          <p className="mt-3 rounded-lg border border-border bg-surface-2 px-3 py-1.5 text-xs text-muted">
+            本文由 AI 基于活动信息自动生成，具体奖励与数值请以游戏内为准。
+            {article.sourceUrl && <> 数据来源：<a href={article.sourceUrl} target="_blank" rel="noopener noreferrer" className="underline">BWIKI</a></>}
+          </p>
+        )}
       </header>
 
       <article className="prose-spiritdex">
         <ReactMarkdown remarkPlugins={[remarkGfm]} components={{
-          a: ({ href, children }) => href?.startsWith("/") ? <Link href={href}>{children}</Link> : <a href={href} target="_blank" rel="noopener noreferrer">{children}</a>,
+          a: ({ href, children }) => {
+            if (!href) return <a>{children}</a>;
+            // 站内精灵/技能链接：渲染成更友好的跳转入口
+            if (href.startsWith("/")) {
+              // 链接文本是裸路径（如 /pets/pet-0001）时，显示成「查看详情→」
+              const text = typeof children === "string" && children === href
+                ? "查看详情 →" : children;
+              const isPet = href.startsWith("/pets/");
+              return (
+                <Link href={href} className={isPet ? "font-medium text-accent hover:underline" : undefined}>
+                  {text}
+                </Link>
+              );
+            }
+            return <a href={href} target="_blank" rel="noopener noreferrer">{children}</a>;
+          },
         }}>
           {article.content}
         </ReactMarkdown>

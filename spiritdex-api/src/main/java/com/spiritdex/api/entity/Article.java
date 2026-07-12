@@ -46,6 +46,12 @@ public class Article {
     /** draft / published。 */
     private String status;
 
+    /** 是否 AI 生成（活动攻略定时生成）。 */
+    private Boolean aiGenerated;
+
+    /** 活动信息来源 URL（BWIKI 链接，溯源）。 */
+    private String sourceUrl;
+
     private Integer viewCount;
 
     @TableLogic

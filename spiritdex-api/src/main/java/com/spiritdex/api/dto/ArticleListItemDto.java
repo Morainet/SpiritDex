@@ -18,4 +18,6 @@ public class ArticleListItemDto {
     private List<String> tags;
     private String authorName;
     private LocalDateTime createdAt;
+    /** 是否 AI 生成（前端可显示「AI」徽章）。 */
+    private Boolean aiGenerated;
 }

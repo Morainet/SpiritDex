@@ -69,3 +69,22 @@ spiritdex:
     embedding-dim: 1024
     top-k: 5
     rate-limit-per-hour: 30
+    # 定时 AI 活动攻略生成（默认关闭，生产用环境变量
+    # SPIRITDEX_AI_ARTICLEGENERATION_ENABLED=true 开启）
+    article-generation:
+      enabled: ${SPIRITDEX_AI_ARTICLEGENERATION_ENABLED:false}
+      # 生成任务：每周一 08:00（秒 分 时 日 月 周）
+      generate-cron: "0 0 8 ? * MON"
+      # 草稿转发布：每周二 08:00
+      publish-cron: "0 0 8 ? * TUE"
+      # 草稿创建多少小时后可自动转发布
+      draft-age-hours: 24
+      # 单次生成任务最多产出文章数（控成本）
+      max-articles-per-run: 3
+      # 打手分析返回的推荐打手数量
+      counter-top-n: 10
+      # 每周培养榜返回的 Top 精灵数量
+      weekly-top-n: 10
+      # scraper 活动数据产物路径（相对 spiritdex-api 工作目录）
+      activities-file: ${user.dir}/../data/seed/activities.json
+      author-name: 灵宠档案 AI 助手
