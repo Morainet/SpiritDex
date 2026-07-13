@@ -40,25 +40,41 @@ python3 main.py --offline
 
 # 仅看统计、不写文件
 python3 main.py --stats
+
+# 抓取完整技能池（native/stone/blood，覆盖 pet_skills.json；约 11 分钟，QPS≤1）
+python3 main.py --skill-pools
+
+# 抓取活动公告（→ activities.json，供后端 AI 攻略生成）
+python3 main.py --activities --max-activities 5
 ```
 
 产物（写入 `../data/seed/`）：
 
-| 文件 | 条目数（2026-07-10 实测） | 说明 |
-|---|---|---|
-| `types.json` | 18 | 属性枚举（普通/草/火/...） |
-| `pets.json` | 671 | 精灵主记录 |
-| `skills.json` | 737 | 技能目录 |
-| `pet_types.json` | 980 | 精灵↔属性关联（多属性精灵多条） |
-| `pet_skills.json` | 671 | 精灵↔特性技能关联（每只 1 条） |
-| `evolution_chains.json` | 264 | 进化链 |
-| `evolution_stages.json` | 611 | 进化阶段（含等级/条件） |
+| 文件 | 条目数 | 说明 | 来源 |
+|---|---|---|---|
+| `types.json` | 18 | 属性枚举（普通/草/火/...） | 固定枚举 |
+| `pets.json` | 671 | 精灵主记录 | `Module:PetData/Core` |
+| `skills.json` | 737 | 技能目录 | `Module:PetData/SkillCatalog` |
+| `pet_types.json` | 980 | 精灵↔属性关联（多属性精灵多条） | `Module:PetData/Core` |
+| `pet_skills.json` | 671 → 数千 | 精灵↔技能（feature + native/stone/blood 技能池） | Core + 页面级模板（见 `--skill-pools`） |
+| `evolution_chains.json` | 264 | 进化链 | `Module:PetData/Evolution` |
+| `evolution_stages.json` | 611 | 进化阶段（含等级/条件） | `Module:PetData/Evolution` |
+| `type_effectiveness.json` | 113 | 属性相克矩阵（攻击方/防御方/倍率） | `Widget:RestrainCalc.js` |
+| `activities.json` | 可选 | 活动公告（供 AI 攻略生成） | 首页/搜索（见 `--activities`） |
+
+> 主流程 `python main.py` 产出除 `activities.json` 外的全部文件（`pet_skills.json` 仅含 feature）。
+> 完整技能池需额外运行 `python main.py --skill-pools`（覆盖 `pet_skills.json`）。
+> 活动公告需额外运行 `python main.py --activities`。
 
 ## 已知限制
 
-- **属性相克矩阵**：BWIKI Lua 模块中不存在，本脚本不产出；后端 `type` 表仅入库 18 个枚举。
-- **完整技能池**：模块中每只精灵只有 1 个 `feature_skill`；native/stone/blood 技能池及
-  解锁等级仅存在于页面级 wikitext 模板，本 Phase 未抓取（`pet_skills.json` 仅含特性技能）。
+- **同名精灵多形态**：约 80 个精灵名对应多个形态（如「鸭吉吉」6 形态、「蹦蹦种子」4 形态），
+  页面级 wikitext 仅记录「原始形态」技能池。`--skill-pools` 按精灵名去重抓取，同名精灵共用
+  一份技能池数据（形态差异后续优化）。
+- **活动抓取数据质量**：BWIKI 首页 wikitext 以 HTML 布局为主（非 wiki 模板），
+  `activity_fetcher` 的模板解析与搜索策略常落空，退回首页文本兜底，`raw_text` 含较多 HTML
+  标签。后端 `ArticleGenerationService` 在 `raw_text` 质量不足时会用 `fallbackTopics` 兜底，
+  链路不阻塞；提升方向是寻找 BWIKI 的活动专题页/分类页作为更稳定数据源。
 
 ## 测试
 
@@ -85,16 +101,21 @@ for m in ['Core','Index','SkillCatalog','Evolution','Handbook']:
 
 ```
 scraper/
-├── main.py              # 入口
-├── requirements.txt     # requests
+├── main.py                 # 入口（主流程 / --activities / --skill-pools 三个分支）
+├── requirements.txt        # requests
+├── scripts/
+│   └── probe_pet_skills.py # 探路脚本：分析精灵页面技能池结构（开发用）
 ├── src/
-│   ├── api.py           # MediaWiki API 封装（限速/重试/UA）
-│   ├── lua_parser.py    # ★ Lua 表解析器（递归下降，纯标准库）
-│   ├── fetcher.py       # 拉取+解析 5 模块 → RawData
-│   ├── transformers.py  # RawData → seed items（字段映射/清洗）
-│   ├── exporters.py     # 写出 data/seed/*.json
-│   └── config.py        # 配置（环境变量可覆盖）
+│   ├── api.py              # MediaWiki API 封装（限速/重试/POST 绕 WAF）
+│   ├── lua_parser.py       # ★ Lua 表解析器（递归下降，纯标准库）
+│   ├── widget_parser.py    # Widget:RestrainCalc.js 相克矩阵解析
+│   ├── fetcher.py          # 拉取+解析 5 模块 → RawData
+│   ├── activity_fetcher.py # 活动公告抓取（多策略容错 → activities.json）
+│   ├── skill_pool_fetcher.py # 完整技能池抓取（native/stone/blood）
+│   ├── transformers.py     # RawData → seed items（字段映射/清洗）
+│   ├── exporters.py        # 写出 data/seed/*.json
+│   └── config.py           # 配置（环境变量可覆盖）
 └── tests/
     ├── test_lua_parser.py
-    └── fixtures/        # 真实模块缓存（回归用）
+    └── fixtures/           # 真实模块缓存（回归用）+ 探路页面样本
 ```

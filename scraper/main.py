@@ -8,6 +8,7 @@
     python3 main.py --offline --stats  # 仅打印统计
     python3 main.py --activities       # 仅抓取活动公告（→ activities.json）
     python3 main.py --activities --max-activities 5
+    python3 main.py --skill-pools      # 抓取完整技能池 native/stone/blood（→ 覆盖 pet_skills.json）
 
 合规：QPS≤1、自定义 UA、每条记录带 source_url、只取事实数据。
 """
@@ -24,6 +25,7 @@ from datetime import datetime, timezone
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 from src.activity_fetcher import fetch_activities   # noqa: E402
+from src.skill_pool_fetcher import fetch_skill_pools  # noqa: E402
 from src.api import WikiApi                        # noqa: E402
 from src.config import settings                    # noqa: E402
 from src.exporters import write_all                # noqa: E402
@@ -41,11 +43,19 @@ def main(argv: list[str] | None = None) -> int:
                         help="仅抓取活动公告（输出 activities.json，供后端 AI 攻略生成）")
     parser.add_argument("--max-activities", type=int, default=10,
                         help="活动抓取最大条目数（默认 10）")
+    parser.add_argument("--skill-pools", action="store_true",
+                        help="抓取完整技能池（native/stone/blood，覆盖 pet_skills.json；约 11 分钟）")
+    parser.add_argument("--skill-pools-limit", type=int, default=None,
+                        help="技能池抓取上限精灵数（调试用，默认全部 671）")
     args = parser.parse_args(argv)
 
     # —— 活动抓取分支（独立于宠物数据主流程）——
     if args.activities:
         return _run_activities(args)
+
+    # —— 技能池抓取分支（独立于宠物数据主流程）——
+    if args.skill_pools:
+        return _run_skill_pools(args)
 
     api = None if args.offline else WikiApi()
     print(f"[fetch] 模式={'离线(fixture缓存)' if args.offline else '在线(BWIKI API)'} ...")
@@ -104,6 +114,62 @@ def _run_activities(args: argparse.Namespace) -> int:
     with open(path, "w", encoding="utf-8") as f:
         json.dump(payload, f, ensure_ascii=False, indent=2)
     print(f"[activity] 已写出 {path}")
+    return 0
+
+
+def _run_skill_pools(args: argparse.Namespace) -> int:
+    """抓取完整技能池（native/stone/blood），合并 feature，覆盖 pet_skills.json。
+
+    数据源：每只精灵的页面级 wikitext ``{{精灵信息/兼容}}`` 模板参数（探路确认）。
+    见 src/skill_pool_fetcher.py 文档。
+    """
+    if args.offline:
+        print("[skill-pool] --skill-pools 不支持离线模式（需联网逐页抓取）")
+        return 1
+
+    seed_dir = args.seed_dir or settings.seed_dir
+    pets_file = os.path.join(seed_dir, "pets.json")
+    skills_file = os.path.join(seed_dir, "skills.json")
+    for f in (pets_file, skills_file):
+        if not os.path.isfile(f):
+            print(f"[skill-pool] 缺少依赖文件：{f}（请先运行 python main.py 生成基础 seed）")
+            return 1
+
+    with open(pets_file, encoding="utf-8") as f:
+        pets_items = json.load(f)["items"]
+    with open(skills_file, encoding="utf-8") as f:
+        skills_items = json.load(f)["items"]
+
+    # 调试上限
+    if args.skill_pools_limit:
+        pets_items = pets_items[: args.skill_pools_limit]
+        print(f"[skill-pool] 调试模式：仅处理前 {len(pets_items)} 只精灵")
+
+    api = WikiApi()
+    print(f"[skill-pool] 开始抓取 {len(pets_items)} 只精灵的技能池（QPS≤1，预计约 "
+          f"{len(pets_items) // 60} 分钟）...")
+    items, stats = fetch_skill_pools(api, pets_items, skills_items)
+
+    print("[skill-pool] 抓取统计：")
+    for k, v in stats.items():
+        print(f"    {k:18s} {v}")
+
+    if args.dry_run:
+        print("[skill-pool] --dry-run，跳过写文件")
+        return 0
+
+    # 读取现有 pet_skills.json 的 meta 保留 source，覆盖 items
+    out_path = os.path.join(seed_dir, "pet_skills.json")
+    meta = {
+        "source": settings.source_name,
+        "source_url": settings.source_module_url,
+        "scraped_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
+        "count": len(items),
+        "note": "feature 来自 Module:PetData/Core；native/stone/blood 来自页面级 {{精灵信息/兼容}} 模板",
+    }
+    with open(out_path, "w", encoding="utf-8") as f:
+        json.dump({"meta": meta, "items": items}, f, ensure_ascii=False, indent=2)
+    print(f"[skill-pool] 已写出 {out_path}（{len(items)} 条，原先 671 条 feature-only）")
     return 0
 
 

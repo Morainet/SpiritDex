@@ -215,6 +215,7 @@ public class SeedRunner implements CommandLineRunner {
             ps.setPetId(petId);
             ps.setSkillId(skillId);
             ps.setLearnMethod(str(it.get("learn_method")));
+            ps.setUnlockLevel(intOrNull(it.get("unlock_level")));
             ps.setDeleted(0);
             petSkillMapper.insert(ps);
             ok++;
