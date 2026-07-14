@@ -12,6 +12,7 @@ const CATEGORY_BADGE: Record<string, string> = {
   新手: "bg-[var(--type-grass)]",
   进阶: "bg-secondary",
   活动: "bg-accent",
+  机制: "bg-[var(--type-dragon)]",
 };
 
 function pick(v: string | string[] | undefined): string | undefined {
@@ -42,7 +43,7 @@ export default async function ArticlesPage({
 
       <div className="mb-6 flex items-center gap-1.5 text-sm">
         <span className="mr-1 text-muted">分类</span>
-        {["", "新手", "进阶", "活动"].map((c) => (
+        {["", "新手", "进阶", "活动", "机制"].map((c) => (
           <Link key={c || "all"} href={c ? `/articles?category=${c}` : "/articles"} className={`rounded-lg px-2.5 py-0.5 transition-colors ${(category ?? "") === c ? "bg-foreground text-background" : "bg-surface-2 text-muted hover:text-foreground"}`}>
             {c || "全部"}
           </Link>
