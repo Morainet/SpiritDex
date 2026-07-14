@@ -1,0 +1,215 @@
+{
+  "meta": {
+    "source": "BWIKI 洛克王国:手游WIKI",
+    "source_url": "https://wiki.biligame.com/rocom/wiki/Module:PetData/Core",
+    "scraped_at": "2026-07-14T16:10:40+00:00",
+    "count": 13,
+    "note": "来自「印记」总览页（权威清单+阵营）+ 各独立页（机制/可施加技能）"
+  },
+  "items": [
+    {
+      "slug": "mark-0001",
+      "catalog_id": "光合印记",
+      "name": "光合印记",
+      "faction": "正面",
+      "effect_text": "回合结束时获得1能量。",
+      "source_url": "https://wiki.biligame.com/rocom/wiki/%E5%85%89%E5%90%88%E5%8D%B0%E8%AE%B0",
+      "mechanics": "属于[[印记|正面印记]]，同一阵营（我方/敌方）同时仅能存在1种正面印记，新印记会覆盖旧印记。\n生效时机：常驻战场，回合结束时自动获得1点能量。\n可叠加。",
+      "source_skills": [
+        {
+          "name": "光合作用",
+          "desc": "自己获得1层光合印记。"
+        }
+      ]
+    },
+    {
+      "slug": "mark-0002",
+      "catalog_id": "攻击印记",
+      "name": "攻击印记",
+      "faction": "正面",
+      "effect_text": "全技能威力+10%。",
+      "source_url": "https://wiki.biligame.com/rocom/wiki/%E6%94%BB%E5%87%BB%E5%8D%B0%E8%AE%B0",
+      "mechanics": "属于[[印记|正面印记]]，同一阵营（我方/敌方）同时仅能存在1种正面印记，新印记会覆盖旧印记。\n生效时机：常驻战场，只要印记存在，所有技能释放时威力自动提升10%。\n持续时间：常驻战场，直到被其他正面印记覆盖。\n可叠加。",
+      "source_skills": [
+        {
+          "name": "主场优势",
+          "desc": "自己获得1层攻击印记。"
+        }
+      ]
+    },
+    {
+      "slug": "mark-0003",
+      "catalog_id": "湿润印记",
+      "name": "湿润印记",
+      "faction": "正面",
+      "effect_text": "全技能能耗-1。",
+      "source_url": "https://wiki.biligame.com/rocom/wiki/%E6%B9%BF%E6%B6%A6%E5%8D%B0%E8%AE%B0",
+      "mechanics": "属于[[印记|正面印记]]，同一阵营（我方/敌方）同时仅能存在1种正面印记，新印记会覆盖旧印记。\n生效时机：常驻战场，只要印记存在，所有技能释放时能量消耗自动减少1点。\n持续时间：常驻战场，直到被其他正面印记覆盖\n可叠加",
+      "source_skills": [
+        {
+          "name": "打湿",
+          "desc": "自己获得1层湿润印记。"
+        },
+        {
+          "name": "潮汐",
+          "desc": "减伤60%，应对攻击：自己获得1层湿润印记。"
+        }
+      ]
+    },
+    {
+      "slug": "mark-0004",
+      "catalog_id": "萌芽印记",
+      "name": "萌芽印记",
+      "faction": "正面",
+      "effect_text": "获得增益时，会额外获得1层。",
+      "source_url": "https://wiki.biligame.com/rocom/wiki/%E8%90%8C%E8%8A%BD%E5%8D%B0%E8%AE%B0"
+    },
+    {
+      "slug": "mark-0005",
+      "catalog_id": "蓄势印记",
+      "name": "蓄势印记",
+      "faction": "正面",
+      "effect_text": "全攻击技能威力+30%，且能耗+1。可叠加。",
+      "source_url": "https://wiki.biligame.com/rocom/wiki/%E8%93%84%E5%8A%BF%E5%8D%B0%E8%AE%B0",
+      "mechanics": "属于[[印记|正面印记]]，同一阵营（我方/敌方）同时仅能存在1种正面印记，新印记会覆盖旧印记，因此无法与其他正面印记共存。\n生效时机：所有攻击技能释放时触发，威力加成生效。\n持续时间：常驻战场，直到被其他正面印记覆盖\n可叠加",
+      "source_skills": [
+        {
+          "name": "蓄势待发",
+          "desc": "获得一层蓄势印记。"
+        }
+      ]
+    },
+    {
+      "slug": "mark-0006",
+      "catalog_id": "蓄电印记",
+      "name": "蓄电印记",
+      "faction": "正面",
+      "effect_text": "攻击技能获得进发：本次威力+10。",
+      "source_url": "https://wiki.biligame.com/rocom/wiki/%E8%93%84%E7%94%B5%E5%8D%B0%E8%AE%B0"
+    },
+    {
+      "slug": "mark-0007",
+      "catalog_id": "风起印记",
+      "name": "风起印记",
+      "faction": "正面",
+      "effect_text": "先手攻击时，本次技能威力+20%。可叠加。",
+      "source_url": "https://wiki.biligame.com/rocom/wiki/%E9%A3%8E%E8%B5%B7%E5%8D%B0%E8%AE%B0",
+      "mechanics": "属于[[印记|正面印记]]，同一阵营（我方/敌方）同时仅能存在1种正面印记，新印记会覆盖旧印记，因此无法与其他正面印记共存。\n生效时机：先手攻击技能释放时触发，本次威力加成生效。\n持续时间：常驻战场，直到被其他正面印记覆盖\n可叠加",
+      "source_skills": [
+        {
+          "name": "风起",
+          "desc": "自己获得1层风起印记。"
+        }
+      ]
+    },
+    {
+      "slug": "mark-0008",
+      "catalog_id": "龙噬印记",
+      "name": "龙噬印记",
+      "faction": "正面",
+      "effect_text": "释放3能耗技能时，获得双攻+30%。",
+      "source_url": "https://wiki.biligame.com/rocom/wiki/%E9%BE%99%E5%99%AC%E5%8D%B0%E8%AE%B0",
+      "mechanics": "属于[[印记|正面印记]]，同一阵营（我方/敌方）同时仅能存在1种正面印记，新印记会覆盖旧印记，因此无法与其他正面印记共存。\n生效时机：仅在释放**3能耗技能**时触发，攻击结算后攻击力加成生效。\n持续时间：常驻战场，直到被其他正面印记覆盖\n可叠加",
+      "source_skills": [
+        {
+          "name": "龙威",
+          "desc": "自己获得1层龙噬印记。"
+        }
+      ]
+    },
+    {
+      "slug": "mark-0009",
+      "catalog_id": "中毒印记",
+      "name": "中毒印记",
+      "faction": "负面",
+      "effect_text": "回合结束时，受到3%生命的毒系伤害，可叠加。",
+      "source_url": "https://wiki.biligame.com/rocom/wiki/%E4%B8%AD%E6%AF%92%E5%8D%B0%E8%AE%B0",
+      "mechanics": "属于[[印记|负面印记]]，同一阵营（我方/敌方）同时仅能存在1种负面印记，新印记会覆盖旧印记。\n生效时机：敌方回合结束时生效。\n可叠加"
+    },
+    {
+      "slug": "mark-0010",
+      "catalog_id": "减速印记",
+      "name": "减速印记",
+      "faction": "负面",
+      "effect_text": "速度-10。",
+      "source_url": "https://wiki.biligame.com/rocom/wiki/%E5%87%8F%E9%80%9F%E5%8D%B0%E8%AE%B0"
+    },
+    {
+      "slug": "mark-0011",
+      "catalog_id": "星陨印记",
+      "name": "星陨印记",
+      "faction": "负面",
+      "effect_text": "使用非幻系技能攻击拥有此印记的精灵时，会触发星陨印记，消耗全部星陨层数，对其造成额外的幻系伤害。可叠加",
+      "source_url": "https://wiki.biligame.com/rocom/wiki/%E6%98%9F%E9%99%A8%E5%8D%B0%E8%AE%B0",
+      "mechanics": "属于[[印记|负面印记]]，同一阵营（我方/敌方）同时仅能存在1种负面印记，新印记会覆盖旧印记，因此无法与其他负面印记共存。\n可叠加",
+      "source_skills": [
+        {
+          "name": "星轨裂变",
+          "desc": "敌方获得2层星陨印记"
+        },
+        {
+          "name": "错乱",
+          "desc": "造成魔伤，应对状态：敌方获得3层星陨印记。"
+        },
+        {
+          "name": "超新星馈赠",
+          "desc": "敌方获得2层星陨印记，每使用1次，赋予的星陨印记层数+1。"
+        },
+        {
+          "name": "冥想",
+          "desc": "减伤80%，应对攻击：敌方获得2层星陨印记。"
+        },
+        {
+          "name": "空间压迫",
+          "desc": "造成物伤，敌方获得1层星陨印记。"
+        },
+        {
+          "name": "星链",
+          "desc": "2连击，每次连击使敌方获得1层星陨印记。"
+        },
+        {
+          "name": "超维投射",
+          "desc": "敌方获得4层星陨印记。"
+        },
+        {
+          "name": "二律背反",
+          "desc": "敌方获得3层星陨印记，应对防御：额外使敌方星陨印记层数翻倍。"
+        },
+        {
+          "name": "心灵洞悉",
+          "desc": "敌方获得星陨印记，获得层数等于敌方印记层数。"
+        }
+      ]
+    },
+    {
+      "slug": "mark-0012",
+      "catalog_id": "棘刺印记",
+      "name": "棘刺印记",
+      "faction": "负面",
+      "effect_text": "场上精灵离场时，更换入场的精灵失去6%最大生命。",
+      "source_url": "https://wiki.biligame.com/rocom/wiki/%E6%A3%98%E5%88%BA%E5%8D%B0%E8%AE%B0",
+      "mechanics": "属于负面印记，同一阵营（我方/敌方）同时仅能存在1种负面印记，新印记会覆盖旧印记。\n生效时机：宠物切换入场时触发，立即扣除对应生命值。\n可叠加。",
+      "source_skills": [
+        {
+          "name": "棘刺",
+          "desc": "敌方获得1层棘刺印记。"
+        }
+      ]
+    },
+    {
+      "slug": "mark-0013",
+      "catalog_id": "降灵印记",
+      "name": "降灵印记",
+      "faction": "负面",
+      "effect_text": "入场时失去1能量。",
+      "source_url": "https://wiki.biligame.com/rocom/wiki/%E9%99%8D%E7%81%B5%E5%8D%B0%E8%AE%B0",
+      "mechanics": "属于负面印记，同一阵营（我方/敌方）同时仅能存在1种负面印记，新印记会覆盖旧印记。\n生效时机：宠物切换入场时触发，入场时失去1点能量。\n可叠加。",
+      "source_skills": [
+        {
+          "name": "降灵",
+          "desc": "目标获得1层降灵印记。"
+        }
+      ]
+    }
+  ]
+}

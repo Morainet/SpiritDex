@@ -4,6 +4,7 @@ import type { ArticleDetail, ArticleListItem } from "@/types/article";
 import type { SkillDetail, SkillListItem } from "@/types/skill";
 import type { ItemDetail, ItemListItem } from "@/types/item";
 import type { QuestDetail, QuestListItem } from "@/types/quest";
+import type { MarkDetail, MarkListItem } from "@/types/mark";
 
 export interface ApiResult<T> {
   code: number;
@@ -151,6 +152,32 @@ export async function fetchQuestDetail(slug: string): Promise<QuestDetail | null
   if (res.status === 404) return null;
   if (!res.ok) throw new Error(`API ${res.status}: /api/quests/${slug}`);
   const json: ApiResult<QuestDetail> = await res.json();
+  return json.data ?? null;
+}
+
+// ====== 印记图鉴 ======
+
+export interface MarkFilter {
+  faction?: string;
+  q?: string;
+  page?: number;
+  size?: number;
+}
+
+export async function fetchMarks(filter: MarkFilter = {}): Promise<PageResult<MarkListItem>> {
+  const params = new URLSearchParams();
+  if (filter.faction) params.set("faction", filter.faction);
+  if (filter.q) params.set("q", filter.q);
+  params.set("page", String(filter.page ?? 1));
+  params.set("size", String(filter.size ?? 24));
+  return getJson<PageResult<MarkListItem>>(`/api/marks?${params}`);
+}
+
+export async function fetchMarkDetail(slug: string): Promise<MarkDetail | null> {
+  const res = await fetch(`${baseUrl()}/api/marks/${slug}`, { cache: "no-store" });
+  if (res.status === 404) return null;
+  if (!res.ok) throw new Error(`API ${res.status}: /api/marks/${slug}`);
+  const json: ApiResult<MarkDetail> = await res.json();
   return json.data ?? null;
 }
 

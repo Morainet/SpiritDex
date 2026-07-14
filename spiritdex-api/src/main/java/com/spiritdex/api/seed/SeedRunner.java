@@ -44,6 +44,7 @@ public class SeedRunner implements CommandLineRunner {
     private final ArticleMapper articleMapper;
     private final ItemMapper itemMapper;
     private final QuestMapper questMapper;
+    private final MarkMapper markMapper;
 
     /** batch flush 大小。 */
     private static final int BATCH = 100;
@@ -75,10 +76,11 @@ public class SeedRunner implements CommandLineRunner {
         int te = seedTypeEffectiveness(dir, typeSlugToId);
         int it = seedItems(dir);
         int qs = seedQuests(dir);
+        int mk = seedMarks(dir);
         int ar = seedArticles(dir);
 
-        log.info("[seed] 完成。types={}, skills={}, pets={}, pet_skills={}, evo_chains={}, evo_stages={}, type_eff={}, items={}, quests={}, articles={}",
-                t, s, p, ps, ec, es, te, it, qs, ar);
+        log.info("[seed] 完成。types={}, skills={}, pets={}, pet_skills={}, evo_chains={}, evo_stages={}, type_eff={}, items={}, quests={}, marks={}, articles={}",
+                t, s, p, ps, ec, es, te, it, qs, mk, ar);
     }
 
     // ====== 各实体导入 ======
@@ -390,6 +392,46 @@ public class SeedRunner implements CommandLineRunner {
             flushIfBatch(i, items.size());
         }
         log.info("[seed] quests: insert={}, update={}", counts[0], counts[1]);
+        return items.size();
+    }
+
+    /** 导入印记图鉴（按 catalog_id upsert）。source_skills 是 JSONB 列表，用 ObjectMapper 反序列化。 */
+    @SuppressWarnings("unchecked")
+    private int seedMarks(File dir) {
+        List<Map<String, Object>> items = readItems(dir, "marks.json");
+        if (items.isEmpty()) {
+            log.info("[seed] marks: 文件缺失或为空，跳过");
+            return 0;
+        }
+        int[] counts = {0, 0};
+        for (int i = 0; i < items.size(); i++) {
+            Map<String, Object> it = items.get(i);
+            String catalogId = str(it.get("catalog_id"));
+            Mark existing = markMapper.selectOne(
+                    new LambdaQueryWrapper<Mark>().eq(Mark::getCatalogId, catalogId));
+            Mark e = existing != null ? existing : new Mark();
+            e.setSlug(str(it.get("slug")));
+            e.setCatalogId(catalogId);
+            e.setName(str(it.get("name")));
+            e.setFaction(str(it.get("faction")));
+            e.setEffectText(str(it.get("effect_text")));
+            e.setMechanics(str(it.get("mechanics")));
+            // source_skills：JSONB 列表 [{name, desc}]，用 ObjectMapper 转 List<Map>
+            Object sk = it.get("source_skills");
+            if (sk instanceof List<?> list && !list.isEmpty()) {
+                try {
+                    e.setSourceSkills(objectMapper.readValue(
+                            objectMapper.writeValueAsString(list),
+                            new com.fasterxml.jackson.core.type.TypeReference<List<Map<String, Object>>>() {}));
+                } catch (Exception ex) {
+                    log.warn("[seed] marks: source_skills 解析失败: {}", ex.getMessage());
+                }
+            }
+            e.setSourceUrl(str(it.get("source_url")));
+            save(markMapper, e, existing, counts);
+            flushIfBatch(i, items.size());
+        }
+        log.info("[seed] marks: insert={}, update={}", counts[0], counts[1]);
         return items.size();
     }
 
