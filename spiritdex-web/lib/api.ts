@@ -2,6 +2,7 @@ import type { PageResult, PetDetail, PetListItem } from "@/types/pet";
 import type { SpiritType, TypeMatrix } from "@/types/spiritdex";
 import type { ArticleDetail, ArticleListItem } from "@/types/article";
 import type { SkillDetail, SkillListItem } from "@/types/skill";
+import type { ItemDetail, ItemListItem } from "@/types/item";
 
 export interface ApiResult<T> {
   code: number;
@@ -95,6 +96,34 @@ export async function fetchSkillDetail(slug: string): Promise<SkillDetail | null
   if (res.status === 404) return null;
   if (!res.ok) throw new Error(`API ${res.status}: /api/skills/${slug}`);
   const json: ApiResult<SkillDetail> = await res.json();
+  return json.data ?? null;
+}
+
+// ====== 道具图鉴 ======
+
+export interface ItemFilter {
+  mainCategory?: string;
+  rarity?: string;
+  q?: string;
+  page?: number;
+  size?: number;
+}
+
+export async function fetchItems(filter: ItemFilter = {}): Promise<PageResult<ItemListItem>> {
+  const params = new URLSearchParams();
+  if (filter.mainCategory) params.set("mainCategory", filter.mainCategory);
+  if (filter.rarity) params.set("rarity", filter.rarity);
+  if (filter.q) params.set("q", filter.q);
+  params.set("page", String(filter.page ?? 1));
+  params.set("size", String(filter.size ?? 24));
+  return getJson<PageResult<ItemListItem>>(`/api/items?${params}`);
+}
+
+export async function fetchItemDetail(slug: string): Promise<ItemDetail | null> {
+  const res = await fetch(`${baseUrl()}/api/items/${slug}`, { cache: "no-store" });
+  if (res.status === 404) return null;
+  if (!res.ok) throw new Error(`API ${res.status}: /api/items/${slug}`);
+  const json: ApiResult<ItemDetail> = await res.json();
   return json.data ?? null;
 }
 

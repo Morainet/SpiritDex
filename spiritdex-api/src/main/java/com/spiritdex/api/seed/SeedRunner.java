@@ -42,6 +42,7 @@ public class SeedRunner implements CommandLineRunner {
     private final EvolutionStageMapper evolutionStageMapper;
     private final TypeEffectivenessMapper typeEffectivenessMapper;
     private final ArticleMapper articleMapper;
+    private final ItemMapper itemMapper;
 
     /** batch flush 大小。 */
     private static final int BATCH = 100;
@@ -71,10 +72,11 @@ public class SeedRunner implements CommandLineRunner {
         int ec = seedEvolutionChains(dir, evoGroupToId);
         int es = seedEvolutionStages(dir, evoGroupToId, petCatalogToId);
         int te = seedTypeEffectiveness(dir, typeSlugToId);
+        int it = seedItems(dir);
         int ar = seedArticles(dir);
 
-        log.info("[seed] 完成。types={}, skills={}, pets={}, pet_skills={}, evo_chains={}, evo_stages={}, type_eff={}, articles={}",
-                t, s, p, ps, ec, es, te, ar);
+        log.info("[seed] 完成。types={}, skills={}, pets={}, pet_skills={}, evo_chains={}, evo_stages={}, type_eff={}, items={}, articles={}",
+                t, s, p, ps, ec, es, te, it, ar);
     }
 
     // ====== 各实体导入 ======
@@ -321,6 +323,39 @@ public class SeedRunner implements CommandLineRunner {
         }
         log.info("[seed] type_effectiveness: upserted={}, skipped={}", ok, skip);
         return ok;
+    }
+
+    /** 导入道具图鉴（按 catalog_id upsert，纯展示无关联）。 */
+    private int seedItems(File dir) {
+        List<Map<String, Object>> items = readItems(dir, "items.json");
+        if (items.isEmpty()) {
+            log.info("[seed] items: 文件缺失或为空，跳过");
+            return 0;
+        }
+        int[] counts = {0, 0};
+        for (int i = 0; i < items.size(); i++) {
+            Map<String, Object> it = items.get(i);
+            String catalogId = str(it.get("catalog_id"));
+            Item existing = itemMapper.selectOne(
+                    new LambdaQueryWrapper<Item>().eq(Item::getCatalogId, catalogId));
+            Item e = existing != null ? existing : new Item();
+            e.setSlug(str(it.get("slug")));
+            e.setCatalogId(catalogId);
+            e.setName(str(it.get("name")));
+            e.setRarity(str(it.get("rarity")));
+            e.setMainCategory(str(it.get("main_category")));
+            e.setSubCategory(str(it.get("sub_category")));
+            e.setUsageText(str(it.get("usage")));
+            e.setDescription(str(it.get("description")));
+            e.setSourceText(str(it.get("source")));
+            e.setIconId(str(it.get("icon_id")));
+            e.setDataVersion(str(it.get("data_version")));
+            e.setSourceUrl(str(it.get("source_url")));
+            save(itemMapper, e, existing, counts);
+            flushIfBatch(i, items.size());
+        }
+        log.info("[seed] items: insert={}, update={}", counts[0], counts[1]);
+        return items.size();
     }
 
     /** 导入攻略文章（Markdown 正文，按 slug upsert）。 */

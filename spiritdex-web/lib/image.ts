@@ -16,3 +16,9 @@ export function petIllustrationUrl(ilKey?: string | null): string | null {
   if (!ilKey) return null;
   return `${WIKI}/Special:FilePath/${ilKey}.png`;
 }
+
+/** 道具图标（icon_id，如 100616）。 */
+export function itemIconUrl(iconId?: string | null): string | null {
+  if (!iconId) return null;
+  return `${WIKI}/Special:FilePath/${iconId}.png`;
+}

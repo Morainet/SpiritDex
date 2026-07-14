@@ -9,6 +9,7 @@ import {
   Database,
   Ghost,
   Menu,
+  Package,
   Settings2,
   Shield,
   Sparkles,
@@ -24,6 +25,7 @@ const NAV_GROUPS = [
     items: [
       { href: "/pets", icon: Database, label: "精灵图鉴" },
       { href: "/skills", icon: Zap, label: "技能库" },
+      { href: "/items", icon: Package, label: "道具图鉴" },
       { href: "/types/matrix", icon: Shield, label: "属性相克" },
       { href: "/articles", icon: BookOpen, label: "攻略" },
     ],

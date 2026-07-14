@@ -9,6 +9,7 @@
     python3 main.py --activities       # 仅抓取活动公告（→ activities.json）
     python3 main.py --activities --max-activities 5
     python3 main.py --skill-pools      # 抓取完整技能池 native/stone/blood（→ 覆盖 pet_skills.json）
+    python3 main.py --items            # 抓取道具图鉴（Category:道具 → items.json；约 30 分钟）
 
 合规：QPS≤1、自定义 UA、每条记录带 source_url、只取事实数据。
 """
@@ -25,6 +26,7 @@ from datetime import datetime, timezone
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 from src.activity_fetcher import fetch_activities   # noqa: E402
+from src.item_fetcher import fetch_items            # noqa: E402
 from src.skill_pool_fetcher import fetch_skill_pools  # noqa: E402
 from src.api import WikiApi                        # noqa: E402
 from src.config import settings                    # noqa: E402
@@ -47,6 +49,10 @@ def main(argv: list[str] | None = None) -> int:
                         help="抓取完整技能池（native/stone/blood，覆盖 pet_skills.json；约 11 分钟）")
     parser.add_argument("--skill-pools-limit", type=int, default=None,
                         help="技能池抓取上限精灵数（调试用，默认全部 671）")
+    parser.add_argument("--items", action="store_true",
+                        help="抓取道具图鉴（Category:道具，→ items.json；约 30 分钟）")
+    parser.add_argument("--items-limit", type=int, default=None,
+                        help="道具抓取上限页数（调试用，默认全部约 1780）")
     args = parser.parse_args(argv)
 
     # —— 活动抓取分支（独立于宠物数据主流程）——
@@ -56,6 +62,10 @@ def main(argv: list[str] | None = None) -> int:
     # —— 技能池抓取分支（独立于宠物数据主流程）——
     if args.skill_pools:
         return _run_skill_pools(args)
+
+    # —— 道具抓取分支（独立于宠物数据主流程）——
+    if args.items:
+        return _run_items(args)
 
     api = None if args.offline else WikiApi()
     print(f"[fetch] 模式={'离线(fixture缓存)' if args.offline else '在线(BWIKI API)'} ...")
@@ -170,6 +180,47 @@ def _run_skill_pools(args: argparse.Namespace) -> int:
     with open(out_path, "w", encoding="utf-8") as f:
         json.dump({"meta": meta, "items": items}, f, ensure_ascii=False, indent=2)
     print(f"[skill-pool] 已写出 {out_path}（{len(items)} 条，原先 671 条 feature-only）")
+    return 0
+
+
+def _run_items(args: argparse.Namespace) -> int:
+    """抓取道具图鉴（Category:道具），写出 items.json。
+
+    数据源：每只道具页面的 ``{{物品信息|...}}`` 模板参数（调研确认 1780 页）。
+    见 src/item_fetcher.py 文档。
+    """
+    if args.offline:
+        print("[item] --items 不支持离线模式（需联网逐页抓取）")
+        return 1
+
+    api = WikiApi()
+    print(f"[item] 开始抓取道具图鉴（QPS≤1，预计约 30 分钟）...")
+    items, stats = fetch_items(api, limit=args.items_limit)
+
+    print("[item] 抓取统计：")
+    for k, v in stats.items():
+        print(f"    {k:14s} {v}")
+
+    if args.dry_run:
+        print("[item] --dry-run，跳过写文件")
+        return 0
+
+    out_dir = args.seed_dir or settings.seed_dir
+    os.makedirs(out_dir, exist_ok=True)
+    payload = {
+        "meta": {
+            "source": settings.source_name,
+            "source_url": settings.source_module_url,
+            "scraped_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
+            "count": len(items),
+            "note": "来自 Category:道具 页面级 {{物品信息}} 模板",
+        },
+        "items": items,
+    }
+    path = os.path.join(out_dir, "items.json")
+    with open(path, "w", encoding="utf-8") as f:
+        json.dump(payload, f, ensure_ascii=False, indent=2)
+    print(f"[item] 已写出 {path}（{len(items)} 条道具）")
     return 0
 
 
