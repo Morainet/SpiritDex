@@ -10,6 +10,7 @@
     python3 main.py --activities --max-activities 5
     python3 main.py --skill-pools      # 抓取完整技能池 native/stone/blood（→ 覆盖 pet_skills.json）
     python3 main.py --items            # 抓取道具图鉴（Category:道具 → items.json；约 30 分钟）
+    python3 main.py --quests           # 抓取任务图鉴（Category:任务 → quests.json；约 20 秒）
 
 合规：QPS≤1、自定义 UA、每条记录带 source_url、只取事实数据。
 """
@@ -27,6 +28,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 from src.activity_fetcher import fetch_activities   # noqa: E402
 from src.item_fetcher import fetch_items            # noqa: E402
+from src.quest_fetcher import fetch_quests          # noqa: E402
 from src.skill_pool_fetcher import fetch_skill_pools  # noqa: E402
 from src.api import WikiApi                        # noqa: E402
 from src.config import settings                    # noqa: E402
@@ -53,6 +55,8 @@ def main(argv: list[str] | None = None) -> int:
                         help="抓取道具图鉴（Category:道具，→ items.json；约 30 分钟）")
     parser.add_argument("--items-limit", type=int, default=None,
                         help="道具抓取上限页数（调试用，默认全部约 1780）")
+    parser.add_argument("--quests", action="store_true",
+                        help="抓取任务图鉴（Category:任务，→ quests.json；约 20 秒）")
     args = parser.parse_args(argv)
 
     # —— 活动抓取分支（独立于宠物数据主流程）——
@@ -66,6 +70,10 @@ def main(argv: list[str] | None = None) -> int:
     # —— 道具抓取分支（独立于宠物数据主流程）——
     if args.items:
         return _run_items(args)
+
+    # —— 任务抓取分支（独立于宠物数据主流程）——
+    if args.quests:
+        return _run_quests(args)
 
     api = None if args.offline else WikiApi()
     print(f"[fetch] 模式={'离线(fixture缓存)' if args.offline else '在线(BWIKI API)'} ...")
@@ -221,6 +229,47 @@ def _run_items(args: argparse.Namespace) -> int:
     with open(path, "w", encoding="utf-8") as f:
         json.dump(payload, f, ensure_ascii=False, indent=2)
     print(f"[item] 已写出 {path}（{len(items)} 条道具）")
+    return 0
+
+
+def _run_quests(args: argparse.Namespace) -> int:
+    """抓取任务图鉴（Category:任务），写出 quests.json。
+
+    数据源：任务页面的 ``{{任务信息|...}}`` 模板参数（调研确认 18 页）。
+    见 src/quest_fetcher.py 文档。
+    """
+    if args.offline:
+        print("[quest] --quests 不支持离线模式（需联网逐页抓取）")
+        return 1
+
+    api = WikiApi()
+    print(f"[quest] 开始抓取任务图鉴...")
+    items, stats = fetch_quests(api)
+
+    print("[quest] 抓取统计：")
+    for k, v in stats.items():
+        print(f"    {k:14s} {v}")
+
+    if args.dry_run:
+        print("[quest] --dry-run，跳过写文件")
+        return 0
+
+    out_dir = args.seed_dir or settings.seed_dir
+    os.makedirs(out_dir, exist_ok=True)
+    payload = {
+        "meta": {
+            "source": settings.source_name,
+            "source_url": settings.source_module_url,
+            "scraped_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
+            "count": len(items),
+            "note": "来自 Category:任务 页面级 {{任务信息}} 模板",
+        },
+        "items": items,
+    }
+    path = os.path.join(out_dir, "quests.json")
+    with open(path, "w", encoding="utf-8") as f:
+        json.dump(payload, f, ensure_ascii=False, indent=2)
+    print(f"[quest] 已写出 {path}（{len(items)} 条任务）")
     return 0
 
 

@@ -3,6 +3,7 @@ import type { SpiritType, TypeMatrix } from "@/types/spiritdex";
 import type { ArticleDetail, ArticleListItem } from "@/types/article";
 import type { SkillDetail, SkillListItem } from "@/types/skill";
 import type { ItemDetail, ItemListItem } from "@/types/item";
+import type { QuestDetail, QuestListItem } from "@/types/quest";
 
 export interface ApiResult<T> {
   code: number;
@@ -124,6 +125,32 @@ export async function fetchItemDetail(slug: string): Promise<ItemDetail | null> 
   if (res.status === 404) return null;
   if (!res.ok) throw new Error(`API ${res.status}: /api/items/${slug}`);
   const json: ApiResult<ItemDetail> = await res.json();
+  return json.data ?? null;
+}
+
+// ====== 任务图鉴 ======
+
+export interface QuestFilter {
+  category?: string;
+  q?: string;
+  page?: number;
+  size?: number;
+}
+
+export async function fetchQuests(filter: QuestFilter = {}): Promise<PageResult<QuestListItem>> {
+  const params = new URLSearchParams();
+  if (filter.category) params.set("category", filter.category);
+  if (filter.q) params.set("q", filter.q);
+  params.set("page", String(filter.page ?? 1));
+  params.set("size", String(filter.size ?? 24));
+  return getJson<PageResult<QuestListItem>>(`/api/quests?${params}`);
+}
+
+export async function fetchQuestDetail(slug: string): Promise<QuestDetail | null> {
+  const res = await fetch(`${baseUrl()}/api/quests/${slug}`, { cache: "no-store" });
+  if (res.status === 404) return null;
+  if (!res.ok) throw new Error(`API ${res.status}: /api/quests/${slug}`);
+  const json: ApiResult<QuestDetail> = await res.json();
   return json.data ?? null;
 }
 

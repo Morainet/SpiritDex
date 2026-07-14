@@ -43,6 +43,7 @@ public class SeedRunner implements CommandLineRunner {
     private final TypeEffectivenessMapper typeEffectivenessMapper;
     private final ArticleMapper articleMapper;
     private final ItemMapper itemMapper;
+    private final QuestMapper questMapper;
 
     /** batch flush 大小。 */
     private static final int BATCH = 100;
@@ -73,10 +74,11 @@ public class SeedRunner implements CommandLineRunner {
         int es = seedEvolutionStages(dir, evoGroupToId, petCatalogToId);
         int te = seedTypeEffectiveness(dir, typeSlugToId);
         int it = seedItems(dir);
+        int qs = seedQuests(dir);
         int ar = seedArticles(dir);
 
-        log.info("[seed] 完成。types={}, skills={}, pets={}, pet_skills={}, evo_chains={}, evo_stages={}, type_eff={}, items={}, articles={}",
-                t, s, p, ps, ec, es, te, it, ar);
+        log.info("[seed] 完成。types={}, skills={}, pets={}, pet_skills={}, evo_chains={}, evo_stages={}, type_eff={}, items={}, quests={}, articles={}",
+                t, s, p, ps, ec, es, te, it, qs, ar);
     }
 
     // ====== 各实体导入 ======
@@ -355,6 +357,39 @@ public class SeedRunner implements CommandLineRunner {
             flushIfBatch(i, items.size());
         }
         log.info("[seed] items: insert={}, update={}", counts[0], counts[1]);
+        return items.size();
+    }
+
+    /** 导入任务图鉴（按 catalog_id upsert，纯展示无关联）。 */
+    private int seedQuests(File dir) {
+        List<Map<String, Object>> items = readItems(dir, "quests.json");
+        if (items.isEmpty()) {
+            log.info("[seed] quests: 文件缺失或为空，跳过");
+            return 0;
+        }
+        int[] counts = {0, 0};
+        for (int i = 0; i < items.size(); i++) {
+            Map<String, Object> it = items.get(i);
+            String catalogId = str(it.get("catalog_id"));
+            Quest existing = questMapper.selectOne(
+                    new LambdaQueryWrapper<Quest>().eq(Quest::getCatalogId, catalogId));
+            Quest e = existing != null ? existing : new Quest();
+            e.setSlug(str(it.get("slug")));
+            e.setCatalogId(catalogId);
+            e.setName(str(it.get("name")));
+            e.setSeq(str(it.get("seq")));
+            e.setCategory(str(it.get("category")));
+            e.setLocation(str(it.get("location")));
+            e.setDescription(str(it.get("description")));
+            e.setReward(str(it.get("reward")));
+            e.setImageKey(str(it.get("image_key")));
+            e.setNote(str(it.get("note")));
+            e.setAttribution(str(it.get("attribution")));
+            e.setSourceUrl(str(it.get("source_url")));
+            save(questMapper, e, existing, counts);
+            flushIfBatch(i, items.size());
+        }
+        log.info("[seed] quests: insert={}, update={}", counts[0], counts[1]);
         return items.size();
     }
 
