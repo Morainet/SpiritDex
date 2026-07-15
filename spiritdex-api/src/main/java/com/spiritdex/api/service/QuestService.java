@@ -22,6 +22,8 @@ import java.util.List;
 public class QuestService extends ServiceImpl<QuestMapper, Quest> {
 
     public PageResult<QuestListItemDto> search(String category, String q, int page, int size) {
+        page = PageResult.normalizePage(page);
+        size = PageResult.normalizeSize(size, 100);
         LambdaQueryWrapper<Quest> w = Wrappers.<Quest>lambdaQuery().orderByAsc(Quest::getSeq);
         if (category != null && !category.isBlank()) w.eq(Quest::getCategory, category);
         if (q != null && !q.isBlank())               w.like(Quest::getName, q.trim());

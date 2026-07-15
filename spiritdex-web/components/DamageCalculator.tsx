@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import type { PetDetail, PetListItem } from "@/types/pet";
+import type { PetListItem, PetStats } from "@/types/pet";
 import type { SpiritType } from "@/types/spiritdex";
 import type { TypeMatrix } from "@/types/spiritdex";
 import { combinedMultiplier, multiplier } from "@/lib/type-effectiveness";
@@ -23,7 +23,7 @@ export default function DamageCalculator({
   matrix,
 }: {
   pets: PetListItem[];
-  detailMap: Record<string, PetDetail>;
+  detailMap: Record<string, PetStats>;
   matrix: TypeMatrix;
 }) {
   const [atkSlug, setAtkSlug] = useState<string | undefined>();

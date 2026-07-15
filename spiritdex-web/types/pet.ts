@@ -1,3 +1,14 @@
+/** 精灵精简数据（工具页用，含种族值+属性，一次请求替代逐个查详情）。 */
+export interface PetStats {
+  slug: string;
+  dexNo: number;
+  name: string;
+  stage?: number;
+  types?: string[];
+  baseStats?: Record<string, number>;
+  headKey?: string | null;
+}
+
 /** 精灵列表项（精简）。 */
 export interface PetListItem {
   slug: string;
@@ -28,6 +39,8 @@ export interface PetDetail {
   canDoubleRide?: boolean;
   hasShiny?: boolean;
   habitat?: string;
+  /** 分布地区（游戏内地名列表）。 */
+  locations?: string[];
   illustrationKey?: string | null;
   headKey?: string | null;
   evolutionGroupId?: string;

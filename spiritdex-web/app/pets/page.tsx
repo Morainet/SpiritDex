@@ -22,21 +22,25 @@ export default async function PetsPage({
   const sp = await searchParams;
   const type = pick(sp.type);
   const stageStr = pick(sp.stage);
+  const location = pick(sp.location);
   const q = pick(sp.q);
   const page = Math.max(1, parseInt(pick(sp.page) ?? "1", 10) || 1);
 
   const [types, result] = await Promise.all([
     fetchTypes(),
-    fetchPets({ type, stage: stageStr ? parseInt(stageStr, 10) : undefined, q, page, size: 24 }),
+    fetchPets({ type, stage: stageStr ? parseInt(stageStr, 10) : undefined, location, q, page, size: 24 }),
   ]);
 
-  const passThrough: Record<string, string | undefined> = { type, stage: stageStr, q };
+  const passThrough: Record<string, string | undefined> = { type, stage: stageStr, location, q };
 
   return (
     <main className="mx-auto max-w-7xl px-4 py-6">
       <header className="mb-4">
         <h1 className="text-2xl font-bold">精灵图鉴</h1>
-        <p className="text-sm text-muted">共 {result.total} 只精灵</p>
+        <p className="text-sm text-muted">
+          共 {result.total} 只精灵
+          {location && <> · 分布地区：<span className="font-medium text-foreground">{location}</span></>}
+        </p>
       </header>
 
       <Suspense fallback={<div className="mb-6 h-16" />}>

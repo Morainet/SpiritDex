@@ -125,20 +125,59 @@ def parse_skill_pool(
     return pool
 
 
+# 非地名描述（生态性/占位文本），不作为分布地名入库
+_NON_LOCATION = {"行踪神秘", "行踪有些难以捉摸", "行踪难以捉摸", "-", ""}
+# 生态描述前缀模式（"常见于XX"），这类不是具体游戏地名
+_ECO_DESC_RE = re.compile(r"^(常见于|偶尔出现于|多见于|栖息于|分布于)")
+
+
+def _is_real_location(p: str) -> bool:
+    """判断一个分割片段是否是真实游戏地名（而非生态描述/占位）。"""
+    if not p or p in _NON_LOCATION:
+        return False
+    if _ECO_DESC_RE.match(p):
+        return False
+    return True
+
+
+def parse_distribution(wikitext: str) -> list[str]:
+    """从页面 wikitext 提取「分布地区」地名列表。
+
+    ``{{精灵信息/兼容|分布地区=地名1 / 地名2 / ...}}``，分隔符是 ``/``（带空格）。
+    过滤非地名描述（如「行踪神秘」「常见于山林」）。
+    """
+    params = _extract_template_params(wikitext)
+    if params is None:
+        return []
+    raw = params.get("分布地区", "")
+    if not raw or raw.strip() in _NON_LOCATION:
+        return []
+    # 按 / 分隔（可能带空格），去空白，过滤占位/生态描述
+    parts = [p.strip() for p in raw.split("/")]
+    seen: set[str] = set()
+    locations: list[str] = []
+    for p in parts:
+        if _is_real_location(p) and p not in seen:
+            seen.add(p)
+            locations.append(p)
+    return locations
+
+
 def fetch_skill_pools(
     api: WikiApi,
     pets_items: list[dict],
     skills_items: list[dict],
     *,
     progress_every: int = 50,
-) -> tuple[list[dict], dict]:
-    """抓取所有精灵的技能池。
+) -> tuple[list[dict], dict, dict[str, list[str]]]:
+    """抓取所有精灵的技能池 + 分布地区（复用同一次页面抓取）。
 
-    返回 ``(items, stats)``：
+    返回 ``(items, stats, distribution)``：
     - items：合并后的 pet_skill 记录（含 feature + native/blood/stone）
     - stats：统计字典（命中率、抓取失败数等）
+    - distribution：``{pet_slug: [地名, ...]}``，每只精灵的分布地区列表
 
-    按 page name 去重抓取（同名精灵共用一份技能池）。
+    按 page name 去重抓取（同名精灵共用一份技能池 + 分布地区）。
     feature 技能保留自原 ``pets_items``（确保不丢已有特性关联）。
     """
     name_to_catalog = build_name_index(skills_items)
@@ -146,6 +185,8 @@ def fetch_skill_pools(
 
     # 缓存：page_name(中文) -> SkillPool（同名精灵共用）
     page_cache: dict[str, SkillPool] = {}
+    # 缓存：page_name(中文) -> 分布地区列表（同名精灵共用）
+    dist_cache: dict[str, list[str]] = {}
     fetch_ok = fetch_fail = 0
 
     # 先按 name 去重，确定要抓的页面（保留 name -> 首个 pet_slug 便于缓存命中展示）
@@ -159,15 +200,18 @@ def fetch_skill_pools(
     for i, name in enumerate(unique_names, start=1):
         try:
             wikitext = api.fetch_module_wikitext(name)
-            # 用首个 pet_slug 解析（技能池内容与 slug 无关，仅用于 to_items 时替换）
+            # 技能池
             first_slug = pets_by_name[name][0]["slug"]
             pool = parse_skill_pool(wikitext, first_slug, name_to_catalog)
             if pool is not None:
                 page_cache[name] = pool
                 fetch_ok += 1
             else:
-                # 页面存在但无模板，记为解析失败
                 fetch_fail += 1
+            # 分布地区（复用同一次抓取，零额外开销）
+            locations = parse_distribution(wikitext)
+            if locations:
+                dist_cache[name] = locations
         except Exception as ex:  # noqa: BLE001 —— 单页失败不阻断整体
             fetch_fail += 1
             if i <= 5 or i % 100 == 0:
@@ -230,7 +274,15 @@ def fetch_skill_pools(
         "pets_with_pool": pets_with_pool,
         "skill_records": len(deduped),
     }
-    return deduped, stats
+
+    # 展开分布地区：同名精灵各自生成一份 {pet_slug: [地名]}
+    distribution: dict[str, list[str]] = {}
+    for pet in pets_items:
+        locs = dist_cache.get(pet["name"])
+        if locs:
+            distribution[pet["slug"]] = locs
+
+    return deduped, stats, distribution
 
 
 # ====== 内部工具 ======

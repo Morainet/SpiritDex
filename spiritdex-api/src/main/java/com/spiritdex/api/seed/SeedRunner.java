@@ -38,6 +38,7 @@ public class SeedRunner implements CommandLineRunner {
     private final PetMapper petMapper;
     private final PetTypeMapper petTypeMapper;
     private final PetSkillMapper petSkillMapper;
+    private final PetLocationMapper petLocationMapper;
     private final EvolutionChainMapper evolutionChainMapper;
     private final EvolutionStageMapper evolutionStageMapper;
     private final TypeEffectivenessMapper typeEffectivenessMapper;
@@ -45,6 +46,7 @@ public class SeedRunner implements CommandLineRunner {
     private final ItemMapper itemMapper;
     private final QuestMapper questMapper;
     private final MarkMapper markMapper;
+    private final MapPointMapper mapPointMapper;
 
     /** batch flush 大小。 */
     private static final int BATCH = 100;
@@ -71,16 +73,18 @@ public class SeedRunner implements CommandLineRunner {
         int s = seedSkills(dir, skillCatalogToId);
         int p = seedPets(dir, typeSlugToId, petSlugToId, petCatalogToId);
         int ps = seedPetSkills(dir, petSlugToId, skillCatalogToId);
+        int pl = seedPetLocations(dir, petSlugToId);
         int ec = seedEvolutionChains(dir, evoGroupToId);
         int es = seedEvolutionStages(dir, evoGroupToId, petCatalogToId);
         int te = seedTypeEffectiveness(dir, typeSlugToId);
         int it = seedItems(dir);
         int qs = seedQuests(dir);
         int mk = seedMarks(dir);
+        int mp = seedMapPoints(dir);
         int ar = seedArticles(dir);
 
-        log.info("[seed] 完成。types={}, skills={}, pets={}, pet_skills={}, evo_chains={}, evo_stages={}, type_eff={}, items={}, quests={}, marks={}, articles={}",
-                t, s, p, ps, ec, es, te, it, qs, mk, ar);
+        log.info("[seed] 完成。types={}, skills={}, pets={}, pet_skills={}, pet_locations={}, evo_chains={}, evo_stages={}, type_eff={}, items={}, quests={}, marks={}, map_points={}, articles={}",
+                t, s, p, ps, pl, ec, es, te, it, qs, mk, mp, ar);
     }
 
     // ====== 各实体导入 ======
@@ -228,6 +232,44 @@ public class SeedRunner implements CommandLineRunner {
             flushIfBatch(i, items.size());
         }
         log.info("[seed] pet_skills: inserted={}, skipped={}", ok, skip);
+        return ok;
+    }
+
+    /** 导入精灵分布地区（按 (pet_id, location) 去重，UNIQUE 冲突跳过）。 */
+    private int seedPetLocations(File dir, Map<String, Long> petSlugToId) {
+        List<Map<String, Object>> items = readItems(dir, "pet_locations.json");
+        if (items.isEmpty()) {
+            log.info("[seed] pet_locations: 文件缺失或为空，跳过");
+            return 0;
+        }
+        int ok = 0, skip = 0;
+        java.util.Set<String> seen = new java.util.HashSet<>();
+        for (int i = 0; i < items.size(); i++) {
+            Map<String, Object> it = items.get(i);
+            Long petId = petSlugToId.get(str(it.get("pet_slug")));
+            String location = str(it.get("location"));
+            if (petId == null || location == null || location.isBlank()) {
+                skip++;
+                continue;
+            }
+            String key = petId + ":" + location;
+            if (seen.contains(key)) {
+                continue;
+            }
+            seen.add(key);
+            PetLocation pl = new PetLocation();
+            pl.setPetId(petId);
+            pl.setLocation(location);
+            pl.setDeleted(0);
+            try {
+                petLocationMapper.insert(pl);
+                ok++;
+            } catch (org.springframework.dao.DuplicateKeyException ex) {
+                // UNIQUE(pet_id, location) 冲突，跳过（幂等）
+            }
+            flushIfBatch(i, items.size());
+        }
+        log.info("[seed] pet_locations: inserted={}, skipped={}", ok, skip);
         return ok;
     }
 
@@ -433,6 +475,33 @@ public class SeedRunner implements CommandLineRunner {
         }
         log.info("[seed] marks: insert={}, update={}", counts[0], counts[1]);
         return items.size();
+    }
+
+    /** 导入地图点位（全量重建：先清空再插，无唯一约束冲突风险）。 */
+    private int seedMapPoints(File dir) {
+        List<Map<String, Object>> items = readItems(dir, "map_points.json");
+        if (items.isEmpty()) {
+            log.info("[seed] map_points: 文件缺失或为空，跳过");
+            return 0;
+        }
+        // 无业务唯一键，每次 seed 先清空（物理删）再插，保证幂等
+        mapPointMapper.delete(new com.baomidou.mybatisplus.core.conditions.query.QueryWrapper<MapPoint>().eq("1", 1));
+        int ok = 0;
+        for (int i = 0; i < items.size(); i++) {
+            Map<String, Object> it = items.get(i);
+            MapPoint e = new MapPoint();
+            e.setMarkType(intOrNull(it.get("mark_type")));
+            e.setTypeName(str(it.get("type_name")));
+            e.setTitle(str(it.get("title")));
+            e.setDescription(str(it.get("desc")));
+            e.setLat(bigDecimalOrNull(it.get("lat")) != null ? bigDecimalOrNull(it.get("lat")).doubleValue() : null);
+            e.setLng(bigDecimalOrNull(it.get("lng")) != null ? bigDecimalOrNull(it.get("lng")).doubleValue() : null);
+            mapPointMapper.insert(e);
+            ok++;
+            flushIfBatch(i, items.size());
+        }
+        log.info("[seed] map_points: inserted={}", ok);
+        return ok;
     }
 
     /** 导入攻略文章（Markdown 正文，按 slug upsert）。 */

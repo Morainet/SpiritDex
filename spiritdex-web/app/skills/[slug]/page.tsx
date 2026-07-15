@@ -72,7 +72,7 @@ export default async function SkillDetailPage({ params }: { params: Promise<{ sl
           </div>
         ) : (
           <p className="rounded-xl bg-surface-2 p-3 text-sm text-muted">
-            暂无可学精灵数据（当前仅收录特性技能关联，完整技能池数据完善中）。
+            暂无可学精灵数据。
           </p>
         )}
       </section>

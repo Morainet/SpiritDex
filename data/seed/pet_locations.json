@@ -1,0 +1,375 @@
+{
+  "meta": {
+    "source": "BWIKI 洛克王国:手游WIKI",
+    "source_url": "https://wiki.biligame.com/rocom/wiki/Module:PetData/Core",
+    "scraped_at": "2026-07-15T16:04:23+00:00",
+    "count": 91,
+    "note": "来自页面级 {{精灵信息/兼容}} 模板的「分布地区」字段，已过滤生态描述"
+  },
+  "items": [
+    {
+      "pet_slug": "pet-0002",
+      "location": "岚语峰西侧"
+    },
+    {
+      "pet_slug": "pet-0003",
+      "location": "岚语峰西侧"
+    },
+    {
+      "pet_slug": "pet-0003",
+      "location": "乌黑巷"
+    },
+    {
+      "pet_slug": "pet-0003",
+      "location": "叽叽喳喳台地"
+    },
+    {
+      "pet_slug": "pet-0003",
+      "location": "商店街周边"
+    },
+    {
+      "pet_slug": "pet-0003",
+      "location": "奥贝斯坦湖"
+    },
+    {
+      "pet_slug": "pet-0003",
+      "location": "学院驻地"
+    },
+    {
+      "pet_slug": "pet-0003",
+      "location": "岚语峰"
+    },
+    {
+      "pet_slug": "pet-0003",
+      "location": "挽风屏障"
+    },
+    {
+      "pet_slug": "pet-0003",
+      "location": "月牙湖岸"
+    },
+    {
+      "pet_slug": "pet-0003",
+      "location": "月牙镇"
+    },
+    {
+      "pet_slug": "pet-0003",
+      "location": "皇家办事处"
+    },
+    {
+      "pet_slug": "pet-0003",
+      "location": "聆风塔地"
+    },
+    {
+      "pet_slug": "pet-0003",
+      "location": "聆风镇"
+    },
+    {
+      "pet_slug": "pet-0003",
+      "location": "轻风山"
+    },
+    {
+      "pet_slug": "pet-0003",
+      "location": "风眠圣所"
+    },
+    {
+      "pet_slug": "pet-0008",
+      "location": "奥贝斯坦湖"
+    },
+    {
+      "pet_slug": "pet-0010",
+      "location": "旧飞艇航道"
+    },
+    {
+      "pet_slug": "pet-0011",
+      "location": "月牙湖岸"
+    },
+    {
+      "pet_slug": "pet-0013",
+      "location": "风息山口"
+    },
+    {
+      "pet_slug": "pet-0014",
+      "location": "乌黑巷"
+    },
+    {
+      "pet_slug": "pet-0014",
+      "location": "叽叽喳喳台地"
+    },
+    {
+      "pet_slug": "pet-0014",
+      "location": "商店街周边"
+    },
+    {
+      "pet_slug": "pet-0014",
+      "location": "奥贝斯坦湖"
+    },
+    {
+      "pet_slug": "pet-0014",
+      "location": "学院驻地"
+    },
+    {
+      "pet_slug": "pet-0014",
+      "location": "岚语峰"
+    },
+    {
+      "pet_slug": "pet-0014",
+      "location": "挽风屏障"
+    },
+    {
+      "pet_slug": "pet-0014",
+      "location": "月牙湖岸"
+    },
+    {
+      "pet_slug": "pet-0014",
+      "location": "月牙镇"
+    },
+    {
+      "pet_slug": "pet-0014",
+      "location": "皇家办事处"
+    },
+    {
+      "pet_slug": "pet-0014",
+      "location": "聆风塔地"
+    },
+    {
+      "pet_slug": "pet-0014",
+      "location": "聆风镇"
+    },
+    {
+      "pet_slug": "pet-0014",
+      "location": "轻风山"
+    },
+    {
+      "pet_slug": "pet-0014",
+      "location": "风眠圣所"
+    },
+    {
+      "pet_slug": "pet-0015",
+      "location": "乌黑巷"
+    },
+    {
+      "pet_slug": "pet-0015",
+      "location": "叽叽喳喳台地"
+    },
+    {
+      "pet_slug": "pet-0015",
+      "location": "商店街周边"
+    },
+    {
+      "pet_slug": "pet-0015",
+      "location": "奥贝斯坦湖"
+    },
+    {
+      "pet_slug": "pet-0015",
+      "location": "学院驻地"
+    },
+    {
+      "pet_slug": "pet-0015",
+      "location": "岚语峰"
+    },
+    {
+      "pet_slug": "pet-0015",
+      "location": "挽风屏障"
+    },
+    {
+      "pet_slug": "pet-0015",
+      "location": "月牙湖岸"
+    },
+    {
+      "pet_slug": "pet-0015",
+      "location": "月牙镇"
+    },
+    {
+      "pet_slug": "pet-0015",
+      "location": "皇家办事处"
+    },
+    {
+      "pet_slug": "pet-0015",
+      "location": "聆风塔地"
+    },
+    {
+      "pet_slug": "pet-0015",
+      "location": "聆风镇"
+    },
+    {
+      "pet_slug": "pet-0015",
+      "location": "轻风山"
+    },
+    {
+      "pet_slug": "pet-0015",
+      "location": "风眠圣所"
+    },
+    {
+      "pet_slug": "pet-0016",
+      "location": "奥贝斯坦湖"
+    },
+    {
+      "pet_slug": "pet-0016",
+      "location": "乌黑巷"
+    },
+    {
+      "pet_slug": "pet-0016",
+      "location": "叽叽喳喳台地"
+    },
+    {
+      "pet_slug": "pet-0016",
+      "location": "商店街周边"
+    },
+    {
+      "pet_slug": "pet-0016",
+      "location": "学院驻地"
+    },
+    {
+      "pet_slug": "pet-0016",
+      "location": "岚语峰"
+    },
+    {
+      "pet_slug": "pet-0016",
+      "location": "挽风屏障"
+    },
+    {
+      "pet_slug": "pet-0016",
+      "location": "月牙湖岸"
+    },
+    {
+      "pet_slug": "pet-0016",
+      "location": "月牙镇"
+    },
+    {
+      "pet_slug": "pet-0016",
+      "location": "皇家办事处"
+    },
+    {
+      "pet_slug": "pet-0016",
+      "location": "聆风塔地"
+    },
+    {
+      "pet_slug": "pet-0016",
+      "location": "聆风镇"
+    },
+    {
+      "pet_slug": "pet-0016",
+      "location": "轻风山"
+    },
+    {
+      "pet_slug": "pet-0016",
+      "location": "风眠圣所"
+    },
+    {
+      "pet_slug": "pet-0026",
+      "location": "咸水湾"
+    },
+    {
+      "pet_slug": "pet-0027",
+      "location": "咸水湾"
+    },
+    {
+      "pet_slug": "pet-0029",
+      "location": "商店街周边"
+    },
+    {
+      "pet_slug": "pet-0030",
+      "location": "拾荒港口"
+    },
+    {
+      "pet_slug": "pet-0031",
+      "location": "晨曦山"
+    },
+    {
+      "pet_slug": "pet-0032",
+      "location": "晨曦山"
+    },
+    {
+      "pet_slug": "pet-0033",
+      "location": "咕嘟咕嘟浅滩"
+    },
+    {
+      "pet_slug": "pet-0034",
+      "location": "咕嘟咕嘟浅滩"
+    },
+    {
+      "pet_slug": "pet-0035",
+      "location": "银蛇河口"
+    },
+    {
+      "pet_slug": "pet-0038",
+      "location": "二叠山丘"
+    },
+    {
+      "pet_slug": "pet-0039",
+      "location": "监管区"
+    },
+    {
+      "pet_slug": "pet-0043",
+      "location": "望风半岛"
+    },
+    {
+      "pet_slug": "pet-0044",
+      "location": "望风半岛"
+    },
+    {
+      "pet_slug": "pet-0045",
+      "location": "港口驻地"
+    },
+    {
+      "pet_slug": "pet-0046",
+      "location": "港口驻地"
+    },
+    {
+      "pet_slug": "pet-0047",
+      "location": "向日葵海岸"
+    },
+    {
+      "pet_slug": "pet-0049",
+      "location": "金叶原"
+    },
+    {
+      "pet_slug": "pet-0050",
+      "location": "金叶原"
+    },
+    {
+      "pet_slug": "pet-0074",
+      "location": "偶见于雪山"
+    },
+    {
+      "pet_slug": "pet-0075",
+      "location": "偶见于雪山"
+    },
+    {
+      "pet_slug": "pet-0076",
+      "location": "偶见于雪山"
+    },
+    {
+      "pet_slug": "pet-0098",
+      "location": "偶见于城镇周边、山地"
+    },
+    {
+      "pet_slug": "pet-0099",
+      "location": "月牙湖岸"
+    },
+    {
+      "pet_slug": "pet-0099",
+      "location": "风息山口"
+    },
+    {
+      "pet_slug": "pet-0153",
+      "location": "裘卡的幻境"
+    },
+    {
+      "pet_slug": "pet-0233",
+      "location": "偶见于城镇"
+    },
+    {
+      "pet_slug": "pet-0234",
+      "location": "偶见于城镇"
+    },
+    {
+      "pet_slug": "pet-0250",
+      "location": "奥贝斯坦湖"
+    },
+    {
+      "pet_slug": "pet-0636",
+      "location": "偶见于山地"
+    }
+  ]
+}

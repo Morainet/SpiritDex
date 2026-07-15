@@ -103,6 +103,23 @@ export default async function PetDetailPage({
           {pet.description && (
             <p className="rounded-xl bg-surface-2 p-3 text-sm leading-relaxed text-muted">{pet.description}</p>
           )}
+
+          {pet.locations && pet.locations.length > 0 && (
+            <div>
+              <h2 className="mb-2 text-sm font-semibold text-muted">分布地区</h2>
+              <div className="flex flex-wrap gap-1.5">
+                {pet.locations.map((loc) => (
+                  <Link
+                    key={loc}
+                    href={`/pets?location=${encodeURIComponent(loc)}`}
+                    className="rounded-lg border border-border bg-surface px-2.5 py-1 text-xs transition-colors hover:bg-surface-2"
+                  >
+                    {loc}
+                  </Link>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
       </div>
 

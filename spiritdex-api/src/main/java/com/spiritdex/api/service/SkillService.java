@@ -34,6 +34,8 @@ public class SkillService extends ServiceImpl<SkillMapper, Skill> {
      * 分页筛选：element(属性名) / category(类别) / q(名字模糊) → PageResult。
      */
     public PageResult<SkillListItemDto> search(String element, String category, String q, int page, int size) {
+        page = PageResult.normalizePage(page);
+        size = PageResult.normalizeSize(size, 100);
         LambdaQueryWrapper<Skill> w = Wrappers.<Skill>lambdaQuery().orderByAsc(Skill::getCatalogNum);
         if (element != null && !element.isBlank()) {
             w.eq(Skill::getElement, element);
@@ -50,8 +52,9 @@ public class SkillService extends ServiceImpl<SkillMapper, Skill> {
     }
 
     /**
-     * 技能详情 + 反查「哪些精灵以此为特性技能」。
-     * 注：pet_skill 当前仅 feature_skill，完整技能池待后续抓取。
+     * 技能详情 + 反查「哪些精灵可学习此技能」。
+     * pet_skill 含 feature/native/stone/blood 四类关联（共约 2 万条），
+     * 反查时按 pet_id 去重（同一精灵可能通过多种方式学习同一技能）并限制最多 50 只，避免返回过量数据。
      */
     public SkillDetailDto getDetail(String slug) {
         Skill skill = getOne(new LambdaQueryWrapper<Skill>().eq(Skill::getSlug, slug));
@@ -72,15 +75,20 @@ public class SkillService extends ServiceImpl<SkillMapper, Skill> {
         d.setFlavorText(skill.getFlavorText());
         d.setIconId(skill.getIconId());
 
-        // 反查以此为特性技能的精灵
+        // 反查可学此技能的精灵（按 pet_id 去重 + 限制 50 只，避免常见技能返回数百条）
         List<PetSkill> rels = petSkillMapper.selectList(
                 Wrappers.<PetSkill>lambdaQuery().eq(PetSkill::getSkillId, skill.getId()));
-        if (!rels.isEmpty()) {
-            List<Long> petIds = rels.stream().map(PetSkill::getPetId).toList();
+        // 同一精灵可能有多条记录（不同 learn_method），按 petId 去重
+        List<Long> petIds = rels.stream()
+                .map(PetSkill::getPetId)
+                .distinct()
+                .limit(50)
+                .toList();
+        if (!petIds.isEmpty()) {
             Map<Long, Pet> petById = petMapper.selectBatchIds(petIds).stream()
                     .collect(Collectors.toMap(Pet::getId, p -> p));
-            d.setPets(rels.stream()
-                    .map(r -> petById.get(r.getPetId()))
+            d.setPets(petIds.stream()
+                    .map(petById::get)
                     .filter(Objects::nonNull)
                     .map(p -> {
                         SkillDetailDto.LearnerPet lp = new SkillDetailDto.LearnerPet();

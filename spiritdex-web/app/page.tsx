@@ -1,30 +1,83 @@
 import Link from "next/link";
 import {
+  ArrowRight,
   BookOpen,
   Calculator,
   Camera,
   Database,
+  FlaskConical,
+  Gauge,
   Ghost,
+  Map as MapIcon,
+  Package,
+  ScrollText,
   Settings2,
   Shield,
   Sparkles,
+  Stamp,
   Swords,
   Zap,
 } from "lucide-react";
+import { fetchArticles, fetchPets } from "@/lib/api";
+import type { ArticleListItem } from "@/types/article";
+import type { PetListItem } from "@/types/pet";
+import PetCard from "@/components/PetCard";
 
-const ENTRIES = [
-  { href: "/pets", icon: Database, title: "精灵图鉴", desc: "671 只精灵全收录，种族值、进化链、技能一览", color: "var(--type-grass)" },
-  { href: "/skills", icon: Zap, title: "技能库", desc: "全部技能效果、属性、威力参数", color: "var(--type-electric)" },
-  { href: "/types/matrix", icon: Shield, title: "属性相克", desc: "18 属性相克矩阵，点击查看克制关系", color: "var(--type-water)" },
-  { href: "/tools/damage-calculator", icon: Calculator, title: "伤害计算器", desc: "计算对战伤害，含属性相克倍率", color: "var(--type-fire)" },
-  { href: "/tools/team-builder", icon: Swords, title: "阵容模拟", desc: "组建队伍，分析属性覆盖与弱点", color: "var(--type-fighting)" },
-  { href: "/ai/chat", icon: Ghost, title: "AI 智能问答", desc: "基于精灵数据的 RAG 问答助手，流式回答", color: "var(--type-dragon)" },
-  { href: "/ai/recommend", icon: Settings2, title: "AI 阵容推荐", desc: "输入已有精灵，AI 推荐最佳阵容", color: "var(--type-illusion)" },
-  { href: "/ai/identify", icon: Camera, title: "AI 图片识别", desc: "上传精灵截图，AI 识别候选精灵", color: "var(--type-cute)" },
-  { href: "/articles", icon: BookOpen, title: "攻略文章", desc: "新手指南、进阶技巧、活动攻略", color: "var(--accent)" },
+// 功能入口分组（与 site-header 导航对齐）
+const FEATURE_GROUPS = [
+  {
+    label: "图鉴",
+    items: [
+      { href: "/pets", icon: Database, title: "精灵图鉴", desc: "671 只精灵全收录", color: "var(--type-grass)" },
+      { href: "/skills", icon: Zap, title: "技能库", desc: "737 个技能参数", color: "var(--type-electric)" },
+      { href: "/items", icon: Package, title: "道具图鉴", desc: "1779 个道具", color: "var(--type-poison)" },
+      { href: "/quests", icon: ScrollText, title: "任务图鉴", desc: "剧情任务一览", color: "var(--type-water)" },
+      { href: "/marks", icon: Stamp, title: "印记图鉴", desc: "战斗印记系统", color: "var(--type-dark)" },
+      { href: "/types/matrix", icon: Shield, title: "属性相克", desc: "18 属性相克矩阵", color: "var(--type-fire)" },
+      { href: "/map", icon: MapIcon, title: "地图", desc: "点位分布与精灵出没地区", color: "var(--type-ground)" },
+    ],
+  },
+  {
+    label: "知识",
+    items: [
+      { href: "/articles?category=机制", icon: FlaskConical, title: "机制知识库", desc: "相克/性格/培养/捕捉", color: "var(--type-dragon)" },
+      { href: "/articles", icon: BookOpen, title: "攻略文章", desc: "新手指南与活动攻略", color: "var(--accent)" },
+    ],
+  },
+  {
+    label: "工具",
+    items: [
+      { href: "/tools/damage-calculator", icon: Calculator, title: "伤害计算器", desc: "对战伤害计算", color: "var(--type-fighting)" },
+      { href: "/tools/nature-calculator", icon: Gauge, title: "性格计算器", desc: "性格六维增减计算", color: "var(--type-poison)" },
+      { href: "/tools/team-builder", icon: Swords, title: "阵容模拟", desc: "组建队伍分析弱点", color: "var(--type-ground)" },
+    ],
+  },
+  {
+    label: "AI",
+    items: [
+      { href: "/ai/chat", icon: Ghost, title: "智能问答", desc: "RAG 流式问答助手", color: "var(--type-illusion)" },
+      { href: "/ai/recommend", icon: Settings2, title: "阵容推荐", desc: "AI 推荐最佳阵容", color: "var(--type-cute)" },
+      { href: "/ai/identify", icon: Camera, title: "图片识别", desc: "截图识别精灵", color: "var(--type-ice)" },
+    ],
+  },
 ];
 
-export default function Home() {
+export default async function Home() {
+  // 预取：御三家精灵（dexNo 1-3）+ 机制知识库文章
+  // 容错：后端未启动时降级为只显示功能入口，不阻断首页渲染
+  let starterPets: PetListItem[] = [];
+  let mechArticles: { list: ArticleListItem[]; total: number } = { list: [], total: 0 };
+  try {
+    const [petsResult, articlesResult] = await Promise.all([
+      fetchPets({ size: 3 }),
+      fetchArticles("机制", 1, 4),
+    ]);
+    starterPets = petsResult.list.slice(0, 3);
+    mechArticles = { list: articlesResult.list, total: articlesResult.total };
+  } catch {
+    // 后端不可用，降级渲染（功能入口区块不依赖数据）
+  }
+
   return (
     <main>
       {/* 英雄区 */}
@@ -60,29 +113,90 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 功能入口 */}
+      {/* 功能入口（分组） */}
       <section className="mx-auto max-w-6xl px-4 py-12">
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {ENTRIES.map((e) => (
-            <Link
-              key={e.href}
-              href={e.href}
-              className="group relative overflow-hidden rounded-2xl border border-border bg-surface p-6 shadow-[var(--shadow-card)] transition-all hover:shadow-[var(--shadow-hover)] hover:-translate-y-0.5"
-            >
-              {/* 顶部色条 */}
-              <div className="absolute inset-x-0 top-0 h-1 opacity-80" style={{ backgroundColor: e.color }} />
-              <div
-                className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl text-white shadow-sm"
-                style={{ backgroundColor: e.color }}
-              >
-                <e.icon className="h-6 w-6" />
+        <div className="space-y-8">
+          {FEATURE_GROUPS.map((group) => (
+            <div key={group.label}>
+              <h2 className="mb-3 text-sm font-semibold uppercase tracking-wide text-muted-foreground">{group.label}</h2>
+              <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                {group.items.map((e) => (
+                  <Link
+                    key={e.href}
+                    href={e.href}
+                    className="group relative overflow-hidden rounded-2xl border border-border bg-surface p-6 shadow-[var(--shadow-card)] transition-all hover:shadow-[var(--shadow-hover)] hover:-translate-y-0.5"
+                  >
+                    <div className="absolute inset-x-0 top-0 h-1 opacity-80" style={{ backgroundColor: e.color }} />
+                    <div
+                      className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl text-white shadow-sm"
+                      style={{ backgroundColor: e.color }}
+                    >
+                      <e.icon className="h-6 w-6" />
+                    </div>
+                    <h3 className="flex items-center gap-1 text-lg font-bold transition-colors group-hover:text-primary">
+                      {e.title}
+                    </h3>
+                    <p className="mt-1 text-sm text-muted">{e.desc}</p>
+                  </Link>
+                ))}
               </div>
-              <h2 className="flex items-center gap-1 text-lg font-bold transition-colors group-hover:text-primary">
-                {e.title}
-              </h2>
-              <p className="mt-1 text-sm text-muted">{e.desc}</p>
-            </Link>
+            </div>
           ))}
+        </div>
+      </section>
+
+      {/* 御三家 + 机制文章 */}
+      <section className="border-t border-border bg-surface/50">
+        <div className="mx-auto max-w-6xl px-4 py-12">
+          <div className="grid gap-8 lg:grid-cols-2">
+            {/* 御三家 */}
+            <div>
+              <div className="mb-4 flex items-center justify-between">
+                <h2 className="text-xl font-bold">初始精灵</h2>
+                <Link href="/pets" className="inline-flex items-center gap-1 text-sm text-muted hover:text-foreground">
+                  全部 <ArrowRight className="h-3.5 w-3.5" />
+                </Link>
+              </div>
+              {starterPets.length > 0 ? (
+                <div className="grid grid-cols-3 gap-3">
+                  {starterPets.map((p) => (
+                    <PetCard key={p.slug} pet={p} />
+                  ))}
+                </div>
+              ) : (
+                <p className="text-sm text-muted">暂无数据</p>
+              )}
+            </div>
+
+            {/* 机制知识库文章 */}
+            <div>
+              <div className="mb-4 flex items-center justify-between">
+                <h2 className="text-xl font-bold">机制知识库</h2>
+                <Link href="/articles?category=机制" className="inline-flex items-center gap-1 text-sm text-muted hover:text-foreground">
+                  全部 <ArrowRight className="h-3.5 w-3.5" />
+                </Link>
+              </div>
+              {mechArticles.list.length > 0 ? (
+                <div className="space-y-2">
+                  {mechArticles.list.map((a) => (
+                    <Link
+                      key={a.slug}
+                      href={`/articles/${a.slug}`}
+                      className="block rounded-xl border border-border bg-surface p-3 transition-all hover:shadow-[var(--shadow-card)] hover:-translate-y-0.5"
+                    >
+                      <div className="flex items-center gap-2">
+                        <span className="rounded-md bg-[var(--type-dragon)] px-1.5 py-0.5 text-[11px] font-medium text-white">{a.category}</span>
+                        <span className="font-semibold">{a.title}</span>
+                      </div>
+                      {a.summary && <p className="mt-1 line-clamp-1 text-sm text-muted">{a.summary}</p>}
+                    </Link>
+                  ))}
+                </div>
+              ) : (
+                <p className="text-sm text-muted">暂无文章</p>
+              )}
+            </div>
+          </div>
         </div>
       </section>
     </main>

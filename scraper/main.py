@@ -29,6 +29,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 from src.activity_fetcher import fetch_activities   # noqa: E402
 from src.item_fetcher import fetch_items            # noqa: E402
+from src.map_fetcher import fetch_map_points        # noqa: E402
 from src.mark_fetcher import fetch_marks            # noqa: E402
 from src.quest_fetcher import fetch_quests          # noqa: E402
 from src.skill_pool_fetcher import fetch_skill_pools  # noqa: E402
@@ -61,6 +62,8 @@ def main(argv: list[str] | None = None) -> int:
                         help="抓取任务图鉴（Category:任务，→ quests.json；约 20 秒）")
     parser.add_argument("--marks", action="store_true",
                         help="抓取印记图鉴（总览页+独立页，→ marks.json；约 15 秒）")
+    parser.add_argument("--map", action="store_true",
+                        help="抓取地图点位（Data:MapV2，→ map_points.json；约 20 秒）")
     args = parser.parse_args(argv)
 
     # —— 活动抓取分支（独立于宠物数据主流程）——
@@ -82,6 +85,10 @@ def main(argv: list[str] | None = None) -> int:
     # —— 印记抓取分支（独立于宠物数据主流程）——
     if args.marks:
         return _run_marks(args)
+
+    # —— 地图点位抓取分支（独立于宠物数据主流程）——
+    if args.map:
+        return _run_map(args)
 
     api = None if args.offline else WikiApi()
     print(f"[fetch] 模式={'离线(fixture缓存)' if args.offline else '在线(BWIKI API)'} ...")
@@ -174,7 +181,7 @@ def _run_skill_pools(args: argparse.Namespace) -> int:
     api = WikiApi()
     print(f"[skill-pool] 开始抓取 {len(pets_items)} 只精灵的技能池（QPS≤1，预计约 "
           f"{len(pets_items) // 60} 分钟）...")
-    items, stats = fetch_skill_pools(api, pets_items, skills_items)
+    items, stats, distribution = fetch_skill_pools(api, pets_items, skills_items)
 
     print("[skill-pool] 抓取统计：")
     for k, v in stats.items():
@@ -196,6 +203,24 @@ def _run_skill_pools(args: argparse.Namespace) -> int:
     with open(out_path, "w", encoding="utf-8") as f:
         json.dump({"meta": meta, "items": items}, f, ensure_ascii=False, indent=2)
     print(f"[skill-pool] 已写出 {out_path}（{len(items)} 条，原先 671 条 feature-only）")
+
+    # 同时写出 pet_locations.json（分布地区，多对多，复用同一次抓取）
+    loc_items: list[dict] = []
+    for slug, locs in distribution.items():
+        for loc in locs:
+            loc_items.append({"pet_slug": slug, "location": loc})
+    loc_path = os.path.join(seed_dir, "pet_locations.json")
+    loc_meta = {
+        "source": settings.source_name,
+        "source_url": settings.source_module_url,
+        "scraped_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
+        "count": len(loc_items),
+        "note": "来自页面级 {{精灵信息/兼容}} 模板的「分布地区」字段，/ 分隔",
+    }
+    with open(loc_path, "w", encoding="utf-8") as f:
+        json.dump({"meta": loc_meta, "items": loc_items}, f, ensure_ascii=False, indent=2)
+    unique_locs = len({it["location"] for it in loc_items})
+    print(f"[skill-pool] 已写出 {loc_path}（{len(loc_items)} 条关联，{len(distribution)} 只精灵，{unique_locs} 个地名）")
     return 0
 
 
@@ -319,6 +344,47 @@ def _run_marks(args: argparse.Namespace) -> int:
     with open(path, "w", encoding="utf-8") as f:
         json.dump(payload, f, ensure_ascii=False, indent=2)
     print(f"[mark] 已写出 {path}（{len(items)} 条印记）")
+    return 0
+
+
+def _run_map(args: argparse.Namespace) -> int:
+    """抓取地图点位（Data:MapV2），写出 map_points.json。
+
+    数据源：Data:MapV2/type/{id}/json 坐标数据（11 种点位类型）。
+    见 src/map_fetcher.py 文档。⚠️ 坐标为游戏内坐标系，非真实经纬度。
+    """
+    if args.offline:
+        print("[map] --map 不支持离线模式（需联网抓取）")
+        return 1
+
+    api = WikiApi()
+    print(f"[map] 开始抓取地图点位...")
+    items, stats = fetch_map_points(api)
+
+    print("[map] 抓取统计：")
+    for k, v in stats.items():
+        print(f"    {k:14s} {v}")
+
+    if args.dry_run:
+        print("[map] --dry-run，跳过写文件")
+        return 0
+
+    out_dir = args.seed_dir or settings.seed_dir
+    os.makedirs(out_dir, exist_ok=True)
+    payload = {
+        "meta": {
+            "source": settings.source_name,
+            "source_url": settings.source_module_url,
+            "scraped_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
+            "count": len(items),
+            "note": "来自 Data:MapV2 点位坐标（游戏内坐标系，非真实经纬度）",
+        },
+        "items": items,
+    }
+    path = os.path.join(out_dir, "map_points.json")
+    with open(path, "w", encoding="utf-8") as f:
+        json.dump(payload, f, ensure_ascii=False, indent=2)
+    print(f"[map] 已写出 {path}（{len(items)} 个点位）")
     return 0
 
 

@@ -23,6 +23,8 @@ import java.util.List;
 public class ItemService extends ServiceImpl<ItemMapper, Item> {
 
     public PageResult<ItemListItemDto> search(String mainCategory, String rarity, String q, int page, int size) {
+        page = PageResult.normalizePage(page);
+        size = PageResult.normalizeSize(size, 100);
         LambdaQueryWrapper<Item> w = Wrappers.<Item>lambdaQuery().orderByAsc(Item::getId);
         if (mainCategory != null && !mainCategory.isBlank()) w.eq(Item::getMainCategory, mainCategory);
         if (rarity != null && !rarity.isBlank())             w.eq(Item::getRarity, rarity);

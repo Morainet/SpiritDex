@@ -22,6 +22,8 @@ import java.util.List;
 public class MarkService extends ServiceImpl<MarkMapper, Mark> {
 
     public PageResult<MarkListItemDto> search(String faction, String q, int page, int size) {
+        page = PageResult.normalizePage(page);
+        size = PageResult.normalizeSize(size, 100);
         LambdaQueryWrapper<Mark> w = Wrappers.<Mark>lambdaQuery()
                 .orderByAsc(Mark::getFaction).orderByAsc(Mark::getName);
         if (faction != null && !faction.isBlank()) w.eq(Mark::getFaction, faction);

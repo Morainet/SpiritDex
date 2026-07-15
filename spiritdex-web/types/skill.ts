@@ -22,6 +22,6 @@ export interface SkillDetail {
   effectText?: string;
   flavorText?: string;
   iconId?: string;
-  /** 以此为特性技能的精灵（简略，完整技能池待后续抓取）。 */
+  /** 可学此技能的精灵（去重，最多 50 只）。 */
   pets?: { slug: string; name: string }[];
 }

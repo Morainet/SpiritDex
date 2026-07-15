@@ -21,6 +21,7 @@ public class PetService extends ServiceImpl<PetMapper, Pet> {
 
     private final PetTypeMapper petTypeMapper;
     private final PetSkillMapper petSkillMapper;
+    private final PetLocationMapper petLocationMapper;
     private final SkillMapper skillMapper;
     private final TypeMapper typeMapper;
     private final EvolutionChainMapper evolutionChainMapper;
@@ -30,9 +31,11 @@ public class PetService extends ServiceImpl<PetMapper, Pet> {
     // ====== 列表筛选 ======
 
     /**
-     * 分页筛选：type(slug) / stage / q(名字模糊) → PageResult。
+     * 分页筛选：type(slug) / stage / q(名字模糊) / location(分布地区) → PageResult。
      */
-    public PageResult<PetListItemDto> search(String typeSlug, Integer stage, String q, int page, int size) {
+    public PageResult<PetListItemDto> search(String typeSlug, Integer stage, String q, String location, int page, int size) {
+        page = PageResult.normalizePage(page);
+        size = PageResult.normalizeSize(size, 100);
         // 若指定 type，先解出 typeId，再用 pet_type 关联
         Set<Long> petIdsByType = null;
         if (typeSlug != null && !typeSlug.isBlank()) {
@@ -48,6 +51,17 @@ public class PetService extends ServiceImpl<PetMapper, Pet> {
             }
         }
 
+        // 若指定 location，先解出 petId 集合（用 pet_location 关联）
+        Set<Long> petIdsByLocation = null;
+        if (location != null && !location.isBlank()) {
+            petIdsByLocation = petLocationMapper.selectList(
+                            Wrappers.<PetLocation>lambdaQuery().eq(PetLocation::getLocation, location.trim()))
+                    .stream().map(PetLocation::getPetId).collect(Collectors.toSet());
+            if (petIdsByLocation.isEmpty()) {
+                return PageResult.of(List.of(), 0, page, size);
+            }
+        }
+
         LambdaQueryWrapper<Pet> w = Wrappers.<Pet>lambdaQuery()
                 .isNotNull(Pet::getDexNo)
                 .orderByAsc(Pet::getDexNo);
@@ -59,6 +73,9 @@ public class PetService extends ServiceImpl<PetMapper, Pet> {
         }
         if (petIdsByType != null) {
             w.in(Pet::getId, petIdsByType);
+        }
+        if (petIdsByLocation != null) {
+            w.in(Pet::getId, petIdsByLocation);
         }
 
         IPage<Pet> p = page(new Page<>(page, size), w);
@@ -99,8 +116,47 @@ public class PetService extends ServiceImpl<PetMapper, Pet> {
 
         d.setTypes(typesOf(pet.getId()));
         d.setSkills(skillsOf(pet.getId()));
+        d.setLocations(locationsOf(pet.getId()));
         d.setEvolution(evolutionOf(pet.getEvolutionGroupId()));
         return d;
+    }
+
+    // ====== 分布地区 ======
+
+    /** 全量精灵精简数据（种族值+属性），供工具页一次性加载，消除 N+1 查询。 */
+    public List<PetStatsDto> allStats() {
+        List<Pet> pets = list(Wrappers.<Pet>lambdaQuery()
+                .isNotNull(Pet::getDexNo)
+                .orderByAsc(Pet::getDexNo));
+        Map<Long, List<String>> typesByPetId = loadTypeNamesFor(pets);
+        return pets.stream().map(pet -> {
+            PetStatsDto d = new PetStatsDto();
+            d.setSlug(pet.getSlug());
+            d.setDexNo(pet.getDexNo());
+            d.setName(pet.getName());
+            d.setStage(pet.getStage());
+            d.setTypes(typesByPetId.getOrDefault(pet.getId(), List.of()));
+            d.setBaseStats(pet.getBaseStats());
+            d.setHeadKey(pet.getHeadKey());
+            return d;
+        }).toList();
+    }
+
+    /** 精灵详情用的分布地区列表。 */
+    private List<String> locationsOf(Long petId) {
+        return petLocationMapper.selectList(
+                        Wrappers.<PetLocation>lambdaQuery().eq(PetLocation::getPetId, petId))
+                .stream().map(PetLocation::getLocation).toList();
+    }
+
+    /** 地名聚合：[{location, count}, ...]，按精灵数降序。用于地名列表页。 */
+    public List<Map<String, Object>> locationAggregate() {
+        return petLocationMapper.locationCounts();
+    }
+
+    /** 所有不重复的地名。 */
+    public List<String> allLocations() {
+        return petLocationMapper.distinctLocations();
     }
 
     // 兼容旧接口（Phase 0）：返回实体

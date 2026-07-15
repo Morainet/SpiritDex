@@ -21,4 +21,14 @@ public class PageResult<T> {
     public static <T> PageResult<T> of(List<T> list, long total, int page, int size) {
         return new PageResult<>(list, total, page, size);
     }
+
+    /** 分页参数规范化：page ≥ 1，size 在 [1, maxSize] 之间。防止恶意大 size 拖垮查询。 */
+    public static int normalizePage(int page) {
+        return Math.max(1, page);
+    }
+
+    public static int normalizeSize(int size, int maxSize) {
+        if (size < 1) return 24;
+        return Math.min(size, maxSize);
+    }
 }

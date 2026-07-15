@@ -16,7 +16,7 @@ public class PetSkillDto {
     private Integer energy;
     private String target;
     private String effectText;
-    /** 学习方式：feature / native / stone / blood（Phase 1 仅 feature）。 */
+    /** 学习方式：feature(特性) / native(升级) / stone(技能石) / blood(血脉)。 */
     private String learnMethod;
     private Integer unlockLevel;
 }

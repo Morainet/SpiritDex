@@ -21,7 +21,7 @@ public class SkillDetailDto {
     private String effectText;
     private String flavorText;
     private String iconId;
-    /** 以此技能为特性技能的精灵（简略，完整技能池待后续抓取）。 */
+    /** 可学此技能的精灵（去重，最多 50 只）。 */
     private List<LearnerPet> pets;
 
     @Data

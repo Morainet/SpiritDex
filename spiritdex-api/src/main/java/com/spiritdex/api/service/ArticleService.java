@@ -20,6 +20,8 @@ public class ArticleService extends ServiceImpl<ArticleMapper, Article> {
 
     /** 已发布文章分页（可按 category 筛选）。 */
     public PageResult<ArticleListItemDto> search(String category, int page, int size) {
+        page = PageResult.normalizePage(page);
+        size = PageResult.normalizeSize(size, 100);
         LambdaQueryWrapper<Article> w = Wrappers.<Article>lambdaQuery()
                 .eq(Article::getStatus, "published")
                 .orderByDesc(Article::getCreatedAt);

@@ -29,5 +29,7 @@ public class PetDetailDto {
     private String headKey;
     private String evolutionGroupId;
     private List<PetSkillDto> skills;
+    /** 分布地区（游戏内地名列表，来自页面级「分布地区」字段）。 */
+    private List<String> locations;
     private EvolutionChainDto evolution;
 }

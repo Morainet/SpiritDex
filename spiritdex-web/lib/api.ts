@@ -1,10 +1,11 @@
-import type { PageResult, PetDetail, PetListItem } from "@/types/pet";
+import type { PageResult, PetDetail, PetListItem, PetStats } from "@/types/pet";
 import type { SpiritType, TypeMatrix } from "@/types/spiritdex";
 import type { ArticleDetail, ArticleListItem } from "@/types/article";
 import type { SkillDetail, SkillListItem } from "@/types/skill";
 import type { ItemDetail, ItemListItem } from "@/types/item";
 import type { QuestDetail, QuestListItem } from "@/types/quest";
 import type { MarkDetail, MarkListItem } from "@/types/mark";
+import type { LocationStat, MapPoint, MapTypeStat } from "@/types/map";
 
 export interface ApiResult<T> {
   code: number;
@@ -38,6 +39,7 @@ async function getJson<T>(path: string): Promise<T> {
 export interface PetFilter {
   type?: string;
   stage?: number;
+  location?: string;
   q?: string;
   page?: number;
   size?: number;
@@ -48,6 +50,7 @@ export async function fetchPets(filter: PetFilter = {}): Promise<PageResult<PetL
   const params = new URLSearchParams();
   if (filter.type) params.set("type", filter.type);
   if (filter.stage) params.set("stage", String(filter.stage));
+  if (filter.location) params.set("location", filter.location);
   if (filter.q) params.set("q", filter.q);
   params.set("page", String(filter.page ?? 1));
   params.set("size", String(filter.size ?? 24));
@@ -179,6 +182,30 @@ export async function fetchMarkDetail(slug: string): Promise<MarkDetail | null> 
   if (!res.ok) throw new Error(`API ${res.status}: /api/marks/${slug}`);
   const json: ApiResult<MarkDetail> = await res.json();
   return json.data ?? null;
+}
+
+// ====== 地图点位 ======
+
+export async function fetchMapPoints(type?: number): Promise<MapPoint[]> {
+  const params = new URLSearchParams();
+  if (type != null) params.set("type", String(type));
+  params.set("size", "5000");
+  const result = await getJson<PageResult<MapPoint>>(`/api/map/points?${params}`);
+  return result.list;
+}
+
+export async function fetchMapTypes(): Promise<MapTypeStat[]> {
+  return getJson<MapTypeStat[]>("/api/map/types");
+}
+
+// ====== 分布地区 ======
+
+export async function fetchLocations(): Promise<LocationStat[]> {
+  return getJson<LocationStat[]>("/api/pets/locations");
+}
+
+export async function fetchPetStats(): Promise<PetStats[]> {
+  return getJson<PetStats[]>("/api/pets/stats");
 }
 
 // ====== 攻略文章 ======

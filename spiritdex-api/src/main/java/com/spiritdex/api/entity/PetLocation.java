@@ -8,29 +8,22 @@ import lombok.Data;
 import java.time.LocalDateTime;
 
 /**
- * 精灵 ↔ 技能（带学习方式/等级）。
- * learn_method: feature(特性) / native(升级) / stone(技能石) / blood(血脉)。
+ * 精灵 ↔ 分布地区（多对多关联）。来自页面级「分布地区」字段。
+ * 与 {@link Pet#getHabitat()}（生态描述）不同，这是具体游戏地名。
  */
 @Data
-@TableName("pet_skill")
-public class PetSkill {
+@TableName("pet_location")
+public class PetLocation {
 
     @TableId(type = IdType.AUTO)
     private Long id;
 
     private Long petId;
 
-    private Long skillId;
-
-    /** 学习等级（feature_skill 为 null）。 */
-    private Integer unlockLevel;
-
-    /** feature / native / stone / blood。 */
-    private String learnMethod;
+    /** 游戏内地名（岚语峰/月牙镇/...）。 */
+    private String location;
 
     private Integer deleted;
-
     private LocalDateTime createdAt;
-
     private LocalDateTime updatedAt;
 }
