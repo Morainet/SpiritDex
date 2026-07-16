@@ -8,7 +8,20 @@ export const metadata: Metadata = {
 };
 
 export default async function TypeMatrixPage() {
-  const matrix = await fetchTypeMatrix();
+  let matrix: Awaited<ReturnType<typeof fetchTypeMatrix>> | null = null;
+  try {
+    matrix = await fetchTypeMatrix();
+  } catch {
+    // 后端不可用，降级渲染
+  }
+  if (!matrix) {
+    return (
+      <main className="mx-auto max-w-2xl px-4 py-20 text-center">
+        <h1 className="mb-3 text-2xl font-bold">属性相克表</h1>
+        <p className="text-sm text-muted">无法加载数据，请确认后端服务已启动。</p>
+      </main>
+    );
+  }
   return (
     <main className="mx-auto max-w-6xl px-4 py-6">
       <header className="mb-4">

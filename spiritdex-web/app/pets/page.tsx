@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
 import { fetchPets, fetchTypes } from "@/lib/api";
+import { pick } from "@/lib/utils";
 import PetCard from "@/components/PetCard";
 import PetFilters from "@/components/PetFilters";
 import Pagination from "@/components/Pagination";
@@ -9,10 +10,6 @@ export const metadata: Metadata = {
   title: "精灵图鉴",
   description: "洛克王国手游全部精灵图鉴，按属性/阶段筛选",
 };
-
-function pick(v: string | string[] | undefined): string | undefined {
-  return Array.isArray(v) ? v[0] : v;
-}
 
 export default async function PetsPage({
   searchParams,
@@ -26,10 +23,17 @@ export default async function PetsPage({
   const q = pick(sp.q);
   const page = Math.max(1, parseInt(pick(sp.page) ?? "1", 10) || 1);
 
-  const [types, result] = await Promise.all([
-    fetchTypes(),
-    fetchPets({ type, stage: stageStr ? parseInt(stageStr, 10) : undefined, location, q, page, size: 24 }),
-  ]);
+  // 容错：后端不可用时降级为空列表，不阻断页面渲染
+  let types: Awaited<ReturnType<typeof fetchTypes>> = [];
+  let result: Awaited<ReturnType<typeof fetchPets>> = { list: [], total: 0, page, size: 24 };
+  try {
+    [types, result] = await Promise.all([
+      fetchTypes(),
+      fetchPets({ type, stage: stageStr ? parseInt(stageStr, 10) : undefined, location, q, page, size: 24 }),
+    ]);
+  } catch {
+    // 后端不可用，降级渲染
+  }
 
   const passThrough: Record<string, string | undefined> = { type, stage: stageStr, location, q };
 
@@ -62,6 +66,7 @@ export default async function PetsPage({
         size={result.size}
         total={result.total}
         basePath="/pets"
+        unit="只"
         searchParams={passThrough}
       />
     </main>

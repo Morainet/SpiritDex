@@ -3,61 +3,12 @@
 import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import {
-  BookOpen,
-  Calculator,
-  Camera,
-  Database,
-  FlaskConical,
-  Gauge,
-  Ghost,
-  Map as MapIcon,
-  MapPin,
   Menu,
-  Package,
-  ScrollText,
-  Settings2,
-  Shield,
   Sparkles,
-  Stamp,
-  Swords,
   X,
-  Zap,
 } from "lucide-react";
+import { NAV_GROUPS } from "@/lib/nav-config";
 import { ThemeToggle } from "@/components/theme-toggle";
-
-const NAV_GROUPS = [
-  {
-    label: "图鉴",
-    items: [
-      { href: "/pets", icon: Database, label: "精灵图鉴" },
-      { href: "/skills", icon: Zap, label: "技能库" },
-      { href: "/items", icon: Package, label: "道具图鉴" },
-      { href: "/quests", icon: ScrollText, label: "任务图鉴" },
-      { href: "/marks", icon: Stamp, label: "印记图鉴" },
-      { href: "/types/matrix", icon: Shield, label: "属性相克" },
-      { href: "/map", icon: MapIcon, label: "地图" },
-      { href: "/locations", icon: MapPin, label: "分布地区" },
-      { href: "/articles?category=机制", icon: FlaskConical, label: "机制知识库" },
-      { href: "/articles", icon: BookOpen, label: "攻略" },
-    ],
-  },
-  {
-    label: "工具",
-    items: [
-      { href: "/tools/damage-calculator", icon: Calculator, label: "伤害计算器" },
-      { href: "/tools/nature-calculator", icon: Gauge, label: "性格计算器" },
-      { href: "/tools/team-builder", icon: Swords, label: "阵容模拟" },
-    ],
-  },
-  {
-    label: "AI",
-    items: [
-      { href: "/ai/chat", icon: Ghost, label: "智能问答" },
-      { href: "/ai/recommend", icon: Settings2, label: "阵容推荐" },
-      { href: "/ai/identify", icon: Camera, label: "图片识别" },
-    ],
-  },
-];
 
 export function SiteHeader() {
   const [openMenu, setOpenMenu] = useState<string | null>(null); // 当前打开的菜单名

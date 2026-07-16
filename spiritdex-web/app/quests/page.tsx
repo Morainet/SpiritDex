@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
 import { fetchQuests } from "@/lib/api";
+import { pick } from "@/lib/utils";
 import QuestCard from "@/components/QuestCard";
 import QuestFilters from "@/components/QuestFilters";
 import Pagination from "@/components/Pagination";
@@ -9,10 +10,6 @@ export const metadata: Metadata = {
   title: "任务图鉴",
   description: "洛克王国手游剧情任务，按分类筛选",
 };
-
-function pick(v: string | string[] | undefined): string | undefined {
-  return Array.isArray(v) ? v[0] : v;
-}
 
 export default async function QuestsPage({
   searchParams,
@@ -24,7 +21,12 @@ export default async function QuestsPage({
   const q = pick(sp.q);
   const page = Math.max(1, parseInt(pick(sp.page) ?? "1", 10) || 1);
 
-  const result = await fetchQuests({ category, q, page, size: 24 });
+  let result: Awaited<ReturnType<typeof fetchQuests>> = { list: [], total: 0, page, size: 24 };
+  try {
+    result = await fetchQuests({ category, q, page, size: 24 });
+  } catch {
+    // 后端不可用，降级渲染
+  }
   const passThrough: Record<string, string | undefined> = { category, q };
 
   return (
@@ -48,7 +50,7 @@ export default async function QuestsPage({
         </div>
       )}
 
-      <Pagination page={page} size={result.size} total={result.total} basePath="/quests" searchParams={passThrough} />
+      <Pagination page={page} size={result.size} total={result.total} basePath="/quests" searchParams={passThrough} unit="个" />
     </main>
   );
 }

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
 import { fetchMarks } from "@/lib/api";
+import { pick } from "@/lib/utils";
 import MarkCard from "@/components/MarkCard";
 import MarkFilters from "@/components/MarkFilters";
 import Pagination from "@/components/Pagination";
@@ -9,10 +10,6 @@ export const metadata: Metadata = {
   title: "印记图鉴",
   description: "洛克王国手游战斗印记系统，正面/负面印记效果与机制",
 };
-
-function pick(v: string | string[] | undefined): string | undefined {
-  return Array.isArray(v) ? v[0] : v;
-}
 
 export default async function MarksPage({
   searchParams,
@@ -24,7 +21,12 @@ export default async function MarksPage({
   const q = pick(sp.q);
   const page = Math.max(1, parseInt(pick(sp.page) ?? "1", 10) || 1);
 
-  const result = await fetchMarks({ faction, q, page, size: 24 });
+  let result: Awaited<ReturnType<typeof fetchMarks>> = { list: [], total: 0, page, size: 24 };
+  try {
+    result = await fetchMarks({ faction, q, page, size: 24 });
+  } catch {
+    // 后端不可用，降级渲染
+  }
   const passThrough: Record<string, string | undefined> = { faction, q };
 
   return (
@@ -48,7 +50,7 @@ export default async function MarksPage({
         </div>
       )}
 
-      <Pagination page={page} size={result.size} total={result.total} basePath="/marks" searchParams={passThrough} />
+      <Pagination page={page} size={result.size} total={result.total} basePath="/marks" searchParams={passThrough} unit="个" />
     </main>
   );
 }

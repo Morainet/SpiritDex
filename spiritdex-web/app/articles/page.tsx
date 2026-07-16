@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { fetchArticles } from "@/lib/api";
+import { pick } from "@/lib/utils";
 import Pagination from "@/components/Pagination";
 
 export const metadata: Metadata = {
@@ -15,10 +16,6 @@ const CATEGORY_BADGE: Record<string, string> = {
   机制: "bg-[var(--type-dragon)]",
 };
 
-function pick(v: string | string[] | undefined): string | undefined {
-  return Array.isArray(v) ? v[0] : v;
-}
-
 function fmtDate(s?: string): string {
   if (!s) return "";
   return new Date(s).toLocaleDateString("zh-CN", { year: "numeric", month: "long", day: "numeric" });
@@ -32,7 +29,12 @@ export default async function ArticlesPage({
   const sp = await searchParams;
   const category = pick(sp.category);
   const page = Math.max(1, parseInt(pick(sp.page) ?? "1", 10) || 1);
-  const result = await fetchArticles(category, page, 12);
+  let result: Awaited<ReturnType<typeof fetchArticles>> = { list: [], total: 0, page, size: 12 };
+  try {
+    result = await fetchArticles(category, page, 12);
+  } catch {
+    // 后端不可用，降级渲染
+  }
 
   return (
     <main className="mx-auto max-w-5xl px-4 py-6">
@@ -74,7 +76,7 @@ export default async function ArticlesPage({
         </div>
       )}
 
-      <Pagination page={page} size={result.size} total={result.total} basePath="/articles" searchParams={{ category }} />
+      <Pagination page={page} size={result.size} total={result.total} basePath="/articles" searchParams={{ category }} unit="篇" />
     </main>
   );
 }

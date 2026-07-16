@@ -216,7 +216,8 @@ python main.py --offline  # 离线模式，用 tests/fixtures/ 缓存
 ## 📚 文档
 
 - **[实施方案](doc/implementation-plan.md)** —— 架构、数据模型、AI 集成、分期路线的完整设计文档
-- **[部署指南](doc/deployment.md)** —— 前端 Vercel + 后端国内云 + RDS PostgreSQL 的上线流程
+- **[部署指南（轻量服务器同机）](doc/deployment.md)** —— DB/后端/embedding 全装一台轻量服务器，省钱、适合 MVP
+- **[部署指南（RDS + 云服务器分离）](doc/deployment-rds.md)** —— 云托管 RDS + ECS 正式生产架构，自动备份/高可用
 - 各子模块 README：[scraper](scraper/README.md) · [embedding-service](embedding-service/README.md) · [spiritdex-web](spiritdex-web/README.md)
 
 ---

@@ -35,7 +35,7 @@ public class MapController {
 
     @Operation(summary = "点位类型聚合统计")
     @GetMapping("/types")
-    public Result<List<Map>> types() {
+    public Result<List<Map<String, Object>>> types() {
         return Result.success(mapPointService.typeAggregate());
     }
 }

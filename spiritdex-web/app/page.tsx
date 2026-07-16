@@ -1,67 +1,12 @@
 import Link from "next/link";
-import {
-  ArrowRight,
-  BookOpen,
-  Calculator,
-  Camera,
-  Database,
-  FlaskConical,
-  Gauge,
-  Ghost,
-  Map as MapIcon,
-  Package,
-  ScrollText,
-  Settings2,
-  Shield,
-  Sparkles,
-  Stamp,
-  Swords,
-  Zap,
-} from "lucide-react";
+import { ArrowRight, Database, Ghost, Sparkles } from "lucide-react";
+import { NAV_GROUPS } from "@/lib/nav-config";
 import { fetchArticles, fetchPets } from "@/lib/api";
 import type { ArticleListItem } from "@/types/article";
 import type { PetListItem } from "@/types/pet";
 import PetCard from "@/components/PetCard";
 
 // 功能入口分组（与 site-header 导航对齐）
-const FEATURE_GROUPS = [
-  {
-    label: "图鉴",
-    items: [
-      { href: "/pets", icon: Database, title: "精灵图鉴", desc: "671 只精灵全收录", color: "var(--type-grass)" },
-      { href: "/skills", icon: Zap, title: "技能库", desc: "737 个技能参数", color: "var(--type-electric)" },
-      { href: "/items", icon: Package, title: "道具图鉴", desc: "1779 个道具", color: "var(--type-poison)" },
-      { href: "/quests", icon: ScrollText, title: "任务图鉴", desc: "剧情任务一览", color: "var(--type-water)" },
-      { href: "/marks", icon: Stamp, title: "印记图鉴", desc: "战斗印记系统", color: "var(--type-dark)" },
-      { href: "/types/matrix", icon: Shield, title: "属性相克", desc: "18 属性相克矩阵", color: "var(--type-fire)" },
-      { href: "/map", icon: MapIcon, title: "地图", desc: "点位分布与精灵出没地区", color: "var(--type-ground)" },
-    ],
-  },
-  {
-    label: "知识",
-    items: [
-      { href: "/articles?category=机制", icon: FlaskConical, title: "机制知识库", desc: "相克/性格/培养/捕捉", color: "var(--type-dragon)" },
-      { href: "/articles", icon: BookOpen, title: "攻略文章", desc: "新手指南与活动攻略", color: "var(--accent)" },
-    ],
-  },
-  {
-    label: "工具",
-    items: [
-      { href: "/tools/damage-calculator", icon: Calculator, title: "伤害计算器", desc: "对战伤害计算", color: "var(--type-fighting)" },
-      { href: "/tools/nature-calculator", icon: Gauge, title: "性格计算器", desc: "性格六维增减计算", color: "var(--type-poison)" },
-      { href: "/tools/team-builder", icon: Swords, title: "阵容模拟", desc: "组建队伍分析弱点", color: "var(--type-ground)" },
-    ],
-  },
-  {
-    label: "AI",
-    items: [
-      { href: "/ai/chat", icon: Ghost, title: "智能问答", desc: "RAG 流式问答助手", color: "var(--type-illusion)" },
-      { href: "/ai/recommend", icon: Settings2, title: "阵容推荐", desc: "AI 推荐最佳阵容", color: "var(--type-cute)" },
-      { href: "/ai/identify", icon: Camera, title: "图片识别", desc: "截图识别精灵", color: "var(--type-ice)" },
-    ],
-  },
-];
-
 export default async function Home() {
   // 预取：御三家精灵（dexNo 1-3）+ 机制知识库文章
   // 容错：后端未启动时降级为只显示功能入口，不阻断首页渲染
@@ -116,7 +61,7 @@ export default async function Home() {
       {/* 功能入口（分组） */}
       <section className="mx-auto max-w-6xl px-4 py-12">
         <div className="space-y-8">
-          {FEATURE_GROUPS.map((group) => (
+          {NAV_GROUPS.map((group) => (
             <div key={group.label}>
               <h2 className="mb-3 text-sm font-semibold uppercase tracking-wide text-muted-foreground">{group.label}</h2>
               <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -134,7 +79,7 @@ export default async function Home() {
                       <e.icon className="h-6 w-6" />
                     </div>
                     <h3 className="flex items-center gap-1 text-lg font-bold transition-colors group-hover:text-primary">
-                      {e.title}
+                      {e.label}
                     </h3>
                     <p className="mt-1 text-sm text-muted">{e.desc}</p>
                   </Link>

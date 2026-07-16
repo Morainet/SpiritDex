@@ -7,12 +7,15 @@ export default function Pagination({
   total,
   basePath,
   searchParams,
+  unit = "条",
 }: {
   page: number;
   size: number;
   total: number;
   basePath: string;
   searchParams: Record<string, string | undefined>;
+  /** 量词，默认「条」（精灵用「只」、技能/道具用「个」等）。 */
+  unit?: string;
 }) {
   const totalPages = Math.max(1, Math.ceil(total / size));
   if (totalPages <= 1) return null;
@@ -62,7 +65,7 @@ export default function Pagination({
         </Link>
       )}
       <span className="ml-2 text-xs text-muted-foreground">
-        第 {page}/{totalPages} 页 · 共 {total} 只
+        第 {page}/{totalPages} 页 · 共 {total} {unit}
       </span>
     </nav>
   );

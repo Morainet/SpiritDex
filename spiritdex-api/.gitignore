@@ -31,3 +31,7 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### IntelliJ 运行配置（可能含本地密码/连接串，避免泄露）###
+.run/
+

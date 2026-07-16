@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
 import { fetchItems } from "@/lib/api";
+import { pick } from "@/lib/utils";
 import ItemCard from "@/components/ItemCard";
 import ItemFilters from "@/components/ItemFilters";
 import Pagination from "@/components/Pagination";
@@ -9,10 +10,6 @@ export const metadata: Metadata = {
   title: "道具图鉴",
   description: "洛克王国手游全部道具，按主分类/稀有度筛选",
 };
-
-function pick(v: string | string[] | undefined): string | undefined {
-  return Array.isArray(v) ? v[0] : v;
-}
 
 export default async function ItemsPage({
   searchParams,
@@ -25,7 +22,12 @@ export default async function ItemsPage({
   const q = pick(sp.q);
   const page = Math.max(1, parseInt(pick(sp.page) ?? "1", 10) || 1);
 
-  const result = await fetchItems({ mainCategory, rarity, q, page, size: 24 });
+  let result: Awaited<ReturnType<typeof fetchItems>> = { list: [], total: 0, page, size: 24 };
+  try {
+    result = await fetchItems({ mainCategory, rarity, q, page, size: 24 });
+  } catch {
+    // 后端不可用，降级渲染
+  }
 
   const passThrough: Record<string, string | undefined> = { mainCategory, rarity, q };
 
@@ -50,7 +52,7 @@ export default async function ItemsPage({
         </div>
       )}
 
-      <Pagination page={page} size={result.size} total={result.total} basePath="/items" searchParams={passThrough} />
+      <Pagination page={page} size={result.size} total={result.total} basePath="/items" searchParams={passThrough} unit="个" />
     </main>
   );
 }

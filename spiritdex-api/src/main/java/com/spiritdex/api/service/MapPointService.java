@@ -33,7 +33,7 @@ public class MapPointService extends ServiceImpl<MapPointMapper, MapPoint> {
     }
 
     /** 各点位类型统计：[{markType, typeName, count}, ...]。 */
-    public List<Map> typeAggregate() {
+    public List<Map<String, Object>> typeAggregate() {
         List<MapPoint> all = list();
         return all.stream()
                 .collect(Collectors.groupingBy(MapPoint::getMarkType))
