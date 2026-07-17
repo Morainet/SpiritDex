@@ -27,8 +27,10 @@ spring:
     # stringtype=unspecified：让 PG 驱动把字符串交给服务器按列类型解析，
     # 解决 MyBatis-Plus JacksonTypeHandler 写 JSONB 列时报
     # "column ... is of type jsonb but expression is of type character varying"
+    # reWriteBatchedInserts=true：PG 驱动把多条 insert 合并成单条 VALUES(...),(...)，
+    # SeedRunner 批量导入时往返次数从上万降到几十（跨国 Supabase 必备）。
     # 部署时用环境变量覆盖：SPRING_DATASOURCE_URL / USERNAME / PASSWORD
-    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5432/spiritdex?stringtype=unspecified}
+    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5432/spiritdex?stringtype=unspecified&reWriteBatchedInserts=true}
     username: ${SPRING_DATASOURCE_USERNAME:spiritdex}
     password: ${SPRING_DATASOURCE_PASSWORD:spiritdex}
     driver-class-name: org.postgresql.Driver

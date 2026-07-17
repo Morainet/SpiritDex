@@ -1,6 +1,8 @@
 package com.spiritdex.api.seed;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.metadata.TableInfoHelper;
+import com.baomidou.mybatisplus.extension.toolkit.Db;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.spiritdex.api.entity.*;
 import com.spiritdex.api.mapper.*;
@@ -8,21 +10,29 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Profile;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 
 import java.io.File;
+import java.math.BigDecimal;
 import java.util.*;
 
 /**
- * Phase 1 数据导入：读取 data/seed/*.json，按唯一键 upsert 入库。
+ * Phase 1 数据导入：读取 data/seed/*.json，批量入库。
  *
- * <p>仅在 {@code seed} profile 下激活，避免正常启动重跑全量入库：
+ * <p>仅在 {@code seed} profile 下激活：
  * <pre>{@code
  * mvn spring-boot:run -Dspring-boot.run.profiles=seed
  * }</pre>
  *
- * <p>导入顺序（满足外键依赖）：types → skills → pets(+pet_type) → pet_skill →
- * evolution_chains → evolution_stages。upsert 策略：按唯一键查存在→update，否则 insert。
+ * <h3>批量优化（跨国 Supabase 必备）</h3>
+ * <p>原逐条 select+insert 模式在跨国高延迟（~200ms/往返）下极慢（671 精灵 × N 表 ≈ 上万往返）。
+ * 现改为：<b>TRUNCATE 清表 → 内存攒批 → {@link Db#saveBatch} 批量提交</b>。配合 JDBC
+ * {@code reWriteBatchedInserts=true}，PG 驱动把 100 条 insert 合成 1 条 VALUES(...),(...)，
+ * 往返次数从上万降到几十。导入后用一次 selectList 回查主键 id 供关联表用。
+ *
+ * <p>幂等性：除 article 外每表先 TRUNCATE（物理清空 + 重置序列 + 级联关联表）再批量插入，
+ * 重复运行结果一致（safe re-run）。article 保留 AI 生成内容，按 slug upsert。
  */
 @Slf4j
 @Component
@@ -32,26 +42,17 @@ public class SeedRunner implements CommandLineRunner {
 
     private final ObjectMapper objectMapper;
     private final SeedProperties props;
+    /** 原生 JDBC：用 TRUNCATE 物理清表（绕过 @TableLogic 逻辑删除），保证 seed 幂等。 */
+    private final JdbcTemplate jdbcTemplate;
 
     private final TypeMapper typeMapper;
     private final SkillMapper skillMapper;
     private final PetMapper petMapper;
-    private final PetTypeMapper petTypeMapper;
-    private final PetSkillMapper petSkillMapper;
-    private final PetLocationMapper petLocationMapper;
     private final EvolutionChainMapper evolutionChainMapper;
-    private final EvolutionStageMapper evolutionStageMapper;
-    private final TypeEffectivenessMapper typeEffectivenessMapper;
     private final ArticleMapper articleMapper;
-    private final ItemMapper itemMapper;
-    private final QuestMapper questMapper;
-    private final MarkMapper markMapper;
-    private final MapPointMapper mapPointMapper;
 
-    /** batch flush 大小。 */
+    /** 批量插入分片大小（每批 100 条一次提交）。 */
     private static final int BATCH = 100;
-
-    // ====== 运行入口 ======
 
     @Override
     public void run(String... args) {
@@ -62,19 +63,20 @@ public class SeedRunner implements CommandLineRunner {
         }
         log.info("[seed] 开始导入，目录: {}", dir.getAbsolutePath());
 
-        // 缓存：catalog_id/slug → 主键 id，供关联表解析外键
-        Map<String, Long> typeSlugToId = new HashMap<>();
-        Map<String, Long> skillCatalogToId = new HashMap<>();
-        Map<String, Long> petSlugToId = new HashMap<>();
-        Map<String, Long> petCatalogToId = new HashMap<>();
-        Map<String, Long> evoGroupToId = new HashMap<>();
+        int t = seedTypes(dir);
+        Map<String, Long> typeSlugToId = loadSlugToId(Type.class);
 
-        int t = seedTypes(dir, typeSlugToId);
-        int s = seedSkills(dir, skillCatalogToId);
-        int p = seedPets(dir, typeSlugToId, petSlugToId, petCatalogToId);
+        int s = seedSkills(dir);
+        Map<String, Long> skillCatalogToId = loadCatalogToId(Skill.class);
+
+        int p = seedPets(dir, typeSlugToId);
+        Map<String, Long> petSlugToId = loadSlugToId(Pet.class);
+        Map<String, Long> petCatalogToId = loadCatalogToId(Pet.class);
+
         int ps = seedPetSkills(dir, petSlugToId, skillCatalogToId);
         int pl = seedPetLocations(dir, petSlugToId);
-        int ec = seedEvolutionChains(dir, evoGroupToId);
+        int ec = seedEvolutionChains(dir);
+        Map<String, Long> evoGroupToId = loadGroupToId();
         int es = seedEvolutionStages(dir, evoGroupToId, petCatalogToId);
         int te = seedTypeEffectiveness(dir, typeSlugToId);
         int it = seedItems(dir);
@@ -87,45 +89,35 @@ public class SeedRunner implements CommandLineRunner {
                 t, s, p, ps, pl, ec, es, te, it, qs, mk, mp, ar);
     }
 
-    // ====== 各实体导入 ======
+    // ====== 主表导入（TRUNCATE → 攒批 → saveBatch）======
 
-    private int seedTypes(File dir, Map<String, Long> slugToId) {
+    private int seedTypes(File dir) {
         List<Map<String, Object>> items = readItems(dir, "types.json");
-        int[] counts = {0, 0}; // insert, update
-        for (int i = 0; i < items.size(); i++) {
-            Map<String, Object> it = items.get(i);
-            String slug = str(it.get("slug"));
-            Type existing = typeMapper.selectOne(new LambdaQueryWrapper<Type>().eq(Type::getSlug, slug));
-            Type e = existing != null ? existing : new Type();
-            e.setSlug(slug);
+        if (items.isEmpty()) return 0;
+        truncate(Type.class);
+        List<Type> batch = new ArrayList<>(items.size());
+        for (Map<String, Object> it : items) {
+            Type e = new Type();
+            e.setSlug(str(it.get("slug")));
             e.setName(str(it.get("name")));
             e.setNameEn(str(it.get("name_en")));
             e.setSortOrder(intOrNull(it.get("sort_order")));
             e.setSourceUrl(str(it.get("source")));
-            if (existing != null) {
-                typeMapper.updateById(e);
-                counts[1]++;
-            } else {
-                typeMapper.insert(e);
-                counts[0]++;
-            }
-            slugToId.put(slug, e.getId());
-            flushIfBatch(i, items.size());
+            batch.add(e);
         }
-        log.info("[seed] types: insert={}, update={}", counts[0], counts[1]);
-        return items.size();
+        saveBatchLog("types", batch);
+        return batch.size();
     }
 
-    private int seedSkills(File dir, Map<String, Long> catalogToId) {
+    private int seedSkills(File dir) {
         List<Map<String, Object>> items = readItems(dir, "skills.json");
-        int[] counts = {0, 0};
-        for (int i = 0; i < items.size(); i++) {
-            Map<String, Object> it = items.get(i);
-            String catalogId = str(it.get("catalog_id"));
-            Skill existing = skillMapper.selectOne(new LambdaQueryWrapper<Skill>().eq(Skill::getCatalogId, catalogId));
-            Skill e = existing != null ? existing : new Skill();
+        if (items.isEmpty()) return 0;
+        truncate(Skill.class);
+        List<Skill> batch = new ArrayList<>(items.size());
+        for (Map<String, Object> it : items) {
+            Skill e = new Skill();
             e.setSlug(str(it.get("slug")));
-            e.setCatalogId(catalogId);
+            e.setCatalogId(str(it.get("catalog_id")));
             e.setCatalogNum(intOrNull(it.get("catalog_num")));
             e.setName(str(it.get("name")));
             e.setCategory(str(it.get("category")));
@@ -138,23 +130,22 @@ public class SeedRunner implements CommandLineRunner {
             e.setFlavorText(str(it.get("flavor_text")));
             e.setIconId(str(it.get("icon_id")));
             e.setSourceUrl(str(it.get("source_url")));
-            save(skillMapper, e, existing, counts);
-            catalogToId.put(catalogId, e.getId());
-            flushIfBatch(i, items.size());
+            batch.add(e);
         }
-        log.info("[seed] skills: insert={}, update={}", counts[0], counts[1]);
-        return items.size();
+        saveBatchLog("skills", batch);
+        return batch.size();
     }
 
-    private int seedPets(File dir, Map<String, Long> typeSlugToId,
-                         Map<String, Long> petSlugToId, Map<String, Long> petCatalogToId) {
+    private int seedPets(File dir, Map<String, Long> typeSlugToId) {
         List<Map<String, Object>> items = readItems(dir, "pets.json");
-        int[] counts = {0, 0};
-        for (int i = 0; i < items.size(); i++) {
-            Map<String, Object> it = items.get(i);
+        if (items.isEmpty()) return 0;
+        truncate(Pet.class);
+        truncate(PetType.class); // pet 清了关联也得清（外键依赖）
+        List<Pet> batch = new ArrayList<>(items.size());
+        Map<String, List<String>> petSlugToTypeNames = new LinkedHashMap<>();
+        for (Map<String, Object> it : items) {
+            Pet e = new Pet();
             String slug = str(it.get("slug"));
-            Pet existing = petMapper.selectOne(new LambdaQueryWrapper<Pet>().eq(Pet::getSlug, slug));
-            Pet e = existing != null ? existing : new Pet();
             e.setSlug(slug);
             e.setDexNo(intOrNull(it.get("dex_no")));
             e.setCatalogId(str(it.get("catalog_id")));
@@ -175,130 +166,119 @@ public class SeedRunner implements CommandLineRunner {
             e.setHabitat(str(it.get("habitat")));
             e.setEvolutionGroupId(str(it.get("evolution_group_id")));
             e.setSourceUrl(str(it.get("source_url")));
-            save(petMapper, e, existing, counts);
-            petSlugToId.put(slug, e.getId());
-            if (e.getCatalogId() != null) {
-                petCatalogToId.put(e.getCatalogId(), e.getId());
-            }
-            // 关联属性
-            upsertPetTypes(e.getId(), typeSlugToId, listStr(it.get("types")));
-            flushIfBatch(i, items.size());
+            batch.add(e);
+            petSlugToTypeNames.put(slug, listStr(it.get("types")));
         }
-        log.info("[seed] pets: insert={}, update={}", counts[0], counts[1]);
-        return items.size();
-    }
-
-    private void upsertPetTypes(Long petId, Map<String, Long> typeSlugToId, List<String> typeSlugs) {
-        // 物理删除旧关联（逻辑删会残留行，触发唯一约束冲突），再按 seed 重建，保证幂等
-        petTypeMapper.physicalDeleteByPet(petId);
-        int slot = 1;
-        for (String typeName : typeSlugs) {
-            // typeSlugs 实际存的是中文名（草/水），需映射回 slug
-            String slug = CHINESE_TYPE_TO_SLUG.get(typeName);
-            Long typeId = slug != null ? typeSlugToId.get(slug) : null;
-            if (typeId == null) {
-                continue;
+        saveBatchLog("pets", batch);
+        // 回查 pet slug→id，批量建 pet_type 关联
+        Map<String, Long> petSlugToId = loadSlugToId(Pet.class);
+        List<PetType> typeRels = new ArrayList<>();
+        for (Map.Entry<String, List<String>> en : petSlugToTypeNames.entrySet()) {
+            Long petId = petSlugToId.get(en.getKey());
+            if (petId == null) continue;
+            int slot = 1;
+            for (String typeName : en.getValue()) {
+                String slug = CHINESE_TYPE_TO_SLUG.get(typeName);
+                Long typeId = slug != null ? typeSlugToId.get(slug) : null;
+                if (typeId == null) continue;
+                PetType pt = new PetType();
+                pt.setPetId(petId);
+                pt.setTypeId(typeId);
+                pt.setSlot(slot++);
+                pt.setDeleted(0);
+                typeRels.add(pt);
             }
-            PetType pt = new PetType();
-            pt.setPetId(petId);
-            pt.setTypeId(typeId);
-            pt.setSlot(slot++);
-            pt.setDeleted(0);
-            petTypeMapper.insert(pt);
         }
+        saveBatchLog("pet_type", typeRels);
+        return batch.size();
     }
 
     private int seedPetSkills(File dir, Map<String, Long> petSlugToId, Map<String, Long> skillCatalogToId) {
         List<Map<String, Object>> items = readItems(dir, "pet_skills.json");
-        int ok = 0, skip = 0;
-        for (int i = 0; i < items.size(); i++) {
-            Map<String, Object> it = items.get(i);
+        if (items.isEmpty()) {
+            log.info("[seed] pet_skills: 文件缺失或为空，跳过");
+            return 0;
+        }
+        truncate(PetSkill.class);
+        List<PetSkill> batch = new ArrayList<>();
+        int skip = 0;
+        for (Map<String, Object> it : items) {
             Long petId = petSlugToId.get(str(it.get("pet_slug")));
             Long skillId = skillCatalogToId.get(str(it.get("skill_catalog_id")));
             if (petId == null || skillId == null) {
                 skip++;
                 continue;
             }
-            // 幂等：物理删旧（含逻辑删行）再插，避免唯一约束冲突
-            petSkillMapper.physicalDelete(petId, skillId);
             PetSkill ps = new PetSkill();
             ps.setPetId(petId);
             ps.setSkillId(skillId);
             ps.setLearnMethod(str(it.get("learn_method")));
             ps.setUnlockLevel(intOrNull(it.get("unlock_level")));
             ps.setDeleted(0);
-            petSkillMapper.insert(ps);
-            ok++;
-            flushIfBatch(i, items.size());
+            batch.add(ps);
         }
-        log.info("[seed] pet_skills: inserted={}, skipped={}", ok, skip);
-        return ok;
+        saveBatchLog("pet_skills", batch);
+        log.info("[seed] pet_skills: inserted={}, skipped={}", batch.size(), skip);
+        return batch.size();
     }
 
-    /** 导入精灵分布地区（按 (pet_id, location) 去重，UNIQUE 冲突跳过）。 */
     private int seedPetLocations(File dir, Map<String, Long> petSlugToId) {
         List<Map<String, Object>> items = readItems(dir, "pet_locations.json");
         if (items.isEmpty()) {
             log.info("[seed] pet_locations: 文件缺失或为空，跳过");
             return 0;
         }
-        int ok = 0, skip = 0;
-        java.util.Set<String> seen = new java.util.HashSet<>();
-        for (int i = 0; i < items.size(); i++) {
-            Map<String, Object> it = items.get(i);
+        truncate(PetLocation.class);
+        List<PetLocation> batch = new ArrayList<>();
+        int skip = 0;
+        Set<String> seen = new HashSet<>();
+        for (Map<String, Object> it : items) {
             Long petId = petSlugToId.get(str(it.get("pet_slug")));
             String location = str(it.get("location"));
             if (petId == null || location == null || location.isBlank()) {
                 skip++;
                 continue;
             }
-            String key = petId + ":" + location;
-            if (seen.contains(key)) {
-                continue;
-            }
-            seen.add(key);
+            if (!seen.add(petId + ":" + location)) continue;
             PetLocation pl = new PetLocation();
             pl.setPetId(petId);
             pl.setLocation(location);
             pl.setDeleted(0);
-            try {
-                petLocationMapper.insert(pl);
-                ok++;
-            } catch (org.springframework.dao.DuplicateKeyException ex) {
-                // UNIQUE(pet_id, location) 冲突，跳过（幂等）
-            }
-            flushIfBatch(i, items.size());
+            batch.add(pl);
         }
-        log.info("[seed] pet_locations: inserted={}, skipped={}", ok, skip);
-        return ok;
+        saveBatchLog("pet_locations", batch);
+        log.info("[seed] pet_locations: inserted={}, skipped={}", batch.size(), skip);
+        return batch.size();
     }
 
-    private int seedEvolutionChains(File dir, Map<String, Long> groupToId) {
+    private int seedEvolutionChains(File dir) {
         List<Map<String, Object>> items = readItems(dir, "evolution_chains.json");
-        int[] counts = {0, 0};
-        for (int i = 0; i < items.size(); i++) {
-            Map<String, Object> it = items.get(i);
-            String groupId = str(it.get("group_id"));
-            EvolutionChain existing = evolutionChainMapper.selectOne(
-                    new LambdaQueryWrapper<EvolutionChain>().eq(EvolutionChain::getGroupId, groupId));
-            EvolutionChain e = existing != null ? existing : new EvolutionChain();
-            e.setGroupId(groupId);
+        if (items.isEmpty()) return 0;
+        truncate(EvolutionStage.class); // 先清 stage（外键依赖 chain）
+        truncate(EvolutionChain.class);
+        List<EvolutionChain> batch = new ArrayList<>(items.size());
+        for (Map<String, Object> it : items) {
+            EvolutionChain e = new EvolutionChain();
+            e.setGroupId(str(it.get("group_id")));
             e.setName(str(it.get("name")));
             e.setStageCount(intOrNull(it.get("stage_count")));
             e.setSourceUrl(str(it.get("source_url")));
-            save(evolutionChainMapper, e, existing, counts);
-            groupToId.put(groupId, e.getId());
-            flushIfBatch(i, items.size());
+            batch.add(e);
         }
-        log.info("[seed] evolution_chains: insert={}, update={}", counts[0], counts[1]);
-        return items.size();
+        saveBatchLog("evolution_chains", batch);
+        return batch.size();
     }
 
     private int seedEvolutionStages(File dir, Map<String, Long> groupToId, Map<String, Long> petCatalogToId) {
         List<Map<String, Object>> items = readItems(dir, "evolution_stages.json");
-        int ok = 0, skip = 0;
-        for (int i = 0; i < items.size(); i++) {
-            Map<String, Object> it = items.get(i);
+        if (items.isEmpty()) {
+            log.info("[seed] evolution_stages: 文件缺失或为空，跳过");
+            return 0;
+        }
+        // stage 已在 seedEvolutionChains 清空
+        List<EvolutionStage> batch = new ArrayList<>();
+        int skip = 0;
+        for (Map<String, Object> it : items) {
             Long chainId = groupToId.get(str(it.get("group_id")));
             if (chainId == null) {
                 skip++;
@@ -306,12 +286,9 @@ public class SeedRunner implements CommandLineRunner {
             }
             String petCatalog = str(it.get("pet_catalog_id"));
             Long petId = petCatalog != null ? petCatalogToId.get(petCatalog) : null;
-            Integer stageNo = intOrNull(it.get("stage_no"));
-            // 幂等：物理删旧（含逻辑删行）再插，避免 (chain_id, stage_no) 唯一约束冲突
-            evolutionStageMapper.physicalDelete(chainId, stageNo);
             EvolutionStage e = new EvolutionStage();
             e.setChainId(chainId);
-            e.setStageNo(stageNo);
+            e.setStageNo(intOrNull(it.get("stage_no")));
             e.setPetId(petId);
             e.setPetCatalogId(petCatalog);
             e.setPetName(str(it.get("pet_name")));
@@ -323,70 +300,53 @@ public class SeedRunner implements CommandLineRunner {
             e.setHeadKey(str(it.get("head_key")));
             e.setIllustrationKey(str(it.get("illustration_key")));
             e.setDeleted(0);
-            evolutionStageMapper.insert(e);
-            ok++;
-            flushIfBatch(i, items.size());
+            batch.add(e);
         }
-        log.info("[seed] evolution_stages: upserted={}, skipped={}", ok, skip);
-        return ok;
+        saveBatchLog("evolution_stages", batch);
+        log.info("[seed] evolution_stages: upserted={}, skipped={}", batch.size(), skip);
+        return batch.size();
     }
 
-    /**
-     * 导入属性相克矩阵。文件可空（items 为空）——结构先搭好，数据后续填充。
-     * 每条：{attacking_type, defending_type, multiplier}，type 用 slug（草/fire...）。
-     */
     private int seedTypeEffectiveness(File dir, Map<String, Long> typeSlugToId) {
         List<Map<String, Object>> items = readItems(dir, "type_effectiveness.json");
         if (items.isEmpty()) {
-            log.info("[seed] type_effectiveness: 文件缺失或为空，跳过（结构已建，待数据填充）");
+            log.info("[seed] type_effectiveness: 文件缺失或为空，跳过");
             return 0;
         }
-        int ok = 0, skip = 0;
-        for (int i = 0; i < items.size(); i++) {
-            Map<String, Object> it = items.get(i);
+        truncate(TypeEffectiveness.class);
+        List<TypeEffectiveness> batch = new ArrayList<>();
+        int skip = 0;
+        for (Map<String, Object> it : items) {
             Long atkId = typeSlugToId.get(str(it.get("attacking_type")));
             Long defId = typeSlugToId.get(str(it.get("defending_type")));
             if (atkId == null || defId == null) {
                 skip++;
                 continue;
             }
-            TypeEffectiveness existing = typeEffectivenessMapper.selectOne(
-                    new LambdaQueryWrapper<TypeEffectiveness>()
-                            .eq(TypeEffectiveness::getAttackingTypeId, atkId)
-                            .eq(TypeEffectiveness::getDefendingTypeId, defId));
-            TypeEffectiveness e = existing != null ? existing : new TypeEffectiveness();
+            TypeEffectiveness e = new TypeEffectiveness();
             e.setAttackingTypeId(atkId);
             e.setDefendingTypeId(defId);
             e.setMultiplier(bigDecimalOrNull(it.get("multiplier")));
             e.setSourceUrl(str(it.get("source_url")));
-            if (existing != null) {
-                typeEffectivenessMapper.updateById(e);
-            } else {
-                typeEffectivenessMapper.insert(e);
-            }
-            ok++;
-            flushIfBatch(i, items.size());
+            batch.add(e);
         }
-        log.info("[seed] type_effectiveness: upserted={}, skipped={}", ok, skip);
-        return ok;
+        saveBatchLog("type_effectiveness", batch);
+        log.info("[seed] type_effectiveness: upserted={}, skipped={}", batch.size(), skip);
+        return batch.size();
     }
 
-    /** 导入道具图鉴（按 catalog_id upsert，纯展示无关联）。 */
     private int seedItems(File dir) {
         List<Map<String, Object>> items = readItems(dir, "items.json");
         if (items.isEmpty()) {
             log.info("[seed] items: 文件缺失或为空，跳过");
             return 0;
         }
-        int[] counts = {0, 0};
-        for (int i = 0; i < items.size(); i++) {
-            Map<String, Object> it = items.get(i);
-            String catalogId = str(it.get("catalog_id"));
-            Item existing = itemMapper.selectOne(
-                    new LambdaQueryWrapper<Item>().eq(Item::getCatalogId, catalogId));
-            Item e = existing != null ? existing : new Item();
+        truncate(Item.class);
+        List<Item> batch = new ArrayList<>(items.size());
+        for (Map<String, Object> it : items) {
+            Item e = new Item();
             e.setSlug(str(it.get("slug")));
-            e.setCatalogId(catalogId);
+            e.setCatalogId(str(it.get("catalog_id")));
             e.setName(str(it.get("name")));
             e.setRarity(str(it.get("rarity")));
             e.setMainCategory(str(it.get("main_category")));
@@ -397,29 +357,24 @@ public class SeedRunner implements CommandLineRunner {
             e.setIconId(str(it.get("icon_id")));
             e.setDataVersion(str(it.get("data_version")));
             e.setSourceUrl(str(it.get("source_url")));
-            save(itemMapper, e, existing, counts);
-            flushIfBatch(i, items.size());
+            batch.add(e);
         }
-        log.info("[seed] items: insert={}, update={}", counts[0], counts[1]);
-        return items.size();
+        saveBatchLog("items", batch);
+        return batch.size();
     }
 
-    /** 导入任务图鉴（按 catalog_id upsert，纯展示无关联）。 */
     private int seedQuests(File dir) {
         List<Map<String, Object>> items = readItems(dir, "quests.json");
         if (items.isEmpty()) {
             log.info("[seed] quests: 文件缺失或为空，跳过");
             return 0;
         }
-        int[] counts = {0, 0};
-        for (int i = 0; i < items.size(); i++) {
-            Map<String, Object> it = items.get(i);
-            String catalogId = str(it.get("catalog_id"));
-            Quest existing = questMapper.selectOne(
-                    new LambdaQueryWrapper<Quest>().eq(Quest::getCatalogId, catalogId));
-            Quest e = existing != null ? existing : new Quest();
+        truncate(Quest.class);
+        List<Quest> batch = new ArrayList<>(items.size());
+        for (Map<String, Object> it : items) {
+            Quest e = new Quest();
             e.setSlug(str(it.get("slug")));
-            e.setCatalogId(catalogId);
+            e.setCatalogId(str(it.get("catalog_id")));
             e.setName(str(it.get("name")));
             e.setSeq(str(it.get("seq")));
             e.setCategory(str(it.get("category")));
@@ -430,14 +385,12 @@ public class SeedRunner implements CommandLineRunner {
             e.setNote(str(it.get("note")));
             e.setAttribution(str(it.get("attribution")));
             e.setSourceUrl(str(it.get("source_url")));
-            save(questMapper, e, existing, counts);
-            flushIfBatch(i, items.size());
+            batch.add(e);
         }
-        log.info("[seed] quests: insert={}, update={}", counts[0], counts[1]);
-        return items.size();
+        saveBatchLog("quests", batch);
+        return batch.size();
     }
 
-    /** 导入印记图鉴（按 catalog_id upsert）。source_skills 是 JSONB 列表，用 ObjectMapper 反序列化。 */
     @SuppressWarnings("unchecked")
     private int seedMarks(File dir) {
         List<Map<String, Object>> items = readItems(dir, "marks.json");
@@ -445,20 +398,16 @@ public class SeedRunner implements CommandLineRunner {
             log.info("[seed] marks: 文件缺失或为空，跳过");
             return 0;
         }
-        int[] counts = {0, 0};
-        for (int i = 0; i < items.size(); i++) {
-            Map<String, Object> it = items.get(i);
-            String catalogId = str(it.get("catalog_id"));
-            Mark existing = markMapper.selectOne(
-                    new LambdaQueryWrapper<Mark>().eq(Mark::getCatalogId, catalogId));
-            Mark e = existing != null ? existing : new Mark();
+        truncate(Mark.class);
+        List<Mark> batch = new ArrayList<>(items.size());
+        for (Map<String, Object> it : items) {
+            Mark e = new Mark();
             e.setSlug(str(it.get("slug")));
-            e.setCatalogId(catalogId);
+            e.setCatalogId(str(it.get("catalog_id")));
             e.setName(str(it.get("name")));
             e.setFaction(str(it.get("faction")));
             e.setEffectText(str(it.get("effect_text")));
             e.setMechanics(str(it.get("mechanics")));
-            // source_skills：JSONB 列表 [{name, desc}]，用 ObjectMapper 转 List<Map>
             Object sk = it.get("source_skills");
             if (sk instanceof List<?> list && !list.isEmpty()) {
                 try {
@@ -470,41 +419,37 @@ public class SeedRunner implements CommandLineRunner {
                 }
             }
             e.setSourceUrl(str(it.get("source_url")));
-            save(markMapper, e, existing, counts);
-            flushIfBatch(i, items.size());
+            batch.add(e);
         }
-        log.info("[seed] marks: insert={}, update={}", counts[0], counts[1]);
-        return items.size();
+        saveBatchLog("marks", batch);
+        return batch.size();
     }
 
-    /** 导入地图点位（全量重建：先清空再插，无唯一约束冲突风险）。 */
     private int seedMapPoints(File dir) {
         List<Map<String, Object>> items = readItems(dir, "map_points.json");
         if (items.isEmpty()) {
             log.info("[seed] map_points: 文件缺失或为空，跳过");
             return 0;
         }
-        // 无业务唯一键，每次 seed 先清空（物理删）再插，保证幂等
-        mapPointMapper.delete(new com.baomidou.mybatisplus.core.conditions.query.QueryWrapper<MapPoint>().eq("1", 1));
-        int ok = 0;
-        for (int i = 0; i < items.size(); i++) {
-            Map<String, Object> it = items.get(i);
+        truncate(MapPoint.class);
+        List<MapPoint> batch = new ArrayList<>(items.size());
+        for (Map<String, Object> it : items) {
             MapPoint e = new MapPoint();
             e.setMarkType(intOrNull(it.get("mark_type")));
             e.setTypeName(str(it.get("type_name")));
             e.setTitle(str(it.get("title")));
             e.setDescription(str(it.get("desc")));
-            e.setLat(bigDecimalOrNull(it.get("lat")) != null ? bigDecimalOrNull(it.get("lat")).doubleValue() : null);
-            e.setLng(bigDecimalOrNull(it.get("lng")) != null ? bigDecimalOrNull(it.get("lng")).doubleValue() : null);
-            mapPointMapper.insert(e);
-            ok++;
-            flushIfBatch(i, items.size());
+            BigDecimal lat = bigDecimalOrNull(it.get("lat"));
+            BigDecimal lng = bigDecimalOrNull(it.get("lng"));
+            e.setLat(lat != null ? lat.doubleValue() : null);
+            e.setLng(lng != null ? lng.doubleValue() : null);
+            batch.add(e);
         }
-        log.info("[seed] map_points: inserted={}", ok);
-        return ok;
+        saveBatchLog("map_points", batch);
+        return batch.size();
     }
 
-    /** 导入攻略文章（Markdown 正文，按 slug upsert）。 */
+    /** 导入攻略文章：不清表（保留 AI 生成内容），按 slug upsert。 */
     private int seedArticles(File dir) {
         List<Map<String, Object>> items = readItems(dir, "articles.json");
         if (items.isEmpty()) {
@@ -512,8 +457,7 @@ public class SeedRunner implements CommandLineRunner {
             return 0;
         }
         int[] counts = {0, 0};
-        for (int i = 0; i < items.size(); i++) {
-            Map<String, Object> it = items.get(i);
+        for (Map<String, Object> it : items) {
             String slug = str(it.get("slug"));
             Article existing = articleMapper.selectOne(
                     new LambdaQueryWrapper<Article>().eq(Article::getSlug, slug));
@@ -527,14 +471,78 @@ public class SeedRunner implements CommandLineRunner {
             e.setTags(listStr(it.get("tags")));
             e.setAuthorName(str(it.getOrDefault("author_name", "灵宠档案编辑部")));
             e.setStatus(str(it.getOrDefault("status", "published")));
-            save(articleMapper, e, existing, counts);
-            flushIfBatch(i, items.size());
+            if (existing != null) {
+                articleMapper.updateById(e);
+                counts[1]++;
+            } else {
+                articleMapper.insert(e);
+                counts[0]++;
+            }
         }
         log.info("[seed] articles: insert={}, update={}", counts[0], counts[1]);
         return items.size();
     }
 
-    // ====== 工具 ======
+    // ====== 批量/清表工具 ======
+
+    /**
+     * 物理清空一张表（TRUNCATE ... RESTART IDENTITY CASCADE）。
+     *
+     * <p>用原生 SQL 而非 Db.remove：所有实体带 @TableLogic deleted，
+     * BaseMapper.delete 只逻辑删除（UPDATE deleted=1），旧行仍在表里，重跑时
+     * UNIQUE 约束会冲突。TRUNCATE 真正物理清空 + 重置自增序列，保证幂等。
+     */
+    private void truncate(Class<?> clazz) {
+        String tableName = TableInfoHelper.getTableInfo(clazz).getTableName();
+        jdbcTemplate.execute("TRUNCATE TABLE " + tableName + " RESTART IDENTITY CASCADE");
+        log.debug("[seed] TRUNCATE {}", tableName);
+    }
+
+    /** 分批 saveBatch，每 BATCH 条一次提交，带进度日志。依赖 JDBC reWriteBatchedInserts。 */
+    private <T> void saveBatchLog(String name, List<T> batch) {
+        if (batch.isEmpty()) {
+            log.info("[seed] {}: 0 条，跳过", name);
+            return;
+        }
+        int total = batch.size();
+        for (int i = 0; i < total; i += BATCH) {
+            int end = Math.min(i + BATCH, total);
+            Db.saveBatch(batch.subList(i, end));
+            log.debug("[seed] {} 进度 {}/{}", name, end, total);
+        }
+        log.info("[seed] {}: 批量插入 {} 条", name, total);
+    }
+
+    // ====== id 映射回查（1 次往返代替 N 次 select）======
+
+    private Map<String, Long> loadSlugToId(Class<?> clazz) {
+        Map<String, Long> out = new HashMap<>();
+        for (Object o : Db.list(clazz)) {
+            if (o instanceof Type t) out.put(t.getSlug(), t.getId());
+            else if (o instanceof Skill s) out.put(s.getSlug(), s.getId());
+            else if (o instanceof Pet p) out.put(p.getSlug(), p.getId());
+        }
+        return out;
+    }
+
+    private Map<String, Long> loadCatalogToId(Class<?> clazz) {
+        Map<String, Long> out = new HashMap<>();
+        for (Object o : Db.list(clazz)) {
+            if (o instanceof Skill s && s.getCatalogId() != null) out.put(s.getCatalogId(), s.getId());
+            else if (o instanceof Pet p && p.getCatalogId() != null) out.put(p.getCatalogId(), p.getId());
+        }
+        return out;
+    }
+
+    private Map<String, Long> loadGroupToId() {
+        Map<String, Long> out = new HashMap<>();
+        for (EvolutionChain c : evolutionChainMapper.selectList(null)) {
+            out.put(c.getGroupId(), c.getId());
+        }
+        return out;
+    }
+
+    // ====== 解析工具 ======
 
     @SuppressWarnings("unchecked")
     private List<Map<String, Object>> readItems(File dir, String filename) {
@@ -554,23 +562,6 @@ public class SeedRunner implements CommandLineRunner {
         }
     }
 
-    private <T> void save(com.baomidou.mybatisplus.core.mapper.BaseMapper<T> mapper,
-                          T entity, T existing, int[] counts) {
-        if (existing != null) {
-            mapper.updateById(entity);
-            counts[1]++;
-        } else {
-            mapper.insert(entity);
-            counts[0]++;
-        }
-    }
-
-    private void flushIfBatch(int i, int total) {
-        if ((i + 1) % BATCH == 0) {
-            log.debug("[seed] 进度 {}/{}", i + 1, total);
-        }
-    }
-
     private static String str(Object o) {
         return o == null ? null : String.valueOf(o);
     }
@@ -587,11 +578,11 @@ public class SeedRunner implements CommandLineRunner {
         return Boolean.parseBoolean(String.valueOf(o));
     }
 
-    private static java.math.BigDecimal bigDecimalOrNull(Object o) {
+    private static BigDecimal bigDecimalOrNull(Object o) {
         if (o == null) return null;
-        if (o instanceof java.math.BigDecimal b) return b;
-        if (o instanceof Number n) return java.math.BigDecimal.valueOf(n.doubleValue());
-        try { return new java.math.BigDecimal(String.valueOf(o)); } catch (NumberFormatException e) { return null; }
+        if (o instanceof BigDecimal b) return b;
+        if (o instanceof Number n) return BigDecimal.valueOf(n.doubleValue());
+        try { return new BigDecimal(String.valueOf(o)); } catch (NumberFormatException e) { return null; }
     }
 
     @SuppressWarnings("unchecked")
