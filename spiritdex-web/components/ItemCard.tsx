@@ -19,9 +19,9 @@ export default function ItemCard({ item }: { item: ItemListItem }) {
       href={`/items/${item.slug}`}
       className="flex gap-3 rounded-xl border border-border bg-surface p-3 shadow-[var(--shadow-card)] transition-all hover:shadow-[var(--shadow-hover)] hover:-translate-y-0.5"
     >
-      <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-surface-2">
+      <div className="relative flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-surface-2">
         {icon ? (
-          <Image src={icon} alt={item.name} unoptimized width={40} height={40} className="object-contain" />
+          <Image src={icon} alt={item.name} unoptimized fill className="object-contain p-1" />
         ) : (
           <Package className="h-6 w-6 text-muted-foreground" />
         )}
