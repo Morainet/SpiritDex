@@ -1,9 +1,9 @@
-import Image from "next/image";
 import Link from "next/link";
 import { ChevronRight } from "lucide-react";
 import type { EvolutionChain } from "@/types/pet";
 import { petIllustrationUrl } from "@/lib/image";
 import { typeColor } from "@/lib/type-colors";
+import ProxyImage from "@/components/ProxyImage";
 
 /** 进化链横向流程图：stage1 →(Lv) stage2 →(Lv) stage3。 */
 export default function EvolutionChainView({ chain }: { chain?: EvolutionChain | null }) {
@@ -36,7 +36,7 @@ function StageCard({ stage }: { stage: EvolutionChain["stages"][number] }) {
     <div className="flex w-28 flex-col items-center rounded-xl border border-border bg-surface p-2 text-center shadow-[var(--shadow-card)] transition-shadow hover:shadow-[var(--shadow-hover)]">
       <div className="relative h-20 w-20">
         {url ? (
-          <Image src={url} alt={stage.petName ?? ""} fill unoptimized className="object-contain" />
+          <ProxyImage src={url} alt={stage.petName ?? ""} fill className="object-contain" fallback={<span className="flex h-full w-full items-center justify-center text-3xl opacity-20">🐾</span>} />
         ) : (
           <span className="flex h-full w-full items-center justify-center text-3xl opacity-20">🐾</span>
         )}

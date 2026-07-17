@@ -5,7 +5,8 @@ import { ArrowLeft } from "lucide-react";
 import { fetchSkillDetail, fetchSkills } from "@/lib/api";
 import { typeColor } from "@/lib/type-colors";
 
-export const dynamicParams = false;
+export const dynamicParams = true;
+export const revalidate = 3600;
 
 export async function generateStaticParams() {
   const result = await fetchSkills({ size: 1000 });

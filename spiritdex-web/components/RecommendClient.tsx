@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, useState } from "react";
-import Image from "next/image";
+import ProxyImage from "@/components/ProxyImage";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import type { PetListItem } from "@/types/pet";
@@ -130,7 +130,7 @@ export default function RecommendClient({
               {(() => {
                 const url = petHeadUrl(p.headKey);
                 return url ? (
-                  <Image src={url} alt={p.name} width={24} height={24} unoptimized className="object-contain" />
+                  <ProxyImage src={url} alt={p.name} width={24} height={24} className="object-contain" fallback={<span>🐾</span>} />
                 ) : (
                   <span>🐾</span>
                 );

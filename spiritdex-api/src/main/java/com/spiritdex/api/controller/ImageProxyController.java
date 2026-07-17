@@ -59,10 +59,10 @@ public class ImageProxyController {
         if (!isValidKey(key)) {
             return ResponseEntity.badRequest().build();
         }
-        // 失败缓存：短时间内已失败的 key 直接 404，不重复打 BWIKI
+        // 失败缓存：短时间内已失败的 key 直接返回占位图，不重复打 BWIKI
         Long failedAt = negativeCache.get(key);
         if (failedAt != null && System.currentTimeMillis() - failedAt < NEGATIVE_TTL_MS) {
-            return ResponseEntity.notFound().cacheControl(CacheControl.noStore()).build();
+            return placeholder();
         }
 
         // 1. 磁盘缓存命中？
@@ -100,16 +100,16 @@ public class ImageProxyController {
             if (resp.statusCode() != 200 || resp.body() == null || resp.body().length == 0) {
                 log.debug("[image-proxy] 回源失败 {}: HTTP {}", key, resp.statusCode());
                 negativeCache.put(key, System.currentTimeMillis());
-                return ResponseEntity.notFound().cacheControl(CacheControl.noStore()).build();
+                return placeholder();
             }
             byte[] body = resp.body();
             // ★ 关键校验：BWIKI 的 WAF 会返回 JS 挑战页（HTTP 200 但内容是 <script>，非真图片）。
             // 用 PNG magic bytes（\x89PNG）校验，非图片内容拒绝缓存、返回 404。
             if (!isPng(body)) {
-                log.warn("[image-proxy] {} 被 WAF 拦截或不是图片（{}字节，非PNG头），返回404",
+                log.warn("[image-proxy] {} 被 WAF 拦截或不是图片（{}字节，非PNG头），返回占位图",
                         key, body.length);
                 negativeCache.put(key, System.currentTimeMillis());
-                return ResponseEntity.notFound().cacheControl(CacheControl.noStore()).build();
+                return placeholder();
             }
             // 3. 写入磁盘缓存
             try {
@@ -122,7 +122,7 @@ public class ImageProxyController {
         } catch (Exception e) {
             log.warn("[image-proxy] 代理异常 {}: {}", key, e.getMessage());
             negativeCache.put(key, System.currentTimeMillis());
-            return ResponseEntity.notFound().cacheControl(CacheControl.noStore()).build();
+            return placeholder();
         }
     }
 
@@ -133,11 +133,31 @@ public class ImageProxyController {
                 && data[4] == 0x0D && data[5] == 0x0A && data[6] == 0x1A && data[7] == 0x0A;
     }
 
+    /**
+     * 占位图：图片在 BWIKI 不存在时，返回 200 + 这张 SVG（透明背景 + 居中🐾），
+     * 而非 404。这样浏览器原生 &lt;img&gt; 永远收到一张图，绝不显示破图，
+     * 不依赖前端 onError（SSR 场景 onError 在 hydration 前不触发，会先闪破图）。
+     * 用 no-store 避免占位图被长缓存（万一 BWIKI 后来补了图，能重新拉到真图）。
+     */
+    private static final byte[] PLACEHOLDER_SVG = (
+            "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"96\" height=\"96\" viewBox=\"0 0 96 96\">"
+            + "<text x=\"48\" y=\"62\" font-size=\"48\" text-anchor=\"middle\" opacity=\"0.25\">🐾</text>"
+            + "</svg>").getBytes(java.nio.charset.StandardCharsets.UTF_8);
+
+    private ResponseEntity<byte[]> placeholder() {
+        return ResponseEntity.ok()
+                .contentType(MediaType.parseMediaType("image/svg+xml"))
+                .cacheControl(CacheControl.noStore())
+                .body(PLACEHOLDER_SVG);
+    }
+
     private ResponseEntity<byte[]> ok(byte[] data, String contentType) {
         return ResponseEntity.ok()
                 .contentType(MediaType.parseMediaType(
                         contentType != null && contentType.startsWith("image/") ? contentType : "image/png"))
-                .cacheControl(CacheControl.maxAge(Duration.ofDays(7)).cachePublic().immutable())
+                // 保留长缓存（性能），但去掉 immutable 并加 must-revalidate：
+                // 这样后端修 bug 后，浏览器到期会重新验证，不会永久卡在旧的错误响应上。
+                .cacheControl(CacheControl.maxAge(Duration.ofHours(1)).cachePublic().mustRevalidate())
                 .body(data);
     }
 

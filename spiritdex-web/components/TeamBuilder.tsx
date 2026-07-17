@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import Image from "next/image";
+import ProxyImage from "@/components/ProxyImage";
 import Link from "next/link";
 import type { PetListItem } from "@/types/pet";
 import type { SpiritType, TypeMatrix } from "@/types/spiritdex";
@@ -186,7 +186,7 @@ function Head({ pet, small }: { pet: PetListItem; small?: boolean }) {
   const url = petHeadUrl(pet.headKey);
   const sz = small ? 28 : 36;
   return url ? (
-    <Image src={url} alt={pet.name} width={sz} height={sz} unoptimized className="object-contain" />
+    <ProxyImage src={url} alt={pet.name} width={sz} height={sz} className="object-contain" fallback={<span className="text-lg">🐾</span>} />
   ) : (
     <span className="text-lg">🐾</span>
   );

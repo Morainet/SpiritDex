@@ -1,8 +1,8 @@
-import Image from "next/image";
 import Link from "next/link";
 import type { PetListItem } from "@/types/pet";
 import { petHeadUrl } from "@/lib/image";
 import { typeColor } from "@/lib/type-colors";
+import ProxyImage from "@/components/ProxyImage";
 
 const STAGE_LABEL: Record<number, string> = { 1: "一阶", 2: "二阶", 3: "三阶" };
 
@@ -20,13 +20,13 @@ export default function PetCard({ pet }: { pet: PetListItem }) {
 
       <div className="relative flex h-32 items-center justify-center bg-surface-2">
         {headUrl ? (
-          <Image
+          <ProxyImage
             src={headUrl}
             alt={pet.name}
             width={96}
             height={96}
-            unoptimized
             className="object-contain transition-transform duration-200 group-hover:scale-110"
+            fallback={<span className="text-4xl opacity-30">🐾</span>}
           />
         ) : (
           <span className="text-4xl opacity-30">🐾</span>

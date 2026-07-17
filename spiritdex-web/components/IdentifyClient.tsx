@@ -2,6 +2,7 @@
 
 import { useRef, useState } from "react";
 import Image from "next/image";
+import ProxyImage from "@/components/ProxyImage";
 import Link from "next/link";
 import { identifyImage, type IdentifyCandidate } from "@/lib/ai-chat";
 import { petIllustrationUrl } from "@/lib/image";
@@ -114,7 +115,7 @@ export default function IdentifyClient({ enabled }: { enabled: boolean }) {
                 >
                   <div className="relative h-20 w-20">
                     {url ? (
-                      <Image src={url} alt={c.name} fill unoptimized className="object-contain" />
+                      <ProxyImage src={url} alt={c.name} fill className="object-contain" fallback={<span className="flex h-full w-full items-center justify-center text-3xl">🐾</span>} />
                     ) : (
                       <span className="flex h-full w-full items-center justify-center text-3xl">🐾</span>
                     )}

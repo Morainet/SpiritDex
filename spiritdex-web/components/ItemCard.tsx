@@ -1,8 +1,8 @@
 import Link from "next/link";
-import Image from "next/image";
 import { Package } from "lucide-react";
 import type { ItemListItem } from "@/types/item";
 import { itemIconUrl } from "@/lib/image";
+import ProxyImage from "@/components/ProxyImage";
 
 /** 稀有度配色（紫/蓝/橙/绿）。 */
 const RARITY_STYLE: Record<string, string> = {
@@ -21,7 +21,7 @@ export default function ItemCard({ item }: { item: ItemListItem }) {
     >
       <div className="relative flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-surface-2">
         {icon ? (
-          <Image src={icon} alt={item.name} unoptimized fill className="object-contain p-1" />
+          <ProxyImage src={icon} alt={item.name} fill className="object-contain p-1" fallback={<Package className="h-6 w-6 text-muted-foreground" />} />
         ) : (
           <Package className="h-6 w-6 text-muted-foreground" />
         )}

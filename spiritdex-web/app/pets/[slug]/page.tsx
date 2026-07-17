@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft, Bot } from "lucide-react";
 import { fetchPetDetail, fetchPets } from "@/lib/api";
@@ -9,8 +8,12 @@ import { typeColor } from "@/lib/type-colors";
 import type { PetSkill } from "@/types/pet";
 import StatsRadar from "@/components/StatsRadar";
 import EvolutionChainView from "@/components/EvolutionChainView";
+import ProxyImage from "@/components/ProxyImage";
 
-export const dynamicParams = false;
+// 允许按需生成未预渲染的 slug（数据库新增/构建时未覆盖的精灵都能访问），
+// 配合 revalidate ISR，新精灵首次访问时生成页面、之后定时刷新。
+export const dynamicParams = true;
+export const revalidate = 3600;
 
 export async function generateStaticParams() {
   const result = await fetchPets({ size: 1000 });
@@ -78,7 +81,7 @@ export default async function PetDetailPage({
       <div className="mb-6 grid gap-6 md:grid-cols-[360px_1fr]">
         <div className="relative flex min-h-[360px] items-center justify-center overflow-hidden rounded-2xl border border-border bg-surface-2">
           {illustration ? (
-            <Image src={illustration} alt={pet.name} width={340} height={340} unoptimized className="object-contain" />
+            <ProxyImage src={illustration} alt={pet.name} width={340} height={340} className="object-contain" fallback={<span className="text-6xl opacity-30">🐾</span>} />
           ) : (
             <span className="text-6xl opacity-20">🐾</span>
           )}

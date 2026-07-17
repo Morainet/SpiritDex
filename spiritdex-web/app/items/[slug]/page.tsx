@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import Image from "next/image";
+import ProxyImage from "@/components/ProxyImage";
 import { ArrowLeft, Package, ExternalLink } from "lucide-react";
 import { fetchItemDetail } from "@/lib/api";
 import { itemIconUrl } from "@/lib/image";
@@ -40,7 +40,7 @@ export default async function ItemDetailPage({ params }: { params: Promise<{ slu
       <header className="mb-6 flex items-start gap-4">
         <div className="flex h-20 w-20 shrink-0 items-center justify-center rounded-xl bg-surface-2">
           {icon ? (
-            <Image src={icon} alt={item.name} unoptimized width={64} height={64} className="object-contain" />
+            <ProxyImage src={icon} alt={item.name} width={64} height={64} className="object-contain" fallback={<Package className="h-10 w-10 text-muted-foreground" />} />
           ) : (
             <Package className="h-10 w-10 text-muted-foreground" />
           )}
