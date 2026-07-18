@@ -1,23 +1,24 @@
 "use client";
 
 import { useRef, useState } from "react";
-import Image from "next/image";
-import ProxyImage from "@/components/ProxyImage";
 import Link from "next/link";
+import { Camera, ScanLine } from "lucide-react";
 import { identifyImage, type IdentifyCandidate } from "@/lib/ai-chat";
 import { petIllustrationUrl } from "@/lib/image";
+import ProxyImage from "@/components/ProxyImage";
 
 export default function IdentifyClient({ enabled }: { enabled: boolean }) {
-  const [preview, setPreview] = useState<string | null>(null);
   const [file, setFile] = useState<File | null>(null);
-  const [loading, setLoading] = useState(false);
+  const [preview, setPreview] = useState<string | null>(null);
   const [desc, setDesc] = useState("");
   const [candidates, setCandidates] = useState<IdentifyCandidate[]>([]);
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const inputRef = useRef<HTMLInputElement>(null);
 
-  function onPick(f: File | null) {
+  function onPick(f: File | null | undefined) {
     if (!f) return;
+    if (preview) URL.revokeObjectURL(preview);
     setFile(f);
     setPreview(URL.createObjectURL(f));
     setDesc("");
@@ -26,10 +27,7 @@ export default function IdentifyClient({ enabled }: { enabled: boolean }) {
   }
 
   async function submit() {
-    if (!file) {
-      setError("请先选择图片");
-      return;
-    }
+    if (!file || loading) return;
     setLoading(true);
     setError("");
     setDesc("");
@@ -40,7 +38,7 @@ export default function IdentifyClient({ enabled }: { enabled: boolean }) {
         setDesc(d);
         setCandidates(c);
       },
-      (err) => setError(err)
+      (e) => setError(e)
     );
     setLoading(false);
   }
@@ -61,79 +59,116 @@ export default function IdentifyClient({ enabled }: { enabled: boolean }) {
           e.preventDefault();
           onPick(e.dataTransfer.files[0]);
         }}
-        className="flex min-h-[200px] cursor-pointer flex-col items-center justify-center rounded-xl border-2 border-dashed border-input bg-surface-2 p-6 text-center hover:border-border"
+        className="flex min-h-[220px] cursor-pointer flex-col items-center justify-center rounded-2xl border-2 border-dashed border-input bg-surface-2 p-6 text-center transition-colors hover:border-[var(--type-ice)]"
       >
-        {preview ? (
-          // eslint-disable-next-line @next/next/no-img-element
-          <img src={preview} alt="预览" className="max-h-48 object-contain" />
-        ) : (
-          <>
-            <span className="mb-2 text-4xl">📷</span>
-            <p className="text-sm text-muted">点击或拖拽上传精灵截图</p>
-            <p className="mt-1 text-xs text-muted-foreground">JPG / PNG / WebP，≤5MB</p>
-          </>
-        )}
         <input
           ref={inputRef}
           type="file"
-          accept="image/jpeg,image/png,image/webp"
+          accept="image/*"
           className="hidden"
-          onChange={(e) => onPick(e.target.files?.[0] ?? null)}
+          onChange={(e) => onPick(e.target.files?.[0])}
         />
+        {preview ? (
+          // 用户上传的本地预览，不走代理，用原生 img
+          // eslint-disable-next-line @next/next/no-img-element
+          <img src={preview} alt="预览" className="max-h-48 rounded-lg object-contain shadow-sm" />
+        ) : (
+          <>
+            <div className="mb-3 flex h-14 w-14 items-center justify-center rounded-2xl bg-[var(--type-ice)]/15 text-[var(--type-ice)]">
+              <Camera className="h-7 w-7" />
+            </div>
+            <p className="font-medium">点击上传或拖拽精灵截图</p>
+            <p className="mt-1 text-xs text-muted-foreground">支持 PNG / JPG，AI 视觉模型识别</p>
+          </>
+        )}
       </div>
 
+      {/* 提交按钮 */}
       <button
         onClick={submit}
         disabled={!enabled || loading || !file}
-        className="w-full rounded-lg bg-gradient-to-r from-purple-500 to-blue-500 py-2.5 text-sm font-medium text-white hover:opacity-90 disabled:opacity-50"
+        className="flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-[var(--type-ice)] to-[var(--secondary)] py-2.5 text-sm font-medium text-white transition-opacity hover:opacity-90 disabled:opacity-50"
       >
+        {loading ? <ScanLine className="h-4 w-4 animate-pulse" /> : <Camera className="h-4 w-4" />}
         {loading ? "AI 识别中…" : "开始识别"}
       </button>
 
-      {error && <div className="rounded-lg bg-[color-mix(in_srgb,var(--danger)_15%,transparent)] p-3 text-sm text-[var(--danger)]">{error}</div>}
-
-      {/* VLM 描述 */}
-      {desc && (
-        <div className="rounded-xl border border-border bg-surface p-4">
-          <h2 className="mb-1 text-sm font-semibold text-muted">AI 视觉描述</h2>
-          <p className="text-sm text-muted">{desc}</p>
+      {/* 错误 */}
+      {error && (
+        <div className="rounded-lg bg-[color-mix(in_srgb,var(--danger)_15%,transparent)] p-3 text-sm text-[var(--danger)]">
+          {error}
         </div>
       )}
 
-      {/* 候选精灵 */}
-      {candidates.length > 0 && (
-        <div className="rounded-xl border border-border bg-surface p-4">
-          <h2 className="mb-3 text-sm font-semibold text-muted">候选精灵（按相似度排序）</h2>
-          <div className="grid grid-cols-1 gap-2 sm:grid-cols-3">
-            {candidates.map((c) => {
-              const url = petIllustrationUrl(c.illustrationKey);
-              return (
-                <Link
-                  key={c.slug}
-                  href={`/pets/${c.slug}`}
-                  className="flex flex-col items-center rounded-lg border border-border p-3 text-center hover:bg-surface-2"
-                >
-                  <div className="relative h-20 w-20">
-                    {url ? (
-                      <ProxyImage src={url} alt={c.name} fill className="object-contain" fallback={<span className="flex h-full w-full items-center justify-center text-3xl">🐾</span>} />
-                    ) : (
-                      <span className="flex h-full w-full items-center justify-center text-3xl">🐾</span>
-                    )}
-                  </div>
-                  <span className="mt-1 text-sm font-medium">{c.name}</span>
-                  <span className="text-xs text-muted-foreground">相似度 {c.score}%</span>
-                </Link>
-              );
-            })}
+      {/* AI 视觉描述 */}
+      {desc && (
+        <div className="rounded-2xl border border-border bg-surface p-4 shadow-[var(--shadow-card)]">
+          <h2 className="mb-1 flex items-center gap-1.5 text-sm font-semibold">
+            <ScanLine className="h-4 w-4 text-[var(--type-ice)]" /> AI 视觉描述
+          </h2>
+          <p className="text-sm leading-relaxed text-muted">{desc}</p>
+        </div>
+      )}
+
+      {/* 候选精灵：加载骨架 / 结构化卡片 */}
+      {loading && !candidates.length && (
+        <div className="rounded-2xl border border-border bg-surface p-4 shadow-[var(--shadow-card)]">
+          <h2 className="mb-3 text-sm font-semibold text-muted">匹配候选中…</h2>
+          <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
+            {Array.from({ length: 3 }).map((_, i) => (
+              <div key={i} className="rounded-xl border border-border p-3">
+                <div className="ai-skeleton mx-auto mb-2 h-20 w-20 rounded-lg" />
+                <div className="ai-skeleton mx-auto mb-1 h-3 w-16" />
+                <div className="ai-skeleton mx-auto h-2 w-24 rounded-full" />
+              </div>
+            ))}
           </div>
         </div>
       )}
 
-      {desc && candidates.length === 0 && !loading && (
-        <div className="rounded-xl border border-border bg-surface p-4 text-center text-sm text-muted-foreground">
-          未能匹配到候选精灵，请到
-          <Link href="/pets" className="text-secondary hover:underline"> 精灵图鉴 </Link>
-          手动查找
+      {candidates.length > 0 && (
+        <div className="rounded-2xl border border-border bg-surface p-4 shadow-[var(--shadow-card)]">
+          <h2 className="mb-3 text-sm font-semibold">候选精灵（按相似度排序）</h2>
+          <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
+            {candidates.map((c, i) => (
+              <Link
+                key={i}
+                href={`/pets/${c.slug}`}
+                className="group overflow-hidden rounded-xl border border-border transition-all hover:shadow-[var(--shadow-card)]"
+              >
+                <div className="h-1 bg-[var(--type-ice)]" />
+                <div className="flex flex-col items-center p-3">
+                  <div className="relative h-20 w-20">
+                    <ProxyImage
+                      src={petIllustrationUrl(c.illustrationKey)}
+                      alt={c.name}
+                      fill
+                      className="object-contain transition-transform group-hover:scale-110"
+                      fallback={<span className="flex h-full w-full items-center justify-center text-3xl opacity-30">🐾</span>}
+                    />
+                  </div>
+                  <span className="mt-1.5 font-medium">{c.name}</span>
+                  {/* 相似度进度条 */}
+                  <div className="mt-1.5 w-full">
+                    <div className="ai-score-bar">
+                      <div style={{ width: `${c.score}%` }} />
+                    </div>
+                    <span className="mt-1 block text-center text-[11px] text-muted-foreground">相似度 {c.score}%</span>
+                  </div>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* 无匹配引导 */}
+      {!loading && desc && candidates.length === 0 && (
+        <div className="rounded-2xl border border-border bg-surface-2 p-4 text-center text-sm text-muted">
+          未匹配到候选精灵，可能是图鉴未收录或图片不清晰。
+          <Link href="/pets" className="ml-1 text-secondary hover:underline">
+            手动浏览图鉴
+          </Link>
         </div>
       )}
     </div>

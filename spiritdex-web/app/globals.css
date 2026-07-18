@@ -163,3 +163,85 @@ body {
 ::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
 ::-webkit-scrollbar-thumb:hover { background: var(--muted); }
+
+/* ============================================================
+   AI 模块样式（问答/推荐/识别 统一设计语言）
+   三色区分：illusion紫(问答) / cute粉(推荐) / ice青(识别)
+   ============================================================ */
+
+/* 打字光标（流式输出时末尾闪烁） */
+@keyframes ai-blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+.ai-cursor::after {
+  content: "▋";
+  display: inline-block;
+  margin-left: 1px;
+  animation: ai-blink 1s step-end infinite;
+  color: var(--type-illusion);
+  font-weight: 600;
+}
+
+/* 骨架屏脉冲（推荐/识别加载态） */
+@keyframes ai-pulse {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+.ai-skeleton {
+  background: linear-gradient(90deg, var(--surface-2) 25%, var(--border) 37%, var(--surface-2) 63%);
+  background-size: 200% 100%;
+  animation: ai-pulse 1.4s ease-in-out infinite;
+  border-radius: 0.5rem;
+}
+
+/* AI 思考中：三圆点打字指示器（替代静态灰方块） */
+@keyframes ai-typing {
+  0%, 60%, 100% { transform: translateY(0); opacity: 0.4; }
+  30% { transform: translateY(-3px); opacity: 1; }
+}
+.ai-typing {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.25rem 0;
+}
+.ai-typing > span {
+  width: 0.4rem;
+  height: 0.4rem;
+  border-radius: 9999px;
+  background: var(--type-illusion);
+  animation: ai-typing 1.2s ease-in-out infinite;
+}
+.ai-typing > span:nth-child(2) { animation-delay: 0.15s; }
+.ai-typing > span:nth-child(3) { animation-delay: 0.3s; }
+
+/* AI 头像（圆形 emoji 头像，三种色） */
+.ai-avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  font-size: 1rem;
+  flex-shrink: 0;
+  width: 2rem;
+  height: 2rem;
+  line-height: 1;
+}
+.ai-avatar-ai { background: var(--type-illusion); color: #fff; }
+.ai-avatar-user { background: var(--surface-2); color: var(--muted); border: 1px solid var(--border); }
+
+/* 相似度/评分进度条（识别结果用） */
+.ai-score-bar {
+  height: 4px;
+  border-radius: 9999px;
+  background: var(--surface-2);
+  overflow: hidden;
+}
+.ai-score-bar > div {
+  height: 100%;
+  border-radius: 9999px;
+  background: linear-gradient(90deg, var(--type-ice), var(--secondary));
+  transition: width 0.5s ease;
+}
+
+/* 消息列表滚动锚点稳定（修复流式输出时滚动跳动） */
+.ai-msg-list { overflow-anchor: auto; }
+

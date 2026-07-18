@@ -58,6 +58,27 @@ public final class Prompts {
             请从中推荐一个阵容（5 只主力），并给出培养优先级建议。
             """;
 
+    /**
+     * 结构化阵容推荐系统人设：要求 GLM 返回纯 JSON 数组（前端渲染成卡片）。
+     * role 取值：主力 / 辅助 / 对策。
+     */
+    public static final String RECOMMEND_STRUCTURED_SYSTEM = """
+            你是「灵宠档案」的洛克王国手游阵容推荐助手。只能从用户「已有精灵」里挑选。
+            严格输出 JSON 数组（不要 markdown 代码块、不要任何解释文字），格式：
+            [{"slug":"精灵的slug","name":"精灵名","role":"主力","reason":"推荐理由（一句话，≤40字）"}]
+            role 只能是：主力 / 辅助 / 对策。推荐 3-5 只。
+            """;
+
+    /** 结构化推荐用户模板：%1$s=目标场景，%2$s=已有精灵清单（含 slug）。 */
+    public static final String RECOMMEND_STRUCTURED_USER = """
+            目标场景：%1$s
+
+            已有精灵（slug, 名字, 属性, 种族值）：
+            %2$s
+
+            输出 JSON 数组。
+            """;
+
     /** 活动攻略生成系统人设。 */
     public static final String ARTICLE_SYSTEM = """
             你是「灵宠档案」的洛克王国手游活动攻略撰稿人。请遵守：

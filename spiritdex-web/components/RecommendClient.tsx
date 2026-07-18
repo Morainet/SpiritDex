@@ -1,15 +1,20 @@
 "use client";
 
-import { useRef, useState } from "react";
-import ProxyImage from "@/components/ProxyImage";
-import ReactMarkdown from "react-markdown";
-import remarkGfm from "remark-gfm";
+import { useMemo, useState } from "react";
+import Link from "next/link";
+import { Settings2, Sparkles } from "lucide-react";
 import type { PetListItem } from "@/types/pet";
-import { streamRecommend } from "@/lib/ai-chat";
 import { petHeadUrl } from "@/lib/image";
 import { typeColor } from "@/lib/type-colors";
+import { recommendCards, type RecommendCard } from "@/lib/ai-chat";
+import ProxyImage from "@/components/ProxyImage";
 
 const GOALS = ["综合对战", "推图", "PVP", "副本", "BOSS"];
+const ROLE_COLOR: Record<string, string> = {
+  主力: "var(--type-fire)",
+  辅助: "var(--type-grass)",
+  对策: "var(--type-water)",
+};
 
 export default function RecommendClient({
   pets,
@@ -21,36 +26,37 @@ export default function RecommendClient({
   const [owned, setOwned] = useState<string[]>([]);
   const [goal, setGoal] = useState("综合对战");
   const [q, setQ] = useState("");
-  const [answer, setAnswer] = useState("");
   const [loading, setLoading] = useState(false);
+  const [result, setResult] = useState<RecommendCard[] | null>(null);
   const [error, setError] = useState("");
-  const abortRef = useRef<AbortController | null>(null);
+
+  const ownedSet = useMemo(() => new Set(owned), [owned]);
+  const filtered = useMemo(() => {
+    const k = q.trim();
+    const arr = k ? pets.filter((p) => p.name.includes(k)) : pets;
+    return arr.slice(0, 30);
+  }, [pets, q]);
 
   function toggle(slug: string) {
-    setOwned((o) => (o.includes(slug) ? o.filter((s) => s !== slug) : [...o, slug]));
+    setOwned((s) => (s.includes(slug) ? s.filter((x) => x !== slug) : [...s, slug]));
+    setResult(null);
+    setError("");
   }
 
   async function submit() {
-    if (owned.length < 3) {
-      setError("请至少选择 3 只精灵");
-      return;
-    }
-    setError("");
-    setAnswer("");
+    if (owned.length < 3 || loading) return;
     setLoading(true);
-    const ac = new AbortController();
-    abortRef.current = ac;
-    await streamRecommend(
-      owned,
-      goal,
-      (token) => setAnswer((a) => a + token),
-      (err) => setError(err),
-      ac.signal
-    );
-    setLoading(false);
+    setResult(null);
+    setError("");
+    try {
+      const cards = await recommendCards(owned, goal);
+      setResult(cards);
+    } catch (e) {
+      setError(e instanceof Error ? e.message : "推荐失败");
+    } finally {
+      setLoading(false);
+    }
   }
-
-  const filtered = q.trim() ? pets.filter((p) => p.name.includes(q.trim())).slice(0, 30) : pets.slice(0, 30);
 
   return (
     <div className="space-y-4">
@@ -61,15 +67,17 @@ export default function RecommendClient({
       )}
 
       {/* 目标场景 */}
-      <div className="flex items-center gap-2">
+      <div className="flex flex-wrap items-center gap-2">
         <span className="text-sm text-muted">目标场景</span>
         <div className="flex flex-wrap gap-1.5">
           {GOALS.map((g) => (
             <button
               key={g}
               onClick={() => setGoal(g)}
-              className={`rounded px-2 py-0.5 text-sm transition-colors ${
-                goal === g ? "bg-foreground text-white" : "bg-surface-2 text-muted hover:bg-surface-2"
+              className={`rounded-full px-3 py-1 text-sm transition-colors ${
+                goal === g
+                  ? "bg-[var(--type-cute)] text-white"
+                  : "bg-surface-2 text-muted hover:text-foreground"
               }`}
             >
               {g}
@@ -79,7 +87,7 @@ export default function RecommendClient({
       </div>
 
       {/* 已选精灵 */}
-      <div className="rounded-xl border border-border bg-surface p-3">
+      <div className="rounded-2xl border border-border bg-surface p-4 shadow-[var(--shadow-card)]">
         <div className="mb-2 flex items-center justify-between">
           <span className="text-sm font-semibold">已选精灵（{owned.length}）</span>
           {owned.length > 0 && (
@@ -89,19 +97,22 @@ export default function RecommendClient({
           )}
         </div>
         {owned.length === 0 ? (
-          <p className="text-sm text-muted-foreground">从下方搜索选择你拥有的精灵</p>
+          <p className="text-sm text-muted-foreground">从下方搜索选择你拥有的精灵（至少 3 只）</p>
         ) : (
           <div className="flex flex-wrap gap-1.5">
             {owned.map((s) => {
               const p = pets.find((x) => x.slug === s);
-              if (!p) return null;
               return (
                 <button
                   key={s}
                   onClick={() => toggle(s)}
-                  className="flex items-center gap-1 rounded-full border border-border bg-surface-2 px-2 py-0.5 text-sm hover:bg-surface-2"
+                  className="flex items-center gap-1.5 rounded-full border border-border bg-surface-2 py-0.5 pl-2 pr-1.5 text-sm transition-colors hover:bg-surface"
                 >
-                  {p.name} ✕
+                  {p?.types?.[0] && (
+                    <span className="h-2 w-2 rounded-full" style={{ backgroundColor: typeColor(p.types[0]) }} />
+                  )}
+                  {p?.name ?? s}
+                  <span className="text-muted-foreground">✕</span>
                 </button>
               );
             })}
@@ -109,32 +120,32 @@ export default function RecommendClient({
         )}
       </div>
 
-      {/* 搜索选择 */}
+      {/* 搜索 + 可选网格 */}
       <input
         value={q}
         onChange={(e) => setQ(e.target.value)}
-        placeholder="搜索精灵添加"
-        className="w-full rounded-lg border border-input px-3 py-2 text-sm outline-none focus:border-primary"
+        placeholder="搜索精灵添加…"
+        className="w-full rounded-lg border border-input bg-surface px-3 py-2 text-sm outline-none transition-colors focus:border-[var(--type-cute)] focus:ring-2 focus:ring-[color-mix(in_srgb,var(--type-cute)_20%,transparent)]"
       />
       <div className="grid grid-cols-2 gap-2 sm:grid-cols-3 md:grid-cols-4">
         {filtered.map((p) => {
-          const sel = owned.includes(p.slug);
+          const sel = ownedSet.has(p.slug);
           return (
             <button
               key={p.slug}
               onClick={() => toggle(p.slug)}
               className={`flex items-center gap-2 rounded-lg border p-1.5 text-left transition-colors ${
-                sel ? "border-primary bg-surface-2" : "border-border bg-surface hover:bg-surface-2"
+                sel ? "border-[var(--type-cute)] bg-surface-2" : "border-border bg-surface hover:bg-surface-2"
               }`}
             >
-              {(() => {
-                const url = petHeadUrl(p.headKey);
-                return url ? (
-                  <ProxyImage src={url} alt={p.name} width={24} height={24} className="object-contain" fallback={<span>🐾</span>} />
-                ) : (
-                  <span>🐾</span>
-                );
-              })()}
+              <ProxyImage
+                src={petHeadUrl(p.headKey)}
+                alt={p.name}
+                width={24}
+                height={24}
+                className="object-contain"
+                fallback={<span>🐾</span>}
+              />
               <span className="min-w-0 flex-1 truncate text-xs">{p.name}</span>
               {p.types?.[0] && (
                 <span className="rounded px-1 text-[9px] text-white" style={{ backgroundColor: typeColor(p.types[0]) }}>
@@ -146,28 +157,96 @@ export default function RecommendClient({
         })}
       </div>
 
-      {/* 提交 */}
+      {/* 提交按钮 */}
       <button
         onClick={submit}
         disabled={!enabled || loading || owned.length < 3}
-        className="w-full rounded-lg bg-gradient-to-r from-purple-500 to-blue-500 py-2.5 text-sm font-medium text-white hover:opacity-90 disabled:opacity-50"
+        className="flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-[var(--type-cute)] to-[var(--type-illusion)] py-2.5 text-sm font-medium text-white transition-opacity hover:opacity-90 disabled:opacity-50"
       >
-        {loading ? "AI 思考中…" : "生成推荐"}
+        <Settings2 className="h-4 w-4" />
+        {loading ? "AI 推荐中…" : `生成阵容推荐（${owned.length}/3+）`}
       </button>
 
-      {error && <div className="rounded-lg bg-[color-mix(in_srgb,var(--danger)_15%,transparent)] p-3 text-sm text-[var(--danger)]">{error}</div>}
+      {/* 错误 */}
+      {error && (
+        <div className="rounded-lg bg-[color-mix(in_srgb,var(--danger)_15%,transparent)] p-3 text-sm text-[var(--danger)]">
+          {error}
+        </div>
+      )}
 
-      {/* 推荐（流式 markdown） */}
-      {(answer || loading) && (
-        <div className="rounded-xl border border-border bg-surface p-4">
-          <h2 className="mb-2 text-sm font-semibold text-muted">AI 推荐</h2>
-          {answer ? (
-            <div className="prose-chat">
-              <ReactMarkdown remarkPlugins={[remarkGfm]}>{answer}</ReactMarkdown>
-            </div>
-          ) : (
-            <p className="text-sm text-muted-foreground">生成中…</p>
-          )}
+      {/* 结果：骨架屏 或 结构化卡片 */}
+      {loading && (
+        <div className="rounded-2xl border border-border bg-surface p-4 shadow-[var(--shadow-card)]">
+          <div className="mb-3 flex items-center gap-2 text-sm font-semibold text-muted">
+            <Sparkles className="h-4 w-4" /> AI 正在分析阵容…
+          </div>
+          <div className="grid gap-3 sm:grid-cols-2">
+            {Array.from({ length: 5 }).map((_, i) => (
+              <div key={i} className="rounded-xl border border-border p-3">
+                <div className="ai-skeleton mb-2 h-4 w-20" />
+                <div className="ai-skeleton mb-1.5 h-3 w-full" />
+                <div className="ai-skeleton h-3 w-4/5" />
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {result && result.length > 0 && (
+        <div className="rounded-2xl border border-border bg-surface p-4 shadow-[var(--shadow-card)]">
+          <div className="mb-3 flex items-center gap-2 text-sm font-semibold">
+            <Sparkles className="h-4 w-4 text-[var(--type-cute)]" />
+            AI 推荐阵容（{result.length} 只）
+          </div>
+          <div className="grid gap-3 sm:grid-cols-2">
+            {result.map((c, i) => {
+              const p = pets.find((x) => x.slug === c.slug || x.name === c.name);
+              const primaryColor = p?.types?.[0] ? typeColor(p.types[0]) : "var(--muted)";
+              return (
+                <Link
+                  key={i}
+                  href={p ? `/pets/${p.slug}` : "#"}
+                  className="group overflow-hidden rounded-xl border border-border transition-all hover:shadow-[var(--shadow-card)]"
+                >
+                  <div className="h-1" style={{ backgroundColor: primaryColor }} />
+                  <div className="flex items-start gap-2.5 p-3">
+                    {p && (
+                      <div className="relative h-12 w-12 shrink-0">
+                        <ProxyImage
+                          src={petHeadUrl(p.headKey)}
+                          alt={c.name}
+                          fill
+                          className="object-contain"
+                          fallback={<span className="flex h-full w-full items-center justify-center text-xl opacity-30">🐾</span>}
+                        />
+                      </div>
+                    )}
+                    <div className="min-w-0 flex-1">
+                      <div className="flex items-center gap-1.5">
+                        <span className="font-semibold">{c.name}</span>
+                        <span
+                          className="rounded px-1.5 py-0.5 text-[10px] font-medium text-white"
+                          style={{ backgroundColor: ROLE_COLOR[c.role] ?? "var(--muted)" }}
+                        >
+                          {c.role}
+                        </span>
+                      </div>
+                      {p?.types && p.types.length > 0 && (
+                        <div className="mt-0.5 flex gap-1">
+                          {p.types.map((t) => (
+                            <span key={t} className="rounded px-1 text-[10px] text-white" style={{ backgroundColor: typeColor(t) }}>
+                              {t}
+                            </span>
+                          ))}
+                        </div>
+                      )}
+                      <p className="mt-1 text-xs leading-relaxed text-muted">{c.reason}</p>
+                    </div>
+                  </div>
+                </Link>
+              );
+            })}
+          </div>
         </div>
       )}
     </div>

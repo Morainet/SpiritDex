@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
+import { Camera } from "lucide-react";
 import { fetchAiStatus } from "@/lib/ai-chat";
 import IdentifyClient from "@/components/IdentifyClient";
+import AiHero from "@/components/AiHero";
 
 export const metadata: Metadata = {
   title: "AI 图片识别",
@@ -18,10 +20,12 @@ export default async function IdentifyPage() {
   }
   return (
     <main className="mx-auto max-w-2xl px-4 py-6">
-      <header className="mb-4">
-        <h1 className="text-2xl font-bold">🔍 AI 图片识别</h1>
-        <p className="text-sm text-muted">上传精灵截图，AI 识别并匹配候选精灵（返回多个候选供你选择）</p>
-      </header>
+      <AiHero
+        variant="ice"
+        icon={<Camera className="h-5 w-5" />}
+        title="AI 图片识别"
+        subtitle="上传精灵截图，AI 视觉模型识别并匹配候选精灵"
+      />
       <IdentifyClient enabled={enabled} />
     </main>
   );

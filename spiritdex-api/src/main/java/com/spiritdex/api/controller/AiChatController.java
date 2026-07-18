@@ -2,6 +2,7 @@ package com.spiritdex.api.controller;
 
 import com.spiritdex.api.ai.AiProperties;
 import com.spiritdex.api.ai.ChatService;
+import com.spiritdex.api.ai.ChatService.HistoryMsg;
 import com.spiritdex.api.ai.Retriever;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -35,7 +36,7 @@ public class AiChatController {
     /** 简单内存限流：IP → [时间窗起始, 计数]。 */
     private final Map<String, long[]> rateLimit = new ConcurrentHashMap<>();
 
-    public record ChatRequest(String question) {
+    public record ChatRequest(String question, List<HistoryMsg> history, String sessionId) {
     }
 
     @GetMapping("/status")
@@ -59,7 +60,7 @@ public class AiChatController {
         }
 
         List<Retriever.Snippet>[] refsHolder = new List[]{List.of()};
-        return chatService.streamChat(req.question(), refs -> refsHolder[0] = refs)
+        return chatService.streamChat(req.question(), req.history(), refs -> refsHolder[0] = refs)
                 // 每个 token 增量作为一个 data 事件
                 .map(token -> sse("delta", token))
                 // 流末发 refs（来源）和 done

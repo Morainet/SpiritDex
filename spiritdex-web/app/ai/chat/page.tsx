@@ -24,14 +24,10 @@ async function ChatPage({
   const sp = await searchParams;
   const presetQ = Array.isArray(sp.q) ? sp.q[0] : sp.q;
   const enabled = await fetchEnabled();
+
+  // ChatGPT 式全屏对话页：占满除顶栏外的视口，无 max-w 容器、无 AiHero
   return (
-    <main className="mx-auto max-w-3xl px-4 py-6">
-      <header className="mb-4">
-        <h1 className="text-2xl font-bold">🤖 AI 智能问答</h1>
-        <p className="text-sm text-muted">基于全站精灵数据的 RAG 问答助手，流式回答</p>
-      </header>
-      <ChatClient enabled={enabled} presetQuestion={presetQ} />
-    </main>
+    <ChatClient enabled={enabled} presetQuestion={presetQ} />
   );
 }
 

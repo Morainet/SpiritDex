@@ -19,6 +19,7 @@ import {
   ScrollText,
   Settings2,
   Shield,
+  Sparkles,
   Stamp,
   Swords,
   Zap,
@@ -74,6 +75,7 @@ export const NAV_GROUPS: NavGroup[] = [
   {
     label: "AI",
     items: [
+      { href: "/ai", icon: Sparkles, label: "AI 助手", desc: "问答/推荐/识别 总览", color: "var(--type-illusion)" },
       { href: "/ai/chat", icon: Ghost, label: "智能问答", desc: "RAG 流式问答助手", color: "var(--type-illusion)" },
       { href: "/ai/recommend", icon: Settings2, label: "阵容推荐", desc: "AI 推荐最佳阵容", color: "var(--type-cute)" },
       { href: "/ai/identify", icon: Camera, label: "图片识别", desc: "截图识别精灵", color: "var(--type-ice)" },

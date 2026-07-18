@@ -13,17 +13,27 @@ export interface ChatRefs {
   name: string;
 }
 
+/** 单条历史消息（多轮对话用）。 */
+export interface ChatHistoryMsg {
+  role: "user" | "assistant";
+  content: string;
+}
+
 export async function streamChat(
   question: string,
   onDelta: (token: string) => void,
   onRefs?: (refs: ChatRefs[]) => void,
   onError?: (msg: string) => void,
-  signal?: AbortSignal
+  signal?: AbortSignal,
+  /** 多轮对话历史（最近 N 轮），后端 ChatMemory 用 */
+  history?: ChatHistoryMsg[],
+  /** 会话 id，后端区分不同对话的记忆 */
+  sessionId?: string
 ): Promise<void> {
   const res = await fetch("/api/ai/chat", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ question }),
+    body: JSON.stringify({ question, history, sessionId }),
     signal,
   });
 
@@ -166,4 +176,31 @@ export async function identifyImage(
   } catch (e) {
     onError?.(e instanceof Error ? e.message : "网络错误");
   }
+}
+
+/**
+ * 结构化阵容推荐（一次性 JSON，非流式）。
+ * 后端返回 { code, data: [{slug, name, role, reason}] }。
+ */
+export interface RecommendCard {
+  slug: string;
+  name: string;
+  role: string;
+  reason: string;
+}
+
+export async function recommendCards(
+  ownedPets: string[],
+  goal: string
+): Promise<RecommendCard[]> {
+  const res = await fetch("/api/ai/recommend-cards", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ ownedPets, goal }),
+  });
+  const json = await res.json();
+  if (json.code !== 0) {
+    throw new Error(json.message ?? "推荐失败");
+  }
+  return json.data ?? [];
 }

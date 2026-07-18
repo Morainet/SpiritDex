@@ -2,6 +2,8 @@ package com.spiritdex.api.controller;
 
 import com.spiritdex.api.ai.AiProperties;
 import com.spiritdex.api.ai.RecommendService;
+import com.spiritdex.api.ai.RecommendService.RecommendItem;
+import com.spiritdex.api.common.Result;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
@@ -52,5 +54,27 @@ public class AiRecommendController {
 
     private static ServerSentEvent<String> sse(String event, String data) {
         return ServerSentEvent.<String>builder().event(event).data(data).build();
+    }
+
+    /**
+     * 结构化阵容推荐（一次性 JSON，前端渲染成精灵卡片）。
+     * 返回 Result&lt;List&lt;RecommendItem&gt;&gt;，每项含 slug/name/role/reason。
+     */
+    @PostMapping("/recommend-cards")
+    @Operation(summary = "AI 阵容推荐（结构化 JSON 卡片）")
+    public Result<List<RecommendItem>> recommendCards(@RequestBody RecommendRequest req) {
+        if (!props.isEnabled()) {
+            return Result.error(1, "AI 推荐暂未启用（未配置 GLM API key）");
+        }
+        if (req.ownedPets() == null || req.ownedPets().size() < 3) {
+            return Result.error(1, "请至少选择 3 只精灵");
+        }
+        try {
+            List<RecommendItem> cards = recommendService.recommendStructured(req.ownedPets(), req.goal());
+            return Result.success(cards);
+        } catch (Exception e) {
+            log.error("[ai] 结构化推荐失败: {}", e.getMessage(), e);
+            return Result.error(1, "AI 服务暂时不可用，请稍后再试");
+        }
     }
 }

@@ -9,13 +9,16 @@ import com.spiritdex.api.mapper.EvolutionStageMapper;
 import com.spiritdex.api.mapper.PetMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.ai.chat.messages.AssistantMessage;
 import org.springframework.ai.chat.messages.SystemMessage;
 import org.springframework.ai.chat.messages.UserMessage;
+import org.springframework.ai.chat.messages.Message;
 import org.springframework.ai.chat.prompt.Prompt;
 import org.springframework.ai.openai.OpenAiChatModel;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -40,6 +43,19 @@ public class ChatService {
     private final EvolutionStageMapper evolutionStageMapper;
 
     public Flux<String> streamChat(String question, java.util.function.Consumer<List<Retriever.Snippet>> onRefs) {
+        return streamChat(question, null, onRefs);
+    }
+
+    /**
+     * 带多轮历史的流式问答。
+     *
+     * @param question 本次问题
+     * @param history  历史对话（最近 N 轮，每条 {role, content}），可为空（单轮）
+     * @param onRefs   检索到的引用来源回调
+     */
+    public Flux<String> streamChat(String question,
+                                   List<HistoryMsg> history,
+                                   java.util.function.Consumer<List<Retriever.Snippet>> onRefs) {
         List<Retriever.Snippet> snippets = retriever.retrieve(question);
         onRefs.accept(snippets);
 
@@ -51,15 +67,32 @@ public class ChatService {
         }
 
         String userContent = String.format(Prompts.USER_TEMPLATE, context, question);
-        Prompt prompt = new Prompt(List.of(
-                new SystemMessage(Prompts.SYSTEM),
-                new UserMessage(userContent)
-        ));
 
-        log.debug("[rag] 问答: {} | 召回 {} 条", question, snippets.size());
+        // 组装消息列表：system + history（如果有）+ 本次 user
+        List<Message> messages = new ArrayList<>();
+        messages.add(new SystemMessage(Prompts.SYSTEM));
+        if (history != null) {
+            for (HistoryMsg h : history) {
+                if (h.content() == null || h.content().isBlank()) continue;
+                if ("assistant".equalsIgnoreCase(h.role())) {
+                    messages.add(new AssistantMessage(h.content()));
+                } else {
+                    messages.add(new UserMessage(h.content()));
+                }
+            }
+        }
+        messages.add(new UserMessage(userContent));
+
+        Prompt prompt = new Prompt(messages);
+        log.debug("[rag] 问答: {} | 召回 {} 条 | 历史 {} 条", question, snippets.size(),
+                history == null ? 0 : history.size());
         return chatModel.stream(prompt)
                 .map(resp -> resp.getResult().getOutput().getText() == null ? "" : resp.getResult().getOutput().getText())
                 .filter(s -> !s.isEmpty());
+    }
+
+    /** 历史消息记录（前端传入）。 */
+    public record HistoryMsg(String role, String content) {
     }
 
     /** 组装上下文：每个精灵补全种族值 + 进化链。 */
