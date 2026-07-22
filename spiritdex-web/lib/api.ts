@@ -5,7 +5,7 @@ import type { SkillDetail, SkillListItem } from "@/types/skill";
 import type { ItemDetail, ItemListItem } from "@/types/item";
 import type { QuestDetail, QuestListItem } from "@/types/quest";
 import type { MarkDetail, MarkListItem } from "@/types/mark";
-import type { LocationStat, MapPoint, MapTypeStat } from "@/types/map";
+import type { LocationStat, MapPoint, MapTextLayer, MapTypeStat } from "@/types/map";
 
 export interface ApiResult<T> {
   code: number;
@@ -198,6 +198,10 @@ export async function fetchMapTypes(): Promise<MapTypeStat[]> {
   return getJson<MapTypeStat[]>("/api/map/types");
 }
 
+export async function fetchMapTextLayers(): Promise<MapTextLayer[]> {
+  return getJson<MapTextLayer[]>("/api/map/text-layers");
+}
+
 // ====== 分布地区 ======
 
 export async function fetchLocations(): Promise<LocationStat[]> {
@@ -224,4 +228,44 @@ export async function fetchArticleDetail(slug: string): Promise<ArticleDetail | 
   if (!res.ok) throw new Error(`API ${res.status}: /api/articles/${slug}`);
   const json: ApiResult<ArticleDetail> = await res.json();
   return json.data ?? null;
+}
+
+// ====== 全站搜索 ======
+
+/** 搜索结果分组。 */
+export interface SearchResult {
+  pets: PetListItem[];
+  skills: SkillListItem[];
+  items: ItemListItem[];
+  quests: QuestListItem[];
+  marks: MarkListItem[];
+  /** 各组总数（含未展示的）。 */
+  totals: { pets: number; skills: number; items: number; quests: number; marks: number };
+}
+
+/**
+ * 全站搜索：并行调用 5 个图鉴的 search 接口（复用现有 q 参数），
+ * 每个板块取前 `limit` 条展示，totals 含完整命中数。
+ * 单个板块失败不阻断其他板块。
+ */
+export async function searchAll(q: string, limit = 8): Promise<SearchResult> {
+  const query = q.trim();
+  if (!query) {
+    return { pets: [], skills: [], items: [], quests: [], marks: [], totals: { pets: 0, skills: 0, items: 0, quests: 0, marks: 0 } };
+  }
+  const [pets, skills, items, quests, marks] = await Promise.all([
+    fetchPets({ q: query, size: limit }).catch(() => ({ list: [] as PetListItem[], total: 0, page: 1, size: limit })),
+    fetchSkills({ q: query, size: limit }).catch(() => ({ list: [] as SkillListItem[], total: 0, page: 1, size: limit })),
+    fetchItems({ q: query, size: limit }).catch(() => ({ list: [] as ItemListItem[], total: 0, page: 1, size: limit })),
+    fetchQuests({ q: query, size: limit }).catch(() => ({ list: [] as QuestListItem[], total: 0, page: 1, size: limit })),
+    fetchMarks({ q: query, size: limit }).catch(() => ({ list: [] as MarkListItem[], total: 0, page: 1, size: limit })),
+  ]);
+  return {
+    pets: pets.list,
+    skills: skills.list,
+    items: items.list,
+    quests: quests.list,
+    marks: marks.list,
+    totals: { pets: pets.total, skills: skills.total, items: items.total, quests: quests.total, marks: marks.total },
+  };
 }

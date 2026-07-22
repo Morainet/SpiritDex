@@ -9,29 +9,21 @@ import lombok.Data;
 import java.time.LocalDateTime;
 
 /**
- * 地图点位实体。来自 BWIKI Data:MapV2 坐标数据（游戏内平面坐标系）。
+ * 地图文字图层（地名标注：洛克里安 / 魔法师之家 等）。
  */
 @Data
-@TableName("map_point")
-public class MapPoint {
+@TableName("map_text_layer")
+public class MapTextLayer {
 
     @TableId(type = IdType.AUTO)
     private Long id;
 
-    /** 点位类型 id（201=庇护所...）。 */
-    private Integer markType;
-    /** 类型中文名。 */
-    private String typeName;
-    /** icon 文件名（前端拼 Special:FilePath）。 */
-    private String icon;
-    private String title;
-    private String description;
-    /** 游戏内 y 坐标。 */
+    private String text;
     private Double lat;
-    /** 游戏内 x 坐标。 */
     private Double lng;
-    /** 图层（G/B1/B2）。 */
     private String layer;
+    private Integer minZoom;
+    private Integer maxZoom;
 
     @TableLogic
     private Integer deleted;

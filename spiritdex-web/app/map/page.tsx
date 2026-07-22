@@ -1,25 +1,34 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import nextDynamic from "next/dynamic";
 import { ArrowRight } from "lucide-react";
-import { fetchMapPoints, fetchMapTypes, fetchLocations } from "@/lib/api";
-import MapView from "@/components/MapView";
+import { fetchMapPoints, fetchMapTypes, fetchMapTextLayers, fetchLocations } from "@/lib/api";
+import type { MapTextLayer } from "@/types/map";
+
+// Leaflet 是客户端库，禁用 SSR
+const MapView = nextDynamic(() => import("@/components/MapView"), {
+  ssr: false,
+  loading: () => <div className="h-[600px] animate-pulse rounded-xl bg-surface-2" />,
+});
 
 export const metadata: Metadata = {
   title: "地图",
-  description: "洛克王国手游地图点位（庇护所/宝箱/资源点）与精灵分布",
+  description: "洛克王国手游世界地图（庇护所/宝箱/资源点）与精灵分布",
 };
 
 export const dynamic = "force-dynamic";
 
 export default async function MapPage() {
-  // 预取：地图点位 + 类型统计 + 分布地区聚合（容错）
+  // 预取：地图点位 + 类型统计 + 文字图层 + 分布地区（容错）
   let points: Awaited<ReturnType<typeof fetchMapPoints>> = [];
   let types: Awaited<ReturnType<typeof fetchMapTypes>> = [];
+  let textLayers: MapTextLayer[] = [];
   let locations: Awaited<ReturnType<typeof fetchLocations>> = [];
   try {
-    [points, types, locations] = await Promise.all([
+    [points, types, textLayers, locations] = await Promise.all([
       fetchMapPoints(),
       fetchMapTypes(),
+      fetchMapTextLayers(),
       fetchLocations(),
     ]);
   } catch {
@@ -31,9 +40,9 @@ export default async function MapPage() {
   return (
     <main className="mx-auto max-w-6xl px-4 py-6">
       <header className="mb-6">
-        <h1 className="text-2xl font-bold">地图</h1>
+        <h1 className="text-2xl font-bold">世界地图</h1>
         <p className="text-sm text-muted">
-          游戏内点位分布（{totalPoints} 个）与精灵分布地区（{locations.length} 个地名）。坐标系来自 BWIKI 社区数据，无官方底图，以网格示意。
+          游戏世界点位分布（{totalPoints} 个）与精灵分布地区（{locations.length} 个地名）。底图与数据来自 BWIKI 社区。
         </p>
       </header>
 
@@ -50,9 +59,9 @@ export default async function MapPage() {
             ))}
           </section>
 
-          {/* 交互地图 */}
+          {/* 交互地图（Leaflet + BWIKI 瓦片底图） */}
           <section className="mb-8">
-            <MapView points={points} />
+            <MapView points={points} textLayers={textLayers} />
           </section>
 
           {/* 精灵分布地区 */}

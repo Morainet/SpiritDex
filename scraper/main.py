@@ -348,18 +348,18 @@ def _run_marks(args: argparse.Namespace) -> int:
 
 
 def _run_map(args: argparse.Namespace) -> int:
-    """抓取地图点位（Data:MapV2），写出 map_points.json。
+    """抓取地图点位 + 文字图层（Data:Mapnew），写出 map_points.json。
 
-    数据源：Data:MapV2/type/{id}/json 坐标数据（11 种点位类型）。
-    见 src/map_fetcher.py 文档。⚠️ 坐标为游戏内坐标系，非真实经纬度。
+    数据源：Data:Mapnew/type/{id}/json 坐标 + textLayer 地名（与 BWIKI「大地图」同源）。
+    见 src/map_fetcher.py 文档。前端用 Leaflet + BWIKI 瓦片底图渲染。
     """
     if args.offline:
         print("[map] --map 不支持离线模式（需联网抓取）")
         return 1
 
     api = WikiApi()
-    print(f"[map] 开始抓取地图点位...")
-    items, stats = fetch_map_points(api)
+    print(f"[map] 开始抓取地图点位（Data:Mapnew，约 3 分钟）...")
+    items, text_layers, stats = fetch_map_points(api)
 
     print("[map] 抓取统计：")
     for k, v in stats.items():
@@ -377,14 +377,15 @@ def _run_map(args: argparse.Namespace) -> int:
             "source_url": settings.source_module_url,
             "scraped_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
             "count": len(items),
-            "note": "来自 Data:MapV2 点位坐标（游戏内坐标系，非真实经纬度）",
+            "note": "来自 Data:Mapnew 点位坐标 + textLayer 地名（与 BWIKI 大地图同源，游戏内坐标系）",
         },
         "items": items,
+        "text_layers": text_layers,
     }
     path = os.path.join(out_dir, "map_points.json")
     with open(path, "w", encoding="utf-8") as f:
         json.dump(payload, f, ensure_ascii=False, indent=2)
-    print(f"[map] 已写出 {path}（{len(items)} 个点位）")
+    print(f"[map] 已写出 {path}（{len(items)} 个点位，{len(text_layers)} 个地名）")
     return 0
 
 

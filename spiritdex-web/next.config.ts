@@ -17,6 +17,8 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       { protocol: "https", hostname: "wiki.biligame.com" },
       { protocol: "https", hostname: "patchwiki.biligame.com" },
+      // BWIKI 地图瓦片底图（Leaflet tileLayer 直连）
+      { protocol: "https", hostname: "wiki-dev-patch-oss.oss-cn-hangzhou.aliyuncs.com" },
     ],
   },
 };
