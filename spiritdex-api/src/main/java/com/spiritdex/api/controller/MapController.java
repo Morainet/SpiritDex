@@ -3,6 +3,7 @@ package com.spiritdex.api.controller;
 import com.spiritdex.api.common.Result;
 import com.spiritdex.api.dto.PageResult;
 import com.spiritdex.api.entity.MapPoint;
+import com.spiritdex.api.entity.MapTextLayer;
 import com.spiritdex.api.service.MapPointService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -37,5 +38,11 @@ public class MapController {
     @GetMapping("/types")
     public Result<List<Map<String, Object>>> types() {
         return Result.success(mapPointService.typeAggregate());
+    }
+
+    @Operation(summary = "文字图层（地名标注）")
+    @GetMapping("/text-layers")
+    public Result<List<MapTextLayer>> textLayers() {
+        return Result.success(mapPointService.textLayers());
     }
 }

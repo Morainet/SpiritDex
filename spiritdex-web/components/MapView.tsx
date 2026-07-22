@@ -1,39 +1,56 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
+import L from "leaflet";
+import "leaflet/dist/leaflet.css";
 import type { MapPoint } from "@/types/map";
 
-// 点位类型配色（按 markType 区分）
-const TYPE_COLORS: Record<number, string> = {
-  201: "var(--type-grass)",   // 大型庇护所 - 绿
-  210: "var(--type-grass)",   // 小型庇护所 - 绿
-  208: "var(--type-fighting)",// 力气测试仪 - 武
-  303: "var(--type-fire)",    // 珍贵宝箱 - 火
-  711: "var(--type-poison)",  // 伞伞菌 - 毒
-  801: "var(--type-grass)",   // 智慧树苗 - 绿
-  802: "var(--type-water)",   // 眠枭之星(蓝) - 水
-  803: "var(--type-electric)",// 眠枭之星(黄) - 电
-  807: "var(--type-fire)",    // 可可果树 - 火
-  810: "var(--type-cute)",    // 乐谱 - 萌
+// BWIKI 地图配置（与 BWIKI「大地图」同源）
+const TILE_URL = "https://wiki-dev-patch-oss.oss-cn-hangzhou.aliyuncs.com/res/lkwg/map-3.0/{z}/tile-{x}_{y}.png";
+const MAP_CONFIG = {
+  center: [0, 0] as [number, number],
+  zoom: 5,
+  minZoom: 4,
+  maxZoom: 8,
+  // maxBounds（BWIKI 配置：[-256*32,-256*60]~[256*32,256*32]）
+  maxBounds: L.latLngBounds([-256 * 32, -256 * 60], [256 * 32, 256 * 32]),
 };
 
-const VIEW_SIZE = 600; // SVG 画布尺寸
-const WORLD_RANGE = 3500; // 坐标世界范围（-3500~3500，留余量）
+const WIKI = "https://wiki.biligame.com/rocom";
 
-function worldToSvg(lat: number, lng: number): [number, number] {
-  // 游戏内 lat=y（南北）、lng=x（东西），映射到 SVG 坐标
-  const x = ((lng + WORLD_RANGE) / (2 * WORLD_RANGE)) * VIEW_SIZE;
-  const y = VIEW_SIZE - ((lat + WORLD_RANGE) / (2 * WORLD_RANGE)) * VIEW_SIZE; // y 翻转
-  return [x, y];
+/** 点位类型配色（无 icon 时用圆点，按 markType 范围配色）。 */
+function typeColor(markType: number): string {
+  if (markType >= 200 && markType < 300) return "#10b981"; // 设施类 - 绿
+  if (markType >= 300 && markType < 400) return "#f59e0b"; // 宝箱类 - 橙
+  if (markType >= 400 && markType < 500) return "#3b82f6"; // 任务类 - 蓝
+  if (markType >= 800 && markType < 900) return "#ec4899"; // 资源类 - 粉
+  if (markType >= 1000) return "#8b5cf6"; // NPC/其他 - 紫
+  return "#6b7280"; // 默认灰
 }
 
-export default function MapView({ points }: { points: MapPoint[] }) {
-  const [visibleTypes, setVisibleTypes] = useState<Set<number>>(() => {
-    // 默认全部显示
-    return new Set(points.map((p) => p.markType));
-  });
+/** 文字图层（地名标注）。 */
+export interface TextLayer {
+  text: string;
+  lat: number;
+  lng: number;
+  layer?: string;
+  minZoom?: number;
+  maxZoom?: number;
+}
+
+export default function MapView({
+  points,
+  textLayers = [],
+}: {
+  points: MapPoint[];
+  textLayers?: TextLayer[];
+}) {
+  const mapContainerRef = useRef<HTMLDivElement>(null);
+  const mapRef = useRef<L.Map | null>(null);
+  const markerLayerRef = useRef<L.LayerGroup | null>(null);
+  const textLayerRef = useRef<L.LayerGroup | null>(null);
+  const [visibleTypes, setVisibleTypes] = useState<Set<number>>(() => new Set());
   const [selected, setSelected] = useState<MapPoint | null>(null);
-  const [zoom, setZoom] = useState(1);
 
   // 类型列表（去重 + 计数）
   const typeList = useMemo(() => {
@@ -46,10 +63,92 @@ export default function MapView({ points }: { points: MapPoint[] }) {
     return [...m.entries()].map(([markType, v]) => ({ markType, ...v }));
   }, [points]);
 
-  const filtered = useMemo(
-    () => points.filter((p) => visibleTypes.has(p.markType)),
-    [points, visibleTypes],
-  );
+  // 初始化 visibleTypes（全选）
+  useEffect(() => {
+    setVisibleTypes(new Set(points.map((p) => p.markType)));
+  }, [points]);
+
+  // 初始化地图（仅一次）
+  useEffect(() => {
+    if (!mapContainerRef.current || mapRef.current) return;
+
+    const map = L.map(mapContainerRef.current, {
+      crs: L.CRS.Simple,
+      ...MAP_CONFIG,
+      zoomControl: true,
+      attributionControl: false,
+    });
+    L.tileLayer(TILE_URL, {
+      minZoom: MAP_CONFIG.minZoom,
+      maxZoom: MAP_CONFIG.maxZoom,
+      noWrap: true,
+      // BWIKI 瓦片用 tile-{x}_{y}.png 格式，Leaflet 默认 {z}/{x}/{y} 需要调整
+    }).addTo(map);
+
+    markerLayerRef.current = L.layerGroup().addTo(map);
+    textLayerRef.current = L.layerGroup().addTo(map);
+    mapRef.current = map;
+
+    return () => {
+      map.remove();
+      mapRef.current = null;
+    };
+  }, []);
+
+  // 渲染点位 marker（visibleTypes 变化时更新）
+  useEffect(() => {
+    if (!markerLayerRef.current) return;
+    markerLayerRef.current.clearLayers();
+
+    for (const p of points) {
+      if (!visibleTypes.has(p.markType)) continue;
+      const latlng = L.latLng(p.lat, p.lng);
+
+      // 有 icon 用图片 marker，否则用彩色圆点
+      let marker: L.Marker;
+      if (p.icon) {
+        const icon = L.divIcon({
+          className: "map-point-icon",
+          html: `<img src="${WIKI}/Special:FilePath/${p.icon}" style="width:24px;height:24px;object-fit:contain;" onerror="this.style.display='none'"/>`,
+          iconSize: [24, 24],
+          iconAnchor: [12, 12],
+        });
+        marker = L.marker(latlng, { icon });
+      } else {
+        const color = typeColor(p.markType);
+        const icon = L.divIcon({
+          className: "map-point-dot",
+          html: `<div style="width:12px;height:12px;border-radius:50%;background:${color};border:1.5px solid white;box-shadow:0 0 2px rgba(0,0,0,0.5);"></div>`,
+          iconSize: [12, 12],
+          iconAnchor: [6, 6],
+        });
+        marker = L.marker(latlng, { icon });
+      }
+
+      const popupHtml = `<div style="min-width:120px"><strong>${p.title || p.typeName}</strong>${p.description ? `<br/><span style="font-size:12px;color:#666">${p.description}</span>` : ""}<br/><span style="font-size:11px;color:#999">${p.typeName}</span></div>`;
+      marker.bindPopup(popupHtml);
+      marker.on("click", () => setSelected(p));
+      markerLayerRef.current.addLayer(marker);
+    }
+  }, [points, visibleTypes]);
+
+  // 渲染文字图层（地名标注，随 zoom 级别显隐）
+  useEffect(() => {
+    if (!textLayerRef.current || !mapRef.current) return;
+    textLayerRef.current.clearLayers();
+
+    for (const t of textLayers) {
+      const marker = L.marker(L.latLng(t.lat, t.lng), {
+        icon: L.divIcon({
+          className: "map-text-label",
+          html: `<span style="font-size:13px;font-weight:600;color:#1a1a1a;text-shadow:0 0 3px white,0 0 3px white,0 0 3px white;padding:1px 4px;white-space:nowrap;">${t.text}</span>`,
+          iconSize: [0, 0],
+        }),
+        interactive: false,
+      });
+      textLayerRef.current.addLayer(marker);
+    }
+  }, [textLayers]);
 
   function toggleType(t: number) {
     setVisibleTypes((prev) => {
@@ -61,83 +160,54 @@ export default function MapView({ points }: { points: MapPoint[] }) {
   }
 
   return (
-    <div className="grid gap-4 lg:grid-cols-[1fr_220px]">
+    <div className="grid gap-4 lg:grid-cols-[1fr_200px]">
       {/* 地图 */}
       <div className="overflow-hidden rounded-xl border border-border bg-surface">
-        <div className="flex items-center justify-between border-b border-border px-3 py-2">
-          <span className="text-sm text-muted">
-            坐标系为游戏内坐标（来自 BWIKI 社区），无官方底图，以网格示意
-          </span>
-          <div className="flex items-center gap-1">
-            <button onClick={() => setZoom((z) => Math.max(0.5, z - 0.2))} className="rounded px-2 py-0.5 text-sm bg-surface-2 hover:bg-surface-3">−</button>
-            <span className="w-12 text-center text-xs text-muted-foreground">{Math.round(zoom * 100)}%</span>
-            <button onClick={() => setZoom((z) => Math.min(3, z + 0.2))} className="rounded px-2 py-0.5 text-sm bg-surface-2 hover:bg-surface-3">+</button>
-          </div>
+        <div className="border-b border-border px-3 py-2 text-sm text-muted">
+          底图与点位数据来自 BWIKI 社区 · 游戏内坐标系 · 拖拽平移 / 滚轮缩放
         </div>
-        <div className="flex justify-center p-2" style={{ overflow: "auto" }}>
-          <svg
-            width={VIEW_SIZE}
-            height={VIEW_SIZE}
-            viewBox={`0 0 ${VIEW_SIZE} ${VIEW_SIZE}`}
-            style={{ transform: `scale(${zoom})`, transformOrigin: "center", maxWidth: "100%" }}
-            className="touch-none"
-          >
-            {/* 网格背景 */}
-            <rect width={VIEW_SIZE} height={VIEW_SIZE} fill="var(--background)" />
-            {Array.from({ length: 11 }, (_, i) => i * (VIEW_SIZE / 10)).map((pos) => (
-              <g key={pos}>
-                <line x1={pos} y1={0} x2={pos} y2={VIEW_SIZE} stroke="var(--border)" strokeOpacity={0.4} strokeWidth={1} />
-                <line x1={0} y1={pos} x2={VIEW_SIZE} y2={pos} stroke="var(--border)" strokeOpacity={0.4} strokeWidth={1} />
-              </g>
-            ))}
-            {/* 中心十字（原点） */}
-            <line x1={VIEW_SIZE / 2} y1={0} x2={VIEW_SIZE / 2} y2={VIEW_SIZE} stroke="var(--muted-foreground)" strokeOpacity={0.3} strokeWidth={1.5} />
-            <line x1={0} y1={VIEW_SIZE / 2} x2={VIEW_SIZE} y2={VIEW_SIZE / 2} stroke="var(--muted-foreground)" strokeOpacity={0.3} strokeWidth={1.5} />
-
-            {/* 点位 */}
-            {filtered.map((p, i) => {
-              const [cx, cy] = worldToSvg(p.lat, p.lng);
-              const color = TYPE_COLORS[p.markType] ?? "var(--muted)";
-              const isSel = selected?.lat === p.lat && selected?.lng === p.lng;
-              return (
-                <g key={i}>
-                  <circle
-                    cx={cx}
-                    cy={cy}
-                    r={isSel ? 6 : 4}
-                    fill={color}
-                    stroke={isSel ? "var(--foreground)" : "none"}
-                    strokeWidth={isSel ? 1.5 : 0}
-                    className="cursor-pointer transition-all hover:opacity-80"
-                    onClick={() => setSelected(p)}
-                  >
-                    <title>{p.title || p.typeName}{p.description ? `：${p.description}` : ""}</title>
-                  </circle>
-                </g>
-              );
-            })}
-          </svg>
-        </div>
+        {/* Leaflet 容器：固定高度 */}
+        <div ref={mapContainerRef} style={{ height: "600px", width: "100%" }} />
       </div>
 
       {/* 右侧：类型筛选 + 选中详情 */}
       <div className="space-y-4">
         <div className="rounded-xl border border-border bg-surface p-3">
-          <h3 className="mb-2 text-sm font-semibold">点位类型（点击切换显示）</h3>
-          <div className="space-y-1.5">
+          <div className="mb-2 flex items-center justify-between">
+            <h3 className="text-sm font-semibold">点位类型</h3>
+            <span className="text-xs text-muted-foreground">{typeList.length} 种</span>
+          </div>
+          <div className="max-h-96 space-y-1 overflow-auto">
             {typeList.map((t) => (
               <button
                 key={t.markType}
                 onClick={() => toggleType(t.markType)}
-                className={`flex w-full items-center gap-2 rounded-lg px-2 py-1 text-left text-sm transition-colors ${
+                className={`flex w-full items-center gap-2 rounded-lg px-2 py-1 text-left text-xs transition-colors ${
                   visibleTypes.has(t.markType) ? "bg-surface-2" : "opacity-40"
                 }`}
               >
-                <span className="h-3 w-3 shrink-0 rounded-full" style={{ backgroundColor: TYPE_COLORS[t.markType] ?? "var(--muted)" }} />
-                <span className="flex-1">{t.name}</span>
-                <span className="text-xs text-muted-foreground">{t.count}</span>
+                <span
+                  className="h-2.5 w-2.5 shrink-0 rounded-full"
+                  style={{ backgroundColor: typeColor(t.markType) }}
+                />
+                <span className="flex-1 truncate">{t.name}</span>
+                <span className="text-muted-foreground">{t.count}</span>
               </button>
             ))}
+          </div>
+          <div className="mt-2 flex gap-1 border-t border-border pt-2">
+            <button
+              onClick={() => setVisibleTypes(new Set(points.map((p) => p.markType)))}
+              className="flex-1 rounded bg-surface-2 px-2 py-1 text-xs hover:opacity-80"
+            >
+              全选
+            </button>
+            <button
+              onClick={() => setVisibleTypes(new Set())}
+              className="flex-1 rounded bg-surface-2 px-2 py-1 text-xs hover:opacity-80"
+            >
+              全不选
+            </button>
           </div>
         </div>
 
@@ -145,11 +215,12 @@ export default function MapView({ points }: { points: MapPoint[] }) {
           <div className="rounded-xl border border-border bg-surface p-3">
             <h3 className="mb-1 text-sm font-semibold">{selected.title || selected.typeName}</h3>
             <p className="text-xs text-muted">
-              <span className="rounded px-1 text-white" style={{ backgroundColor: TYPE_COLORS[selected.markType] ?? "var(--muted)" }}>{selected.typeName}</span>
+              <span className="rounded px-1" style={{ backgroundColor: typeColor(selected.markType), color: "white" }}>
+                {selected.typeName}
+              </span>
             </p>
             {selected.description && <p className="mt-2 text-sm text-muted">{selected.description}</p>}
-            <p className="mt-2 font-mono text-xs text-muted-foreground">坐标 ({selected.lat.toFixed(1)}, {selected.lng.toFixed(1)})</p>
-            <button onClick={() => setSelected(null)} className="mt-2 text-xs text-muted-foreground underline hover:text-foreground">关闭</button>
+            <p className="mt-2 font-mono text-xs text-muted-foreground">({selected.lat.toFixed(1)}, {selected.lng.toFixed(1)})</p>
           </div>
         )}
       </div>
