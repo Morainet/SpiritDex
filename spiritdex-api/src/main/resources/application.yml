@@ -90,3 +90,9 @@ spiritdex:
       # scraper 活动数据产物路径（相对 spiritdex-api 工作目录）
       activities-file: ${user.dir}/../data/seed/activities.json
       author-name: 灵宠档案 AI 助手
+  # Phase 7：JWT 认证配置
+  security:
+    # JWT 签名密钥（生产必须用环境变量覆盖，至少 32 字符）
+    jwt-secret: ${SPIRITDEX_JWT_SECRET:dev-secret-key-change-in-production-at-least-32-chars-long}
+    # JWT 过期时间（小时），默认 168 = 7 天
+    jwt-expire-hours: ${SPIRITDEX_JWT_EXPIRE_HOURS:168}

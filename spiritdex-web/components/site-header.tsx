@@ -9,6 +9,7 @@ import {
 } from "lucide-react";
 import { NAV_GROUPS } from "@/lib/nav-config";
 import { ThemeToggle } from "@/components/theme-toggle";
+import { UserMenu } from "@/components/UserMenu";
 
 export function SiteHeader() {
   const [openMenu, setOpenMenu] = useState<string | null>(null); // 当前打开的菜单名
@@ -72,6 +73,7 @@ export function SiteHeader() {
         </div>
 
         <div className="ml-auto flex items-center gap-2">
+          <UserMenu />
           <ThemeToggle />
           {/* 移动端汉堡菜单 */}
           <div className="relative lg:hidden">

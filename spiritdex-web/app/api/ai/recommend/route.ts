@@ -8,9 +8,16 @@ const BACKEND_URL = process.env.BACKEND_URL ?? "http://localhost:8080";
 
 export async function POST(req: NextRequest) {
   const body = await req.text();
+  const headers: Record<string, string> = {
+    "Content-Type": "application/json",
+    Accept: "text/event-stream",
+  };
+  const auth = req.headers.get("Authorization");
+  if (auth) headers["Authorization"] = auth;
+
   const upstream = await fetch(`${BACKEND_URL}/api/ai/recommend`, {
     method: "POST",
-    headers: { "Content-Type": "application/json", Accept: "text/event-stream" },
+    headers,
     body,
   });
   if (!upstream.body) return new Response("upstream 无响应", { status: 502 });

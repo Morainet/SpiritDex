@@ -24,8 +24,18 @@ function baseUrl(): string {
   return "";
 }
 
+/** 客户端请求时注入 JWT Authorization header（已登录才有）。 */
+function authHeaders(): Record<string, string> {
+  if (typeof window === "undefined") return {};
+  const token = localStorage.getItem("spiritdex_token");
+  return token ? { Authorization: `Bearer ${token}` } : {};
+}
+
 async function getJson<T>(path: string): Promise<T> {
-  const res = await fetch(`${baseUrl()}${path}`, { cache: "no-store" });
+  const res = await fetch(`${baseUrl()}${path}`, {
+    cache: "no-store",
+    headers: authHeaders(),
+  });
   if (!res.ok) {
     throw new Error(`API ${res.status}: ${path}`);
   }
@@ -268,4 +278,49 @@ export async function searchAll(q: string, limit = 8): Promise<SearchResult> {
     marks: marks.list,
     totals: { pets: pets.total, skills: skills.total, items: items.total, quests: quests.total, marks: marks.total },
   };
+}
+
+// ====== 认证（Phase 7）======
+
+export interface AuthResponse {
+  token: string;
+  userId: number;
+  username: string;
+  displayName: string;
+  role: string;
+}
+
+export async function fetchLogin(username: string, password: string): Promise<AuthResponse> {
+  const res = await fetch(`${baseUrl()}/api/auth/login`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json", ...authHeaders() },
+    body: JSON.stringify({ username, password }),
+  });
+  const json: ApiResult<AuthResponse> = await res.json();
+  if (json.code !== 0) throw new Error(json.message || "登录失败");
+  return json.data as AuthResponse;
+}
+
+export async function fetchRegister(
+  username: string,
+  password: string,
+  displayName?: string,
+): Promise<AuthResponse> {
+  const res = await fetch(`${baseUrl()}/api/auth/register`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json", ...authHeaders() },
+    body: JSON.stringify({ username, password, displayName }),
+  });
+  const json: ApiResult<AuthResponse> = await res.json();
+  if (json.code !== 0) throw new Error(json.message || "注册失败");
+  return json.data as AuthResponse;
+}
+
+export async function fetchMe(): Promise<AuthResponse | null> {
+  const res = await fetch(`${baseUrl()}/api/auth/me`, {
+    headers: authHeaders(),
+  });
+  if (res.status === 401) return null;
+  const json: ApiResult<AuthResponse> = await res.json();
+  return json.code === 0 ? (json.data as AuthResponse) : null;
 }

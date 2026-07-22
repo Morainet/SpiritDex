@@ -17,12 +17,17 @@ const BACKEND_URL =
 export async function POST(req: NextRequest) {
   const body = await req.text();
 
+  const headers: Record<string, string> = {
+    "Content-Type": "application/json",
+    Accept: "text/event-stream",
+  };
+  // 透传 JWT（若已登录）
+  const auth = req.headers.get("Authorization");
+  if (auth) headers["Authorization"] = auth;
+
   const upstream = await fetch(`${BACKEND_URL}/api/ai/chat`, {
     method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Accept: "text/event-stream",
-    },
+    headers,
     body,
   });
 
