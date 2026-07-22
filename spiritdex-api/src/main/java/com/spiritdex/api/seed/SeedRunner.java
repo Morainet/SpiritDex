@@ -437,16 +437,45 @@ public class SeedRunner implements CommandLineRunner {
             MapPoint e = new MapPoint();
             e.setMarkType(intOrNull(it.get("mark_type")));
             e.setTypeName(str(it.get("type_name")));
+            e.setIcon(str(it.get("icon")));
             e.setTitle(str(it.get("title")));
             e.setDescription(str(it.get("desc")));
             BigDecimal lat = bigDecimalOrNull(it.get("lat"));
             BigDecimal lng = bigDecimalOrNull(it.get("lng"));
             e.setLat(lat != null ? lat.doubleValue() : null);
             e.setLng(lng != null ? lng.doubleValue() : null);
+            e.setLayer(str(it.get("layer")));
             batch.add(e);
         }
         saveBatchLog("map_points", batch);
+
+        // 文字图层（地名标注）
+        seedMapTextLayers(dir);
         return batch.size();
+    }
+
+    /** 导入地图文字图层（地名标注，全量重建）。 */
+    private void seedMapTextLayers(File dir) {
+        List<Map<String, Object>> textLayers = readRawArray(dir, "map_points.json", "text_layers");
+        if (textLayers.isEmpty()) {
+            log.info("[seed] map_text_layers: 无数据，跳过");
+            return;
+        }
+        truncate(MapTextLayer.class);
+        List<MapTextLayer> batch = new ArrayList<>(textLayers.size());
+        for (Map<String, Object> it : textLayers) {
+            MapTextLayer e = new MapTextLayer();
+            e.setText(str(it.get("text")));
+            BigDecimal lat = bigDecimalOrNull(it.get("lat"));
+            BigDecimal lng = bigDecimalOrNull(it.get("lng"));
+            e.setLat(lat != null ? lat.doubleValue() : null);
+            e.setLng(lng != null ? lng.doubleValue() : null);
+            e.setLayer(str(it.get("layer")));
+            e.setMinZoom(intOrNull(it.get("min_zoom")));
+            e.setMaxZoom(intOrNull(it.get("max_zoom")));
+            batch.add(e);
+        }
+        saveBatchLog("map_text_layers", batch);
     }
 
     /** 导入攻略文章：不清表（保留 AI 生成内容），按 slug upsert。 */
@@ -559,6 +588,23 @@ public class SeedRunner implements CommandLineRunner {
             return items instanceof List ? (List<Map<String, Object>>) items : Collections.emptyList();
         } catch (Exception ex) {
             throw new IllegalStateException("读取 " + filename + " 失败: " + ex.getMessage(), ex);
+        }
+    }
+
+    /** 读取 JSON 文件的顶层非 items 数组字段（如 map_points.json 的 text_layers）。 */
+    @SuppressWarnings("unchecked")
+    private List<Map<String, Object>> readRawArray(File dir, String filename, String field) {
+        try {
+            File f = new File(dir, filename);
+            if (!f.isFile()) {
+                return Collections.emptyList();
+            }
+            Map<String, Object> root = objectMapper.readValue(f, Map.class);
+            Object arr = root.get(field);
+            return arr instanceof List ? (List<Map<String, Object>>) arr : Collections.emptyList();
+        } catch (Exception ex) {
+            log.warn("[seed] 读取 {} 的 {} 字段失败: {}", filename, field, ex.getMessage());
+            return Collections.emptyList();
         }
     }
 

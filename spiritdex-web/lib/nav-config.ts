@@ -17,6 +17,7 @@ import {
   MapPin,
   Package,
   ScrollText,
+  Search,
   Settings2,
   Shield,
   Sparkles,
@@ -47,6 +48,7 @@ export const NAV_GROUPS: NavGroup[] = [
   {
     label: "图鉴",
     items: [
+      { href: "/search", icon: Search, label: "搜索", desc: "全站搜索精灵/技能/道具/印记/任务", color: "var(--accent)" },
       { href: "/pets", icon: Database, label: "精灵图鉴", desc: "671 只精灵全收录", color: "var(--type-grass)" },
       { href: "/skills", icon: Zap, label: "技能库", desc: "737 个技能参数", color: "var(--type-electric)" },
       { href: "/items", icon: Package, label: "道具图鉴", desc: "1779 个道具", color: "var(--type-poison)" },
