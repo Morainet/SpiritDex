@@ -1,12 +1,14 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
-import { Settings2, Sparkles } from "lucide-react";
+import { Heart, Settings2, Sparkles } from "lucide-react";
 import type { PetListItem } from "@/types/pet";
 import { petHeadUrl } from "@/lib/image";
 import { typeColor } from "@/lib/type-colors";
 import { recommendCards, type RecommendCard } from "@/lib/ai-chat";
+import { fetchMyFavorites } from "@/lib/api";
+import { isLoggedIn } from "@/lib/auth";
 import ProxyImage from "@/components/ProxyImage";
 
 const GOALS = ["综合对战", "推图", "PVP", "副本", "BOSS"];
@@ -29,6 +31,20 @@ export default function RecommendClient({
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState<RecommendCard[] | null>(null);
   const [error, setError] = useState("");
+  const [favLoaded, setFavLoaded] = useState(false); // 收藏是否已加载
+
+  // 已登录时自动加载收藏作为「我的精灵」（一次性）
+  useEffect(() => {
+    if (!isLoggedIn()) return;
+    fetchMyFavorites(1, 200)
+      .then((res) => {
+        if (res.list.length > 0) {
+          setOwned(res.list.map((p) => p.slug));
+        }
+      })
+      .catch(() => {})
+      .finally(() => setFavLoaded(true));
+  }, []);
 
   const ownedSet = useMemo(() => new Set(owned), [owned]);
   const filtered = useMemo(() => {
@@ -90,14 +106,36 @@ export default function RecommendClient({
       <div className="rounded-2xl border border-border bg-surface p-4 shadow-[var(--shadow-card)]">
         <div className="mb-2 flex items-center justify-between">
           <span className="text-sm font-semibold">已选精灵（{owned.length}）</span>
-          {owned.length > 0 && (
-            <button onClick={() => setOwned([])} className="text-xs text-muted-foreground hover:text-muted">
-              清空
-            </button>
-          )}
+          <div className="flex items-center gap-3">
+            {isLoggedIn() && (
+              <button
+                onClick={() => {
+                  setFavLoaded(false);
+                  fetchMyFavorites(1, 200)
+                    .then((res) => setOwned(res.list.map((p) => p.slug)))
+                    .catch(() => {})
+                    .finally(() => setFavLoaded(true));
+                }}
+                className="inline-flex items-center gap-1 text-xs text-muted-foreground hover:text-muted"
+                title="从我的收藏加载"
+              >
+                <Heart className="h-3 w-3" />
+                {favLoaded ? "重新加载收藏" : "加载收藏…"}
+              </button>
+            )}
+            {owned.length > 0 && (
+              <button onClick={() => setOwned([])} className="text-xs text-muted-foreground hover:text-muted">
+                清空
+              </button>
+            )}
+          </div>
         </div>
         {owned.length === 0 ? (
-          <p className="text-sm text-muted-foreground">从下方搜索选择你拥有的精灵（至少 3 只）</p>
+          <p className="text-sm text-muted-foreground">
+            {isLoggedIn()
+              ? "收藏的精灵会自动加载，或从下方搜索添加（至少 3 只）"
+              : "从下方搜索选择你拥有的精灵（至少 3 只），登录后可自动加载收藏"}
+          </p>
         ) : (
           <div className="flex flex-wrap gap-1.5">
             {owned.map((s) => {
