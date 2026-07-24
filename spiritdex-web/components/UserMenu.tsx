@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { User as UserIcon, LogOut } from "lucide-react";
+import { User as UserIcon, Heart, LogOut } from "lucide-react";
 import { clearAuth, getCachedUser, type AuthUser } from "@/lib/auth";
 
 /** 右上角账号入口：未登录显示登录按钮；已登录显示昵称 + 下拉（登出）。 */
@@ -48,6 +48,13 @@ export function UserMenu() {
             <span className="ml-1 rounded bg-[var(--type-dragon)] px-1 text-[10px] text-white">管理员</span>
           )}
         </div>
+        <Link
+          href="/favorites"
+          className="flex w-full items-center gap-2 px-3 py-2 text-left text-sm hover:bg-surface-2"
+        >
+          <Heart className="h-4 w-4" />
+          我的收藏
+        </Link>
         <button
           onClick={() => {
             clearAuth();

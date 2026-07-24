@@ -324,3 +324,39 @@ export async function fetchMe(): Promise<AuthResponse | null> {
   const json: ApiResult<AuthResponse> = await res.json();
   return json.code === 0 ? (json.data as AuthResponse) : null;
 }
+
+// ====== 收藏（Phase 7 第二期）======
+
+/** 检查是否已收藏（未登录返回 false）。 */
+export async function fetchFavoriteCheck(slug: string): Promise<boolean> {
+  try {
+    const data = await getJson<{ favorited: boolean }>(`/api/favorites/check/${slug}`);
+    return data.favorited;
+  } catch {
+    return false;
+  }
+}
+
+/** 收藏精灵。 */
+export async function addFavorite(slug: string): Promise<void> {
+  await fetch(`${baseUrl()}/api/favorites/${slug}`, {
+    method: "POST",
+    headers: authHeaders(),
+  });
+}
+
+/** 取消收藏。 */
+export async function removeFavorite(slug: string): Promise<void> {
+  await fetch(`${baseUrl()}/api/favorites/${slug}`, {
+    method: "DELETE",
+    headers: authHeaders(),
+  });
+}
+
+/** 我的收藏列表。 */
+export async function fetchMyFavorites(page = 1, size = 24): Promise<PageResult<PetListItem>> {
+  const params = new URLSearchParams();
+  params.set("page", String(page));
+  params.set("size", String(size));
+  return getJson<PageResult<PetListItem>>(`/api/favorites?${params}`);
+}

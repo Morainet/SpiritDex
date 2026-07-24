@@ -9,6 +9,7 @@ import type { PetSkill } from "@/types/pet";
 import StatsRadar from "@/components/StatsRadar";
 import EvolutionChainView from "@/components/EvolutionChainView";
 import ProxyImage from "@/components/ProxyImage";
+import { FavoriteButton } from "@/components/FavoriteButton";
 
 // 允许按需生成未预渲染的 slug（数据库新增/构建时未覆盖的精灵都能访问），
 // 配合 revalidate ISR，新精灵首次访问时生成页面、之后定时刷新。
@@ -74,6 +75,7 @@ export default async function PetDetailPage({
           >
             <Bot className="h-4 w-4" /> 问 AI
           </a>
+          <FavoriteButton slug={pet.slug} />
         </div>
       </div>
 
