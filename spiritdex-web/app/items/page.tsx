@@ -5,6 +5,7 @@ import { pick } from "@/lib/utils";
 import ItemCard from "@/components/ItemCard";
 import ItemFilters from "@/components/ItemFilters";
 import Pagination from "@/components/Pagination";
+import { EmptyState } from "@/components/EmptyState";
 
 export const metadata: Metadata = {
   title: "道具图鉴",
@@ -43,7 +44,7 @@ export default async function ItemsPage({
       </Suspense>
 
       {result.list.length === 0 ? (
-        <div className="py-16 text-center text-muted">没有匹配的道具</div>
+        <EmptyState action={{ href: "/items", label: "清除筛选" }} />
       ) : (
         <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
           {result.list.map((it) => (

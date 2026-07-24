@@ -1,15 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import nextDynamic from "next/dynamic";
 import { ArrowRight } from "lucide-react";
 import { fetchMapPoints, fetchMapTypes, fetchMapTextLayers, fetchLocations } from "@/lib/api";
 import type { MapTextLayer } from "@/types/map";
-
-// Leaflet 是客户端库，禁用 SSR
-const MapView = nextDynamic(() => import("@/components/MapView"), {
-  ssr: false,
-  loading: () => <div className="h-[600px] animate-pulse rounded-xl bg-surface-2" />,
-});
+import MapViewClient from "./MapViewClient";
 
 export const metadata: Metadata = {
   title: "地图",
@@ -61,7 +55,7 @@ export default async function MapPage() {
 
           {/* 交互地图（Leaflet + BWIKI 瓦片底图） */}
           <section className="mb-8">
-            <MapView points={points} textLayers={textLayers} />
+            <MapViewClient points={points} textLayers={textLayers} />
           </section>
 
           {/* 精灵分布地区 */}

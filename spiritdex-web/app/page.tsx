@@ -109,7 +109,7 @@ export default async function Home() {
                   ))}
                 </div>
               ) : (
-                <p className="text-sm text-muted">暂无数据</p>
+                <p className="text-sm text-muted">数据加载中…</p>
               )}
             </div>
 
@@ -138,7 +138,7 @@ export default async function Home() {
                   ))}
                 </div>
               ) : (
-                <p className="text-sm text-muted">暂无文章</p>
+                <p className="text-sm text-muted">文章加载中…</p>
               )}
             </div>
           </div>

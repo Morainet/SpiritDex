@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
-import { useTheme } from "next-themes";
+import { useTheme, type Theme } from "@/components/theme-context";
 import { Monitor, Moon, Sun } from "lucide-react";
 
 /** 主题切换（受控下拉 + 点击外部关闭），system/light/dark。 */
@@ -18,7 +18,7 @@ export function ThemeToggle() {
     return () => document.removeEventListener("mousedown", onClick);
   }, []);
 
-  const options = [
+  const options: { value: Theme; label: string; icon: typeof Sun }[] = [
     { value: "light", label: "浅色", icon: Sun },
     { value: "dark", label: "深色", icon: Moon },
     { value: "system", label: "跟随系统", icon: Monitor },

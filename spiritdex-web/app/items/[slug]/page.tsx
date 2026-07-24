@@ -5,14 +5,7 @@ import ProxyImage from "@/components/ProxyImage";
 import { ArrowLeft, Package, ExternalLink } from "lucide-react";
 import { fetchItemDetail } from "@/lib/api";
 import { itemIconUrl } from "@/lib/image";
-
-/** 稀有度配色（与 ItemCard 一致）。 */
-const RARITY_STYLE: Record<string, string> = {
-  紫: "bg-violet-500",
-  蓝: "bg-blue-500",
-  橙: "bg-orange-500",
-  绿: "bg-emerald-500",
-};
+import { ITEM_RARITY_COLOR } from "@/lib/badge-styles";
 
 // 道具量大（约 1780），不做全量 SSG；按需动态渲染 + ISR 缓存。
 export const revalidate = 3600;
@@ -49,7 +42,10 @@ export default async function ItemDetailPage({ params }: { params: Promise<{ slu
           <h1 className="text-3xl font-bold">{item.name}</h1>
           <div className="mt-2 flex flex-wrap items-center gap-2">
             {item.rarity && (
-              <span className={`rounded-md px-2 py-0.5 text-sm font-medium text-white ${RARITY_STYLE[item.rarity] ?? "bg-secondary"}`}>
+              <span
+                className="rounded-md px-2 py-0.5 text-sm font-medium text-white"
+                style={{ backgroundColor: ITEM_RARITY_COLOR[item.rarity] ?? "var(--secondary)" }}
+              >
                 {item.rarity}
               </span>
             )}
