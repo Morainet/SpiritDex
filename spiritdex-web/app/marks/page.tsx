@@ -5,6 +5,7 @@ import { pick } from "@/lib/utils";
 import MarkCard from "@/components/MarkCard";
 import MarkFilters from "@/components/MarkFilters";
 import Pagination from "@/components/Pagination";
+import { EmptyState } from "@/components/EmptyState";
 
 export const metadata: Metadata = {
   title: "印记图鉴",
@@ -41,7 +42,7 @@ export default async function MarksPage({
       </Suspense>
 
       {result.list.length === 0 ? (
-        <div className="py-16 text-center text-muted">没有匹配的印记</div>
+        <EmptyState action={{ href: "/marks", label: "清除筛选" }} />
       ) : (
         <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
           {result.list.map((m) => (

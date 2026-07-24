@@ -3,6 +3,7 @@ import Link from "next/link";
 import { fetchArticles } from "@/lib/api";
 import { pick } from "@/lib/utils";
 import Pagination from "@/components/Pagination";
+import { EmptyState } from "@/components/EmptyState";
 
 export const metadata: Metadata = {
   title: "攻略文章",
@@ -53,7 +54,7 @@ export default async function ArticlesPage({
       </div>
 
       {result.list.length === 0 ? (
-        <div className="py-16 text-center text-muted">暂无文章</div>
+        <EmptyState action={{ href: "/articles", label: "清除筛选" }} />
       ) : (
         <div className="grid gap-4 sm:grid-cols-2">
           {result.list.map((a) => (

@@ -5,6 +5,7 @@ import { pick } from "@/lib/utils";
 import PetCard from "@/components/PetCard";
 import PetFilters from "@/components/PetFilters";
 import Pagination from "@/components/Pagination";
+import { EmptyState } from "@/components/EmptyState";
 
 export const metadata: Metadata = {
   title: "精灵图鉴",
@@ -52,7 +53,7 @@ export default async function PetsPage({
       </Suspense>
 
       {result.list.length === 0 ? (
-        <div className="py-16 text-center text-muted">没有匹配的精灵</div>
+        <EmptyState action={{ href: "/pets", label: "清除筛选" }} />
       ) : (
         <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
           {result.list.map((pet) => (

@@ -5,6 +5,7 @@ import { searchAll, type SearchResult } from "@/lib/api";
 import { pick } from "@/lib/utils";
 import { SearchBox } from "./search-box";
 import { ResultGroups } from "./result-groups";
+import { EmptyState } from "@/components/EmptyState";
 
 export const metadata: Metadata = {
   title: "搜索",
@@ -49,13 +50,9 @@ export default async function SearchPage({
       </header>
 
       {!q ? (
-        <div className="py-16 text-center text-muted">
-          输入关键词搜索精灵、技能、道具、印记、任务
-        </div>
+        <EmptyState icon={SearchIcon} title="开始搜索" description="输入关键词搜索精灵、技能、道具、印记、任务" />
       ) : !result || totalHits === 0 ? (
-        <div className="py-16 text-center text-muted">
-          没有找到与「{q}」相关的内容
-        </div>
+        <EmptyState title={`没有找到与「${q}」相关的内容`} description="换个关键词试试,或检查拼写" />
       ) : (
         <ResultGroups q={q} result={result} />
       )}

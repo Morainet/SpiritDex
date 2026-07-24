@@ -5,6 +5,7 @@ import { pick } from "@/lib/utils";
 import QuestCard from "@/components/QuestCard";
 import QuestFilters from "@/components/QuestFilters";
 import Pagination from "@/components/Pagination";
+import { EmptyState } from "@/components/EmptyState";
 
 export const metadata: Metadata = {
   title: "任务图鉴",
@@ -41,7 +42,7 @@ export default async function QuestsPage({
       </Suspense>
 
       {result.list.length === 0 ? (
-        <div className="py-16 text-center text-muted">没有匹配的任务</div>
+        <EmptyState action={{ href: "/quests", label: "清除筛选" }} />
       ) : (
         <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
           {result.list.map((q) => (

@@ -59,9 +59,11 @@ export function SiteHeader() {
                         key={item.href}
                         href={item.href}
                         onClick={() => setOpenMenu(null)}
-                        className="flex items-center gap-2.5 rounded-lg px-3 py-2 text-sm text-muted transition-colors hover:bg-surface-2 hover:text-foreground"
+                        style={{ ["--nav-accent" as string]: item.color }}
+                        className="group/item relative flex items-center gap-2.5 rounded-lg px-3 py-2 text-sm text-muted transition-colors hover:bg-surface-2 hover:text-foreground"
                       >
-                        <item.icon className="h-4 w-4" />
+                        <span className="absolute left-0 top-1/2 h-5 w-0.5 -translate-y-1/2 rounded-full bg-[var(--nav-accent)] opacity-0 transition-opacity group-hover/item:opacity-100" />
+                        <item.icon className="h-4 w-4 transition-colors group-hover/item:text-[var(--nav-accent)]" />
                         {item.label}
                       </Link>
                     ))}

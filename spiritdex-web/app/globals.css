@@ -12,6 +12,7 @@
   --background: #f7f8fa;
   --surface: #ffffff;
   --surface-2: #f1f3f6;
+  --surface-3: #e5e7eb;
   --foreground: #1a1d23;
   --muted: #6b7280;
   --muted-foreground: #9ca3af;
@@ -63,6 +64,7 @@
   --background: #0f1115;
   --surface: #181b22;
   --surface-2: #21252e;
+  --surface-3: #2a2f3a;
   --foreground: #e8eaed;
   --muted: #9ca3af;
   --muted-foreground: #6b7280;
@@ -85,6 +87,7 @@
   --color-background: var(--background);
   --color-surface: var(--surface);
   --color-surface-2: var(--surface-2);
+  --color-surface-3: var(--surface-3);
   --color-foreground: var(--foreground);
   --color-muted: var(--muted);
   --color-muted-foreground: var(--muted-foreground);
@@ -185,6 +188,8 @@ body {
   0% { background-position: -200% 0; }
   100% { background-position: 200% 0; }
 }
+/* 通用骨架屏动画（原 .ai-skeleton，现全站复用；旧名保留兼容 AI 代码） */
+.skeleton,
 .ai-skeleton {
   background: linear-gradient(90deg, var(--surface-2) 25%, var(--border) 37%, var(--surface-2) 63%);
   background-size: 200% 100%;

@@ -3,13 +3,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { ArrowLeft, MapPin, ExternalLink } from "lucide-react";
 import { fetchQuestDetail } from "@/lib/api";
-
-/** 任务分类配色（与 QuestCard 一致）。 */
-const CATEGORY_STYLE: Record<string, string> = {
-  旅途: "bg-blue-500",
-  奇谭: "bg-violet-500",
-  拾遗: "bg-emerald-500",
-};
+import { QUEST_CATEGORY_COLOR } from "@/lib/badge-styles";
 
 export const revalidate = 3600;
 
@@ -35,7 +29,10 @@ export default async function QuestDetailPage({ params }: { params: Promise<{ sl
         <h1 className="text-3xl font-bold">{quest.name}</h1>
         <div className="mt-2 flex flex-wrap items-center gap-2">
           {quest.category && (
-            <span className={`rounded-md px-2 py-0.5 text-sm font-medium text-white ${CATEGORY_STYLE[quest.category] ?? "bg-secondary"}`}>
+            <span
+              className="rounded-md px-2 py-0.5 text-sm font-medium text-white"
+              style={{ backgroundColor: QUEST_CATEGORY_COLOR[quest.category] ?? "var(--secondary)" }}
+            >
               {quest.category}
             </span>
           )}

@@ -3,12 +3,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { ArrowLeft, ExternalLink } from "lucide-react";
 import { fetchMarkDetail } from "@/lib/api";
-
-/** 阵营配色（与 MarkCard 一致）。 */
-const FACTION_STYLE: Record<string, string> = {
-  正面: "bg-blue-500",
-  负面: "bg-rose-500",
-};
+import { MARK_FACTION_COLOR } from "@/lib/badge-styles";
 
 /** 清理 wiki 标记：[[a|b]]→b、[[a]]→a、'''x'''→x、**x**→x。 */
 function stripWiki(text: string): string {
@@ -43,7 +38,10 @@ export default async function MarkDetailPage({ params }: { params: Promise<{ slu
         <h1 className="text-3xl font-bold">{mark.name}</h1>
         <div className="mt-2 flex flex-wrap items-center gap-2">
           {mark.faction && (
-            <span className={`rounded-md px-2 py-0.5 text-sm font-medium text-white ${FACTION_STYLE[mark.faction] ?? "bg-secondary"}`}>
+            <span
+              className="rounded-md px-2 py-0.5 text-sm font-medium text-white"
+              style={{ backgroundColor: MARK_FACTION_COLOR[mark.faction] ?? "var(--secondary)" }}
+            >
               {mark.faction}印记
             </span>
           )}
