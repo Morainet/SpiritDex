@@ -40,36 +40,71 @@ public class TypeContextProvider {
         return buildEffectivenessText();
     }
 
-    /** 把 type_effectiveness 表转成可读文本：「草系 克制：水系(2x)、光系(2x)...；被克：火系(2x)...」。 */
+    /**
+     * 把 type_effectiveness 表转成**双向**可读文本。
+     *
+     * <p>对每个属性同时给出两个视角，避免大模型从单一「攻击方视角」反推时混淆攻防方向：
+     * <ul>
+     *   <li>「X系作为攻击方」：用 X 系技能打谁有 2x（克制）/ 减半（不利）</li>
+     *   <li>「X系作为防御方」：X 系精灵被谁打有 2x（弱点）/ 减半（抗性）</li>
+     * </ul>
+     * 这样无论用户问「火系被什么克制」还是「火系克制什么」，模型都能直接读到答案，
+     * 无需做方向反推（glm-4-flash 等轻量模型反推常出错，把"火克草"误答成"火被草克"）。
+     */
     private String buildEffectivenessText() {
         List<Type> types = typeMapper.selectList(null);
         Map<Long, String> nameById = types.stream().collect(Collectors.toMap(Type::getId, Type::getName));
-        Map<Long, String> slugById = types.stream().collect(Collectors.toMap(Type::getId, Type::getSlug));
 
         List<TypeEffectiveness> rows = effectivenessMapper.selectList(null);
         if (rows.isEmpty()) return null;
 
-        // 按攻击方分组：atkId → [(defName, mult)]
+        // 攻击方分组：atkId → [(defId, mult)]
         Map<Long, List<TypeEffectiveness>> byAtk = rows.stream()
                 .collect(Collectors.groupingBy(TypeEffectiveness::getAttackingTypeId));
+        // 防御方分组：defId → [(atkId, mult)] —— 用于「被谁克制」视角
+        Map<Long, List<TypeEffectiveness>> byDef = rows.stream()
+                .collect(Collectors.groupingBy(TypeEffectiveness::getDefendingTypeId));
 
         StringBuilder sb = new StringBuilder();
         for (Type t : types) {
-            List<TypeEffectiveness> atkRels = byAtk.get(t.getId());
-            if (atkRels == null || atkRels.isEmpty()) continue;
-            // 克制（mult>=2）和减半（mult<1）
-            String strong = atkRels.stream()
-                    .filter(r -> r.getMultiplier() != null && r.getMultiplier().doubleValue() >= 2)
-                    .map(r -> nameById.getOrDefault(r.getDefendingTypeId(), "?") + "系")
-                    .collect(Collectors.joining("、"));
-            String weak = atkRels.stream()
-                    .filter(r -> r.getMultiplier() != null && r.getMultiplier().doubleValue() < 1)
-                    .map(r -> nameById.getOrDefault(r.getDefendingTypeId(), "?") + "系")
-                    .collect(Collectors.joining("、"));
-            sb.append(t.getName()).append("系攻击：");
-            if (!strong.isEmpty()) sb.append("克制 ").append(strong);
-            if (!weak.isEmpty()) sb.append(strong.isEmpty() ? "" : "；").append("减半 ").append(weak);
-            sb.append("\n");
+            // 视角1：X 系作为攻击方（X 系技能打别人）
+            List<TypeEffectiveness> asAtk = byAtk.get(t.getId());
+            if (asAtk != null && !asAtk.isEmpty()) {
+                String strong = asAtk.stream()
+                        .filter(r -> r.getMultiplier() != null && r.getMultiplier().doubleValue() >= 2)
+                        .map(r -> nameById.getOrDefault(r.getDefendingTypeId(), "?") + "系")
+                        .collect(Collectors.joining("、"));
+                String weak = asAtk.stream()
+                        .filter(r -> r.getMultiplier() != null && r.getMultiplier().doubleValue() < 1)
+                        .map(r -> nameById.getOrDefault(r.getDefendingTypeId(), "?") + "系")
+                        .collect(Collectors.joining("、"));
+                if (!strong.isEmpty() || !weak.isEmpty()) {
+                    sb.append(t.getName()).append("系作为攻击方（用").append(t.getName())
+                      .append("系技能打对手）：");
+                    if (!strong.isEmpty()) sb.append("克制 ").append(strong).append("（2倍伤害）");
+                    if (!weak.isEmpty()) sb.append(!strong.isEmpty() ? "；" : "").append("不利 ").append(weak).append("（减半伤害）");
+                    sb.append("\n");
+                }
+            }
+            // 视角2：X 系作为防御方（X 系精灵挨打）
+            List<TypeEffectiveness> asDef = byDef.get(t.getId());
+            if (asDef != null && !asDef.isEmpty()) {
+                String weakTo = asDef.stream()
+                        .filter(r -> r.getMultiplier() != null && r.getMultiplier().doubleValue() >= 2)
+                        .map(r -> nameById.getOrDefault(r.getAttackingTypeId(), "?") + "系")
+                        .collect(Collectors.joining("、"));
+                String resistTo = asDef.stream()
+                        .filter(r -> r.getMultiplier() != null && r.getMultiplier().doubleValue() < 1)
+                        .map(r -> nameById.getOrDefault(r.getAttackingTypeId(), "?") + "系")
+                        .collect(Collectors.joining("、"));
+                if (!weakTo.isEmpty() || !resistTo.isEmpty()) {
+                    sb.append(t.getName()).append("系作为防御方（").append(t.getName())
+                      .append("系精灵被攻击）：");
+                    if (!weakTo.isEmpty()) sb.append("弱点(怕谁) ").append(weakTo).append("（受2倍伤害）");
+                    if (!resistTo.isEmpty()) sb.append(!weakTo.isEmpty() ? "；" : "").append("抗性(不怕谁) ").append(resistTo).append("（受减半伤害）");
+                    sb.append("\n");
+                }
+            }
         }
         return sb.toString();
     }
