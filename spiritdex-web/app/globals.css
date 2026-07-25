@@ -18,16 +18,19 @@
   --muted-foreground: #9ca3af;
   --border: #e5e7eb;
   --input: #e5e7eb;
-  --ring: #e84545;
+  --ring: #2e8de0;
 
-  /* 主色：精灵球红（游戏化主调） */
-  --primary: #e84545;
+  /* 主色：洛克王国蓝（咕噜球标志色）— 修正原宝可梦精灵球红的品牌错误 */
+  --primary: #2e8de0;
+  --primary-hover: #1e78d0;
   --primary-foreground: #ffffff;
-  /* 辅色：能量蓝（链接/数据） */
+  /* 辅色：能量蓝（链接/数据，比主色深一档作区分） */
   --secondary: #3b82f6;
   --secondary-foreground: #ffffff;
   /* 强调：金色（稀有度/亮点） */
   --accent: #f59e0b;
+  /* 收藏/danger 专用红（原主色降级） */
+  --favorite: #e84545;
 
   /* 属性色（与 lib/type-colors.ts 一致） */
   --type-normal: #9099a0;
@@ -70,13 +73,16 @@
   --muted-foreground: #6b7280;
   --border: #2a2f3a;
   --input: #2a2f3a;
-  --ring: #e84545;
+  --ring: #4a9eea;
 
-  --primary: #ff5a5a;
+  /* 主色：洛克王国蓝（深色模式下提亮一档保证对比度） */
+  --primary: #4a9eea;
+  --primary-hover: #5aabf0;
   --primary-foreground: #ffffff;
   --secondary: #60a5fa;
   --secondary-foreground: #ffffff;
   --accent: #fbbf24;
+  --favorite: #ff5a5a;
 
   --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.3);
   --shadow-hover: 0 8px 24px rgba(0, 0, 0, 0.4);
@@ -102,6 +108,7 @@
   --color-success: var(--success);
   --color-warning: var(--warning);
   --color-danger: var(--danger);
+  --color-favorite: var(--favorite);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
@@ -249,4 +256,105 @@ body {
 
 /* 消息列表滚动锚点稳定（修复流式输出时滚动跳动） */
 .ai-msg-list { overflow-anchor: auto; }
+
+/* ============================================================
+   动效系统（ui-ux-pro-max skill 规范：150-300ms / ease-out 进入 / 禁用 linear）
+   - 入场：fadeIn / slideUp / fadeInStagger（页面/列表渐入）
+   - 微交互：卡片悬浮光晕、立绘缩放、logo 旋转
+   - 常驻：立绘呼吸浮动（仅装饰性大图，遵循"连续动画只用于 loading/装饰"约束）
+   - 全部受 prefers-reduced-motion 保护
+   ============================================================ */
+
+/* —— 入场关键帧 —— */
+@keyframes sd-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes sd-slide-up {
+  from { opacity: 0; transform: translateY(12px); }   /* y 偏移小，读作 fade 非 slide */
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes sd-slide-down {
+  from { opacity: 0; transform: translateY(-8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+/* 呼吸浮动（立绘/装饰大图，缓慢上下 3s） */
+@keyframes sd-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+/* 光晕脉冲（选中/激活态） */
+@keyframes sd-glow-pulse {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+/* 心形收藏弹出（scale 弹簧） */
+@keyframes sd-heart-pop {
+  0% { transform: scale(1); }
+  40% { transform: scale(1.35); }
+  70% { transform: scale(0.9); }
+  100% { transform: scale(1); }
+}
+
+/* —— 入场工具类（页面/区块首次显现） —— */
+/* 用法：首次渲染触发，配合 React 的 mount 时机；duration 250-400ms 严格 ≥150ms ≤500ms */
+.animate-fade-in {
+  animation: sd-fade-in 0.3s ease-out both;
+}
+.animate-slide-up {
+  animation: sd-slide-up 0.35s ease-out both;
+}
+.animate-slide-down {
+  animation: sd-slide-down 0.25s ease-out both;
+}
+
+/* —— 列表错落入场（配合 [style*="--i"] 传索引，或用 .stagger-auto 纯 nth-child） —— */
+/* 用法1：父容器加 .stagger-in，子项各自设 --i:0/1/2... */
+.stagger-in > * {
+  animation: sd-slide-up 0.35s ease-out both;
+  animation-delay: calc(var(--i, 0) * 0.04s);  /* 40ms 步进，长列表也不超 0.5s */
+}
+/* 用法2：父容器加 .stagger-auto，前 12 项自动 nth-child 错落（无需手动传索引） */
+.stagger-auto > *:nth-child(1) { animation: sd-slide-up 0.35s ease-out 0.00s both; }
+.stagger-auto > *:nth-child(2) { animation: sd-slide-up 0.35s ease-out 0.04s both; }
+.stagger-auto > *:nth-child(3) { animation: sd-slide-up 0.35s ease-out 0.08s both; }
+.stagger-auto > *:nth-child(4) { animation: sd-slide-up 0.35s ease-out 0.12s both; }
+.stagger-auto > *:nth-child(5) { animation: sd-slide-up 0.35s ease-out 0.16s both; }
+.stagger-auto > *:nth-child(6) { animation: sd-slide-up 0.35s ease-out 0.20s both; }
+.stagger-auto > *:nth-child(7) { animation: sd-slide-up 0.35s ease-out 0.24s both; }
+.stagger-auto > *:nth-child(8) { animation: sd-slide-up 0.35s ease-out 0.28s both; }
+.stagger-auto > *:nth-child(n+9) { animation: sd-slide-up 0.35s ease-out 0.32s both; }
+
+/* —— 常驻动效 —— */
+.animate-float {
+  animation: sd-float 3s ease-in-out infinite;
+}
+.animate-glow-pulse {
+  animation: sd-glow-pulse 2s ease-in-out infinite;
+}
+
+/* —— 交互态：过渡基线（全站可点击元素遵循） —— */
+.sd-transition {
+  transition-property: transform, box-shadow, background-color, border-color, opacity, color;
+  transition-duration: 200ms;        /* skill 规范微交互 150-300ms 中位 */
+  transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1); /* ease-out 变体，进入顺滑 */
+}
+
+/* —— prefers-reduced-motion 降级（无障碍，强制） —— */
+@media (prefers-reduced-motion: reduce) {
+  .animate-fade-in,
+  .animate-slide-up,
+  .animate-slide-down,
+  .stagger-in > *,
+  .animate-float,
+  .animate-glow-pulse {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  .sd-transition {
+    transition-duration: 0.01ms !important;
+  }
+}
+
 

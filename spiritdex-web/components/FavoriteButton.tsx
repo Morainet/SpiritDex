@@ -43,11 +43,14 @@ export function FavoriteButton({ slug }: { slug: string }) {
       disabled={loading}
       className={`inline-flex h-9 items-center gap-1.5 rounded-lg px-3 text-sm font-medium transition-colors disabled:opacity-50 ${
         favorited
-          ? "bg-rose-500/10 text-rose-500 hover:bg-rose-500/20"
+          ? "bg-[color-mix(in_srgb,var(--favorite)_12%,transparent)] text-[var(--favorite)] hover:bg-[color-mix(in_srgb,var(--favorite)_20%,transparent)]"
           : "bg-surface-2 text-muted hover:bg-surface-3"
       }`}
     >
-      <Heart className={`h-4 w-4 ${favorited ? "fill-current" : ""}`} />
+      <Heart
+        key={favorited ? "on" : "off"}
+        className={`h-4 w-4 ${favorited ? "fill-current animate-[sd-heart-pop_0.4s_ease-out]" : ""}`}
+      />
       {favorited ? "已收藏" : "收藏"}
     </button>
   );

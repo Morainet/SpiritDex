@@ -4,6 +4,8 @@ import { fetchArticles } from "@/lib/api";
 import { pick } from "@/lib/utils";
 import Pagination from "@/components/Pagination";
 import { EmptyState } from "@/components/EmptyState";
+import { PageHeader } from "@/components/PageHeader";
+import { WIDTH } from "@/lib/layout";
 
 export const metadata: Metadata = {
   title: "攻略文章",
@@ -38,11 +40,8 @@ export default async function ArticlesPage({
   }
 
   return (
-    <main className="mx-auto max-w-5xl px-4 py-6">
-      <header className="mb-4">
-        <h1 className="text-2xl font-bold">攻略文章</h1>
-        <p className="text-sm text-muted">共 {result.total} 篇文章</p>
-      </header>
+    <main className={`mx-auto ${WIDTH.detail} px-4 py-6`}>
+      <PageHeader title="攻略文章" subtitle={`共 ${result.total} 篇文章`} />
 
       <div className="mb-6 flex items-center gap-1.5 text-sm">
         <span className="mr-1 text-muted">分类</span>

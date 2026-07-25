@@ -6,6 +6,8 @@ import ItemCard from "@/components/ItemCard";
 import ItemFilters from "@/components/ItemFilters";
 import Pagination from "@/components/Pagination";
 import { EmptyState } from "@/components/EmptyState";
+import { PageHeader } from "@/components/PageHeader";
+import { WIDTH } from "@/lib/layout";
 
 export const metadata: Metadata = {
   title: "道具图鉴",
@@ -33,11 +35,8 @@ export default async function ItemsPage({
   const passThrough: Record<string, string | undefined> = { mainCategory, rarity, q };
 
   return (
-    <main className="mx-auto max-w-7xl px-4 py-6">
-      <header className="mb-4">
-        <h1 className="text-2xl font-bold">道具图鉴</h1>
-        <p className="text-sm text-muted">共 {result.total} 个道具</p>
-      </header>
+    <main className={`mx-auto ${WIDTH.list} px-4 py-6`}>
+      <PageHeader title="道具图鉴" subtitle={`共 ${result.total} 个道具`} />
 
       <Suspense fallback={<div className="mb-6 h-16" />}>
         <ItemFilters />

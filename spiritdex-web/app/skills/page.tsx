@@ -6,6 +6,8 @@ import SkillCard from "@/components/SkillCard";
 import SkillFilters from "@/components/SkillFilters";
 import Pagination from "@/components/Pagination";
 import { EmptyState } from "@/components/EmptyState";
+import { PageHeader } from "@/components/PageHeader";
+import { WIDTH } from "@/lib/layout";
 
 export const metadata: Metadata = {
   title: "技能库",
@@ -37,11 +39,8 @@ export default async function SkillsPage({
   const passThrough: Record<string, string | undefined> = { element, category, q };
 
   return (
-    <main className="mx-auto max-w-7xl px-4 py-6">
-      <header className="mb-4">
-        <h1 className="text-2xl font-bold">技能库</h1>
-        <p className="text-sm text-muted">共 {result.total} 个技能</p>
-      </header>
+    <main className={`mx-auto ${WIDTH.list} px-4 py-6`}>
+      <PageHeader title="技能库" subtitle={`共 ${result.total} 个技能`} />
 
       <Suspense fallback={<div className="mb-6 h-16" />}>
         <SkillFilters types={types} />
