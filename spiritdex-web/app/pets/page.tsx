@@ -6,6 +6,8 @@ import PetCard from "@/components/PetCard";
 import PetFilters from "@/components/PetFilters";
 import Pagination from "@/components/Pagination";
 import { EmptyState } from "@/components/EmptyState";
+import { PageHeader } from "@/components/PageHeader";
+import { WIDTH } from "@/lib/layout";
 
 export const metadata: Metadata = {
   title: "精灵图鉴",
@@ -39,14 +41,16 @@ export default async function PetsPage({
   const passThrough: Record<string, string | undefined> = { type, stage: stageStr, location, q };
 
   return (
-    <main className="mx-auto max-w-7xl px-4 py-6">
-      <header className="mb-4">
-        <h1 className="text-2xl font-bold">精灵图鉴</h1>
-        <p className="text-sm text-muted">
-          共 {result.total} 只精灵
-          {location && <> · 分布地区：<span className="font-medium text-foreground">{location}</span></>}
-        </p>
-      </header>
+    <main className={`mx-auto ${WIDTH.list} px-4 py-6`}>
+      <PageHeader
+        title="精灵图鉴"
+        subtitle={
+          <>
+            共 {result.total} 只精灵
+            {location && <> · 分布地区：<span className="font-medium text-foreground">{location}</span></>}
+          </>
+        }
+      />
 
       <Suspense fallback={<div className="mb-6 h-16" />}>
         <PetFilters types={types} />

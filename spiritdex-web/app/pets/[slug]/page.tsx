@@ -43,6 +43,7 @@ export default async function PetDetailPage({
 
   const illustration = petIllustrationUrl(pet.illustrationKey);
   const dex = String(pet.dexNo).padStart(4, "0");
+  const primaryColor = pet.types?.[0] ? typeColor(pet.types[0]) : "var(--muted)";
   const jsonLd = { "@context": "https://schema.org", "@type": "VideoGame", name: `洛克王国手游 · ${pet.name}`, description: pet.description };
 
   return (
@@ -81,9 +82,12 @@ export default async function PetDetailPage({
 
       {/* 主体：左立绘 / 右种族值 */}
       <div className="mb-6 grid gap-6 md:grid-cols-[360px_1fr]">
-        <div className="relative flex min-h-[360px] items-center justify-center overflow-hidden rounded-2xl border border-border bg-surface-2">
+        <div
+          className="relative flex min-h-[360px] items-center justify-center overflow-hidden rounded-2xl border border-border"
+          style={{ background: `radial-gradient(circle at 50% 45%, color-mix(in srgb, ${primaryColor} 14%, var(--surface-2)), var(--surface-2) 70%)` }}
+        >
           {illustration ? (
-            <ProxyImage src={illustration} alt={pet.name} width={340} height={340} className="object-contain" fallback={<span className="text-6xl opacity-30">🐾</span>} />
+            <ProxyImage src={illustration} alt={pet.name} width={340} height={340} className="animate-float object-contain" fallback={<span className="text-6xl opacity-30">🐾</span>} />
           ) : (
             <span className="text-6xl opacity-20">🐾</span>
           )}

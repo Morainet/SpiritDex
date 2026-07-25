@@ -29,17 +29,17 @@ export default async function Home() {
       <section className="relative overflow-hidden border-b border-border bg-gradient-to-b from-surface to-background">
         <div className="absolute inset-0 opacity-[0.04]" style={{ backgroundImage: "radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0)", backgroundSize: "32px 32px" }} />
         <div className="relative mx-auto max-w-5xl px-4 py-20 text-center">
-          <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-border bg-surface px-3 py-1 text-xs text-muted">
+          <div className="animate-slide-down mb-5 inline-flex items-center gap-2 rounded-full border border-border bg-surface px-3 py-1 text-xs text-muted">
             <Sparkles className="h-3.5 w-3.5 text-accent" />
             洛克王国手游攻略站
           </div>
-          <h1 className="text-5xl font-bold tracking-tight sm:text-6xl">
+          <h1 className="animate-slide-up text-5xl font-bold tracking-tight sm:text-6xl" style={{ animationDelay: "0.05s" }}>
             灵宠档案
           </h1>
-          <p className="mx-auto mt-4 max-w-xl text-lg text-muted">
+          <p className="animate-slide-up mx-auto mt-4 max-w-xl text-lg text-muted" style={{ animationDelay: "0.15s" }}>
             数据驱动的精灵图鉴、属性工具与 AI 智能助手
           </p>
-          <div className="mt-8 flex flex-wrap justify-center gap-3">
+          <div className="animate-slide-up mt-8 flex flex-wrap justify-center gap-3" style={{ animationDelay: "0.25s" }}>
             <Link
               href="/pets"
               className="inline-flex h-12 items-center justify-center rounded-xl bg-primary px-8 font-medium text-primary-foreground shadow-sm transition-all hover:opacity-90 active:scale-[0.97]"
@@ -64,7 +64,7 @@ export default async function Home() {
           {NAV_GROUPS.map((group) => (
             <div key={group.label}>
               <h2 className="mb-3 text-sm font-semibold uppercase tracking-wide text-muted-foreground">{group.label}</h2>
-              <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              <div className="stagger-auto grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
                 {group.items.map((e) => (
                   <Link
                     key={e.href}
@@ -91,7 +91,7 @@ export default async function Home() {
       </section>
 
       {/* 御三家 + 机制文章 */}
-      <section className="border-t border-border bg-surface/50">
+      <section className="animate-fade-in border-t border-border bg-surface/50" style={{ animationDelay: "0.3s" }}>
         <div className="mx-auto max-w-6xl px-4 py-12">
           <div className="grid gap-8 lg:grid-cols-2">
             {/* 御三家 */}

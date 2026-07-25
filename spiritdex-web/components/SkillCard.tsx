@@ -10,7 +10,8 @@ export default function SkillCard({ skill }: { skill: SkillListItem }) {
   return (
     <Link
       href={`/skills/${skill.slug}`}
-      className="group relative flex flex-col overflow-hidden rounded-2xl border border-border bg-surface shadow-[var(--shadow-card)] transition-all hover:shadow-[var(--shadow-hover)] hover:-translate-y-0.5"
+      style={{ ["--card-color" as string]: color }}
+      className="group relative flex flex-col overflow-hidden rounded-2xl border border-border bg-surface shadow-[var(--shadow-card)] sd-transition hover:-translate-y-1 hover:border-[color-mix(in_srgb,var(--card-color)_40%,var(--border))] hover:shadow-[0_12px_28px_color-mix(in_srgb,var(--card-color)_22%,rgba(0,0,0,0.12))]"
     >
       {/* 类别色顶条 */}
       <div className="h-1" style={{ backgroundColor: color }} />
