@@ -63,7 +63,7 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--marks", action="store_true",
                         help="抓取印记图鉴（总览页+独立页，→ marks.json；约 15 秒）")
     parser.add_argument("--map", action="store_true",
-                        help="抓取地图点位（Data:MapV2，→ map_points.json；约 20 秒）")
+                        help="抓取地图点位（Data:MapS3，→ map_points.json；约 20 秒）")
     args = parser.parse_args(argv)
 
     # —— 活动抓取分支（独立于宠物数据主流程）——
@@ -348,9 +348,9 @@ def _run_marks(args: argparse.Namespace) -> int:
 
 
 def _run_map(args: argparse.Namespace) -> int:
-    """抓取地图点位 + 文字图层（Data:Mapnew），写出 map_points.json。
+    """抓取地图点位 + 文字图层（Data:MapS3），写出 map_points.json。
 
-    数据源：Data:Mapnew/type/{id}/json 坐标 + textLayer 地名（与 BWIKI「大地图」同源）。
+    数据源：Data:MapS3/type/{id}/json 坐标 + textLayer 地名（与 BWIKI「大地图」同源）。
     见 src/map_fetcher.py 文档。前端用 Leaflet + BWIKI 瓦片底图渲染。
     """
     if args.offline:
@@ -358,7 +358,7 @@ def _run_map(args: argparse.Namespace) -> int:
         return 1
 
     api = WikiApi()
-    print(f"[map] 开始抓取地图点位（Data:Mapnew，约 3 分钟）...")
+    print(f"[map] 开始抓取地图点位（Data:MapS3，约 3 分钟）...")
     items, text_layers, stats = fetch_map_points(api)
 
     print("[map] 抓取统计：")
@@ -377,7 +377,7 @@ def _run_map(args: argparse.Namespace) -> int:
             "source_url": settings.source_module_url,
             "scraped_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
             "count": len(items),
-            "note": "来自 Data:Mapnew 点位坐标 + textLayer 地名（与 BWIKI 大地图同源，游戏内坐标系）",
+            "note": "来自 Data:MapS3 点位坐标 + textLayer 地名（与 BWIKI 大地图同源，游戏内坐标系）",
         },
         "items": items,
         "text_layers": text_layers,

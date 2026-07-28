@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 import { ThemeContextProvider } from "@/components/theme-context";
 import { SiteHeader } from "@/components/site-header";
 
-const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
-const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"] });
+// 改用系统字体栈：Geist 通过 next/font/google 在构建期请求 fonts.gstatic.com，
+// 国内环境经常超时导致 500。退回系统无衬线，中文 fallback 更好且零网络依赖。
+const geistSans = { variable: "--font-geist-sans" };
+const geistMono = { variable: "--font-geist-mono" };
 
 export const metadata: Metadata = {
   title: { default: "灵宠档案 | 洛克王国手游攻略站", template: "%s | 灵宠档案" },
