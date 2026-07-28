@@ -109,8 +109,10 @@
   --color-warning: var(--warning);
   --color-danger: var(--danger);
   --color-favorite: var(--favorite);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  /* 系统字体栈(原 Geist 经 Google Fonts 下载，国内易超时，退回系统字体更稳) */
+  --font-sans: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue",
+    "PingFang SC", "Microsoft YaHei", sans-serif;
+  --font-mono: ui-monospace, "Cascadia Code", "Source Code Pro", Menlo, Consolas, monospace;
 }
 
 body {

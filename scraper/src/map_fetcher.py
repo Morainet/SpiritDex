@@ -1,13 +1,16 @@
-"""地图点位抓取器：从 BWIKI Data:Mapnew 数据页面提取地图标记点 + 地名。
+"""地图点位抓取器：从 BWIKI Data:MapS3 数据页面提取地图标记点 + 地名。
 
-数据源（调研确认，与 BWIKI「大地图」页面同源）：
-- 类型元数据：``Data:Mapnew/type/json``（296 种，含 markType / markTypeName / icon）
-- 坐标数据：``Data:Mapnew/type/{markType}/json``（151 个类型页，每个含若干 lat/lng 点位）
-- 文字图层：``Data:Mapnew/type/textLayer/json``（地名标注：洛克里安 / 魔法师之家 等）
+数据源（与 BWIKI「大地图」页面 window.mapData 同源，S3 赛季）：
+- 类型元数据：``Data:MapS3/type/json``（含 markType / markTypeName / icon）
+- 坐标数据：``Data:MapS3/type/{markType}/json``（每个含若干 lat/lng 点位，version=4 原始坐标）
+- 文字图层：``Data:MapS3/type/textLayer/json``（地名标注：洛克里安 / 魔法师之家 等）
+
+⚠️ S3 数据坐标系与旧 Mapnew 不同：S3 是原始游戏像素坐标(小数，直接对应 S3 瓦片)，
+   旧 Mapnew 是缩放后的大整数。必须用 MapS3 数据配 S3 瓦片，二者匹配。
 
 BWIKI 大地图渲染方案（我们复用）：
 - Leaflet + Simple CRS（平面坐标）
-- 底图瓦片：``https://wiki-dev-patch-oss.aliyuncs.com/res/lkwg/map-3.0/{z}/tile-{x}_{y}.png``
+- 底图瓦片：``https://wiki-dev-patch-oss.oss-cn-hangzhou.aliyuncs.com/res/lkwg/S3/tiles-G/{z}/tile-{x}_{y}.png``
 - center [0,0], zoom 5, minZoom 4, maxZoom 8
 
 icon 字段形如 ``{{filepath:地图_点位_icon_庇护所.png}}``，前端拼 ``Special:FilePath/xxx``。
@@ -43,7 +46,7 @@ def fetch_map_points(api: WikiApi) -> tuple[list[dict], list[dict], dict]:
     # 1. 类型元数据（markType → {name, icon}）
     type_meta: dict[str, dict] = {}
     try:
-        meta_text = api.fetch_module_wikitext("Data:Mapnew/type/json")
+        meta_text = api.fetch_module_wikitext("Data:MapS3/type/json")
         meta_data = json.loads(meta_text)
         raw_types = meta_data.get("data", meta_data) if isinstance(meta_data, dict) else meta_data
         if isinstance(raw_types, list):
@@ -72,7 +75,7 @@ def fetch_map_points(api: WikiApi) -> tuple[list[dict], list[dict], dict]:
         type_name = meta.get("name", f"类型{mark_type}")
         icon = meta.get("icon")
         try:
-            text = api.fetch_module_wikitext(f"Data:Mapnew/type/{mark_type}/json")
+            text = api.fetch_module_wikitext(f"Data:MapS3/type/{mark_type}/json")
             pts = _parse_points(text, mark_type, type_name, icon)
             items.extend(pts)
             fetch_ok += 1
@@ -96,7 +99,7 @@ def fetch_map_points(api: WikiApi) -> tuple[list[dict], list[dict], dict]:
 
 
 def _list_type_pages(api: WikiApi) -> list[str]:
-    """列出 Data:Mapnew/type/ 下实际存在的 {id}/json 页面（不含 textLayer/json）。"""
+    """列出 Data:MapS3/type/ 下实际存在的 {id}/json 页面（不含 textLayer/json）。"""
     browser_ua = (
         "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 "
         "(KHTML, like Gecko) Chrome/126.0 Safari/537.36"
@@ -105,7 +108,7 @@ def _list_type_pages(api: WikiApi) -> list[str]:
     resp = api._session.post(
         f"{api.base_url}/api.php",
         data={
-            "action": "query", "list": "allpages", "apprefix": "Data:Mapnew/type/",
+            "action": "query", "list": "allpages", "apprefix": "Data:MapS3/type/",
             "apnamespace": "0", "aplimit": "500", "format": "json", "formatversion": "2",
         },
         headers={"User-Agent": browser_ua, "Referer": f"{api.base_url}/"},
@@ -116,8 +119,8 @@ def _list_type_pages(api: WikiApi) -> list[str]:
     ids: list[str] = []
     for p in pages:
         title = p.get("title", "")
-        # Data:Mapnew/type/201/json → "201"，排除 type/json 和 textLayer/json
-        m = re.match(r"Data:Mapnew/type/(\d+)/json$", title)
+        # Data:MapS3/type/201/json → "201"，排除 type/json 和 textLayer/json
+        m = re.match(r"Data:MapS3/type/(\d+)/json$", title)
         if m:
             ids.append(m.group(1))
     return ids
@@ -159,7 +162,7 @@ def _parse_points(text: str, mark_type: str, type_name: str, icon: str | None) -
 def _fetch_text_layers(api: WikiApi) -> list[dict]:
     """抓取文字图层（地名标注）。"""
     try:
-        text = api.fetch_module_wikitext("Data:Mapnew/type/textLayer/json")
+        text = api.fetch_module_wikitext("Data:MapS3/type/textLayer/json")
         data = json.loads(text)
         # textLayer 是 {"G": [...], "B1": [...]} 按图层分组
         result: list[dict] = []

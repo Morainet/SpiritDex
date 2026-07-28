@@ -5,14 +5,54 @@ import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import type { MapPoint } from "@/types/map";
 
-// BWIKI 地图配置（与 BWIKI「大地图」同源）
-const TILE_URL = "https://wiki-dev-patch-oss.oss-cn-hangzhou.aliyuncs.com/res/lkwg/map-3.0/{z}/tile-{x}_{y}.png";
+// BWIKI 地图配置（与 BWIKI「大地图」页面 MediaWiki:Map4.1.js + window.mapData 同源，S3 赛季）
+//
+// 关键：BWIKI 瓦片坐标系**原点在地图中心**(非左上角)，瓦片坐标可为负。
+// 配合 CRS.Simple + Transformation(1/128) 把游戏坐标(±1500)映射到 Leaflet 像素空间，
+// 让 (0,0) 落在瓦片网格中心。
+//
+// 三个要点(均来自 BWIKI Map4.1.js 源码考证)：
+// 1. CRS：CRS.Simple + transformation(0.0078125, 0, 0.0078125, 0)  // 1/128
+// 2. 点位：version==4 的数据直接用原始坐标 L.latLng(lat, lng)，不转换
+// 3. 瓦片：自定义 TileLayer，用 myBounds + refer 判断瓦片边界，超界返回占位图
+const TILE_URL = "https://wiki-dev-patch-oss.oss-cn-hangzhou.aliyuncs.com/res/lkwg/S3/tiles-G/{z}/tile-{x}_{y}.png";
+// 超界瓦片的占位图(BWIKI 用一个透明默认图，避免 404)
+const TILE_FALLBACK = "https://prod-patch-wiki.biligame.com/res/ys/map/tiles/default.png";
+// 各 zoom 的瓦片边界(BWIKI mapData: myBounds = {x1:4, x2:4, y1:4, y2:4})
+const TILE_BOUNDS = { x1: 4, x2: 4, y1: 4, y2: 4 };
+
+// 自定义 CRS：CRS.Simple + transformation(1/128)，让游戏坐标(±1500)映射到中心原点的瓦片空间
+const WIKI_CRS = L.extend({}, L.CRS.Simple, {
+  transformation: new L.Transformation(0.0078125, 0, 0.0078125, 0),
+});
+
+// 自定义 TileLayer：复刻 BWIKI _getTileXY 逻辑
+// - 瓦片坐标可为负(原点在中心)
+// - 用 refer = ceil(2^(z-1)/2) 配合 myBounds 判断瓦片是否在范围内
+// - 超界返回占位图(非 404)，避免底图灰掉
+const BwikiTileLayer = (L.TileLayer as any).extend({
+  getTileUrl: function (coords: { x: number; y: number; z: number }) {
+    const { x, y, z } = coords;
+    const url = this._url
+      .replace("{z}", String(z))
+      .replace("{x}", String(x))
+      .replace("{y}", String(y));
+    // refer = ceil(2^(z-1) / 2)：zoom 每级的瓦片半径基数
+    const refer = Math.ceil((1 << (z - 1)) / 2);
+    const inBounds =
+      -refer * TILE_BOUNDS.x1 <= x &&
+      x < refer * TILE_BOUNDS.x2 &&
+      -refer * TILE_BOUNDS.y1 <= y &&
+      y < refer * TILE_BOUNDS.y2;
+    return inBounds ? url : TILE_FALLBACK;
+  },
+});
+
 const MAP_CONFIG = {
   center: [0, 0] as [number, number],
   zoom: 5,
   minZoom: 4,
   maxZoom: 8,
-  // maxBounds（BWIKI 配置：[-256*32,-256*60]~[256*32,256*32]）
   maxBounds: L.latLngBounds([-256 * 32, -256 * 60], [256 * 32, 256 * 32]),
 };
 
@@ -51,6 +91,7 @@ export default function MapView({
   const textLayerRef = useRef<L.LayerGroup | null>(null);
   const [visibleTypes, setVisibleTypes] = useState<Set<number>>(() => new Set());
   const [selected, setSelected] = useState<MapPoint | null>(null);
+  const [mapReady, setMapReady] = useState(false);
 
   // 类型列表（去重 + 计数）
   const typeList = useMemo(() => {
@@ -73,31 +114,43 @@ export default function MapView({
     if (!mapContainerRef.current || mapRef.current) return;
 
     const map = L.map(mapContainerRef.current, {
-      crs: L.CRS.Simple,
+      crs: WIKI_CRS,
       ...MAP_CONFIG,
       zoomControl: true,
       attributionControl: false,
     });
-    L.tileLayer(TILE_URL, {
+    // 自定义瓦片层(中心原点 + 边界判断)，复刻 BWIKI _getTileXY
+    new (BwikiTileLayer as any)(TILE_URL, {
       minZoom: MAP_CONFIG.minZoom,
       maxZoom: MAP_CONFIG.maxZoom,
       noWrap: true,
-      // BWIKI 瓦片用 tile-{x}_{y}.png 格式，Leaflet 默认 {z}/{x}/{y} 需要调整
     }).addTo(map);
 
     markerLayerRef.current = L.layerGroup().addTo(map);
     textLayerRef.current = L.layerGroup().addTo(map);
     mapRef.current = map;
+    setMapReady(true);
 
     return () => {
       map.remove();
       mapRef.current = null;
+      setMapReady(false);
     };
   }, []);
 
+  // 地图就绪后 fitBounds 到点位分布范围
+  // 关键：transformation(1/128) 把游戏坐标(±1500)压到 latLng 空间(±12)，
+  // 但瓦片按 zoom 像素排列——视口默认在 [0,0] 周围，看不到分散的点位。
+  // fitBounds 让视口自动覆盖所有点位，点位和底图就同框显示了。
+  useEffect(() => {
+    if (!mapReady || !mapRef.current || points.length === 0) return;
+    const bounds = L.latLngBounds(points.map((p) => [p.lat, p.lng] as [number, number]));
+    mapRef.current.fitBounds(bounds, { padding: [40, 40] });
+  }, [mapReady, points]);
+
   // 渲染点位 marker（visibleTypes 变化时更新）
   useEffect(() => {
-    if (!markerLayerRef.current) return;
+    if (!mapReady || !markerLayerRef.current) return;
     markerLayerRef.current.clearLayers();
 
     for (const p of points) {
@@ -130,11 +183,11 @@ export default function MapView({
       marker.on("click", () => setSelected(p));
       markerLayerRef.current.addLayer(marker);
     }
-  }, [points, visibleTypes]);
+  }, [mapReady, points, visibleTypes]);
 
   // 渲染文字图层（地名标注，随 zoom 级别显隐）
   useEffect(() => {
-    if (!textLayerRef.current || !mapRef.current) return;
+    if (!mapReady || !textLayerRef.current || !mapRef.current) return;
     textLayerRef.current.clearLayers();
 
     for (const t of textLayers) {
@@ -148,7 +201,7 @@ export default function MapView({
       });
       textLayerRef.current.addLayer(marker);
     }
-  }, [textLayers]);
+  }, [mapReady, textLayers]);
 
   function toggleType(t: number) {
     setVisibleTypes((prev) => {
