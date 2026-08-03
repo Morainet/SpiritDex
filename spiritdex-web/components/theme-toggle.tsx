@@ -36,7 +36,7 @@ export function ThemeToggle() {
       </button>
       {open && (
         <div className="absolute right-0 top-full z-[100] mt-1">
-          <div className="min-w-[140px] rounded-xl border border-border bg-surface p-1.5 shadow-[var(--shadow-hover)]">
+          <div className="animate-slide-down min-w-[140px] origin-top rounded-xl border border-border bg-surface p-1.5 shadow-[var(--shadow-hover)]">
             {options.map((opt) => (
               <button
                 key={opt.value}
