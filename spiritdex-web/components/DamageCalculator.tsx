@@ -1,11 +1,14 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
+import { useRouter, useSearchParams, usePathname } from "next/navigation";
+import { Share2, Check } from "lucide-react";
 import type { PetListItem, PetStats } from "@/types/pet";
 import type { SpiritType } from "@/types/spiritdex";
 import type { TypeMatrix } from "@/types/spiritdex";
 import { combinedMultiplier, multiplier } from "@/lib/type-effectiveness";
 import PetSelect from "@/components/PetSelect";
+import { syncToUrl, readParam, copyShareLink } from "@/lib/share-state";
 
 const CN_TO_SLUG: Record<string, string> = {
   普通: "normal", 草: "grass", 火: "fire", 水: "water", 光: "light", 地: "ground",
@@ -26,11 +29,44 @@ export default function DamageCalculator({
   detailMap: Record<string, PetStats>;
   matrix: TypeMatrix;
 }) {
-  const [atkSlug, setAtkSlug] = useState<string | undefined>();
-  const [defSlug, setDefSlug] = useState<string | undefined>();
-  const [power, setPower] = useState(80);
-  const [atkKind, setAtkKind] = useState<"physical" | "special">("physical");
-  const [level, setLevel] = useState(50);
+  const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+
+  // 5 个参数从 URL 水合：slug 对 pets 校验存在性；数值 clamp 到合法区间
+  const validSlugs = useMemo(() => new Set(pets.map((p) => p.slug)), [pets]);
+  const [atkSlug, setAtkSlug] = useState<string | undefined>(() => {
+    const s = readParam(searchParams, "a");
+    return s && validSlugs.has(s) ? s : undefined;
+  });
+  const [defSlug, setDefSlug] = useState<string | undefined>(() => {
+    const s = readParam(searchParams, "d");
+    return s && validSlugs.has(s) ? s : undefined;
+  });
+  const [power, setPower] = useState<number>(() => {
+    const n = parseInt(readParam(searchParams, "p") ?? "", 10);
+    return Number.isFinite(n) && n >= 0 ? n : 80;
+  });
+  const [atkKind, setAtkKind] = useState<"physical" | "special">(() => {
+    const k = readParam(searchParams, "k");
+    return k === "special" ? "special" : "physical";
+  });
+  const [level, setLevel] = useState<number>(() => {
+    const n = parseInt(readParam(searchParams, "l") ?? "", 10);
+    return Number.isFinite(n) ? Math.min(100, Math.max(1, n)) : 50;
+  });
+
+  // 参数变化时回写 URL（replace 不堆历史）。未选中的 slug 不写入。
+  useEffect(() => {
+    syncToUrl(router, pathname, searchParams.toString(), {
+      a: atkSlug,
+      d: defSlug,
+      p: String(power),
+      k: atkKind,
+      l: String(level),
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [atkSlug, defSlug, power, atkKind, level]);
 
   const atkPet = atkSlug ? detailMap[atkSlug] : undefined;
   const defPet = defSlug ? detailMap[defSlug] : undefined;
@@ -62,8 +98,38 @@ export default function DamageCalculator({
     };
   }, [atkPet, defPet, power, atkKind, level, matrix]);
 
+  const [shareState, setShareState] = useState<"idle" | "copied" | "failed">("idle");
+  async function handleShare() {
+    const ok = await copyShareLink();
+    setShareState(ok ? "copied" : "failed");
+    setTimeout(() => setShareState("idle"), 2000);
+  }
+
   return (
     <div className="space-y-6">
+      {/* 分享条：复制当前配置的完整链接，他人打开即见相同计算 */}
+      <div className="flex justify-end">
+        <button
+          onClick={handleShare}
+          title="复制分享链接"
+          className="inline-flex items-center gap-1 rounded-lg border border-border bg-surface px-2.5 py-1 text-xs text-muted-foreground transition-colors hover:border-primary hover:text-foreground"
+        >
+          {shareState === "copied" ? (
+            <>
+              <Check className="h-3 w-3 text-emerald-500" /> 已复制
+            </>
+          ) : shareState === "failed" ? (
+            <>
+              <Share2 className="h-3 w-3" /> 复制失败，请手动复制地址栏
+            </>
+          ) : (
+            <>
+              <Share2 className="h-3 w-3" /> 分享此配置
+            </>
+          )}
+        </button>
+      </div>
+
       {/* 选择区 */}
       <div className="flex flex-col gap-4 sm:flex-row">
         <PetSelect pets={pets} label="攻击方精灵" selectedSlug={atkSlug} onSelect={setAtkSlug} />

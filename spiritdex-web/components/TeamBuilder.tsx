@@ -1,6 +1,8 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
+import { useRouter, useSearchParams, usePathname } from "next/navigation";
+import { Share2, Check } from "lucide-react";
 import ProxyImage from "@/components/ProxyImage";
 import Link from "next/link";
 import type { PetListItem } from "@/types/pet";
@@ -8,6 +10,7 @@ import type { SpiritType, TypeMatrix } from "@/types/spiritdex";
 import { petHeadUrl } from "@/lib/image";
 import { typeColor } from "@/lib/type-colors";
 import { multiplier } from "@/lib/type-effectiveness";
+import { syncToUrl, readParam, copyShareLink } from "@/lib/share-state";
 
 const CN_TO_SLUG: Record<string, string> = {
   普通: "normal", 草: "grass", 火: "fire", 水: "water", 光: "light", 地: "ground",
@@ -24,8 +27,30 @@ export default function TeamBuilder({
   pets: PetListItem[];
   matrix: TypeMatrix;
 }) {
-  const [team, setTeam] = useState<string[]>([]);
+  const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+
+  // 初始队伍从 URL 的 ?t=slug1,slug2 水合：过滤掉库里不存在的脏 slug，避免空白行
+  const [team, setTeam] = useState<string[]>(() => {
+    const raw = readParam(searchParams, "t");
+    if (!raw) return [];
+    const validSlugs = new Set(pets.map((p) => p.slug));
+    return raw
+      .split(",")
+      .map((s) => s.trim())
+      .filter((s) => s && validSlugs.has(s))
+      .slice(0, MAX_TEAM);
+  });
   const [q, setQ] = useState("");
+
+  // 队伍变化时回写 URL（replace 不堆历史）。空队伍清掉 t 参数。
+  useEffect(() => {
+    syncToUrl(router, pathname, searchParams.toString(), {
+      t: team.length > 0 ? team.join(",") : undefined,
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [team]);
 
   const teamPets = team.map((s) => pets.find((p) => p.slug === s)).filter(Boolean) as PetListItem[];
 
@@ -69,6 +94,13 @@ export default function TeamBuilder({
     return available.filter((p) => p.name.includes(tq)).slice(0, 24);
   }, [q, pets, team]);
 
+  const [shareState, setShareState] = useState<"idle" | "copied" | "failed">("idle");
+  async function handleShare() {
+    const ok = await copyShareLink();
+    setShareState(ok ? "copied" : "failed");
+    setTimeout(() => setShareState("idle"), 2000);
+  }
+
   function toggle(slug: string) {
     setTeam((t) => (t.includes(slug) ? t.filter((s) => s !== slug) : t.length < MAX_TEAM ? [...t, slug] : t));
   }
@@ -108,9 +140,30 @@ export default function TeamBuilder({
           <div className="mb-2 flex items-center justify-between">
             <h2 className="text-sm font-semibold">我的阵容 ({team.length}/{MAX_TEAM})</h2>
             {team.length > 0 && (
-              <button onClick={() => setTeam([])} className="text-xs text-muted-foreground hover:text-muted">
-                清空
-              </button>
+              <div className="flex items-center gap-2">
+                <button
+                  onClick={handleShare}
+                  title="复制分享链接"
+                  className="inline-flex items-center gap-1 text-xs text-muted-foreground transition-colors hover:text-foreground"
+                >
+                  {shareState === "copied" ? (
+                    <>
+                      <Check className="h-3 w-3 text-emerald-500" /> 已复制
+                    </>
+                  ) : shareState === "failed" ? (
+                    <>
+                      <Share2 className="h-3 w-3" /> 复制失败
+                    </>
+                  ) : (
+                    <>
+                      <Share2 className="h-3 w-3" /> 分享
+                    </>
+                  )}
+                </button>
+                <button onClick={() => setTeam([])} className="text-xs text-muted-foreground hover:text-muted">
+                  清空
+                </button>
+              </div>
             )}
           </div>
           {teamPets.length === 0 ? (
