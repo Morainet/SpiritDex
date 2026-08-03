@@ -2,12 +2,14 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { ArrowLeft, Bot } from "lucide-react";
-import { fetchPetDetail, fetchPets } from "@/lib/api";
+import { fetchPetDetail, fetchPets, fetchTypeMatrix } from "@/lib/api";
 import { petIllustrationUrl } from "@/lib/image";
 import { typeColor } from "@/lib/type-colors";
 import type { PetSkill } from "@/types/pet";
+import type { TypeMatrix } from "@/types/spiritdex";
 import StatsRadar from "@/components/StatsRadar";
 import EvolutionChainView from "@/components/EvolutionChainView";
+import TypeMatchup from "@/components/TypeMatchup";
 import ProxyImage from "@/components/ProxyImage";
 import { FavoriteButton } from "@/components/FavoriteButton";
 
@@ -38,7 +40,11 @@ export default async function PetDetailPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const pet = await fetchPetDetail(slug);
+  // 并行取详情 + 相克矩阵；矩阵失败不阻断详情页（相克区块自行降级）
+  const [pet, matrix] = await Promise.all([
+    fetchPetDetail(slug),
+    fetchTypeMatrix().catch(() => null as TypeMatrix | null),
+  ]);
   if (!pet) notFound();
 
   const illustration = petIllustrationUrl(pet.illustrationKey);
@@ -107,6 +113,7 @@ export default async function PetDetailPage({
             {pet.weight && (<div><dt className="text-muted-foreground">体重</dt><dd>{pet.weight}</dd></div>)}
             {pet.habitat && (<div><dt className="text-muted-foreground">栖息地</dt><dd>{pet.habitat}</dd></div>)}
             {pet.hasShiny !== undefined && (<div><dt className="text-muted-foreground">异色</dt><dd>{pet.hasShiny ? "有" : "无"}</dd></div>)}
+            {pet.canDoubleRide !== undefined && (<div><dt className="text-muted-foreground">骑乘</dt><dd>{pet.canDoubleRide ? "可双骑" : "仅单骑"}</dd></div>)}
           </dl>
 
           {pet.description && (
@@ -131,6 +138,11 @@ export default async function PetDetailPage({
           )}
         </div>
       </div>
+
+      {/* 属性相克（矩阵取不到时降级为不渲染） */}
+      {matrix && pet.types && pet.types.length > 0 && (
+        <TypeMatchup petTypes={pet.types} matrix={matrix} />
+      )}
 
       {/* 进化链 */}
       <div className="mb-6">
@@ -192,7 +204,11 @@ function SkillTable({ skills }: { skills: PetSkill[] }) {
         <tbody>
           {skills.map((s) => (
             <tr key={s.slug} className="border-b border-border align-top last:border-0">
-              <td className="py-2 pr-3 font-medium">{s.name}</td>
+              <td className="py-2 pr-3 font-medium">
+                <Link href={`/skills/${s.slug}`} className="hover:text-primary hover:underline">
+                  {s.name}
+                </Link>
+              </td>
               <td className="px-3 text-muted">{s.category ?? "—"}</td>
               <td className="px-3">
                 {s.element ? <span className="rounded px-1.5 py-0.5 text-xs text-white" style={{ backgroundColor: typeColor(s.element) }}>{s.element}</span> : "—"}
