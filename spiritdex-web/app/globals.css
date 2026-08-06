@@ -84,6 +84,32 @@
   --accent: #fbbf24;
   --favorite: #ff5a5a;
 
+  /* 属性色：深色模式下提亮一档（原浅色值在 #0f1115 上对比度不足，
+     尤其是 --type-dark #4a4a4a 几乎不可见）。保持色相、提升明度。 */
+  --type-normal: #b6bcc4;
+  --type-grass: #7dd683;
+  --type-fire: #f9a45b;
+  --type-water: #5aaef7;
+  --type-light: #f5d678;
+  --type-ground: #d09660;
+  --type-ice: #a3e2f0;
+  --type-dragon: #a996f0;
+  --type-electric: #f5d678;
+  --type-poison: #b985d0;
+  --type-bug: #c4d04e;
+  --type-fighting: #e06b5d;
+  --type-flying: #a8c3e6;
+  --type-cute: #f493bd;
+  --type-ghost: #9c8eac;
+  --type-dark: #8a8a96;       /* 原 #4a4a4a 在深色背景近乎不可见，提亮到中性灰 */
+  --type-machine: #bcc6c7;
+  --type-illusion: #c79bf0;
+
+  /* 功能色：深色模式下提亮一档（success/warning 原值偏暗，与 --accent 同源） */
+  --success: #4ade80;
+  --warning: #fbbf24;
+  --danger: #f87171;
+
   --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.3);
   --shadow-hover: 0 8px 24px rgba(0, 0, 0, 0.4);
 }
